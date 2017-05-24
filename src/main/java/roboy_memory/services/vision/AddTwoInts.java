@@ -12,9 +12,8 @@ import rosjava_test_msgs.AddTwoIntsResponse;
 public class AddTwoInts extends AbstractNodeMain {
     private static String name = "rosjava_tutorial_services/server";
 
-    public static void publish(NodeConfiguration nodeConfiguration) {
+    public static void publish(NodeConfiguration nodeConfiguration, NodeMainExecutor nodeMainExecutor) {
         nodeConfiguration.setNodeName(name);
-        NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
         nodeMainExecutor.execute(new AddTwoInts(), nodeConfiguration);
     }
 
