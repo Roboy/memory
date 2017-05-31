@@ -18,7 +18,7 @@ public class Server {
     private NodeMainExecutor nodeMainExecutor;
 
     public Server() throws URISyntaxException {
-        URI masterUri = new URI(Config.ROS_MASTER_ADDRESS);
+        URI masterUri = new URI(Config.DEFAULT_MASTER_ADDRESS);
 
         nodeConfiguration = NodeConfiguration.newPublic(masterUri.getHost(), masterUri);
         nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
