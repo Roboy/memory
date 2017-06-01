@@ -1,4 +1,4 @@
-package roboy_memory.services.vision;
+package memory.services.vision;
 
 import org.ros.namespace.GraphName;
 import org.ros.node.*;

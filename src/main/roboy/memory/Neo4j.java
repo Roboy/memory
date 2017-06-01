@@ -1,10 +1,10 @@
-package roboy_memory;
+package memory;
 
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.GraphDatabase;
 
-import static roboy_memory.Config.*;
+import static memory.Config.*;
 
 public class Neo4j implements AutoCloseable {
 

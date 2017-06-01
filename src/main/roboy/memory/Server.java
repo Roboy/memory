@@ -1,10 +1,10 @@
-package roboy_memory;
+package memory;
 
 
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
-import roboy_memory.services.vision.AddTwoInts;
+import memory.services.vision.AddTwoInts;
 
 import java.net.URI;
 import java.net.URISyntaxException;
