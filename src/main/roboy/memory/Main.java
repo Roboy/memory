@@ -1,4 +1,4 @@
-package roboy_memory;
+package memory;
 
 
 import java.net.URISyntaxException;
