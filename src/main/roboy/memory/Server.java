@@ -1,10 +1,10 @@
 package memory;
 
 
+import memory.services.*;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
-import memory.services.vision.AddTwoInts;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,7 +26,8 @@ public class Server {
     }
 
     public void start() {
-        AddTwoInts.publish(nodeConfiguration, nodeMainExecutor);
+        //TODO(alex): run all classes from services package using reflection
+        SaveObject.publish(nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {
