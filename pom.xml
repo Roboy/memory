@@ -55,13 +55,7 @@
         <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>roboy_communication_cognition</artifactId>
-            <version>0.0.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.ros.rosjava_bootstrap</groupId>
-                    <artifactId>message_generation</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.ros.rosjava_core</groupId>

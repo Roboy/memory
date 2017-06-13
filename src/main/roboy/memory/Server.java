@@ -2,6 +2,7 @@ package memory;
 
 
 import memory.services.*;
+import memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
@@ -27,7 +28,7 @@ public class Server {
 
     public void start() {
         //TODO(alex): run all classes from services package using reflection
-        SaveObject.publish(nodeConfiguration, nodeMainExecutor);
+        AddTwoInts.publish( nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {
