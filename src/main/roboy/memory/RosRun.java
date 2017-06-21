@@ -1,7 +1,7 @@
 package memory;
 
 
-import memory.services.*;
+import memory.services.AddTwoInts;
 import memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
@@ -13,22 +13,20 @@ import java.net.URISyntaxException;
 /**
  * This server is responsible for starting ros services.
  */
-public class Server {
+public class RosRun {
 
-    private NodeConfiguration nodeConfiguration;
     private NodeMainExecutor nodeMainExecutor;
+    private NodeConfiguration nodeConfiguration;
 
-    public Server() throws URISyntaxException {
-        URI masterUri = new URI(Config.ROS_MASTER_ADDRESS);
-
-        nodeConfiguration = NodeConfiguration.newPublic(masterUri.getHost(), masterUri);
+    public RosRun() throws URISyntaxException {
+        URI masterUri = new URI(Config.ROS_MASTER_URI);
+        nodeConfiguration = NodeConfiguration.newPublic(Config.ROS_HOSTNAME, masterUri);
         nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
-
     }
 
+
     public void start() {
-        //TODO(alex): run all classes from services package using reflection
-        AddTwoInts.publish( nodeConfiguration, nodeMainExecutor);
+        AddTwoInts.publish(nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {

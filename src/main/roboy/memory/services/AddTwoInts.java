@@ -10,7 +10,7 @@ import rosjava_test_msgs.AddTwoIntsResponse;
  * Example
  */
 public class AddTwoInts extends AbstractNodeMain {
-    private static String name = "rosjava_tutorial_services/server";
+    private static String name = "/add_two_ints_server";
 
     public static void publish(NodeConfiguration nodeConfiguration, NodeMainExecutor nodeMainExecutor) {
         nodeConfiguration.setNodeName(name);
