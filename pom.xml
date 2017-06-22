@@ -19,18 +19,10 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-                <version>2.3.2</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+                <version>2.3.2</version>
             </plugin>
         </plugins>
         <resources>
@@ -42,7 +34,8 @@
 
     <repositories>
         <repository>
-            <id>rosjava</id>
+            <id>ros</id>
+            <name>ros</name>
             <url>https://raw.github.com/roboy/rosjava_mvn_repo/master/</url>
         </repository>
     </repositories>
@@ -60,9 +53,40 @@
             <version>1.3.0</version>
         </dependency>
         <dependency>
+            <groupId>org.ros.rosjava_messages</groupId>
+            <artifactId>roboy_communication_cognition</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.ros.rosjava_core</groupId>
             <artifactId>rosjava</artifactId>
             <version>0.3.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.net</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.lang</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.io</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package memory.services.vision;
+package memory.services;
 
 import org.ros.namespace.GraphName;
 import org.ros.node.*;
@@ -10,7 +10,7 @@ import rosjava_test_msgs.AddTwoIntsResponse;
  * Example
  */
 public class AddTwoInts extends AbstractNodeMain {
-    private static String name = "rosjava_tutorial_services/server";
+    private static String name = "/add_two_ints_server";
 
     public static void publish(NodeConfiguration nodeConfiguration, NodeMainExecutor nodeMainExecutor) {
         nodeConfiguration.setNodeName(name);
@@ -25,12 +25,8 @@ public class AddTwoInts extends AbstractNodeMain {
     @Override
     public void onStart(ConnectedNode connectedNode) {
         connectedNode.newServiceServer("add_two_ints", rosjava_test_msgs.AddTwoInts._TYPE,
-                new ServiceResponseBuilder<AddTwoIntsRequest, AddTwoIntsResponse>() {
-                    @Override
-                    public void
-                    build(rosjava_test_msgs.AddTwoIntsRequest request, rosjava_test_msgs.AddTwoIntsResponse response) {
-                        response.setSum(request.getA() + request.getB());
-                    }
+                (ServiceResponseBuilder<AddTwoIntsRequest, AddTwoIntsResponse>) (request, response) -> {
+                    response.setSum(request.getA() + request.getB());
                 });
     }
 }
