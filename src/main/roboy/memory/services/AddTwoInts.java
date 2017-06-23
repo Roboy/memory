@@ -7,7 +7,7 @@ import rosjava_test_msgs.AddTwoIntsRequest;
 import rosjava_test_msgs.AddTwoIntsResponse;
 
 /**
- * Example
+ * Example Serviced, used to test ROS Network configuration.
  */
 public class AddTwoInts extends AbstractNodeMain {
     private static String name = "/add_two_ints_server";

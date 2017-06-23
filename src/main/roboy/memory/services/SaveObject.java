@@ -10,7 +10,8 @@ import roboy_communication_cognition.*;
 
 
 /**
- * Save data to DB
+ * ROS Service for saving data object to DB. Data is received as JSON object.
+ * JSON object is parsed using Parser (not implemented) and saved to neo4j.
  */
 public class SaveObject extends AbstractNodeMain {
     private static String name = "/roboy/cognition/memory/data/save";
