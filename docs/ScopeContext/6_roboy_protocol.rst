@@ -7,7 +7,9 @@ Roboy Communication Standard is a proposal on decorating standard ros messages w
 JSON-like payload.::
 
 	Header header
-	string payload
+	String payload
+	—-
+	String answer
 
 **Payload**
 	
@@ -25,6 +27,11 @@ A person with **someID** says: My friend **friend_name** is a friend of Roboy::
 	  }
 	}
 
+Where node type is Person, and relation type is FRIEND_OF.
+
+There we have to get the node (id) of a friend which name corresponds to the name given, that is performed by the query initialized with the first example of the payload.
+After recieving the correspondent node (id) we can relate the node (person) with Roboy as friends, that is performed by the query initialized with the second example of the payload.
+
 .. todo::
-	Create a list of appropriate messages with regard to Knowledge Representation v.1.1
+	Create a list of appropriate messages with regard to Knowledge Representation v.1.1.1
 	They should implement READ and WRITE capabilities.

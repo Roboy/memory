@@ -19,4 +19,5 @@ Interfaces to other modules will be realized using ROS (rosjava). Currently 2 in
 
 	rosservice call /read_qr
 
-Currently these interfaces are under development.
+The payload has to be defined according to :ref:`roboy-protocol`.
+Currently these interfaces are under development. 
