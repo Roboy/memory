@@ -56,18 +56,18 @@ A Developer should be familiar with:
 Reading list for a User:
 
 - Graph Structures for Knowledge Representation and Reasoning proceedings
-- rosjava Documentation (http://wiki.ros.org/rosjava)
+- `rosjava Documentation <http://wiki.ros.org/rosjava>`_
 - :ref:`roboy-protocol`
 
 Reading list for a Developer:
 
-- O'Reily's Graph Databases (https://goo.gl/C18NpT)
-- Neo4j Getting Started (https://neo4j.com/developer/get-started/)
-- Cypher RefCard (https://neo4j.com/docs/cypher-refcard/current/)
-- Java Documentation (http://www.oracle.com/technetwork/topics/newtojava/new2java-141543.html)
-- Maven Documentation (https://maven.apache.org/index.html)
+- `OReilys Graph Databases <https://goo.gl/C18NpT>`_
+- `Neo4j Getting Started <https://neo4j.com/developer/get-started/>`_
+- `Cypher RefCard <https://neo4j.com/docs/cypher-refcard/current/>`_
+- `Java Documentation <http://www.oracle.com/technetwork/topics/newtojava/new2java-141543.html>`_
+- `Maven Documentation <https://maven.apache.org/index.html>`_
 - :ref:`roboy-protocol`
-- rosjava Documentation (http://wiki.ros.org/rosjava)
+- `rosjava Documentation <http://wiki.ros.org/rosjava>`_
 
 
 .. _requirements_overview:
