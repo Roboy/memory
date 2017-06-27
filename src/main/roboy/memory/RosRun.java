@@ -1,7 +1,6 @@
 package memory;
 
 
-import memory.services.AddTwoInts;
 import memory.services.ReadData;
 import memory.services.WriteData;
 import memory.util.Config;
