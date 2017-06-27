@@ -1,5 +1,6 @@
 package memory.services;
 
+import memory.Parser;
 import org.ros.namespace.GraphName;
 import org.ros.node.AbstractNodeMain;
 import org.ros.node.ConnectedNode;
@@ -13,13 +14,20 @@ import roboy_communication_cognition.*;
  * ROS Service for saving data object to DB. Data is received as JSON object.
  * JSON object is parsed using Parser (not implemented) and saved to neo4j.
  */
-public class SaveObject extends AbstractNodeMain {
-    private static String name = "/roboy/cognition/memory/data/save";
+public class WriteData extends AbstractNodeMain {
+    private static String name = "/roboy/cognition/memory/data/write";
+    private Parser parser = new Parser();
 
     public static void publish(NodeConfiguration nodeConfiguration, NodeMainExecutor nodeMainExecutor) {
         nodeConfiguration.setNodeName(name);
-        nodeMainExecutor.execute(new SaveObject(), nodeConfiguration);
+        nodeMainExecutor.execute(new WriteData(), nodeConfiguration);
     }
+
+    private ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> handler = (request, response) -> {
+        //logic here
+        parser.parse(request.getPayload());
+        response.setAnswer("");
+    };
 
     @Override
     public GraphName getDefaultNodeName() {
@@ -28,10 +36,7 @@ public class SaveObject extends AbstractNodeMain {
 
     @Override
     public void onStart(ConnectedNode connectedNode) {
-        connectedNode.newServiceServer(this.getDefaultNodeName(), roboy_communication_cognition.SaveObject._TYPE,
-                (ServiceResponseBuilder<SaveObjectRequest, SaveObjectResponse>) (request, response) -> {
-                    //logic here
-                    response.setResult(true);
-                });
+        connectedNode.newServiceServer(this.getDefaultNodeName(), DataQuery._TYPE, handler);
     }
+
 }

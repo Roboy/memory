@@ -3,8 +3,8 @@ package memory.services;
 import org.ros.namespace.GraphName;
 import org.ros.node.*;
 import org.ros.node.service.ServiceResponseBuilder;
-import rosjava_test_msgs.AddTwoIntsRequest;
-import rosjava_test_msgs.AddTwoIntsResponse;
+//import rosjava_test_msgs.AddTwoIntsRequest;
+//import rosjava_test_msgs.AddTwoIntsResponse;
 
 /**
  * Example Serviced, used to test ROS Network configuration.
@@ -22,11 +22,11 @@ public class AddTwoInts extends AbstractNodeMain {
         return GraphName.of(name);
     }
 
-    @Override
-    public void onStart(ConnectedNode connectedNode) {
-        connectedNode.newServiceServer("add_two_ints", rosjava_test_msgs.AddTwoInts._TYPE,
-                (ServiceResponseBuilder<AddTwoIntsRequest, AddTwoIntsResponse>) (request, response) -> {
-                    response.setSum(request.getA() + request.getB());
-                });
-    }
+//    @Override
+//    public void onStart(ConnectedNode connectedNode) {
+//        connectedNode.newServiceServer("add_two_ints", rosjava_test_msgs.AddTwoInts._TYPE,
+//                (ServiceResponseBuilder<AddTwoIntsRequest, AddTwoIntsResponse>) (request, response) -> {
+//                    response.setSum(request.getA() + request.getB());
+//                });
+//    }
 }

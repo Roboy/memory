@@ -2,6 +2,8 @@ package memory;
 
 
 import memory.services.AddTwoInts;
+import memory.services.ReadData;
+import memory.services.WriteData;
 import memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
@@ -27,7 +29,8 @@ public class RosRun {
 
 
     public void start() {
-        AddTwoInts.publish(nodeConfiguration, nodeMainExecutor);
+        ReadData.publish(nodeConfiguration, nodeMainExecutor);
+        WriteData.publish(nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {

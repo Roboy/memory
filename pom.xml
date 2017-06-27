@@ -53,6 +53,11 @@
             <version>1.4.0</version>
         </dependency>
         <dependency>
+            <groupId>org.ros.rosjava_bootstrap</groupId>
+            <artifactId>message_generation</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>roboy_communication_cognition</artifactId>
             <version>0.0.2</version>
@@ -95,10 +100,6 @@
                 <exclusion>
                     <groupId>org.apache.commons</groupId>
                     <artifactId>com.springsource.org.apache.commons.io</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.logging</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
