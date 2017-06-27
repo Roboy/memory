@@ -40,6 +40,7 @@ To use a remote intance of Neo4j containing the most recent Knowledge Representa
 If the server is up, use the roboy_memory package in the remote mode (default).
 For this, please use a password related to your specific user:
 
+- user, a generic Roboy member
 - dialog, a dialog team member
 - vision, a vision team member
 - memory, a memory team member (developer)
@@ -53,6 +54,10 @@ If you are using roboy_memory package in local mode, please use the username and
 	java roboy_memory -m local -u your_username -p your_password
 
 If you are using roboy_memory package in remote mode, please use the username and password for the remote access together with '-m remote' command line parameter to run from **$ROBOY_MEMORY** folder::
+
+	java roboy_memory -m remote -u user -p user_password
+
+	OR
 
 	java roboy_memory -m remote -u dialog -p dialog_password
 	
