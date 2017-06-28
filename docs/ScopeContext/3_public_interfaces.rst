@@ -10,14 +10,14 @@ Interfaces to other modules will be realized using ROS (rosjava). Currently 2 in
 	# argument: String payload
 	# returns: Bool success
 
-	rosservice call /roboy/cognition/memory/data/write
+	rosservice call /write_qr
 
 - **read service:** Service called to perform a query reading data from Neo4j database.::
 
 	# argument: String payload
 	# returns: String data
 
-	rosservice call /roboy/cognition/memory/data/read
+	rosservice call /read_qr
 
 The payload has to be defined according to :ref:`roboy-protocol`.
 Currently these interfaces are under development. 
