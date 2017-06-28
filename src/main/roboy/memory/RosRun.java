@@ -1,7 +1,8 @@
 package memory;
 
 
-import memory.services.AddTwoInts;
+import memory.services.ReadData;
+import memory.services.WriteData;
 import memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
@@ -11,7 +12,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * This server is responsible for starting ros services.
+ * Responsible for starting ROS Nodes. Uses configuration from Config class.
+ * All nodes should be published in start method.
  */
 public class RosRun {
 
@@ -26,7 +28,8 @@ public class RosRun {
 
 
     public void start() {
-        AddTwoInts.publish(nodeConfiguration, nodeMainExecutor);
+        ReadData.publish(nodeConfiguration, nodeMainExecutor);
+        WriteData.publish(nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {
