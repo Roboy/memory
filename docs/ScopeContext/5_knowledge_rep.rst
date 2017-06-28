@@ -1,13 +1,11 @@
 Knowledge Representation
 ================================
 
-Architecture of the Neo4j database in remote. Current version 1.1.1
+Architecture of the Neo4j database in remote.
 
 .. figure:: images/dbvisual.*
 
 Visualization of a DB scheme.
-
-Versioning of KR is performed by implementing architecture proposals and evaluating them, upon evaluation the version is fixed and then new proposals are collected. Adding nodes means major ver. X, adding relations is minor ver. Y, adding properties is patch ver. Z: ver. X.Y.Z.
 
 Node Classes
 --------------------------------
@@ -86,9 +84,9 @@ Describes prameters specific to a person
 - surname [string]
 - birthdate [String]
 - sex [string]
-- face_id (facial features) [int]: reference to a face representation.
-- voice_id (voice signature) [int]: reference to a voice signature.
-- conversation_id (Topic (scope) of the last conversation) [int]: reference to a topic marker for the last conversation. It would refer to a word or summary def by Dialog to recall the previous conversation with a person.
+- face_id (facial features) [int]: reference to a face representation
+- voice_id (voice signature) [int]: reference to a voice signature
+- conversation_id (Topic (scope) of the last conversation) [int]: reference to a topic marker for the last conversation
 
 **Roboy**
 
