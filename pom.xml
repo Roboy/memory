@@ -25,11 +25,10 @@
                 <version>2.3.2</version>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>resources</directory>
-            </resource>
-        </resources>
+        <directory>${project.basedir}/target</directory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
     </build>
 
     <repositories>

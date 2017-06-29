@@ -1,8 +1,7 @@
-package memory;
+package org.roboy.memory;
 
 
-import memory.util.Neo4j;
-
+import org.roboy.memory.util.Neo4j;
 import java.net.URISyntaxException;
 
 public class Main

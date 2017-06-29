@@ -1,10 +1,10 @@
-package memory.util;
+package org.roboy.memory.util;
 
 import org.neo4j.driver.v1.*;
 
 import java.util.HashMap;
 
-import static memory.util.Config.*;
+import static org.roboy.memory.util.Config.*;
 
 public class Neo4j implements AutoCloseable {
 

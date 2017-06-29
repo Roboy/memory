@@ -1,6 +1,6 @@
-package memory.services;
+package org.roboy.memory.services;
 
-import memory.Parser;
+import org.roboy.memory.Parser;
 import org.ros.namespace.GraphName;
 import org.ros.node.AbstractNodeMain;
 import org.ros.node.ConnectedNode;

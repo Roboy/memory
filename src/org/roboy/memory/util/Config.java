@@ -1,4 +1,4 @@
-package memory.util;
+package org.roboy.memory.util;
 
 
 /**

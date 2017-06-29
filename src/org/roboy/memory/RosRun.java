@@ -1,9 +1,9 @@
-package memory;
+package org.roboy.memory;
 
 
-import memory.services.ReadData;
-import memory.services.WriteData;
-import memory.util.Config;
+import org.roboy.memory.services.ReadData;
+import org.roboy.memory.services.WriteData;
+import org.roboy.memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
