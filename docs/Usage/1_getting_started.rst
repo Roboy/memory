@@ -70,10 +70,10 @@ If you are using roboy_memory package in remote mode, please use the username an
 	java roboy_memory -m remote -u memory -p memory_password
 
 
-ROS Configuration
+ROS Configuration (optional)
 ---------------------------------------------------
 
-ROS interfaces require network setup. (more info: http://wiki.ros.org/ROS/NetworkSetup )
+If you are using memory module on another PC, ROS interfaces require network setup. (more info: http://wiki.ros.org/ROS/NetworkSetup )
 
 For this two variables in Config class (util package) should be changed.
 
