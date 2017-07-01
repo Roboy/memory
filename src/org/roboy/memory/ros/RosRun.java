@@ -10,8 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * Responsible for starting ROS Nodes. Uses configuration from Config class.
- * All nodes should be published in start method.
+ * This server is responsible for starting ros services.
  */
 public class RosRun {
 

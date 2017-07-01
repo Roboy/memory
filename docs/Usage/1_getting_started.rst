@@ -81,6 +81,5 @@ For this two variables in Config class (util package) should be changed.
     ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
 
 
-
 .. todo::
-  Starting roboy_memory package and add interfaces for local and remote usage
+  Starting roboy_memory package and add interfaces for local and remote usage 
