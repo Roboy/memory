@@ -69,5 +69,17 @@ If you are using roboy_memory package in remote mode, please use the username an
 	
 	java roboy_memory -m remote -u memory -p memory_password
 
+
+ROS Configuration (optional)
+---------------------------------------------------
+
+If you are using memory module on another PC, ROS interfaces require network setup. (more info: http://wiki.ros.org/ROS/NetworkSetup )
+
+For this two variables in Config class (util package) should be changed.
+
+    ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
+    ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
+
+
 .. todo::
   Starting roboy_memory package and add interfaces for local and remote usage 

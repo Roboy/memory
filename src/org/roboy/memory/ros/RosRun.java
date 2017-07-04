@@ -1,8 +1,7 @@
-package memory;
+package org.roboy.memory.ros;
 
 
-import memory.services.AddTwoInts;
-import memory.util.Config;
+import org.roboy.memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
@@ -26,7 +25,8 @@ public class RosRun {
 
 
     public void start() {
-        AddTwoInts.publish(nodeConfiguration, nodeMainExecutor);
+        //register ros node with services
+        RosNode.register(nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {

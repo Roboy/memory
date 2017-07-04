@@ -7,17 +7,20 @@ Interfaces to other modules will be realized using ROS (rosjava). Currently 2 in
 
 - **write service**: Service called to perform a query writing data into Neo4j database.::
 
-	# argument: String payload
-	# returns: Bool success
+	# argument: String header String payload
+	# returns: String answer
 
-	rosservice call /write_qr
+	rosservice call /roboy/cognition/memory/create
 
 - **read service:** Service called to perform a query reading data from Neo4j database.::
 
-	# argument: String payload
-	# returns: String data
+	## argument: String header String payload
+	# returns: String answer
 
-	rosservice call /read_qr
+	rosservice call /roboy/cognition/memory/update
 
 The payload has to be defined according to :ref:`roboy-protocol`.
 Currently these interfaces are under development. 
+
+.. todo::
+describe more precisely

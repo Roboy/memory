@@ -25,21 +25,28 @@
                 <version>2.3.2</version>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>resources</directory>
-            </resource>
-        </resources>
+        <directory>${project.basedir}/target</directory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
     </build>
-
     <repositories>
         <repository>
             <id>ros</id>
             <name>ros</name>
             <url>https://raw.github.com/roboy/rosjava_mvn_repo/master/</url>
         </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
     </repositories>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -61,32 +68,11 @@
             <groupId>org.ros.rosjava_core</groupId>
             <artifactId>rosjava</artifactId>
             <version>0.3.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.net</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.lang</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.codec</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.io</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-                </exclusion>
-            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.1</version>
         </dependency>
     </dependencies>
 </project>
