@@ -1,8 +1,6 @@
-package org.roboy.memory;
+package org.roboy.memory.ros;
 
 
-import org.roboy.memory.services.ReadData;
-import org.roboy.memory.services.WriteData;
 import org.roboy.memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
@@ -12,8 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * Responsible for starting ROS Nodes. Uses configuration from Config class.
- * All nodes should be published in start method.
+ * This server is responsible for starting ros services.
  */
 public class RosRun {
 
@@ -28,8 +25,8 @@ public class RosRun {
 
 
     public void start() {
-        ReadData.publish(nodeConfiguration, nodeMainExecutor);
-        WriteData.publish(nodeConfiguration, nodeMainExecutor);
+        //register ros node with services
+        RosNode.register(nodeConfiguration, nodeMainExecutor);
     }
 
     public void stop() {

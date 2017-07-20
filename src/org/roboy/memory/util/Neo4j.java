@@ -2,7 +2,7 @@ package org.roboy.memory.util;
 
 import org.neo4j.driver.v1.*;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import static org.roboy.memory.util.Config.*;
 
@@ -37,21 +37,25 @@ public class Neo4j implements AutoCloseable {
         return Values.parameters(keysAndValues);
     }
 
-    /*
-        Wrappers for data types
-     */
-
     public static void run(String query, Value parameters) {
         try (Session session = getInstance().session()) {
             session.run(query, parameters);
         }
     }
 
-    public static String getStringWrite(String query, Value parameters) {
+    public static void createNode(String label, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
-            return session.writeTransaction(tx -> {
-                StatementResult result = tx.run(query, parameters);
-                return result.single().values().get(0).asString();
+            session.writeTransaction(tx -> {
+                //no prepared statements for now
+                String query = "CREATE (a:" + label + "{";
+                for (String key : parameters.keySet()) {
+                    query += key + ":'" + parameters.get(key) + "',";
+                }
+                //TODO: refactor this shit
+                query = query.substring(0, query.length() - 1);
+                query += "})";
+                tx.run(query, parameters());
+                return true;
             });
         }
     }
