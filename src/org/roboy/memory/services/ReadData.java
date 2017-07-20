@@ -11,6 +11,10 @@ import roboy_communication_cognition.DataQuery;
 import roboy_communication_cognition.DataQueryRequest;
 import roboy_communication_cognition.DataQueryResponse;
 
+import org.neo4j.driver.v1.*;
+
+import static org.roboy.memory.util.Neo4j.parameters;
+
 
 /**
  * ROS Service for saving data object to DB. Data is received as JSON object.
@@ -28,7 +32,14 @@ public class ReadData extends AbstractNodeMain {
     private ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> handler = (request, response) -> {
         //logic here
         parser.parse(request.getPayload());
-        response.setAnswer("");
+
+        //Send Cypher to Neo4J
+        Driver driver = GraphDatabase.driver( "bolt://127.0.0.1:7687", AuthTokens.basic( "neo4j", "root" ) );
+        Session session = driver.session();
+        session.run( request.getPayload());//,
+                //parameters( "name", "Arthur", "title", "King" ) );
+
+        response.setAnswer("Header: " + request.getHeader() + "    Payload: " + request.getPayload());
     };
 
     @Override
