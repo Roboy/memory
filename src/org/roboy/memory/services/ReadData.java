@@ -1,4 +1,4 @@
-package org.roboy.memory.services;
+/*package org.roboy.memory.services;
 
 import org.roboy.memory.Parser;
 import org.ros.namespace.GraphName;
@@ -20,6 +20,7 @@ import static org.roboy.memory.util.Neo4j.parameters;
  * ROS Service for saving data object to DB. Data is received as JSON object.
  * JSON object is parsed using Parser (not implemented) and saved to neo4j.
  */
+/*
 public class ReadData extends AbstractNodeMain {
     private static String name = "/roboy/cognition/memory/data/read";
     private Parser parser = new Parser();
@@ -53,3 +54,4 @@ public class ReadData extends AbstractNodeMain {
     }
 
 }
+*/
