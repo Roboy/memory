@@ -14,7 +14,9 @@ class ServiceLogic {
 
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
+        System.out.println("payload: " + request.getPayload());
         Create create = parser.fromJson(request.getPayload(), Create.class);
+        System.out.println("create: " + create.getLabel());
 
         switch (create.getType()) {
             case "node": {

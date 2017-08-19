@@ -11,4 +11,8 @@ public class Header {
         return LocalDateTime.now();
     }
 
+    public String getUser() {
+        return user;
+    }
+
 }
