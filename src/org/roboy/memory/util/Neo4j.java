@@ -95,7 +95,7 @@ public class Neo4j implements AutoCloseable {
     private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
     {
         String queryParams = "";
-        StatementResult result = tx.run( "MATCH (a:$label) where" + queryParams + "RETURN ID(a)", parameters( "label", label ) );
+        StatementResult result = tx.run( "MATCH (a:$label) where " + queryParams + " RETURN ID(a)", parameters( "label", label ) );
         return result.toString();
     }
 }

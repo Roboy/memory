@@ -36,15 +36,13 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
-        // {"type":"someType","id":someID, "relations":[{"type": "friend_of", "id": 234234234234}],
-        // "properties":[{"name":"someName"},{"surname":"someSurname"}]}
+        // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
+        // "properties":{"name":"someName","surname":"someSurname"}}
 
         if (get.getId() != -1) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
             response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
         }
-
-        response.setAnswer(ok());
     };
 }
