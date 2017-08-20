@@ -1,9 +1,6 @@
 package org.roboy.memory.util;
-
 import org.neo4j.driver.v1.*;
-
 import java.util.Map;
-
 import static org.roboy.memory.util.Config.*;
 
 public class Neo4j implements AutoCloseable {
@@ -58,6 +55,38 @@ public class Neo4j implements AutoCloseable {
                 return true;
             });
         }
+    }
+
+    public static String updateRelationships(int id) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return update( tx, id );
+                }
+            } );
+        }
+    }
+
+    public static String updateProperties(int id) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return update( tx, id );
+                }
+            } );
+        }
+    }
+
+    private static String update( Transaction tx, int id )
+    {
+        StatementResult result = tx.run( "", parameters() );
+        return result.toString();
     }
 
     public static String getNodeById(int id) {
