@@ -1,5 +1,7 @@
 package org.roboy.memory.util;
 import org.neo4j.driver.v1.*;
+
+import java.util.Iterator;
 import java.util.Map;
 import static org.roboy.memory.util.Config.*;
 
@@ -105,7 +107,7 @@ public class Neo4j implements AutoCloseable {
     private static String matchNodeById( Transaction tx, int id )
     {
         StatementResult result = tx.run( "MATCH (a) where ID(a)=$id RETURN a", parameters( "id", id ) );
-        return result.toString();
+        return result.next().get(0).asNode().asMap().toString();
     }
 
     public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
@@ -123,8 +125,46 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
     {
-        String queryParams = "";
-        StatementResult result = tx.run( "MATCH (a:$label) where " + queryParams + " RETURN ID(a)", parameters( "label", label ) );
-        return result.toString();
+        //MATCH (a)-[r0]-(b0)-[r1]->(b1)
+        //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
+        //RETURN a
+        String match = "";
+        String where = "";
+
+        if (!relations.isEmpty()) {
+            if (where == "") {
+                where = "WHERE ";
+            }
+
+            int i = 1;
+            for (Map.Entry<String, String> next : relations.entrySet()) {
+                //iterate over the pairs
+                if (i < relations.size()) {
+                    match += "-[r" + i + "]-(b" + i + ")";
+                } else {
+                    match += "-[r" + i + "]->(b" + i + ")";
+                }
+                where += "type(r" + i + ")=~ '" + next.getKey() + "' AND ID(b" + i + ") = " + next.getValue() + " AND ";
+
+                i++;
+            }
+        }
+
+        if (!properties.isEmpty()) {
+            if (where == "") {
+                where = "WHERE ";
+            }
+            for (Map.Entry<String, String> next : properties.entrySet()) {
+                //iterate over the pairs
+                where += "a." + next.getKey() + " = " + next.getValue() + " AND ";
+            }
+        }
+
+        StatementResult result = tx.run( "MATCH (a)" + match + where + " labels(a) = '" + label + "' RETURN ID(a)", parameters() );
+        String response = "";
+        while (result.hasNext()) {
+            response += result.next().get(0).toString() + ", ";
+        }
+        return response;
     }
 }

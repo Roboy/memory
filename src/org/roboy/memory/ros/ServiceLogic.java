@@ -40,6 +40,7 @@ class ServiceLogic {
         // "properties":{"name":"someName","surname":"someSurname"}}
 
         if (get.getId() != -1) {
+            // {'id':someID}
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
             response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
