@@ -15,6 +15,7 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
+        // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
         switch (create.getType()) {
             case "node": {
@@ -41,7 +42,9 @@ class ServiceLogic {
         if (get.getId() != -1) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
-            response.setAnswer(error("feel free to implement me"));
+            response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
         }
+
+        response.setAnswer(ok());
     };
 }

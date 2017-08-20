@@ -75,7 +75,27 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNodeById( Transaction tx, int id )
     {
-        StatementResult result = tx.run( "MATCH (a:Person) where ID(a)=$id RETURN a", parameters( "id", id ) );
+        StatementResult result = tx.run( "MATCH (a) where ID(a)=$id RETURN a", parameters( "id", id ) );
+        return result.toString();
+    }
+
+    public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return matchNode( tx, label, relations, properties );
+                }
+            } );
+        }
+    }
+
+    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
+    {
+        String queryParams = "";
+        StatementResult result = tx.run( "MATCH (a:$label) where" + queryParams + "RETURN ID(a)", parameters( "label", label ) );
         return result.toString();
     }
 }

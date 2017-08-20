@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Get {
 
-    private String type;
+    private String label;
     private int id;
 
     private Map<String, String> relations;
@@ -15,9 +15,9 @@ public class Get {
         return id;
     }
 
-    public String getType() {
+    public String getLabel() {
 
-        return type;
+        return label;
     }
 
     public Map<String, String> getRelations() {
