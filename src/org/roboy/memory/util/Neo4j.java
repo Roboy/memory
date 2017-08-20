@@ -40,6 +40,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    //Create
     public static void createNode(String label, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
             session.writeTransaction(tx -> {
@@ -57,6 +58,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    //Update
     public static String updateRelationships(int id) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
@@ -89,6 +91,7 @@ public class Neo4j implements AutoCloseable {
         return result.toString();
     }
 
+    //Get
     public static String getNodeById(int id) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
@@ -105,7 +108,7 @@ public class Neo4j implements AutoCloseable {
     private static String matchNodeById( Transaction tx, int id )
     {
         StatementResult result = tx.run( "MATCH (a) where ID(a)=$id RETURN a", parameters( "id", id ) );
-        return result.toString();
+        return result.next().get(0).asNode().asMap().toString();
     }
 
     public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
