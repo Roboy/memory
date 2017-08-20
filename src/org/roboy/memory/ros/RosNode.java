@@ -29,6 +29,8 @@ public class RosNode extends AbstractNodeMain {
     public void onStart(ConnectedNode connectedNode) {
         connectedNode.newServiceServer(this.getDefaultNodeName() + "/create", DataQuery._TYPE, ServiceLogic.createServiceHandler);
         connectedNode.newServiceServer(this.getDefaultNodeName() + "/update", DataQuery._TYPE, ServiceLogic.updateServiceHandler);
+        connectedNode.newServiceServer(this.getDefaultNodeName() + "/get", DataQuery._TYPE, ServiceLogic.getServiceHandler);
+        // connectedNode.newServiceServer(this.getDefaultNodeName() + "/cypher", DataQuery._TYPE, ServiceLogic.cypherServiceHandler);
     }
 
 }

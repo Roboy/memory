@@ -65,7 +65,10 @@
             <groupId>org.ros.rosjava_bootstrap</groupId>
             <artifactId>message_generation</artifactId>
             <version>0.3.0</version>
+<<<<<<< HEAD
 
+=======
+>>>>>>> wagram-develop
         </dependency>
 
 
@@ -83,6 +86,7 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.1</version>
+<<<<<<< HEAD
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -93,6 +97,8 @@
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>rosjava_test_msgs</artifactId>
             <version>0.3.0</version>
+=======
+>>>>>>> wagram-develop
         </dependency>
     </dependencies>
 </project>

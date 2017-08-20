@@ -1,9 +1,6 @@
 package org.roboy.memory.util;
-
 import org.neo4j.driver.v1.*;
-
 import java.util.Map;
-
 import static org.roboy.memory.util.Config.*;
 
 public class Neo4j implements AutoCloseable {
@@ -43,6 +40,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    //Create
     public static void createNode(String label, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
             session.writeTransaction(tx -> {
@@ -51,12 +49,85 @@ public class Neo4j implements AutoCloseable {
                 for (String key : parameters.keySet()) {
                     query += key + ":'" + parameters.get(key) + "',";
                 }
-                //TODO: refactor this shit
+                //TODO: refactor this?
                 query = query.substring(0, query.length() - 1);
                 query += "})";
                 tx.run(query, parameters());
                 return true;
             });
         }
+    }
+
+    //Update
+    public static String updateRelationships(int id) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return update( tx, id );
+                }
+            } );
+        }
+    }
+
+    public static String updateProperties(int id) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return update( tx, id );
+                }
+            } );
+        }
+    }
+
+    private static String update( Transaction tx, int id )
+    {
+        StatementResult result = tx.run( "", parameters() );
+        return result.toString();
+    }
+
+    //Get
+    public static String getNodeById(int id) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return matchNodeById( tx, id );
+                }
+            } );
+        }
+    }
+
+    private static String matchNodeById( Transaction tx, int id )
+    {
+        StatementResult result = tx.run( "MATCH (a) where ID(a)=$id RETURN a", parameters( "id", id ) );
+        return result.next().get(0).asNode().asMap().toString();
+    }
+
+    public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return matchNode( tx, label, relations, properties );
+                }
+            } );
+        }
+    }
+
+    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
+    {
+        String queryParams = "";
+        StatementResult result = tx.run( "MATCH (a:$label) where " + queryParams + " RETURN ID(a)", parameters( "label", label ) );
+        return result.toString();
     }
 }
