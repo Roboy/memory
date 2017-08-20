@@ -51,7 +51,7 @@ public class Neo4j implements AutoCloseable {
                 for (String key : parameters.keySet()) {
                     query += key + ":'" + parameters.get(key) + "',";
                 }
-                //TODO: refactor this shit
+                //TODO: refactor this?
                 query = query.substring(0, query.length() - 1);
                 query += "})";
                 tx.run(query, parameters());
