@@ -2,24 +2,31 @@ package org.roboy.memory.models;
 
 import java.util.Map;
 
-public class Update {
+public class Get {
 
-    private int id;
-    private String type;
     private String label;
+    private int id;
 
     private Map<String, String> relations;
     private Map<String, String> properties;
 
     public int getId() {
+
         return id;
     }
 
-    public Map<String, String> getProperties() {
-        return properties;
+    public String getLabel() {
+
+        return label;
     }
 
     public Map<String, String> getRelations() {
+
         return relations;
+    }
+
+    public Map<String, String> getProperties() {
+
+        return properties;
     }
 }
