@@ -5,6 +5,7 @@ import java.util.Map;
 public class Create {
     private String type;
     private String label;
+    private String faceVector;
 
     private Map<String, String> properties;
 
@@ -18,5 +19,9 @@ public class Create {
 
     public Map<String, String> getProperties() {
         return properties;
+    }
+
+    public String getFace() {
+        return faceVector;
     }
 }

@@ -24,12 +24,11 @@ class ServiceLogic {
 
         switch (create.getType()) {
             case "node": {
-                Neo4j.createNode(create.getLabel(), create.getProperties());
+                response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
                 break;
             }
         }
 
-        response.setAnswer(ok());
     };
 
     //Update

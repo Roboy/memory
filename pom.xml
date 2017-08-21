@@ -49,6 +49,11 @@
     </repositories>
     <dependencies>
         <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
@@ -59,19 +64,11 @@
             <artifactId>neo4j-java-driver</artifactId>
             <version>1.4.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.ros.rosjava_bootstrap</groupId>
             <artifactId>message_generation</artifactId>
             <version>0.3.0</version>
-<<<<<<< HEAD
-
-=======
->>>>>>> wagram-develop
         </dependency>
-
-
         <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>roboy_communication_cognition</artifactId>
@@ -86,19 +83,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.1</version>
-<<<<<<< HEAD
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.1</version>
         </dependency>
         <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>rosjava_test_msgs</artifactId>
             <version>0.3.0</version>
-=======
->>>>>>> wagram-develop
         </dependency>
     </dependencies>
 </project>
