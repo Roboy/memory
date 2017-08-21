@@ -7,6 +7,10 @@ import java.util.Iterator;
 import java.util.Map;
 import static org.roboy.memory.util.Config.*;
 
+/**
+ * Contains the cypher queries for GET, CREATE and UPDATE functions
+ *
+ */
 public class Neo4j implements AutoCloseable {
 
     private static Neo4j _instance;
@@ -17,6 +21,10 @@ public class Neo4j implements AutoCloseable {
         _driver = GraphDatabase.driver(NEO4J_ADDRESS, AuthTokens.basic(NEO4J_USERNAME, NEO4J_PASSWORD));
     }
 
+    /**
+     *
+     * @return returns Neo4J Driver
+     */
     public static Driver getInstance() {
         if (_instance == null) {
             _instance = new Neo4j();
@@ -53,7 +61,11 @@ public class Neo4j implements AutoCloseable {
     }
 
 
-    //Create
+    /** Create
+     *
+     * @param label
+     * @param parameters
+     */
     public static void createNode(String label, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
             session.writeTransaction(tx -> {
@@ -86,8 +98,8 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String update( Transaction tx, int id, Map<String, String> relations, Map<String, String> properties)
-    {
+    private static String update( Transaction tx, int id, Map<String, String> relations, Map<String, String> properties) {
+
         String query = "MATCH (a)";
         String where = "WHERE ID(a)=" + id;
 
@@ -126,6 +138,7 @@ public class Neo4j implements AutoCloseable {
 
     //Get
     public static String getNodeById(int id) {
+
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
             {
@@ -138,8 +151,8 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String matchNodeById( Transaction tx, int id )
-    {
+    private static String matchNodeById( Transaction tx, int id ) {
+
         String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
         System.out.println(query);
         StatementResult result = tx.run(query, parameters() );
@@ -147,9 +160,9 @@ public class Neo4j implements AutoCloseable {
     }
 
     public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
+
         try (Session session = getInstance().session()) {
-            return session.readTransaction( new TransactionWork<String>()
-            {
+            return session.readTransaction( new TransactionWork<String>() {
                 @Override
                 public String execute( Transaction tx )
                 {
@@ -159,8 +172,8 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
-    {
+    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties ) {
+
         //MATCH (a)-[r1]-(b1)-[r2]->(b2)
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
         //RETURN a
