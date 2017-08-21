@@ -60,38 +60,6 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    public static String updateRelationships(int id) {
-        try (Session session = getInstance().session()) {
-            return session.readTransaction( new TransactionWork<String>()
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    return update( tx, id );
-                }
-            } );
-        }
-    }
-
-    public static String updateProperties(int id) {
-        try (Session session = getInstance().session()) {
-            return session.readTransaction( new TransactionWork<String>()
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    return update( tx, id );
-                }
-            } );
-        }
-    }
-
-    private static String update( Transaction tx, int id )
-    {
-        StatementResult result = tx.run( "", parameters() );
-        return result.toString();
-    }
-
     public static String getNodeById(int id) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
@@ -126,13 +94,13 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
     {
-        //MATCH (a)-[r0]-(b0)-[r1]->(b1)
+        //MATCH (a)-[r1]-(b1)-[r2]->(b2)
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
         //RETURN a
         String match = "";
         String where = "";
 
-        if (!relations.isEmpty()) {
+        if (relations != null) {
             if (where == "") {
                 where = "WHERE ";
             }
@@ -151,7 +119,7 @@ public class Neo4j implements AutoCloseable {
             }
         }
 
-        if (!properties.isEmpty()) {
+        if (properties != null) {
             if (where == "") {
                 where = "WHERE ";
             }
