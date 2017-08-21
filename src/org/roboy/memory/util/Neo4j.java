@@ -186,6 +186,7 @@ public class Neo4j implements AutoCloseable {
             if (where == "") {
                 where = " WHERE ";
             }
+
             for (Map.Entry<String, String> next : properties.entrySet()) {
                 //iterate over the pairs
                 if (next.getValue().matches("^[0-9]*$")) {
