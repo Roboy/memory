@@ -1,7 +1,6 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.roboy.memory.models.*;
 import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
@@ -38,7 +37,7 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
-        Neo4j.updateProperties(update.getId(), update.getProperties());
+        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
 
         response.setAnswer(ok());
     };
