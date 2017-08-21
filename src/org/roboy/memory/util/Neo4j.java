@@ -54,6 +54,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+
     //Create
     public static String createNode(String label, String faceVector, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
@@ -78,6 +79,7 @@ public class Neo4j implements AutoCloseable {
             return id;
         }
     }
+
 
     //Update
     public static String updateNode(int id, Map<String, String> relations, Map<String, String> properties) {
@@ -130,6 +132,7 @@ public class Neo4j implements AutoCloseable {
         return result.toString();
     }
 
+
     //Get
     public static String getNodeById(int id) {
         try (Session session = getInstance().session()) {
@@ -146,7 +149,9 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNodeById( Transaction tx, int id )
     {
-        StatementResult result = tx.run( "MATCH (a) where ID(a)=$id RETURN a", parameters( "id", id ) );
+        String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
+        System.out.println(query);
+        StatementResult result = tx.run(query, parameters() );
         return result.next().get(0).asNode().asMap().toString();
     }
 
@@ -169,9 +174,13 @@ public class Neo4j implements AutoCloseable {
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
         //RETURN a
         String match = "";
-        String where = " WHERE ";
+        String where = "";
 
         if (relations != null) {
+            if (where == "") {
+                where = " WHERE ";
+            }
+
             int i = 1;
             for (Map.Entry<String, String> next : relations.entrySet()) {
                 //iterate over the pairs
@@ -188,6 +197,10 @@ public class Neo4j implements AutoCloseable {
         }
 
         if (properties != null) {
+            if (where == "") {
+                where = " WHERE ";
+            }
+
             for (Map.Entry<String, String> next : properties.entrySet()) {
                 //iterate over the pairs
                 if (next.getValue().matches("^[0-9]*$")) {
@@ -196,11 +209,12 @@ public class Neo4j implements AutoCloseable {
                     where += "a." + next.getKey() + " = '" + next.getValue() + "' AND ";
                 }
             }
-            where = where.substring(0, where.length() - 4);
+            where = where.substring(0, where.length() - 5);
         }
 
-        String query = "MATCH (a:" + label + ")" + match + where + "RETURN ID(a)";
-        StatementResult result = tx.run( query, parameters() );
+        String query = "MATCH (a:" + label + ")" + match + where + " RETURN ID(a)";
+        System.out.println(query);
+        StatementResult result = tx.run(query, parameters() );
         String response = "";
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
