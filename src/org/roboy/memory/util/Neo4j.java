@@ -43,6 +43,14 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    //for cypher
+    public static void run(String query) {
+        try (Session session = getInstance().session()) {
+            session.run(query);
+        }
+    }
+
+    //Create
     public static void createNode(String label, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
             session.writeTransaction(tx -> {
@@ -60,6 +68,58 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    //Update
+    public static String updateNode(int id, Map<String, String> relations, Map<String, String> properties) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return update( tx, id, relations, properties);
+                }
+            } );
+        }
+    }
+
+    private static String update( Transaction tx, int id, Map<String, String> relations, Map<String, String> properties)
+    {
+        String query = "MATCH (a)";
+        String where = "WHERE ID(a)=" + id;
+
+        if(relations != null) { //add relations
+            String create = "";
+            int i = 1;
+            for (String key : relations.keySet()) {
+                query += ",(b" + i + ")";
+                where +=  " AND ID(b" + i + ") = " + relations.get(key);
+                create += " CREATE (a)-[r" + i + ":" + key +"]->(b" + i + ") ";
+                i++;
+            }
+            where += create;
+        }
+
+        if (properties != null) { //set properties
+            String set = "";
+            for (String key : properties.keySet()) {
+                if (properties.get(key).matches("^[0-9]*$")) { //if property is int
+                    set += " Set a." + key + " = " + properties.get(key); //without ''
+                } else {
+                    set += " Set a." + key + " = '" + properties.get(key) + "'"; //just Strings, no int
+                }
+            }
+            where += set;
+        }
+        query += where + " Return a";
+
+        System.out.println("Query: " + query); //Match (n) where ID(n)=$id Set n.surname = 'bla' Set n.birthdate = '30.06.1994' Set n.sex = 'male' Return n
+
+        StatementResult result = tx.run( query, parameters() );
+        //StatementResult result = tx.run( "Match ...", parameters("id", id) );
+        return result.toString();
+    }
+
+    //Get
     public static String getNodeById(int id) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()

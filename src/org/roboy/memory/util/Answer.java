@@ -8,10 +8,12 @@ package org.roboy.memory.util;
 public class Answer {
 
     public static String ok() {
+
         return "{status:\"OK\"}";
     }
 
     public static String error(String message) {
+
         return "{status:\"FAIL\", message:\""+message+"\"}";
     }
 }
