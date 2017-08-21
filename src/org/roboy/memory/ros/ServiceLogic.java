@@ -49,7 +49,7 @@ class ServiceLogic {
         // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
         // "properties":{"name":"someName","surname":"someSurname"}}
 
-        if (get.getId() != -1) {
+        if (get.getId() != 0) {
             // {'id':someID}
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {

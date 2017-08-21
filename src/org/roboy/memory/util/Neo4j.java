@@ -135,7 +135,9 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNodeById( Transaction tx, int id )
     {
-        StatementResult result = tx.run( "MATCH (a) where ID(a)=$id RETURN a", parameters( "id", id ) );
+        String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
+        System.out.printf(query);
+        StatementResult result = tx.run(query, parameters() );
         return result.next().get(0).asNode().asMap().toString();
     }
 
@@ -162,7 +164,7 @@ public class Neo4j implements AutoCloseable {
 
         if (relations != null) {
             if (where == "") {
-                where = "WHERE ";
+                where = " WHERE ";
             }
 
             int i = 1;
@@ -177,11 +179,12 @@ public class Neo4j implements AutoCloseable {
 
                 i++;
             }
+            where = where.substring(0, where.length() - 4);
         }
 
         if (properties != null) {
             if (where == "") {
-                where = "WHERE ";
+                where = " WHERE ";
             }
             for (Map.Entry<String, String> next : properties.entrySet()) {
                 //iterate over the pairs
@@ -191,9 +194,12 @@ public class Neo4j implements AutoCloseable {
                     where += "a." + next.getKey() + " = '" + next.getValue() + "' AND ";
                 }
             }
+            where = where.substring(0, where.length() - 4);
         }
 
-        StatementResult result = tx.run( "MATCH (a)" + match + where + " labels(a) = '" + label + "' RETURN ID(a)", parameters() );
+        String query = "MATCH (a:" + label + ")" + match + where + "RETURN ID(a)";
+        System.out.println(query);
+        StatementResult result = tx.run(query, parameters() );
         String response = "";
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
