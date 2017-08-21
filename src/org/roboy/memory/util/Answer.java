@@ -8,6 +8,7 @@ package org.roboy.memory.util;
 public class Answer {
 
     public static String ok() {
+
         return "{status:\"OK\"}";
     }
 

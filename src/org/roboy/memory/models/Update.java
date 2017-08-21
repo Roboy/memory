@@ -9,4 +9,14 @@ public class Update {
     private String label;
 
     private Map<String, String> properties;
+
+    public int getId() {
+        return id;
+    }
+
+    public Map<String, String> getProperties() {
+        return properties;
+    }
+
+
 }

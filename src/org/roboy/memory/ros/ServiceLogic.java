@@ -12,15 +12,16 @@ class ServiceLogic {
 
     private static Gson parser = new Gson();
 
+    //Create
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         System.out.println("payload: " + request.getPayload());
         Create create = parser.fromJson(request.getPayload(), Create.class);
-<<<<<<< HEAD
+
         System.out.println("create: " + create.getLabel());
-=======
+
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
->>>>>>> wagram-develop
+
 
         switch (create.getType()) {
             case "node": {
@@ -32,12 +33,17 @@ class ServiceLogic {
         response.setAnswer(ok());
     };
 
+    //Update
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
-        response.setAnswer(error("feel free to implement me"));
+
+        Neo4j.updateProperties(update.getId(), update.getProperties());
+
+        response.setAnswer(ok());
     };
 
+    //Get
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
@@ -49,5 +55,14 @@ class ServiceLogic {
         } else {
             response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
         }
+    };
+
+    //Cypher
+    static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
+        Header header = parser.fromJson(request.getHeader(), Header.class);
+
+        Neo4j.run(request.getPayload());
+
+        response.setAnswer(ok());
     };
 }

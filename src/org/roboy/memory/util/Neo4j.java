@@ -40,6 +40,13 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    //for cypher
+    public static void run(String query) {
+        try (Session session = getInstance().session()) {
+            session.run(query);
+        }
+    }
+
     //Create
     public static void createNode(String label, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
@@ -66,28 +73,43 @@ public class Neo4j implements AutoCloseable {
                 @Override
                 public String execute( Transaction tx )
                 {
-                    return update( tx, id );
+                    //return update( tx, id );
+                    return "";
                 }
             } );
         }
     }
 
-    public static String updateProperties(int id) {
+    public static String updateProperties(int id, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
             {
                 @Override
                 public String execute( Transaction tx )
                 {
-                    return update( tx, id );
+                    return update( tx, id, properties);
                 }
             } );
         }
     }
 
-    private static String update( Transaction tx, int id )
+    private static String update( Transaction tx, int id, Map<String, String> properties)
     {
-        StatementResult result = tx.run( "", parameters() );
+        String query = "Match (n) where ID(n)=" + id;
+        for (String key : properties.keySet()) {
+            if (properties.get(key).matches("^[0-9]*$")) { //if property is int
+                int intkey = Integer.parseInt(properties.get(key));
+                query += " Set n." + key + " = " + intkey;
+            } else {
+                query += " Set n." + key + " = '" + properties.get(key) + "'"; //just Strings, no int
+            }
+        }
+        query += " Return n";
+
+        System.out.println("Query: " + query);
+
+        StatementResult result = tx.run( query, parameters() );
+        //StatementResult result = tx.run( "Match (n) where ID(n)=$id Set n.surname = 'bla' Set n.birthdate = '30.06.1994' Set n.sex = 'male' Return n", parameters("id", id) );
         return result.toString();
     }
 
