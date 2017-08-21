@@ -1,6 +1,7 @@
 package org.roboy.memory.util;
 import org.neo4j.driver.v1.*;
 
+import javax.print.attribute.IntegerSyntax;
 import java.util.Iterator;
 import java.util.Map;
 import static org.roboy.memory.util.Config.*;
@@ -156,7 +157,11 @@ public class Neo4j implements AutoCloseable {
             }
             for (Map.Entry<String, String> next : properties.entrySet()) {
                 //iterate over the pairs
-                where += "a." + next.getKey() + " = " + next.getValue() + " AND ";
+                if (next.getValue().matches("^[0-9]*$")) {
+                    where += "a." + next.getKey() + " = " + next.getValue() + " AND ";
+                } else {
+                    where += "a." + next.getKey() + " = '" + next.getValue() + "' AND ";
+                }
             }
         }
 
