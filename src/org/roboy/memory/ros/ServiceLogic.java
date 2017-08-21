@@ -18,6 +18,7 @@ class ServiceLogic {
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
         System.out.println("create: " + create.getLabel());
+        System.out.println("FaceVector: " + create.getFaceVector()[0]);
 
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
@@ -48,7 +49,6 @@ class ServiceLogic {
         Get get = parser.fromJson(request.getPayload(), Get.class);
         // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
         // "properties":{"name":"someName","surname":"someSurname"}}
-
         if (get.getId() != 0) {
             // {'id':someID}
             response.setAnswer(Neo4j.getNodeById(get.getId()));
