@@ -158,13 +158,9 @@ public class Neo4j implements AutoCloseable {
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
         //RETURN a
         String match = "";
-        String where = "";
+        String where = " WHERE ";
 
         if (relations != null) {
-            if (where == "") {
-                where = " WHERE ";
-            }
-
             int i = 1;
             for (Map.Entry<String, String> next : relations.entrySet()) {
                 //iterate over the pairs
@@ -180,9 +176,6 @@ public class Neo4j implements AutoCloseable {
         }
 
         if (properties != null) {
-            if (where == "") {
-                where = " WHERE ";
-            }
             for (Map.Entry<String, String> next : properties.entrySet()) {
                 //iterate over the pairs
                 if (next.getValue().matches("^[0-9]*$")) {
@@ -193,7 +186,8 @@ public class Neo4j implements AutoCloseable {
             }
         }
 
-        StatementResult result = tx.run( "MATCH (a)" + match + where + "labels(a) = '" + label + "' RETURN ID(a)", parameters() );
+        String query = "MATCH (a)" + match + where + "labels(a) = '" + label + "' RETURN ID(a)";
+        StatementResult result = tx.run( query, parameters() );
         String response = "";
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
