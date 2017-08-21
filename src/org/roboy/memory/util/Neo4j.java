@@ -173,6 +173,7 @@ public class Neo4j implements AutoCloseable {
 
                 i++;
             }
+            where = where.substring(0, where.length() - 4);
         }
 
         if (properties != null) {
@@ -184,9 +185,10 @@ public class Neo4j implements AutoCloseable {
                     where += "a." + next.getKey() + " = '" + next.getValue() + "' AND ";
                 }
             }
+            where = where.substring(0, where.length() - 4);
         }
 
-        String query = "MATCH (a)" + match + where + "labels(a) = '" + label + "' RETURN ID(a)";
+        String query = "MATCH (a:" + label + ")" + match + where + "RETURN ID(a)";
         StatementResult result = tx.run( query, parameters() );
         String response = "";
         while (result.hasNext()) {
