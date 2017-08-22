@@ -49,6 +49,11 @@
     </repositories>
     <dependencies>
         <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
@@ -59,14 +64,11 @@
             <artifactId>neo4j-java-driver</artifactId>
             <version>1.4.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.ros.rosjava_bootstrap</groupId>
             <artifactId>message_generation</artifactId>
             <version>0.3.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>roboy_communication_cognition</artifactId>

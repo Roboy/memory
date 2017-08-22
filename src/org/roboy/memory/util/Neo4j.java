@@ -1,20 +1,32 @@
 package org.roboy.memory.util;
 import org.neo4j.driver.v1.*;
+import redis.clients.jedis.Jedis;
 
 import javax.print.attribute.IntegerSyntax;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.jar.JarEntry;
+
 import static org.roboy.memory.util.Config.*;
 
+/**
+ * Contains the cypher queries for GET, CREATE and UPDATE functions
+ *
+ */
 public class Neo4j implements AutoCloseable {
 
     private static Neo4j _instance;
     private static Driver _driver;
+    private static Jedis jedis;
 
     private Neo4j() {
         _driver = GraphDatabase.driver(NEO4J_ADDRESS, AuthTokens.basic(NEO4J_USERNAME, NEO4J_PASSWORD));
     }
 
+    /**
+     *
+     * @return returns Neo4J Driver
+     */
     public static Driver getInstance() {
         if (_instance == null) {
             _instance = new Neo4j();
@@ -50,25 +62,52 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    //Create
-    public static void createNode(String label, Map<String, String> parameters) {
+
+    /**
+     * Create
+     *
+     * @param label
+     * @param faceVector
+     * @param parameters
+     * @return
+     */
+    public static String createNode(String label, String faceVector, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
-            session.writeTransaction(tx -> {
+            jedis = new Jedis();
+            StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
-                String query = "CREATE (a:" + label + "{";
-                for (String key : parameters.keySet()) {
-                    query += key + ":'" + parameters.get(key) + "',";
+                String query = "CREATE (a:" + label;
+                if (parameters != null) {
+                    query += "{";
+                    for (String key : parameters.keySet()) {
+                        query += key + ":'" + parameters.get(key) + "',";
+                    }
+                    query = query.substring(0, query.length() - 1);
+                    query += "}";
                 }
                 //TODO: refactor this?
-                query = query.substring(0, query.length() - 1);
-                query += "})";
-                tx.run(query, parameters());
-                return true;
+                query += ") RETURN ID(a)";
+                return  tx.run(query, parameters());
             });
+            String id = result.next().get(0).toString();
+
+            if (faceVector != null) {
+                jedis.set(id, faceVector);
+            }
+
+            return id;
         }
     }
 
-    //Update
+
+    /**
+     * Update
+     *
+     * @param id
+     * @param relations
+     * @param properties
+     * @return
+     */
     public static String updateNode(int id, Map<String, String> relations, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
@@ -82,8 +121,8 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String update( Transaction tx, int id, Map<String, String> relations, Map<String, String> properties)
-    {
+    private static String update( Transaction tx, int id, Map<String, String> relations, Map<String, String> properties) {
+
         String query = "MATCH (a)";
         String where = "WHERE ID(a)=" + id;
 
@@ -119,8 +158,15 @@ public class Neo4j implements AutoCloseable {
         return result.toString();
     }
 
-    //Get
+
+    /**
+     * Get
+     *
+     * @param id
+     * @return
+     */
     public static String getNodeById(int id) {
+
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
             {
@@ -133,18 +179,18 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String matchNodeById( Transaction tx, int id )
-    {
+    private static String matchNodeById( Transaction tx, int id ) {
+
         String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
-        System.out.printf(query);
+        System.out.println(query);
         StatementResult result = tx.run(query, parameters() );
         return result.next().get(0).asNode().asMap().toString();
     }
 
     public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
+
         try (Session session = getInstance().session()) {
-            return session.readTransaction( new TransactionWork<String>()
-            {
+            return session.readTransaction( new TransactionWork<String>() {
                 @Override
                 public String execute( Transaction tx )
                 {
@@ -154,8 +200,8 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties )
-    {
+    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties ) {
+
         //MATCH (a)-[r1]-(b1)-[r2]->(b2)
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
         //RETURN a
@@ -195,10 +241,10 @@ public class Neo4j implements AutoCloseable {
                     where += "a." + next.getKey() + " = '" + next.getValue() + "' AND ";
                 }
             }
-            where = where.substring(0, where.length() - 4);
+            where = where.substring(0, where.length() - 5);
         }
 
-        String query = "MATCH (a:" + label + ")" + match + where + "RETURN ID(a)";
+        String query = "MATCH (a:" + label + ")" + match + where + " RETURN ID(a)";
         System.out.println(query);
         StatementResult result = tx.run(query, parameters() );
         String response = "";

@@ -18,18 +18,18 @@ class ServiceLogic {
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
         System.out.println("create: " + create.getLabel());
+        System.out.println("FaceVector: " + create.getFace());
 
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
 
         switch (create.getType()) {
             case "node": {
-                Neo4j.createNode(create.getLabel(), create.getProperties());
+                response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
                 break;
             }
         }
 
-        response.setAnswer(ok());
     };
 
     //Update
@@ -48,7 +48,6 @@ class ServiceLogic {
         Get get = parser.fromJson(request.getPayload(), Get.class);
         // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
         // "properties":{"name":"someName","surname":"someSurname"}}
-
         if (get.getId() != 0) {
             // {'id':someID}
             response.setAnswer(Neo4j.getNodeById(get.getId()));
