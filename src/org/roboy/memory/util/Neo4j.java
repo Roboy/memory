@@ -259,4 +259,72 @@ public class Neo4j implements AutoCloseable {
         }
         return response;
     }
+
+    /**
+     * Remove
+     *
+     * @param id
+     * @param relations
+     * @param properties
+     * @return
+     */
+    public static String remove(int id, Map<String, String> relations, String[] properties) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return removeRelsProps( tx, id, relations, properties);
+                }
+            } );
+        }
+    }
+
+    private static String removeRelsProps( Transaction tx, int id, Map<String, String> relations, String[] properties) {
+
+        String query = "";
+        String where = " WHERE ID(a)=" + id;
+        String delete = "";
+        String remove = "";
+
+
+        //Match (n)-[r1:LIVE_IN]->(b1),(n)-[r2:LIVE_IN]->(b2) where ID(n)=131 AND ID(b1)=78 AND ID(b2)=57 Delete r1,r2 Remove n.abc,n.xyz
+        if(relations != null) { //delete relations
+            query = "MATCH ";
+            delete = " Delete ";
+            int i = 1;
+            for (String key : relations.keySet()) {
+                delete += "r" + i + ",";
+                where +=  " AND ID(b" + i + ") = " + relations.get(key);
+                query += " (a)-[r" + i + ":" + key +"]->(b" + i + "), ";
+                i++;
+            }
+            query = query.substring(0,query.length()-2);
+            delete = delete.substring(0,delete.length()-1);
+        }
+
+        //Match n where ID(n)=1 REMOVE n.key
+        if (properties != null) { //delete properties
+            if (query == "") {
+                query = "MATCH (a) ";
+            }
+            remove = " Remove ";
+            for (String key : properties) {
+                if (key != "name") {
+                    remove += "a." + key + ", ";
+                }
+            }
+            remove = remove.substring(0,remove.length()-2);
+        }
+
+        query += where + delete + remove;
+
+        System.out.println("Query: " + query); //Match (n) where ID(n)=$id Set n.surname = 'bla' Set n.birthdate = '30.06.1994' Set n.sex = 'male' Return n
+
+        StatementResult result = tx.run( query, parameters() );
+        //StatementResult result = tx.run( "Match ...", parameters("id", id) );
+        return result.toString();
+    }
+
 }
