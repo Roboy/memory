@@ -228,10 +228,10 @@ public class Neo4j implements AutoCloseable {
                 //iterate over the pairs
                 for (int j = 0; j < next.getValue().length; j++) {
                     String relID = next.getValue()[j];
-                    if (i < relations.size()) {
-                        match += "-[r" + i + j + "]-(b" + i + ")";
+                    if (i < relations.size() - 1) {
+                        match += "-[r" + i + j + "]-(b" + i + j + ")";
                     } else {
-                        match += "-[r" + i + j + "]->(b" + i + ")";
+                        match += "-[r" + i + j + "]->(b" + i + j + ")";
                     }
                     where += "type(r" + i + j + ")=~ '" + next.getKey();
                     where += "' AND ID(b" + i + j + ") = " + relID;
@@ -247,6 +247,8 @@ public class Neo4j implements AutoCloseable {
         if (properties != null) {
             if (Objects.equals(where, "")) {
                 where = " WHERE ";
+            } else {
+                where += "AND ";
             }
 
             for (Map.Entry<String, String> next : properties.entrySet()) {
