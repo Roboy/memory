@@ -1,4 +1,5 @@
 package org.roboy.memory.util;
+import org.neo4j.driver.internal.types.InternalTypeSystem;
 import org.neo4j.driver.v1.*;
 import redis.clients.jedis.Jedis;
 
@@ -54,8 +55,14 @@ public class Neo4j implements AutoCloseable {
         try (Session session = getInstance().session()) {
             StatementResult result = session.run(query);
             String response = "";
+            Value value;
             while (result.hasNext()) {
-                response += result.next().get(0).asNode().asMap().toString() + ", ";
+                value = result.next().get(0);
+                if (value.hasType(InternalTypeSystem.TYPE_SYSTEM.NODE())) { //if response is Node
+                    response += value.asMap().toString() + ", ";
+                } else { //if responce is String
+                    response += value.toString() + ", ";
+                }
             }
             return response;
         }
