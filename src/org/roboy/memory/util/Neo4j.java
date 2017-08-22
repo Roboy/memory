@@ -7,6 +7,7 @@ import javax.print.attribute.IntegerSyntax;
 import java.net.URI;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.jar.JarEntry;
 
 import static org.roboy.memory.util.Config.*;
@@ -130,7 +131,7 @@ public class Neo4j implements AutoCloseable {
     private static String update( Transaction tx, int id, Map<String, String[]> relations, Map<String, String> properties) {
 
         String query = "MATCH (a)";
-        String where = "WHERE ID(a)=" + id;
+        String where = " WHERE ID(a)=" + id;
 
         if(relations != null) { //add relations
             String create = "";
@@ -218,7 +219,7 @@ public class Neo4j implements AutoCloseable {
         String where = "";
 
         if (relations != null) {
-            if (where == "") {
+            if (Objects.equals(where, "")) {
                 where = " WHERE ";
             }
 
@@ -244,7 +245,7 @@ public class Neo4j implements AutoCloseable {
         }
 
         if (properties != null) {
-            if (where == "") {
+            if (Objects.equals(where, "")) {
                 where = " WHERE ";
             }
 
@@ -308,7 +309,7 @@ public class Neo4j implements AutoCloseable {
                     String relID = relations.get(key)[j];
                     delete += "r" + i + j + ",";
                     where +=  " AND ID(b" + i + j + ") = " + relID;
-                    query += " (a)-[r" + i + j + ":" + key +"]->(b" + i + j + "), ";
+                    query += "(a)-[r" + i + j + ":" + key +"]->(b" + i + j + "), ";
                 }
                 i++;
             }
@@ -318,12 +319,14 @@ public class Neo4j implements AutoCloseable {
 
         //Match n where ID(n)=1 REMOVE n.key
         if (properties != null) { //delete properties
-            if (query == "") {
+            if (Objects.equals(query, "")) {
                 query = "MATCH (a) ";
             }
             remove = " Remove ";
             for (String key : properties) {
-                if (key != "name") {
+                System.out.println(key);
+                if (!Objects.equals(key, "name")) {
+                    System.out.println(key);
                     remove += "a." + key + ", ";
                 }
             }
