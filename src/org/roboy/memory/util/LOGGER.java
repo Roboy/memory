@@ -1,26 +1,15 @@
 package org.roboy.memory.util;
 
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
 
 public class LOGGER {
-
-    private static java.util.logging.Logger LOGGER;
-    private static LOGGER _instance;
-
-    private LOGGER() {
-        LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    }
-
-    private Logger getLogger() {
-        return LOGGER;
-    }
-
-    public Logger getInstance() {
-        if(_instance == null) {
-            _instance = new LOGGER();
-        }
-
-        return _instance.getLogger();
+    public static void setUp() throws IOException {
+        //logger configuration
+        Handler fh = new FileHandler("/memory.log");
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).addHandler(fh);
     }
 }
