@@ -5,11 +5,15 @@ import org.roboy.memory.models.*;
 import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
 import roboy_communication_cognition.*;
+
+import java.util.HashSet;
+
 import static org.roboy.memory.util.Answer.*;
 
 class ServiceLogic {
 
     private static Gson parser = new Gson();
+    private static HashSet<String> labels = new HashSet<String>();
 
     //Create
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
