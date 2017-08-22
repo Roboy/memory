@@ -50,16 +50,15 @@ public class Neo4j implements AutoCloseable {
         return Values.parameters(keysAndValues);
     }
 
-    public static void run(String query, Value parameters) {
+    //run only cypher service
+    public static String run(String query) {
         try (Session session = getInstance().session()) {
-            session.run(query, parameters);
-        }
-    }
-
-    //for cypher
-    public static void run(String query) {
-        try (Session session = getInstance().session()) {
-            session.run(query);
+            StatementResult result = session.run(query);
+            String response = "";
+            while (result.hasNext()) {
+                response += result.next().get(0).asNode().asMap().toString() + ", ";
+            }
+            return response;
         }
     }
 
@@ -69,21 +68,21 @@ public class Neo4j implements AutoCloseable {
      *
      * @param label
      * @param faceVector
-     * @param parameters
+     * @param properties
      * @return
      */
-    public static String createNode(String label, String faceVector, Map<String, String> parameters) {
+    public static String createNode(String label, String faceVector, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
             jedis = new Jedis(URI.create(REDIS_URI));
             StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
                 String query = "CREATE (a:" + label;
-                    query += "{";
-                    for (String key : parameters.keySet()) {
-                        query += key + ":'" + parameters.get(key) + "',";
-                    }
-                    query = query.substring(0, query.length() - 1);
-                    query += "}";
+                query += "{";
+                for (String key : properties.keySet()) {
+                    query += key + ":'" + properties.get(key) + "',";
+                }
+                query = query.substring(0, query.length() - 1);
+                query += "}";
                 //TODO: refactor this?
                 query += ") RETURN ID(a)";
                 return  tx.run(query, parameters());

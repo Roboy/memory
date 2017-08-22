@@ -22,14 +22,18 @@ class ServiceLogic {
 
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
-
-        switch (create.getType()) {
-            case "node": {
-                response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
-                break;
+        if (create.getProperties() == null) { //error msg if there are no properties
+            response.setAnswer(error("no properties"));
+        } if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
+            response.setAnswer(error("no name specified in properties : name required"));
+        } else {
+            switch (create.getType()) {
+                case "node": {
+                    response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
+                    break;
+                }
             }
         }
-
     };
 
     //Update
@@ -60,8 +64,6 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
 
-        Neo4j.run(request.getPayload());
-
-        response.setAnswer(ok());
+        response.setAnswer(Neo4j.run(request.getPayload()));
     };
 }
