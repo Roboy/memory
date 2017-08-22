@@ -73,18 +73,16 @@ public class Neo4j implements AutoCloseable {
      */
     public static String createNode(String label, String faceVector, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
-            jedis = new Jedis();
+            jedis = new Jedis(REDIS_ADDRESS, REDIS_PORT);
             StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
                 String query = "CREATE (a:" + label;
-                if (parameters != null) {
                     query += "{";
                     for (String key : parameters.keySet()) {
                         query += key + ":'" + parameters.get(key) + "',";
                     }
                     query = query.substring(0, query.length() - 1);
                     query += "}";
-                }
                 //TODO: refactor this?
                 query += ") RETURN ID(a)";
                 return  tx.run(query, parameters());
@@ -92,6 +90,7 @@ public class Neo4j implements AutoCloseable {
             String id = result.next().get(0).toString();
 
             if (faceVector != null) {
+                jedis.auth(REDIS_PASSWORD);
                 jedis.set(id, faceVector);
             }
 
