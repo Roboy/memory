@@ -73,18 +73,22 @@ public class Neo4j implements AutoCloseable {
             jedis = new Jedis();
             StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
-                String query = "CREATE (a:" + label + "{";
-                for (String key : parameters.keySet()) {
-                    query += key + ":'" + parameters.get(key) + "',";
+                String query = "CREATE (a:" + label;
+                if (parameters != null) {
+                    query += "{";
+                    for (String key : parameters.keySet()) {
+                        query += key + ":'" + parameters.get(key) + "',";
+                    }
+                    query = query.substring(0, query.length() - 1);
+                    query += "}";
                 }
                 //TODO: refactor this?
-                query = query.substring(0, query.length() - 1);
-                query += "}) RETURN ID(a)";
+                query += ") RETURN ID(a)";
                 return  tx.run(query, parameters());
             });
             String id = result.next().get(0).toString();
 
-            if (faceVector != "") {
+            if (faceVector != null) {
                 jedis.set(id, faceVector);
             }
 
