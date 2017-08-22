@@ -63,10 +63,13 @@ public class Neo4j implements AutoCloseable {
     }
 
 
-    /** Create
+    /**
+     * Create
      *
      * @param label
+     * @param faceVector
      * @param parameters
+     * @return
      */
     public static String createNode(String label, String faceVector, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
@@ -97,7 +100,14 @@ public class Neo4j implements AutoCloseable {
     }
 
 
-    //Update
+    /**
+     * Update
+     *
+     * @param id
+     * @param relations
+     * @param properties
+     * @return
+     */
     public static String updateNode(int id, Map<String, String> relations, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
@@ -149,7 +159,12 @@ public class Neo4j implements AutoCloseable {
     }
 
 
-    //Get
+    /**
+     * Get
+     *
+     * @param id
+     * @return
+     */
     public static String getNodeById(int id) {
 
         try (Session session = getInstance().session()) {
