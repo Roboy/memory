@@ -3,6 +3,7 @@ import org.neo4j.driver.v1.*;
 import redis.clients.jedis.Jedis;
 
 import javax.print.attribute.IntegerSyntax;
+import java.net.URI;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.jar.JarEntry;
@@ -72,26 +73,24 @@ public class Neo4j implements AutoCloseable {
      */
     public static String createNode(String label, String faceVector, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
-            jedis = new Jedis();
+            jedis = new Jedis(URI.create(REDIS_URI));
             StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
-                    String query = "CREATE (a:" + label;
-
-                    query += "{";
-                    for (String key : properties.keySet()) {
-                        query += key + ":'" + properties.get(key) + "',";
-                    }
-                    query = query.substring(0, query.length() - 1);
-                    query += "}";
-
-                    //TODO: refactor this?
-                    query += ") RETURN ID(a)";
-                    return tx.run(query, parameters());
-
+                String query = "CREATE (a:" + label;
+                query += "{";
+                for (String key : properties.keySet()) {
+                    query += key + ":'" + properties.get(key) + "',";
+                }
+                query = query.substring(0, query.length() - 1);
+                query += "}";
+                //TODO: refactor this?
+                query += ") RETURN ID(a)";
+                return  tx.run(query, parameters());
             });
             String id = result.next().get(0).toString();
 
             if (faceVector != null) {
+                jedis.auth(REDIS_PASSWORD);
                 jedis.set(id, faceVector);
             }
 

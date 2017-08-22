@@ -17,4 +17,8 @@ public class Config {
     public final static String NEO4J_ADDRESS = "bolt://127.0.0.1:7687";
     public final static String NEO4J_USERNAME = "neo4j";
     public final static String NEO4J_PASSWORD = "root";
+
+    //Redis
+    public final static String REDIS_URI = "redis://bot.roboy.org:6379/0";
+    public final static String REDIS_PASSWORD = "*****";
 }
