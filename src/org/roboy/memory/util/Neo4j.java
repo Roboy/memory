@@ -134,12 +134,13 @@ public class Neo4j implements AutoCloseable {
 
         if(relations != null) { //add relations
             String create = "";
-            int i = 1;
+            int i = 0;
             for (String key : relations.keySet()) {
-                query += ",(b" + i + ")";
-                for (String relID : relations.get(key)) {
-                    where += " AND ID(b" + i + ") = " + relID;
-                    create += " CREATE (a)-[r" + i + ":" + key +"]->(b" + i + ") ";
+                for (int j = 0; j < relations.get(key).length; j++) {
+                    String relID = relations.get(key)[j];
+                    query += ",(b" + i + j + ")";
+                    where += " AND ID(b" + i + j + ") = " + relID;
+                    create += " CREATE (a)-[r" + i + j + ":" + key +"]->(b" + i + j + ") ";
                 }
                 i++;
             }
@@ -221,17 +222,18 @@ public class Neo4j implements AutoCloseable {
                 where = " WHERE ";
             }
 
-            int i = 1;
+            int i = 0;
             for (Map.Entry<String, String[]> next : relations.entrySet()) {
                 //iterate over the pairs
-                if (i < relations.size()) {
-                    match += "-[r" + i + "]-(b" + i + ")";
-                } else {
-                    match += "-[r" + i + "]->(b" + i + ")";
-                }
-                where += "type(r" + i + ")=~ '" + next.getKey();
-                for (String relID : next.getValue()) {
-                    where += "' AND ID(b" + i + ") = " + relID;
+                for (int j = 0; j < next.getValue().length; j++) {
+                    String relID = next.getValue()[j];
+                    if (i < relations.size()) {
+                        match += "-[r" + i + j + "]-(b" + i + ")";
+                    } else {
+                        match += "-[r" + i + j + "]->(b" + i + ")";
+                    }
+                    where += "type(r" + i + j + ")=~ '" + next.getKey();
+                    where += "' AND ID(b" + i + j + ") = " + relID;
                 }
 
                 where += " AND ";
@@ -300,13 +302,14 @@ public class Neo4j implements AutoCloseable {
         if(relations != null) { //delete relations
             query = "MATCH ";
             delete = " Delete ";
-            int i = 1;
+            int i = 0;
             for (String key : relations.keySet()) {
-                delete += "r" + i + ",";
-                for (String relID : relations.get(key)) {
-                    where +=  " AND ID(b" + i + ") = " + relID;
+                for (int j = 0; j < relations.get(key).length; j++) {
+                    String relID = relations.get(key)[j];
+                    delete += "r" + i + j + ",";
+                    where +=  " AND ID(b" + i + j + ") = " + relID;
+                    query += " (a)-[r" + i + j + ":" + key +"]->(b" + i + j + "), ";
                 }
-                query += " (a)-[r" + i + ":" + key +"]->(b" + i + "), ";
                 i++;
             }
             query = query.substring(0,query.length()-2);
