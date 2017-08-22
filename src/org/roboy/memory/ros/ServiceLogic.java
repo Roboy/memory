@@ -66,4 +66,15 @@ class ServiceLogic {
 
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
+
+    //Remove
+    static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> removeServiceHandler = (request, response) -> {
+        Header header = parser.fromJson(request.getHeader(), Header.class);
+        Remove remove = parser.fromJson(request.getPayload(), Remove.class);
+
+        Neo4j.remove(remove.getId(), remove.getRelations(), remove.getProperties());
+
+        response.setAnswer(ok());
+    };
+
 }
