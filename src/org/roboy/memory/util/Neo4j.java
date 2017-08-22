@@ -1,8 +1,10 @@
 package org.roboy.memory.util;
+import org.neo4j.driver.internal.types.InternalTypeSystem;
 import org.neo4j.driver.v1.*;
 import redis.clients.jedis.Jedis;
 
 import javax.print.attribute.IntegerSyntax;
+import java.net.URI;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.jar.JarEntry;
@@ -49,16 +51,21 @@ public class Neo4j implements AutoCloseable {
         return Values.parameters(keysAndValues);
     }
 
-    public static void run(String query, Value parameters) {
+    //run only cypher service
+    public static String run(String query) {
         try (Session session = getInstance().session()) {
-            session.run(query, parameters);
-        }
-    }
-
-    //for cypher
-    public static void run(String query) {
-        try (Session session = getInstance().session()) {
-            session.run(query);
+            StatementResult result = session.run(query);
+            String response = "";
+            Value value;
+            while (result.hasNext()) {
+                value = result.next().get(0);
+                if (value.hasType(InternalTypeSystem.TYPE_SYSTEM.NODE())) { //if response is Node
+                    response += value.asMap().toString() + ", ";
+                } else { //if responce is String
+                    response += value.toString() + ", ";
+                }
+            }
+            return response;
         }
     }
 
@@ -68,23 +75,21 @@ public class Neo4j implements AutoCloseable {
      *
      * @param label
      * @param faceVector
-     * @param parameters
+     * @param properties
      * @return
      */
-    public static String createNode(String label, String faceVector, Map<String, String> parameters) {
+    public static String createNode(String label, String faceVector, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
-            jedis = new Jedis();
+            jedis = new Jedis(URI.create(REDIS_URI));
             StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
                 String query = "CREATE (a:" + label;
-                if (parameters != null) {
-                    query += "{";
-                    for (String key : parameters.keySet()) {
-                        query += key + ":'" + parameters.get(key) + "',";
-                    }
-                    query = query.substring(0, query.length() - 1);
-                    query += "}";
+                query += "{";
+                for (String key : properties.keySet()) {
+                    query += key + ":'" + properties.get(key) + "',";
                 }
+                query = query.substring(0, query.length() - 1);
+                query += "}";
                 //TODO: refactor this?
                 query += ") RETURN ID(a)";
                 return  tx.run(query, parameters());
@@ -92,6 +97,7 @@ public class Neo4j implements AutoCloseable {
             String id = result.next().get(0).toString();
 
             if (faceVector != null) {
+                jedis.auth(REDIS_PASSWORD);
                 jedis.set(id, faceVector);
             }
 
@@ -253,4 +259,72 @@ public class Neo4j implements AutoCloseable {
         }
         return response;
     }
+
+    /**
+     * Remove
+     *
+     * @param id
+     * @param relations
+     * @param properties
+     * @return
+     */
+    public static String remove(int id, Map<String, String> relations, String[] properties) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    return removeRelsProps( tx, id, relations, properties);
+                }
+            } );
+        }
+    }
+
+    private static String removeRelsProps( Transaction tx, int id, Map<String, String> relations, String[] properties) {
+
+        String query = "";
+        String where = " WHERE ID(a)=" + id;
+        String delete = "";
+        String remove = "";
+
+
+        //Match (n)-[r1:LIVE_IN]->(b1),(n)-[r2:LIVE_IN]->(b2) where ID(n)=131 AND ID(b1)=78 AND ID(b2)=57 Delete r1,r2 Remove n.abc,n.xyz
+        if(relations != null) { //delete relations
+            query = "MATCH ";
+            delete = " Delete ";
+            int i = 1;
+            for (String key : relations.keySet()) {
+                delete += "r" + i + ",";
+                where +=  " AND ID(b" + i + ") = " + relations.get(key);
+                query += " (a)-[r" + i + ":" + key +"]->(b" + i + "), ";
+                i++;
+            }
+            query = query.substring(0,query.length()-2);
+            delete = delete.substring(0,delete.length()-1);
+        }
+
+        //Match n where ID(n)=1 REMOVE n.key
+        if (properties != null) { //delete properties
+            if (query == "") {
+                query = "MATCH (a) ";
+            }
+            remove = " Remove ";
+            for (String key : properties) {
+                if (key != "name") {
+                    remove += "a." + key + ", ";
+                }
+            }
+            remove = remove.substring(0,remove.length()-2);
+        }
+
+        query += where + delete + remove;
+
+        System.out.println("Query: " + query); //Match (n) where ID(n)=$id Set n.surname = 'bla' Set n.birthdate = '30.06.1994' Set n.sex = 'male' Return n
+
+        StatementResult result = tx.run( query, parameters() );
+        //StatementResult result = tx.run( "Match ...", parameters("id", id) );
+        return result.toString();
+    }
+
 }
