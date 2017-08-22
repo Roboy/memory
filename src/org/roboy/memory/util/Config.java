@@ -19,7 +19,6 @@ public class Config {
     public final static String NEO4J_PASSWORD = "root";
 
     //Redis
-    public final static String REDIS_ADDRESS = "http://bot.roboy.org";
-    public final static int REDIS_PORT = 6379;
+    public final static String REDIS_URI = "redis://bot.roboy.org:6379/0";
     public final static String REDIS_PASSWORD = "*****";
 }

@@ -3,6 +3,7 @@ import org.neo4j.driver.v1.*;
 import redis.clients.jedis.Jedis;
 
 import javax.print.attribute.IntegerSyntax;
+import java.net.URI;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.jar.JarEntry;
@@ -73,7 +74,7 @@ public class Neo4j implements AutoCloseable {
      */
     public static String createNode(String label, String faceVector, Map<String, String> parameters) {
         try (Session session = getInstance().session()) {
-            jedis = new Jedis(REDIS_ADDRESS, REDIS_PORT);
+            jedis = new Jedis(URI.create(REDIS_URI));
             StatementResult result = session.writeTransaction(tx -> {
                 //no prepared statements for now
                 String query = "CREATE (a:" + label;
