@@ -114,7 +114,7 @@ public class Neo4j implements AutoCloseable {
      * @param properties
      * @return
      */
-    public static String updateNode(int id, Map<String, String> relations, Map<String, String> properties) {
+    public static String updateNode(int id, Map<String, String[]> relations, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
             {
@@ -127,7 +127,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String update( Transaction tx, int id, Map<String, String> relations, Map<String, String> properties) {
+    private static String update( Transaction tx, int id, Map<String, String[]> relations, Map<String, String> properties) {
 
         String query = "MATCH (a)";
         String where = "WHERE ID(a)=" + id;
@@ -137,8 +137,10 @@ public class Neo4j implements AutoCloseable {
             int i = 1;
             for (String key : relations.keySet()) {
                 query += ",(b" + i + ")";
-                where +=  " AND ID(b" + i + ") = " + relations.get(key);
-                create += " CREATE (a)-[r" + i + ":" + key +"]->(b" + i + ") ";
+                for (String relID : relations.get(key)) {
+                    where += " AND ID(b" + i + ") = " + relID;
+                    create += " CREATE (a)-[r" + i + ":" + key +"]->(b" + i + ") ";
+                }
                 i++;
             }
             where += create;
@@ -193,7 +195,7 @@ public class Neo4j implements AutoCloseable {
         return result.next().get(0).asNode().asMap().toString();
     }
 
-    public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
+    public static String getNode(String label, Map<String, String[]> relations, Map<String, String> properties) {
 
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>() {
@@ -206,7 +208,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String matchNode( Transaction tx, String label, Map<String, String> relations, Map<String, String> properties ) {
+    private static String matchNode( Transaction tx, String label, Map<String, String[]> relations, Map<String, String> properties ) {
 
         //MATCH (a)-[r1]-(b1)-[r2]->(b2)
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
@@ -220,14 +222,19 @@ public class Neo4j implements AutoCloseable {
             }
 
             int i = 1;
-            for (Map.Entry<String, String> next : relations.entrySet()) {
+            for (Map.Entry<String, String[]> next : relations.entrySet()) {
                 //iterate over the pairs
                 if (i < relations.size()) {
                     match += "-[r" + i + "]-(b" + i + ")";
                 } else {
                     match += "-[r" + i + "]->(b" + i + ")";
                 }
-                where += "type(r" + i + ")=~ '" + next.getKey() + "' AND ID(b" + i + ") = " + next.getValue() + " AND ";
+                where += "type(r" + i + ")=~ '" + next.getKey();
+                for (String relID : next.getValue()) {
+                    where += "' AND ID(b" + i + ") = " + relID;
+                }
+
+                where += " AND ";
 
                 i++;
             }
@@ -268,7 +275,7 @@ public class Neo4j implements AutoCloseable {
      * @param properties
      * @return
      */
-    public static String remove(int id, Map<String, String> relations, String[] properties) {
+    public static String remove(int id, Map<String, String[]> relations, String[] properties) {
         try (Session session = getInstance().session()) {
             return session.readTransaction( new TransactionWork<String>()
             {
@@ -281,7 +288,7 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    private static String removeRelsProps( Transaction tx, int id, Map<String, String> relations, String[] properties) {
+    private static String removeRelsProps( Transaction tx, int id, Map<String, String[]> relations, String[] properties) {
 
         String query = "";
         String where = " WHERE ID(a)=" + id;
@@ -296,7 +303,9 @@ public class Neo4j implements AutoCloseable {
             int i = 1;
             for (String key : relations.keySet()) {
                 delete += "r" + i + ",";
-                where +=  " AND ID(b" + i + ") = " + relations.get(key);
+                for (String relID : relations.get(key)) {
+                    where +=  " AND ID(b" + i + ") = " + relID;
+                }
                 query += " (a)-[r" + i + ":" + key +"]->(b" + i + "), ";
                 i++;
             }

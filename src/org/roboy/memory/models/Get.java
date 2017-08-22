@@ -7,7 +7,7 @@ public class Get {
     private String label;
     private int id;
 
-    private Map<String, String> relations;
+    private Map<String, String[]> relations;
     private Map<String, String> properties;
 
     public int getId() {
@@ -20,7 +20,7 @@ public class Get {
         return label;
     }
 
-    public Map<String, String> getRelations() {
+    public Map<String, String[]> getRelations() {
 
         return relations;
     }
