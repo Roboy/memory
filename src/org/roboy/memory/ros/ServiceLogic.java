@@ -38,13 +38,7 @@ class ServiceLogic {
         } else if (!labels.contains(create.getLabel())) {
             response.setAnswer(error("Label doesn't exist in the DB"));
         } else {
-
-            switch (create.getType()) {
-                case "node": {
-                    response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
-                    break;
-                }
-            }
+            response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
         }
     };
 
