@@ -91,10 +91,10 @@ public class Neo4j implements AutoCloseable {
     private static String createNode(Session session, Map<String, String> properties, String[] faceVector, String label) {
         StatementResult result = session.writeTransaction(tx -> {
             //no prepared statements for now
-            String query = "CREATE (a:" + label;
+            String query = "CREATE (a:" + label.substring(0,1).toUpperCase() + label.substring(1).toLowerCase();
             query += "{";
             for (String key : properties.keySet()) {
-                query += key + ":'" + properties.get(key) + "',";
+                query += key + ":'" + properties.get(key).substring(0,1).toUpperCase() + properties.get(key).substring(1).toLowerCase() + "',";
             }
             query = query.substring(0, query.length() - 1);
             query += "}";
@@ -152,7 +152,7 @@ public class Neo4j implements AutoCloseable {
                     String relID = relations.get(key)[j];
                     query += ",(b" + i + j + ")";
                     where += " AND ID(b" + i + j + ") = " + relID;
-                    create += " CREATE (a)-[r" + i + j + ":" + key +"]->(b" + i + j + ") ";
+                    create += " CREATE (a)-[r" + i + j + ":" + key.toUpperCase() +"]->(b" + i + j + ") ";
                 }
                 i++;
             }
@@ -163,9 +163,9 @@ public class Neo4j implements AutoCloseable {
             String set = "";
             for (String key : properties.keySet()) {
                 if (properties.get(key).matches("^[0-9]*$")) { //if property is int
-                    set += " Set a." + key + " = " + properties.get(key); //without ''
+                    set += " Set a." + key + " = " + properties.get(key).substring(0,1).toUpperCase() + properties.get(key).substring(1).toLowerCase(); //without ''
                 } else {
-                    set += " Set a." + key + " = '" + properties.get(key) + "'"; //just Strings, no int
+                    set += " Set a." + key + " = '" + properties.get(key).substring(0,1).toUpperCase() + properties.get(key).substring(1).toLowerCase() + "'"; //just Strings, no int
                 }
             }
             where += set;
@@ -180,7 +180,7 @@ public class Neo4j implements AutoCloseable {
             response = parser.toJson(result.next().get(0).asMap());
         }
         logger.info(response);
-        return response;
+        return response.toLowerCase();
     }
 
 
@@ -232,7 +232,7 @@ public class Neo4j implements AutoCloseable {
 
 
         logger.info(node + relationResponse);
-        return node + relationResponse;
+        return node.toLowerCase() + relationResponse.toLowerCase();
     }
 
     public static String getNode(String label, Map<String, String[]> relations, Map<String, String> properties) {
@@ -272,7 +272,7 @@ public class Neo4j implements AutoCloseable {
                     } else {
                         match += "-[r" + i + j + "]->(b" + i + j + ")";
                     }
-                    where += "type(r" + i + j + ")=~ '" + next.getKey();
+                    where += "type(r" + i + j + ")=~ '" + next.getKey().toUpperCase();
                     where += "' AND ID(b" + i + j + ") = " + relID;
                 }
 
@@ -293,9 +293,9 @@ public class Neo4j implements AutoCloseable {
             for (Map.Entry<String, String> next : properties.entrySet()) {
                 //iterate over the pairs
                 if (next.getValue().matches("^[0-9]*$")) {
-                    where += "a." + next.getKey() + " = " + next.getValue() + " AND ";
+                    where += "a." + next.getKey() + " = " + next.getValue().substring(0,1).toUpperCase() + next.getValue().substring(1).toLowerCase() + " AND ";
                 } else {
-                    where += "a." + next.getKey() + " = '" + next.getValue() + "' AND ";
+                    where += "a." + next.getKey() + " = '" + next.getValue().substring(0,1).toUpperCase() + next.getValue().substring(1).toLowerCase() + "' AND ";
                 }
             }
             where = where.substring(0, where.length() - 5);
@@ -308,10 +308,10 @@ public class Neo4j implements AutoCloseable {
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
         }
-        response = response.substring(0, response.length() - 2);
+        if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
         response = "\"[" + response + "]\"";
         logger.info(response);
-        return response;
+        return response.toLowerCase();
     }
 
     /**
@@ -383,7 +383,7 @@ public class Neo4j implements AutoCloseable {
 
         StatementResult result = tx.run( query, parameters() );
         logger.info(result.toString());
-        return result.toString();
+        return result.toString().toLowerCase();
     }
 
 }
