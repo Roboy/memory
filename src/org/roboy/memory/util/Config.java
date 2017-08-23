@@ -24,5 +24,5 @@ public class Config {
 
     //Redis
     public final static String REDIS_URI = "redis://bot.roboy.org:6379/0";
-    public final static String REDIS_PASSWORD = "gFzdTWNG7gXbN4Yprx2PgwUasG2hkqfetnhbe6ea";
+    public final static String REDIS_PASSWORD = "***";
 }
