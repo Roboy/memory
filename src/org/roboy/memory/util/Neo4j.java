@@ -176,9 +176,12 @@ public class Neo4j implements AutoCloseable {
         logger.info(query);
 
         StatementResult result = tx.run( query, parameters() );
-        String json = parser.toJson(result);
-        logger.info(json);
-        return json;
+        String response = "";
+        if (result.hasNext()) {
+            response = parser.toJson(result.next().get(0).asMap());
+        }
+        logger.info(response);
+        return response;
     }
 
 
@@ -207,7 +210,7 @@ public class Neo4j implements AutoCloseable {
         String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
         logger.info(query);
         StatementResult result = tx.run(query, parameters() );
-        String node = parser.toJson(result.next().get(0).asNode().asMap());
+        String node = parser.toJson(result.next().get(0).asMap());
         logger.info(node);
         return node;
     }
@@ -284,7 +287,7 @@ public class Neo4j implements AutoCloseable {
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
         }
-        response = response.substring(0, response.length() - 1);
+        response = response.substring(0, response.length() - 2);
         response = "\"[" + response + "]\"";
         logger.info(response);
         return response;

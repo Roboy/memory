@@ -19,7 +19,7 @@ public class Answer {
 
     public static String error(String message) {
         String result = "{status:\"FAIL\", message:\""+message+"\"}";
-        logger.info(result);
+        logger.warning(result);
         return result;
     }
 }
