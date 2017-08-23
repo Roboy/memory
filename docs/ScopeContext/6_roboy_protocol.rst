@@ -32,6 +32,36 @@ Where node type is Person, and relation type is FRIEND_OF.
 There we have to get the node (id) of a friend which name corresponds to the name given, that is performed by the query initialized with the first example of the payload.
 After recieving the correspondent node (id) we can relate the node (person) with Roboy as friends, that is performed by the query initialized with the second example of the payload.
 
-.. todo::
-	Create a list of appropriate messages with regard to Knowledge Representation v.1.1.1
-	They should implement READ and WRITE capabilities.
+
+Create queries
+--------------------------------------------------
+
+- Create a 'Person' node with name Lucas ::
+
+	rosservice call /roboy/cognition/memory/create
+	    "\"{
+	    'user':'vision','datetime':'1234567'
+	}\"" "\"{
+	    'type':'node',
+	    'label':'Person',
+	    'properties':{'name':'Lucas', 'sex':'male'}
+	}\""
+
+
+
+
+
+Update queries
+--------------------------------------------------
+
+
+
+Get queries
+--------------------------------------------------
+
+
+
+Remove queries
+--------------------------------------------------
+
+

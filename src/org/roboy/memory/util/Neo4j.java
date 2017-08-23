@@ -6,9 +6,8 @@ import redis.clients.jedis.Jedis;
 
 
 import java.net.URI;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
-import java.util.Objects;
 
 import static org.roboy.memory.util.Config.*;
 
@@ -208,11 +207,32 @@ public class Neo4j implements AutoCloseable {
     private static String matchNodeById( Transaction tx, int id ) {
 
         String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
+        String queryRelations = "MATCH (a)-[r]-(b) WHERE ID(a) = " + id +" Return type(r),ID(b)";
+        HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>();
+
         logger.info(query);
-        StatementResult result = tx.run(query, parameters() );
-        String node = parser.toJson(result.next().get(0).asMap());
-        logger.info(node);
-        return node;
+        logger.info(queryRelations);
+
+        StatementResult result = tx.run(query, parameters() ); //run query
+        String node = "'properties': " + parser.toJson(result.next().get(0).asMap());
+
+        StatementResult resultRelations = tx.run(queryRelations, parameters() ); //run queryRelations
+        String relationResponse = ", 'relations': ";
+        while (resultRelations.hasNext()) {
+            Record next = resultRelations.next();
+            String key = next.get(0).toString();
+            String value = next.get(1).toString();
+            if (!relAndIDs.containsKey(next.get(0).toString())) {
+                relAndIDs.put(key,new HashSet<String>(Arrays.asList(next.get(1).toString())));
+            } else {
+                relAndIDs.get(key).add(value);
+            }
+        }
+        relationResponse += relAndIDs.toString().replace('=',':');
+
+
+        logger.info(node + relationResponse);
+        return node + relationResponse;
     }
 
     public static String getNode(String label, Map<String, String[]> relations, Map<String, String> properties) {
@@ -235,6 +255,7 @@ public class Neo4j implements AutoCloseable {
         //RETURN a
         String match = "";
         String where = "";
+
 
         if (relations != null) {
             if (Objects.equals(where, "")) {

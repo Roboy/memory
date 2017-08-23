@@ -3,6 +3,7 @@ package org.roboy.memory.ros;
 import com.google.gson.Gson;
 import com.sun.tools.classfile.Opcode;
 import org.roboy.memory.models.*;
+import static org.roboy.memory.util.Config.*;
 import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
 import roboy_communication_cognition.*;
@@ -16,8 +17,6 @@ import static org.roboy.memory.util.Answer.*;
 class ServiceLogic {
 
     private static Gson parser = new Gson();
-    public static final String[] LABEL_VALUES = new String[] { "Person","Robot","Company","University","City","Country","Hobby","Occupation","Object" };
-    public static final String[] RELATION_VALUES = new String[] { "FRIEND_OF","LIVE_IN","FROM","WORK_FOR","STUDY_AT","MEMBER_OF","HAS_HOBBY","KNOW","IS","PART_OF","IS_IN" };
     private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES));
     private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES));
 
@@ -29,7 +28,9 @@ class ServiceLogic {
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
         System.out.println("create: " + create.getLabel());
-        System.out.println("FaceVector: " + create.getFace().toString());
+        if (create.getFace() != null) {
+            System.out.println("FaceVector: " + create.getFace().toString());
+        }
 
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
