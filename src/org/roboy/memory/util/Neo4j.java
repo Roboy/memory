@@ -353,7 +353,7 @@ public class Neo4j implements AutoCloseable {
                     String relID = relations.get(key)[j];
                     delete += "r" + i + j + ",";
                     where +=  " AND ID(b" + i + j + ") = " + relID;
-                    query += "(a)-[r" + i + j + ":" + key +"]->(b" + i + j + "), ";
+                    query += "(a)-[r" + i + j + ":" + key.toUpperCase() +"]->(b" + i + j + "), ";
                 }
                 i++;
             }
