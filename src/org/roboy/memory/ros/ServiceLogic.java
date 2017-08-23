@@ -29,7 +29,7 @@ class ServiceLogic {
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
         System.out.println("create: " + create.getLabel());
-        System.out.println("FaceVector: " + create.getFace());
+        System.out.println("FaceVector: " + create.getFace().toString());
 
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
@@ -55,7 +55,13 @@ class ServiceLogic {
             }
         }
 
-        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
+        for (String rel : update.getRelations().keySet()) {
+            if (!relations.contains(rel)) {
+                response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
+            }
+        }
+
+            Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
 
         response.setAnswer(ok());
     };

@@ -83,13 +83,13 @@ public class Neo4j implements AutoCloseable {
      * @param properties
      * @return
      */
-    public static String createNode(String label, String faceVector, Map<String, String> properties) {
+    public static String createNode(String label, String[] faceVector, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
             return createNode(session, properties, faceVector, label);
         }
     }
 
-    private static String createNode(Session session, Map<String, String> properties, String faceVector, String label) {
+    private static String createNode(Session session, Map<String, String> properties, String[] faceVector, String label) {
         StatementResult result = session.writeTransaction(tx -> {
             //no prepared statements for now
             String query = "CREATE (a:" + label;
@@ -109,7 +109,9 @@ public class Neo4j implements AutoCloseable {
         if (faceVector != null) {
             jedis = new Jedis(URI.create(REDIS_URI));
             jedis.auth(REDIS_PASSWORD);
-            jedis.set(id, faceVector);
+            for (String vector : faceVector) {
+                jedis.sadd(id, vector);
+            }
         }
 
         logger.info(id);
