@@ -25,4 +25,7 @@ public class Config {
     //Redis
     public final static String REDIS_URI = "redis://localhost:6379/0";
     public final static String REDIS_PASSWORD = "foobared";
+
+    public static final String[] LABEL_VALUES = new String[] { "Person","Robot","Company","University","City","Country","Hobby","Occupation","Object" };
+    public static final String[] RELATION_VALUES = new String[] { "FRIEND_OF","LIVE_IN","FROM","WORK_FOR","STUDY_AT","MEMBER_OF","HAS_HOBBY","KNOW","IS","PART_OF","IS_IN" };
 }
