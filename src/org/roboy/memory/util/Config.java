@@ -6,8 +6,8 @@ package org.roboy.memory.util;
  */
 public class Config {
     //ROS Lucas
-    public final static String ROS_MASTER_URI = "http://10.211.55.7:11311/"; //192.168.224.128:63058/
-    public final static String ROS_HOSTNAME = "10.211.55.2";  //IP ADDRESS OF CURRENT PC IN THE NETWORK
+    public final static String ROS_MASTER_URI = "http://10.183.55.157:11311/"; //192.168.224.128:63058/
+    public final static String ROS_HOSTNAME = "10.183.55.163";  //IP ADDRESS OF CURRENT PC IN THE NETWORK
 
     //ROS Wagram
     //public final static String ROS_MASTER_URI = "http://10.183.55.157:11311/"; //192.168.224.128:63058/
@@ -24,5 +24,5 @@ public class Config {
 
     //Redis
     public final static String REDIS_URI = "redis://bot.roboy.org:6379/0";
-    public final static String REDIS_PASSWORD = "*****";
+    public final static String REDIS_PASSWORD = "gFzdTWNG7gXbN4Yprx2PgwUasG2hkqfetnhbe6ea";
 }
