@@ -28,7 +28,9 @@ class ServiceLogic {
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
         System.out.println("create: " + create.getLabel());
-        System.out.println("FaceVector: " + create.getFace().toString());
+        if (create.getFace() != null) {
+            System.out.println("FaceVector: " + create.getFace().toString());
+        }
 
         // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
 
