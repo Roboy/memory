@@ -1,13 +1,13 @@
 package org.roboy.memory.util;
+import com.google.gson.Gson;
 import org.neo4j.driver.internal.types.InternalTypeSystem;
 import org.neo4j.driver.v1.*;
 import redis.clients.jedis.Jedis;
 
-import javax.print.attribute.IntegerSyntax;
+
 import java.net.URI;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.jar.JarEntry;
+import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Config.*;
 
@@ -20,6 +20,8 @@ public class Neo4j implements AutoCloseable {
     private static Neo4j _instance;
     private static Driver _driver;
     private static Jedis jedis;
+    private static Gson parser = new Gson();
+    private static Logger logger = Logger.getLogger(Neo4j.class.toString());
 
     private Neo4j() {
         _driver = GraphDatabase.driver(NEO4J_ADDRESS, AuthTokens.basic(NEO4J_USERNAME, NEO4J_PASSWORD));
@@ -57,6 +59,7 @@ public class Neo4j implements AutoCloseable {
             StatementResult result = session.run(query);
             String response = "";
             Value value;
+            logger.info(query);
             while (result.hasNext()) {
                 value = result.next().get(0);
                 if (value.hasType(InternalTypeSystem.TYPE_SYSTEM.NODE())) { //if response is Node
@@ -65,6 +68,7 @@ public class Neo4j implements AutoCloseable {
                     response += value.toString() + ", ";
                 }
             }
+            logger.info(response);
             return response;
         }
     }
@@ -80,29 +84,35 @@ public class Neo4j implements AutoCloseable {
      */
     public static String createNode(String label, String faceVector, Map<String, String> properties) {
         try (Session session = getInstance().session()) {
-            jedis = new Jedis(URI.create(REDIS_URI));
-            StatementResult result = session.writeTransaction(tx -> {
-                //no prepared statements for now
-                String query = "CREATE (a:" + label;
-                query += "{";
-                for (String key : properties.keySet()) {
-                    query += key + ":'" + properties.get(key) + "',";
-                }
-                query = query.substring(0, query.length() - 1);
-                query += "}";
-                //TODO: refactor this?
-                query += ") RETURN ID(a)";
-                return  tx.run(query, parameters());
-            });
-            String id = result.next().get(0).toString();
-
-            if (faceVector != null) {
-                jedis.auth(REDIS_PASSWORD);
-                jedis.set(id, faceVector);
-            }
-
-            return id;
+            return createNode(session, properties, faceVector, label);
         }
+    }
+
+    private static String createNode(Session session, Map<String, String> properties, String faceVector, String label) {
+        jedis = new Jedis(URI.create(REDIS_URI));
+        StatementResult result = session.writeTransaction(tx -> {
+            //no prepared statements for now
+            String query = "CREATE (a:" + label;
+            query += "{";
+            for (String key : properties.keySet()) {
+                query += key + ":'" + properties.get(key) + "',";
+            }
+            query = query.substring(0, query.length() - 1);
+            query += "}";
+            //TODO: refactor this?
+            query += ") RETURN ID(a)";
+            logger.info(query);
+            return  tx.run(query, parameters());
+        });
+        String id = result.next().get(0).toString();
+
+        if (faceVector != null) {
+            jedis.auth(REDIS_PASSWORD);
+            jedis.set(id, faceVector);
+        }
+
+        logger.info(id);
+        return id;
     }
 
 
@@ -157,11 +167,12 @@ public class Neo4j implements AutoCloseable {
         }
         query += where + " Return a";
 
-        System.out.println("Query: " + query); //Match (n) where ID(n)=$id Set n.surname = 'bla' Set n.birthdate = '30.06.1994' Set n.sex = 'male' Return n
+        logger.info(query);
 
         StatementResult result = tx.run( query, parameters() );
-        //StatementResult result = tx.run( "Match ...", parameters("id", id) );
-        return result.toString();
+        String json = parser.toJson(result);
+        logger.info(json);
+        return json;
     }
 
 
@@ -188,9 +199,11 @@ public class Neo4j implements AutoCloseable {
     private static String matchNodeById( Transaction tx, int id ) {
 
         String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
-        System.out.println(query);
+        logger.info(query);
         StatementResult result = tx.run(query, parameters() );
-        return result.next().get(0).asNode().asMap().toString();
+        String node = parser.toJson(result.next().get(0).asNode().asMap());
+        logger.info(node);
+        return node;
     }
 
     public static String getNode(String label, Map<String, String> relations, Map<String, String> properties) {
@@ -251,12 +264,15 @@ public class Neo4j implements AutoCloseable {
         }
 
         String query = "MATCH (a:" + label + ")" + match + where + " RETURN ID(a)";
-        System.out.println(query);
+        logger.info(query);
         StatementResult result = tx.run(query, parameters() );
         String response = "";
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
         }
+        response = response.substring(0, response.length() - 1);
+        response = "\"[" + response + "]\"";
+        logger.info(response);
         return response;
     }
 
@@ -320,10 +336,10 @@ public class Neo4j implements AutoCloseable {
 
         query += where + delete + remove;
 
-        System.out.println("Query: " + query); //Match (n) where ID(n)=$id Set n.surname = 'bla' Set n.birthdate = '30.06.1994' Set n.sex = 'male' Return n
+        logger.info(query);
 
         StatementResult result = tx.run( query, parameters() );
-        //StatementResult result = tx.run( "Match ...", parameters("id", id) );
+        logger.info(result.toString());
         return result.toString();
     }
 

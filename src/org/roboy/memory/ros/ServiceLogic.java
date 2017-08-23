@@ -31,12 +31,7 @@ class ServiceLogic {
         } if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
             response.setAnswer(error("no name specified in properties : name required"));
         } else {
-            switch (create.getType()) {
-                case "node": {
-                    response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
-                    break;
-                }
-            }
+            response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
         }
     };
 

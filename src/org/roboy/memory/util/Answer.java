@@ -1,19 +1,25 @@
 package org.roboy.memory.util;
 
 
+import java.util.logging.Logger;
+
 /**
  * answer wrapper
- * to be implemented ...
  */
 public class Answer {
 
-    public static String ok() {
+    private static Logger logger = Logger.getLogger(Answer.class.toString());
 
-        return "{status:\"OK\"}";
+
+    public static String ok() {
+        String result = "{status:\"OK\"}";
+        logger.info(result);
+        return result;
     }
 
     public static String error(String message) {
-
-        return "{status:\"FAIL\", message:\""+message+"\"}";
+        String result = "{status:\"FAIL\", message:\""+message+"\"}";
+        logger.info(result);
+        return result;
     }
 }
