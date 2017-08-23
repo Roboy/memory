@@ -37,13 +37,17 @@ class ServiceLogic {
 
         if (create.getProperties() == null) { //error msg if there are no properties
             response.setAnswer(error("no properties"));
+            return;
         } else if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
             response.setAnswer(error("no name specified in properties : name required"));
-        } else if (!labels.contains(create.getLabel())) {
+            return;
+        } else if (!labels.contains(create.getLabel().substring(0,1).toUpperCase() + create.getLabel().substring(1).toLowerCase())) {
             response.setAnswer(error("Label '" + create.getLabel() + "' doesn't exist in the DB"));
+            return;
         } else {
             response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
         }
+        
     };
 
     //Update
