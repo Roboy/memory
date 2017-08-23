@@ -22,7 +22,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-                <version>2.3.2</version>
+                <version>3.6.2</version>
             </plugin>
         </plugins>
         <directory>${project.basedir}/target</directory>
@@ -88,6 +88,12 @@
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>rosjava_test_msgs</artifactId>
             <version>0.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.2</version>
+            <type>maven-plugin</type>
         </dependency>
     </dependencies>
 </project>
