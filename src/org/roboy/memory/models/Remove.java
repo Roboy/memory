@@ -8,7 +8,7 @@ public class Remove {
     private String type;
     private String label;
 
-    private Map<String, String> relations;
+    private Map<String, String[]> relations;
     private String[] properties;
 
     public int getId() {
@@ -19,7 +19,7 @@ public class Remove {
         return properties;
     }
 
-    public Map<String, String> getRelations() {
+    public Map<String, String[]> getRelations() {
         return relations;
     }
 }

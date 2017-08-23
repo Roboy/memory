@@ -8,7 +8,7 @@ public class Update {
     private String type;
     private String label;
 
-    private Map<String, String> relations;
+    private Map<String, String[]> relations;
     private Map<String, String> properties;
 
     public int getId() {
@@ -19,7 +19,7 @@ public class Update {
         return properties;
     }
 
-    public Map<String, String> getRelations() {
+    public Map<String, String[]> getRelations() {
         return relations;
     }
 }
