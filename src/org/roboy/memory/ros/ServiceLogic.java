@@ -15,7 +15,7 @@ class ServiceLogic {
 
     private static Gson parser = new Gson();
     public static final String[] LABEL_VALUES = new String[] { "Person","Robot","Company","University","City","Country","Hobby","Occupation","Object" };
-    public static final String[] RELATION_VALUES = new String[] { "" };
+    public static final String[] RELATION_VALUES = new String[] { "FRIEND_OF","LIVE_IN","FROM","WORK_FOR","STUDY_AT","MEMBER_OF","HAS_HOBBY","KNOW","IS","PART_OF","IS_IN" };
     private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES));
     private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES));
 
@@ -53,7 +53,13 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
-        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
+        for (String rel : update.getRelations().keySet()) {
+            if (!relations.contains(rel)) {
+                response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
+            }
+        }
+
+            Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
 
         response.setAnswer(ok());
     };
