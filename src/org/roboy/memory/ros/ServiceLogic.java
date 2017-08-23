@@ -55,13 +55,7 @@ class ServiceLogic {
             }
         }
 
-        for (String rel : update.getRelations().keySet()) {
-            if (!relations.contains(rel)) {
-                response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
-            }
-        }
-
-            Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
+        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
 
         response.setAnswer(ok());
     };
