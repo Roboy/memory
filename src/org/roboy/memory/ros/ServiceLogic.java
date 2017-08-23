@@ -6,6 +6,7 @@ import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
 import roboy_communication_cognition.*;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 import static org.roboy.memory.util.Answer.*;
@@ -13,7 +14,11 @@ import static org.roboy.memory.util.Answer.*;
 class ServiceLogic {
 
     private static Gson parser = new Gson();
-    private static HashSet<String> labels = new HashSet<String>();
+    public static final String[] LABEL_VALUES = new String[] { "Person","Robot","Company","University","City","Country","Hobby","Occupation","Object" };
+    public static final String[] RELATION_VALUES = new String[] { "" };
+    private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES));
+    private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES));
+
 
     //Create
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
@@ -28,9 +33,12 @@ class ServiceLogic {
 
         if (create.getProperties() == null) { //error msg if there are no properties
             response.setAnswer(error("no properties"));
-        } if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
+        } else if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
             response.setAnswer(error("no name specified in properties : name required"));
+        } else if (!labels.contains(create.getLabel())) {
+            response.setAnswer(error("Label doesn't exist in the DB"));
         } else {
+
             switch (create.getType()) {
                 case "node": {
                     response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
