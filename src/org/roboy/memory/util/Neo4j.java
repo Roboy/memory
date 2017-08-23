@@ -287,7 +287,7 @@ public class Neo4j implements AutoCloseable {
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
         }
-        response = response.substring(0, response.length() - 2);
+        if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
         response = "\"[" + response + "]\"";
         logger.info(response);
         return response;
