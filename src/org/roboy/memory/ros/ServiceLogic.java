@@ -1,6 +1,7 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
+import com.sun.tools.classfile.Opcode;
 import org.roboy.memory.models.*;
 import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
@@ -8,6 +9,7 @@ import roboy_communication_cognition.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 import static org.roboy.memory.util.Answer.*;
 
@@ -36,7 +38,7 @@ class ServiceLogic {
         } else if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
             response.setAnswer(error("no name specified in properties : name required"));
         } else if (!labels.contains(create.getLabel())) {
-            response.setAnswer(error("Label doesn't exist in the DB"));
+            response.setAnswer(error("Label '" + create.getLabel() + "' doesn't exist in the DB"));
         } else {
             response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
         }
@@ -46,14 +48,14 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
-
         for (String rel : update.getRelations().keySet()) {
             if (!relations.contains(rel)) {
                 response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
+                return;
             }
         }
 
-            Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
+        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
 
         response.setAnswer(ok());
     };
