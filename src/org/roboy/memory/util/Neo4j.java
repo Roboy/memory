@@ -341,7 +341,7 @@ public class Neo4j implements AutoCloseable {
             response += result.next().get(0).toString() + ", ";
         }
         if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
-        response = "{id:[" + response + "]}";
+        response = "{'id':[" + response + "]}";
         logger.info(response);
         return response.toLowerCase();
     }
