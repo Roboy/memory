@@ -97,8 +97,7 @@ public class Neo4j implements AutoCloseable {
             logger.info(query);
             return  tx.run(query, parameters());
         });
-
-        String id = result.next().get(0).toString();
+        String id = "{'id': " + result.next().get(0).toString() + "}";
 
         if (create.getFace() != null) {
             jedis = new Jedis(URI.create(REDIS_URI));
@@ -240,8 +239,8 @@ public class Neo4j implements AutoCloseable {
                 labels = labels.substring(0, labels.length() - 2) + "]";
             }
 
-            logger.info(labels + properties + relationResponse);
-            return (ID + labels + properties + relationResponse).toLowerCase();
+            logger.info(ID + labels + properties + relationResponse);
+            return ("{" + ID + labels + properties + relationResponse + "}").toLowerCase();
         } else {
             return "";
         }
@@ -325,7 +324,7 @@ public class Neo4j implements AutoCloseable {
             response += result.next().get(0).toString() + ", ";
         }
         if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
-        response = "\"[" + response + "]\"";
+        response = "{'id':[" + response + "]}";
         logger.info(response);
         return response.toLowerCase();
     }
