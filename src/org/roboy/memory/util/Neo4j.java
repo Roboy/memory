@@ -208,13 +208,14 @@ public class Neo4j implements AutoCloseable {
 
         String query = "MATCH (a) where ID(a)=" + id + " RETURN a";
         String queryRelations = "MATCH (a)-[r]-(b) WHERE ID(a) = " + id +" Return type(r),ID(b)";
+        String queryLabels = "MATCH (a) WHERE ID(a) = " + id +" Return labels(a)";
         HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>();
 
         logger.info(query);
         logger.info(queryRelations);
 
         StatementResult result = tx.run(query, parameters() ); //run query
-        String node = "'properties': " + parser.toJson(result.next().get(0).asMap());
+        String node = ", 'properties': " + parser.toJson(result.next().get(0).asMap());
 
         StatementResult resultRelations = tx.run(queryRelations, parameters() ); //run queryRelations
         String relationResponse = ", 'relations': ";
@@ -230,9 +231,15 @@ public class Neo4j implements AutoCloseable {
         }
         relationResponse += relAndIDs.toString().replace('=',':');
 
+        result = tx.run(queryLabels, parameters() ); //run query
+        String labels = "'labels': [";
+        while (result.hasNext()) {
+            labels += "'" + result.next().get(0).toString() + "', ";
+        }
+        labels = labels.substring(0, labels.length() - 2) + "]";
 
-        logger.info(node + relationResponse);
-        return node.toLowerCase() + relationResponse.toLowerCase();
+        logger.info(labels + node + relationResponse);
+        return labels.toLowerCase() + node.toLowerCase() + relationResponse.toLowerCase();
     }
 
     public static String getNode(String label, Map<String, String[]> relations, Map<String, String> properties) {
