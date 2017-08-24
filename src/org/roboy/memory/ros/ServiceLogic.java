@@ -41,7 +41,7 @@ class ServiceLogic {
         } else if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
             response.setAnswer(error("no name specified in properties : name required"));
             return;
-        } else if (!labels.contains(create.getLabel().substring(0,1).toUpperCase() + create.getLabel().substring(1).toLowerCase())) {
+        } else if (create.getLabel() != null && !labels.contains(create.getLabel().substring(0,1).toUpperCase() + create.getLabel().substring(1).toLowerCase())) {
             response.setAnswer(error("Label '" + create.getLabel() + "' doesn't exist in the DB"));
             return;
         } else {

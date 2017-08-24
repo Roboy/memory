@@ -300,8 +300,12 @@ public class Neo4j implements AutoCloseable {
             }
             where = where.substring(0, where.length() - 5);
         }
+        String query = "MATCH (a";
+        if (label != null) {
+            query += ":" + label;
+        }
 
-        String query = "MATCH (a:" + label + ")" + match + where + " RETURN ID(a)";
+        query += ")" + match + where + " RETURN ID(a)";
         logger.info(query);
         StatementResult result = tx.run(query, parameters() );
         String response = "";
