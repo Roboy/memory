@@ -1,7 +1,6 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
-import com.sun.tools.classfile.Opcode;
 import org.roboy.memory.models.*;
 import static org.roboy.memory.util.Config.*;
 import org.roboy.memory.util.Neo4j;
