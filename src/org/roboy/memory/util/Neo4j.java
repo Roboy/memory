@@ -2,6 +2,7 @@ package org.roboy.memory.util;
 import com.google.gson.Gson;
 import org.neo4j.driver.internal.types.InternalTypeSystem;
 import org.neo4j.driver.v1.*;
+import org.roboy.memory.models.*;
 import redis.clients.jedis.Jedis;
 
 
@@ -76,41 +77,36 @@ public class Neo4j implements AutoCloseable {
 
     /**
      * Create
-     *
-     * @param label
-     * @param faceVector
-     * @param properties
-     * @return
      */
-    public static String createNode(String label, String[] faceVector, Map<String, String> properties) {
+    public static String createNode(Create create) {
         try (Session session = getInstance().session()) {
-            return createNode(session, properties, faceVector, label);
+            return createNode(session, create);
         }
     }
 
-    private static String createNode(Session session, Map<String, String> properties, String[] faceVector, String label) {
+    private static String createNode(Session session, Create create) {
         StatementResult result = session.writeTransaction(tx -> {
-            //no prepared statements for now
-            String query = "CREATE (a:" + label.substring(0,1).toUpperCase() + label.substring(1).toLowerCase();
-            query += "{";
-            for (String key : properties.keySet()) {
-                query += key + ":'" + properties.get(key).substring(0,1).toUpperCase() + properties.get(key).substring(1).toLowerCase() + "',";
-            }
-            query = query.substring(0, query.length() - 1);
-            query += "}";
-            //TODO: refactor this?
-            query += ") RETURN ID(a)";
+            //TODO: prepared statement
+            QueryBuilder builder = new QueryBuilder();
+
+            builder.add("CREATE (a:" + create.getLabel() + " ");
+            builder.addParameters(create.getProperties());
+            builder.add(") RETURN ID(a)");
+
+            String query = builder.getQuery();
             logger.info(query);
             return  tx.run(query, parameters());
         });
+
         String id = result.next().get(0).toString();
 
-        if (faceVector != null) {
+        if (create.getFace() != null) {
             jedis = new Jedis(URI.create(REDIS_URI));
             jedis.auth(REDIS_PASSWORD);
-            for (String vector : faceVector) {
+            for (String vector : create.getFace()) {
                 jedis.sadd(id, vector);
             }
+            jedis.disconnect();
         }
 
         logger.info(id);
@@ -120,22 +116,10 @@ public class Neo4j implements AutoCloseable {
 
     /**
      * Update
-     *
-     * @param id
-     * @param relations
-     * @param properties
-     * @return
      */
-    public static String updateNode(int id, Map<String, String[]> relations, Map<String, String> properties) {
+    public static String updateNode(Update update) {
         try (Session session = getInstance().session()) {
-            return session.readTransaction( new TransactionWork<String>()
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    return update( tx, id, relations, properties);
-                }
-            } );
+            return session.readTransaction(tx -> update( tx, update.getId(), update.getRelations(), update.getProperties()));
         }
     }
 

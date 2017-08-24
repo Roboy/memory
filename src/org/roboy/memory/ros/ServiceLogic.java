@@ -16,65 +16,37 @@ import static org.roboy.memory.util.Answer.*;
 class ServiceLogic {
 
     private static Gson parser = new Gson();
-    private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES));
-    private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES));
 
 
     //Create
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
-        System.out.println("payload: " + request.getPayload());
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
-        System.out.println("create: " + create.getLabel());
-
-        if (create.getFace() != null) {
-            System.out.println("FaceVector: " + create.getFace().toString());
+        if(create.validate()) {
+            response.setAnswer(Neo4j.createNode(create));
         }
 
-        // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
-
-        if (create.getProperties() == null) { //error msg if there are no properties
-            response.setAnswer(error("no properties"));
-            return;
-        } else if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
-            response.setAnswer(error("no name specified in properties : name required"));
-            return;
-        } else if (create.getLabel() != null && !labels.contains(create.getLabel().substring(0,1).toUpperCase() + create.getLabel().substring(1).toLowerCase())) {
-            response.setAnswer(error("Label '" + create.getLabel() + "' doesn't exist in the DB"));
-            return;
-        } else {
-            response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
-        }
-        
+        response.setAnswer(create.getError());
     };
 
     //Update
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
-        if(update.getRelations() != null) {
-            for (String rel : update.getRelations().keySet()) {
-                if (!relations.contains(rel.toUpperCase())) {
-                    response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
-                    return;
-                }
-            }
+
+        if(update.validate()) {
+            response.setAnswer(ok(Neo4j.updateNode(update)));
         }
 
-        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
-
-        response.setAnswer(ok());
+        response.setAnswer(error(update.getError()));
     };
 
     //Get
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
-        // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
-        // "properties":{"name":"someName","surname":"someSurname"}}
         if (get.getId() != 0) {
-            // {'id':someID}
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
             response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
@@ -93,9 +65,7 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Remove remove = parser.fromJson(request.getPayload(), Remove.class);
 
-        Neo4j.remove(remove.getId(), remove.getRelations(), remove.getProperties());
-
-        response.setAnswer(ok());
+        response.setAnswer(ok(Neo4j.remove(remove.getId(), remove.getRelations(), remove.getProperties())));
     };
 
 }
