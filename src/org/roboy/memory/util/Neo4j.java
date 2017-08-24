@@ -215,31 +215,41 @@ public class Neo4j implements AutoCloseable {
         logger.info(queryRelations);
 
         StatementResult result = tx.run(query, parameters() ); //run query
-        String node = ", 'properties': " + parser.toJson(result.next().get(0).asMap());
-
-        StatementResult resultRelations = tx.run(queryRelations, parameters() ); //run queryRelations
-        String relationResponse = ", 'relations': ";
-        while (resultRelations.hasNext()) {
-            Record next = resultRelations.next();
-            String key = next.get(0).toString();
-            String value = next.get(1).toString();
-            if (!relAndIDs.containsKey(next.get(0).toString())) {
-                relAndIDs.put(key,new HashSet<String>(Arrays.asList(next.get(1).toString())));
-            } else {
-                relAndIDs.get(key).add(value);
-            }
+        String properties = "";
+        if (result.hasNext()) {
+            properties = ", 'properties': " + parser.toJson(result.next().get(0).asMap());
         }
-        relationResponse += relAndIDs.toString().replace('=',':');
+
+        result = tx.run(queryRelations, parameters() ); //run queryRelations
+        String relationResponse = "";
+        if (result.hasNext()) {
+            relationResponse = ", 'relations': ";
+            while (result.hasNext()) {
+                Record next = result.next();
+                String key = next.get(0).toString();
+                String value = next.get(1).toString();
+                if (!relAndIDs.containsKey(next.get(0).toString())) {
+                    relAndIDs.put(key, new HashSet<String>(Arrays.asList(next.get(1).toString())));
+                } else {
+                    relAndIDs.get(key).add(value);
+                }
+            }
+            relationResponse += relAndIDs.toString().replace('=', ':');
+        }
 
         result = tx.run(queryLabels, parameters() ); //run query
-        String labels = "'labels': [";
-        while (result.hasNext()) {
-            labels += "'" + result.next().get(0).toString() + "', ";
+        String labels = "";
+        if (result.hasNext()) {
+            labels = "'labels': [";
+            while (result.hasNext()) {
+                String value = result.next().get(0).toString();
+                labels += value.substring(1, value.length() - 1) + ", ";
+            }
+            labels = labels.substring(0, labels.length() - 2) + "]";
         }
-        labels = labels.substring(0, labels.length() - 2) + "]";
 
-        logger.info(labels + node + relationResponse);
-        return labels.toLowerCase() + node.toLowerCase() + relationResponse.toLowerCase();
+        logger.info(labels + properties + relationResponse);
+        return labels.toLowerCase() + properties.toLowerCase() + relationResponse.toLowerCase();
     }
 
     public static String getNode(String label, Map<String, String[]> relations, Map<String, String> properties) {
