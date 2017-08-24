@@ -53,10 +53,12 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
-        for (String rel : update.getRelations().keySet()) {
-            if (!relations.contains(rel.toUpperCase())) {
-                response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
-                return;
+        if(update.getRelations() != null) {
+            for (String rel : update.getRelations().keySet()) {
+                if (!relations.contains(rel.toUpperCase())) {
+                    response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
+                    return;
+                }
             }
         }
 
