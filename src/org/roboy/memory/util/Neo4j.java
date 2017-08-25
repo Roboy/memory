@@ -212,10 +212,10 @@ public class Neo4j implements AutoCloseable {
         String queryLabels = "MATCH (a) WHERE ID(a) = " + id +" Return labels(a)";
         HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>();
 
-        logger.info(queryID);
-        logger.info(queryLabels);
-        logger.info(queryProperties);
-        logger.info(queryRelations);
+        logger.fine(queryID);
+        logger.fine(queryLabels);
+        logger.fine(queryProperties);
+        logger.fine(queryRelations);
 
         StatementResult result = tx.run(queryID, parameters() ); //run query
         String ID = "";
@@ -256,7 +256,8 @@ public class Neo4j implements AutoCloseable {
                 labels = labels.substring(0, labels.length() - 2) + "]";
             }
 
-            logger.info(ID + labels + properties + relationResponse);
+
+            logger.fine(("{" + ID + labels + properties + relationResponse + "}").toLowerCase());
             return ("{" + ID + labels + properties + relationResponse + "}").toLowerCase();
         } else {
             return "";
@@ -334,7 +335,7 @@ public class Neo4j implements AutoCloseable {
         }
 
         query += ")" + match + where + " RETURN ID(a)";
-        logger.info(query);
+        logger.fine(query);
         StatementResult result = tx.run(query, parameters() );
         String response = "";
         while (result.hasNext()) {
@@ -342,7 +343,7 @@ public class Neo4j implements AutoCloseable {
         }
         if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
         response = "{'id':[" + response + "]}";
-        logger.info(response);
+        logger.fine(response);
         return response.toLowerCase();
     }
 

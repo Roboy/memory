@@ -1,6 +1,7 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.roboy.memory.models.*;
 import static org.roboy.memory.util.Config.*;
 import org.roboy.memory.util.Neo4j;
@@ -10,11 +11,13 @@ import roboy_communication_cognition.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Answer.*;
 
 class ServiceLogic {
 
+    private static Logger logger = Logger.getLogger(ServiceLogic.class.toString());
     private static Gson parser = new Gson();
     private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES));
     private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES));
@@ -71,6 +74,8 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        logger.fine(gson.toJson(get));
         // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
         // "properties":{"name":"someName","surname":"someSurname"}}
         if (get.getId() != 0) {
@@ -84,7 +89,7 @@ class ServiceLogic {
     //Cypher
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
-
+        logger.fine(request.getPayload());
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
 
