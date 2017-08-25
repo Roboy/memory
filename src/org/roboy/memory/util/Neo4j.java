@@ -300,7 +300,7 @@ public class Neo4j implements AutoCloseable {
                     } else {
                         match += "-[r" + i + j + "]->(b" + i + j + ")";
                     }
-                    where += " type(r" + i + j + ")=~ '" + next.getKey().toUpperCase();
+                    where += " AND type(r" + i + j + ")=~ '" + next.getKey().toUpperCase();
                     where += "' AND ID(b" + i + j + ") = " + relID;
                 }
 
