@@ -75,7 +75,7 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        logger.fine(gson.toJson(get));
+        logger.warning(gson.toJson(get));
         // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
         // "properties":{"name":"someName","surname":"someSurname"}}
         if (get.getId() != 0) {
@@ -89,7 +89,7 @@ class ServiceLogic {
     //Cypher
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
-        logger.fine(request.getPayload());
+        logger.warning(request.getPayload());
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
 
