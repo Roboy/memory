@@ -2,6 +2,7 @@ package org.roboy.memory.models;
 
 import org.roboy.memory.util.Dictionary;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Update {
@@ -10,8 +11,8 @@ public class Update {
     private String type;
     private String label;
 
-    private Map<String, String[]> relations;
-    private Map<String, String> properties;
+    private HashMap<String, String[]> relations;
+    private HashMap<String, String> properties;
 
     private transient String error;
 
@@ -19,11 +20,11 @@ public class Update {
         return id;
     }
 
-    public Map<String, String> getProperties() {
+    public HashMap<String, String> getProperties() {
         return properties;
     }
 
-    public Map<String, String[]> getRelations() {
+    public HashMap<String, String[]> getRelations() {
         return relations;
     }
 
