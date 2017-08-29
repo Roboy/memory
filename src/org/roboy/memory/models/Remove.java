@@ -1,25 +1,21 @@
 package org.roboy.memory.models;
 
-import java.util.Map;
+import java.util.HashSet;
 
-public class Remove {
+public class Remove extends RosNode {
 
-    private int id;
-    private String type;
-    private String label;
+    private HashSet<String> properties;
 
-    private Map<String, String[]> relations;
-    private String[] properties;
-
-    public int getId() {
-        return id;
-    }
-
-    public String[] getProperties() {
+    public HashSet<String> getPropertiesList() {
         return properties;
     }
 
-    public Map<String, String[]> getRelations() {
-        return relations;
+    @Override
+    public boolean validate() {
+        if(getId() == null) {
+            error("No ID specified");
+            return false;
+        }
+         return true;
     }
 }

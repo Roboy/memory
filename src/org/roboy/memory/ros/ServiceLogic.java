@@ -44,12 +44,12 @@ class ServiceLogic {
 
     //Get
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
-        Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
+        Header header = parser.fromJson(request.getHeader(), Header.class);
         Get get = parser.fromJson(request.getPayload(), Get.class);
         if (get.getId() != 0) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
-            response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
+            response.setAnswer(Neo4j.getNode(get));
         }
     };
 
@@ -65,7 +65,12 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Remove remove = parser.fromJson(request.getPayload(), Remove.class);
 
-        response.setAnswer(ok(Neo4j.remove(remove.getId(), remove.getRelations(), remove.getProperties())));
+        if(remove.validate()) {
+            response.setAnswer(ok(Neo4j.remove(remove)));
+        } else {
+            response.setAnswer(error(remove.getError()));
+        }
+
     };
 
 }

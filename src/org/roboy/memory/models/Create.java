@@ -6,40 +6,15 @@ import org.roboy.memory.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Create {
-    @Deprecated
-    private String type;
+public class Create extends RosNode {
 
-    private String label;
     private String[] faceVector;
-    private transient String error;
-
-    private HashMap<String, String> properties;
-
-    public String getLabel() {
-        return StringUtils.capitalise(label.toLowerCase());
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public HashMap<String, String> getProperties() {
-        return properties;
-    }
 
     public String[] getFace() {
         return faceVector;
     }
 
-    private void error(String text) {
-        error = text;
-    }
-
-    public String getError() {
-        return error;
-    }
-
+    @Override
     public boolean validate() {
         if (this.getProperties() == null) { //error msg if there are no properties
             error("no properties");

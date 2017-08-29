@@ -1,32 +1,11 @@
 package org.roboy.memory.models;
 
-import java.util.Map;
+import java.util.HashMap;
 
-public class Get {
+public class Get extends RosNode {
 
-    private String label;
-    private int id;
-
-    private Map<String, String[]> relations;
-    private Map<String, String> properties;
-
-    public int getId() {
-
-        return id;
-    }
-
-    public String getLabel() {
-
-        return label;
-    }
-
-    public Map<String, String[]> getRelations() {
-
-        return relations;
-    }
-
-    public Map<String, String> getProperties() {
-
-        return properties;
+    @Override
+    public boolean validate() {
+        return true;
     }
 }

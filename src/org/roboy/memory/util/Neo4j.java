@@ -1,8 +1,7 @@
 package org.roboy.memory.util;
 
 import com.google.gson.Gson;
-import org.apache.maven.shared.utils.StringUtils;
-import org.neo4j.driver.internal.types.InternalTypeSystem;
+import com.google.gson.JsonObject;
 import org.neo4j.driver.v1.*;
 import org.roboy.memory.models.*;
 import redis.clients.jedis.Jedis;
@@ -22,7 +21,7 @@ public class Neo4j implements AutoCloseable {
     private static Neo4j _instance;
     private static Driver _driver;
     private static Jedis jedis;
-    private static Gson parser = new Gson();
+    private static Gson gson = new Gson();
     private static Logger logger = Logger.getLogger(Neo4j.class.toString());
 
     private Neo4j() {
@@ -57,18 +56,9 @@ public class Neo4j implements AutoCloseable {
     //run only cypher service
     public static String run(String query) {
         try (Session session = getInstance().session()) {
-            StatementResult result = session.run(query);
-            String response = "";
-            Value value;
             logger.info(query);
-            while (result.hasNext()) {
-                value = result.next().get(0);
-                if (value.hasType(InternalTypeSystem.TYPE_SYSTEM.NODE())) { //if response is Node
-                    response += value.asMap().toString() + ", ";
-                } else { //if responce is String
-                    response += value.toString() + ", ";
-                }
-            }
+            StatementResult result = session.run(query);
+            String response = gson.toJson(result.list());
             logger.info(response);
             return response;
         }
@@ -97,7 +87,9 @@ public class Neo4j implements AutoCloseable {
             logger.info(query);
             return tx.run(query, parameters());
         });
-        String id = "{'id': " + result.next().get(0).toString() + "}";
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("id", result.single().get(0).asInt());
+        String id = jsonObject.getAsString();
 
         if (create.getFace() != null) {
             saveToJedis(create.getFace(), id);
@@ -128,7 +120,7 @@ public class Neo4j implements AutoCloseable {
 
     private static String update(Transaction tx, Update update) {
         //update properties
-        String result = "updated";
+        JsonObject result = new JsonObject();
         if (update.getProperties().size() > 0) {
             QueryBuilder paramUpdate = new QueryBuilder();
             paramUpdate.matchById(update.getId(), "n");
@@ -140,25 +132,27 @@ public class Neo4j implements AutoCloseable {
             if (propNum < 1) {
                 throw new NullPointerException();
             }
-            result += " properties: " + propNum + ";";
+            result.addProperty("properties updated", statementResult.summary().counters().containsUpdates());
         }
 
         //create new relations
-        if(update.getRelations().size() > 0) {
+        if (update.getRelationships().size() > 0) {
             QueryBuilder builder = new QueryBuilder();
             builder.matchById(update.getId(), "n");
-            for (int i = 0; i < update.getRelations().size(); i++) {
-                String array = "[" + StringUtils.join((String[]) update.getRelations().values().toArray()[i], ",") + "]";
-                builder.add("MATCH (m%d) WHERE ID(m%d) IN %s ", i, i, array);
-                builder.add("MERGE (n)-[r%d:%s]-(m%d)", i, update.getRelations().keySet().toArray()[i], i);
+            int counter = 0;
+            for (Map.Entry<String, int[]> entry : update.getRelationships().entrySet()) {
+                builder.add("MATCH (m%d) WHERE ID(m%d) IN %s ", counter, counter, gson.toJson(entry.getValue()));
+                builder.add("MERGE (n)-[r%d:%s]-(m%d)", counter, entry.getKey(), counter);
+                counter++;
             }
             builder.add("RETURN n");
             logger.info(builder.getQuery());
             StatementResult statementResult = tx.run(builder.getQuery(), parameters());
-            result += " relations: " + statementResult.summary().counters().relationshipsCreated();
+            result.addProperty("relations created", statementResult.summary().counters().relationshipsCreated());
         }
 
-        return result;
+        logger.info(result.getAsString());
+        return result.getAsString();
     }
 
 
@@ -173,214 +167,114 @@ public class Neo4j implements AutoCloseable {
     }
 
     private static String matchNodeById(Transaction tx, int id) {
-
-        String queryProperties = "MATCH (a) where ID(a)=" + id + " RETURN a";
-        String queryID = "MATCH (a) where ID(a)=" + id + " RETURN ID(a)";
-        String queryRelations = "MATCH (a)-[r]-(b) WHERE ID(a) = " + id + " Return type(r),ID(b)";
-        String queryLabels = "MATCH (a) WHERE ID(a) = " + id + " Return labels(a)";
-        HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>();
-
-        logger.info(queryID);
-        logger.info(queryLabels);
-        logger.info(queryProperties);
-        logger.info(queryRelations);
-
-        StatementResult result = tx.run(queryID, parameters()); //run query
-        String ID = "";
-        if (result.hasNext()) {
-            ID = "'id': " + result.next().get(0).toString();
-
-            result = tx.run(queryProperties, parameters()); //run query
-            String properties = "";
-            if (result.hasNext()) {
-                properties = ", 'properties': " + parser.toJson(result.next().get(0).asMap());
-            }
-
-            result = tx.run(queryRelations, parameters()); //run queryRelations
-            String relationResponse = "";
-            if (result.hasNext()) {
-                relationResponse = ", 'relations': ";
-                while (result.hasNext()) {
-                    Record next = result.next();
-                    String key = next.get(0).toString();
-                    String value = next.get(1).toString();
-                    if (!relAndIDs.containsKey(next.get(0).toString())) {
-                        relAndIDs.put(key, new HashSet<String>(Arrays.asList(next.get(1).toString())));
-                    } else {
-                        relAndIDs.get(key).add(value);
-                    }
-                }
-                relationResponse += relAndIDs.toString().replace('=', ':');
-            }
-
-            result = tx.run(queryLabels, parameters()); //run query
-            String labels = "";
-            if (result.hasNext()) {
-                labels = ", 'labels': [";
-                while (result.hasNext()) {
-                    String value = result.next().get(0).toString();
-                    labels += value.substring(1, value.length() - 1) + ", ";
-                }
-                labels = labels.substring(0, labels.length() - 2) + "]";
-            }
-
-            logger.info(ID + labels + properties + relationResponse);
-            return ("{" + ID + labels + properties + relationResponse + "}").toLowerCase();
-        } else {
-            return "";
-        }
-    }
-
-    public static String getNode(String label, Map<String, String[]> relations, Map<String, String> properties) {
-
-        try (Session session = getInstance().session()) {
-            return session.readTransaction(new TransactionWork<String>() {
-                @Override
-                public String execute(Transaction tx) {
-                    return matchNode(tx, label, relations, properties);
-                }
-            });
-        }
-    }
-
-    private static String matchNode(Transaction tx, String label, Map<String, String[]> relations, Map<String, String> properties) {
-
-        //MATCH (a)-[r1]-(b1)-[r2]->(b2)
-        //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
-        //RETURN a
-        String match = "";
-        String where = "";
-
-
-        if (relations != null) {
-            if (Objects.equals(where, "")) {
-                where = " WHERE ";
-            }
-
-            int i = 0;
-            for (Map.Entry<String, String[]> next : relations.entrySet()) {
-                //iterate over the pairs
-                for (int j = 0; j < next.getValue().length; j++) {
-                    String relID = next.getValue()[j];
-                    if (i < relations.size() - 1) {
-                        match += "-[r" + i + j + "]-(b" + i + j + ")";
-                    } else {
-                        match += "-[r" + i + j + "]->(b" + i + j + ")";
-                    }
-                    where += "type(r" + i + j + ")=~ '" + next.getKey().toUpperCase();
-                    where += "' AND ID(b" + i + j + ") = " + relID;
-                }
-
-                where += " AND ";
-
-                i++;
-            }
-            where = where.substring(0, where.length() - 4);
-        }
-
-        if (properties != null) {
-            if (Objects.equals(where, "")) {
-                where = " WHERE ";
-            } else {
-                where += "AND ";
-            }
-
-            for (Map.Entry<String, String> next : properties.entrySet()) {
-                //iterate over the pairs
-                if (next.getValue().matches("^[0-9]*$")) {
-                    where += "a." + next.getKey() + " = " + next.getValue().substring(0, 1).toUpperCase() + next.getValue().substring(1).toLowerCase() + " AND ";
-                } else {
-                    where += "a." + next.getKey() + " = '" + next.getValue().substring(0, 1).toUpperCase() + next.getValue().substring(1).toLowerCase() + "' AND ";
-                }
-            }
-            where = where.substring(0, where.length() - 5);
-        }
-        String query = "MATCH (a";
-        if (label != null) {
-            query += ":" + label;
-        }
-
-        query += ")" + match + where + " RETURN ID(a)";
+        QueryBuilder builder = new QueryBuilder();
+        builder.add("match (n)-[r]-(m) WHERE id(n)=%d return n,type(r) as name,id(m) as id", id);
+        String query = builder.getQuery();
         logger.info(query);
-        StatementResult result = tx.run(query, parameters());
-        String response = "";
-        while (result.hasNext()) {
-            response += result.next().get(0).toString() + ", ";
+        StatementResult result = tx.run(builder.getQuery(), parameters());
+        List<Record> records = result.list();
+
+        HashMap<String, String> properties = new HashMap<>();
+        for (Map.Entry<String, Object> entry : records.get(0).get(0).asMap().entrySet()) {
+            properties.put(entry.getKey(), (String) entry.getValue());
         }
-        if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
-        response = "{'id':[" + response + "]}";
-        logger.info(response);
-        return response.toLowerCase();
+
+        HashMap<String, ArrayList<Integer>> relationships = new HashMap<>();
+        for (Record record : records) {
+            String name = record.get("name").asString();
+            if (!relationships.containsKey(name)) {
+                relationships.put(name, new ArrayList<>());
+            }
+            relationships.get(name).add(record.get("id").asInt());
+        }
+
+        HashMap<String, int[]> relations = new HashMap<>();
+//        for (Map.Entry<String, ArrayList<Integer>> entry : relationships.entrySet()) {
+//            relations.put(entry.getKey(), (int[]) entry.getValue().toArray());
+//        }
+        Node node = createNode(id, properties, relations);
+        logger.info(gson.toJson(node));
+        return gson.toJson(node);
+    }
+
+    private  static Node createNode(int id, HashMap<String, String> properties, HashMap<String, int[]> relations) {
+        Node node = new Node();
+        node.setId(id);
+        node.setProperties(properties);
+        node.setRelationships(relations);
+        return node;
+    }
+
+    public static String getNode(Get get) {
+        try (Session session = getInstance().session()) {
+            return session.readTransaction(tx -> matchNode(tx, get));
+        }
+    }
+
+    private static String matchNode(Transaction tx, Get get) {
+        QueryBuilder builder = new QueryBuilder();
+        builder.add("MATCH (n:%s", get.getLabel());
+        builder.addParameters(get.getProperties());
+        builder.add(")");
+        int counter = 0;
+        for (Map.Entry<String, int[]> entry : get.getRelationships().entrySet()) {
+            builder.add("MATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, counter, counter, gson.toJson(entry.getValue()));
+            counter++;
+        }
+        builder.add("RETURN ID(n)");
+        logger.info(builder.getQuery());
+        StatementResult result = tx.run(builder.getQuery(), parameters());
+
+        String json = gson.toJson(result.list(record -> record.get(0).asString()).toArray());
+        logger.info(json);
+        return json;
     }
 
     /**
      * Remove
-     *
-     * @param id
-     * @param relations
-     * @param properties
-     * @return
      */
-    public static String remove(int id, Map<String, String[]> relations, String[] properties) {
+    public static String remove(Remove remove) {
         try (Session session = getInstance().session()) {
-            return session.readTransaction(new TransactionWork<String>() {
-                @Override
-                public String execute(Transaction tx) {
-                    return removeRelsProps(tx, id, relations, properties);
-                }
-            });
+            return session.readTransaction(tx -> remove(tx, remove));
         }
     }
 
-    private static String removeRelsProps(Transaction tx, int id, Map<String, String[]> relations, String[] properties) {
-
-        String query = "";
-        String where = " WHERE ID(a)=" + id;
-        String delete = "";
-        String remove = "";
-
-
-        //Match (n)-[r1:LIVE_IN]->(b1),(n)-[r2:LIVE_IN]->(b2) where ID(n)=131 AND ID(b1)=78 AND ID(b2)=57 Delete r1,r2 Remove n.abc,n.xyz
-        if (relations != null) { //delete relations
-            query = "MATCH ";
-            delete = " Delete ";
-            int i = 0;
-            for (String key : relations.keySet()) {
-                for (int j = 0; j < relations.get(key).length; j++) {
-                    String relID = relations.get(key)[j];
-                    delete += "r" + i + j + ",";
-                    where += " AND ID(b" + i + j + ") = " + relID;
-                    query += "(a)-[r" + i + j + ":" + key.toUpperCase() + "]->(b" + i + j + "), ";
-                }
-                i++;
+    private static String remove(Transaction tx, Remove remove) {
+        //remove properties
+        JsonObject response = new JsonObject();
+        if (remove.getPropertiesList().size() > 0) {
+            QueryBuilder builder = new QueryBuilder();
+            builder.matchById(remove.getId(), "n");
+            for (String propery : remove.getPropertiesList()) {
+                builder.add("REMOVE n.%s", propery);
             }
-            query = query.substring(0, query.length() - 2);
-            delete = delete.substring(0, delete.length() - 1);
+            builder.add("RETURN n");
+            String query = builder.getQuery();
+            logger.info(query);
+            StatementResult result = tx.run(query, parameters());
+            response.addProperty("properties", result.summary().counters().propertiesSet());
         }
 
-        //Match n where ID(n)=1 REMOVE n.key
-        if (properties != null) { //delete properties
-            if (Objects.equals(query, "")) {
-                query = "MATCH (a) ";
+        if(remove.getRelationships().size() > 0) {
+            QueryBuilder builder = new QueryBuilder();
+            builder.matchById(remove.getId(), "n");
+            int counter = 0;
+            for (Map.Entry<String, int[]> entry : remove.getRelationships().entrySet()) {
+                builder.add("NATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, entry.getKey(), counter, counter, gson.toJson(entry.getValue()));
+                counter++;
             }
-            remove = " Remove ";
-            for (String key : properties) {
-                System.out.println(key);
-                if (!Objects.equals(key, "name")) {
-                    System.out.println(key);
-                    remove += "a." + key + ", ";
-                }
+            builder.add("REMOVE r%d", --counter);
+            while(counter != 0) {
+                builder.add(",r%d", --counter);
             }
-            remove = remove.substring(0, remove.length() - 2);
+            String query = builder.getQuery();
+            logger.info(query);
+            StatementResult result = tx.run(query, parameters());
+            response.addProperty("properties", result.summary().counters().propertiesSet());
         }
 
-        query += where + delete + remove;
-
-        logger.info(query);
-
-        StatementResult result = tx.run(query, parameters());
-        logger.info(result.toString());
-        return result.toString().toLowerCase();
+        logger.info(response.getAsString());
+        return response.getAsString();
     }
 
 }

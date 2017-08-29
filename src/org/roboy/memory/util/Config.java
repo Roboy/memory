@@ -12,9 +12,9 @@ public class Config {
     //Neo4J
     public final static String NEO4J_ADDRESS = "bolt://10.183.122.142:7687";
     public final static String NEO4J_USERNAME = "neo4j";
-    public final static String NEO4J_PASSWORD = "memory";
+    public final static String NEO4J_PASSWORD = "memory"; //do NOT commit password to the repo
 
     //Redis
     public final static String REDIS_URI = "redis://bot.roboy.org:6379/0";
-    public final static String REDIS_PASSWORD = "root"; //TODO: do NOT commit password to the repo
+    public final static String REDIS_PASSWORD = "root"; //do NOT commit password to the repo
 }
