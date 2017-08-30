@@ -87,9 +87,10 @@ public class Neo4j implements AutoCloseable {
             logger.info(query);
             return tx.run(query, parameters());
         });
+
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", result.single().get(0).asInt());
-        String id = jsonObject.getAsString();
+        String id = jsonObject.get("id").getAsString();
 
         if (create.getFace() != null) {
             saveToJedis(create.getFace(), id);
@@ -121,7 +122,7 @@ public class Neo4j implements AutoCloseable {
     private static String update(Transaction tx, Update update) {
         //update properties
         JsonObject result = new JsonObject();
-        if (update.getProperties().size() > 0) {
+        if (update.getProperties() != null) {
             QueryBuilder paramUpdate = new QueryBuilder();
             paramUpdate.matchById(update.getId(), "n");
             paramUpdate.set(update.getProperties(), "n");
@@ -133,10 +134,15 @@ public class Neo4j implements AutoCloseable {
                 throw new NullPointerException();
             }
             result.addProperty("properties updated", statementResult.summary().counters().containsUpdates());
+
+            logger.info(result.get("properties updated").getAsString());
+            return result.get("properties updated").getAsString();
         }
 
+
+
         //create new relations
-        if (update.getRelationships().size() > 0) {
+        if (update.getRelationships() != null) {
             QueryBuilder builder = new QueryBuilder();
             builder.matchById(update.getId(), "n");
             int counter = 0;
@@ -149,10 +155,13 @@ public class Neo4j implements AutoCloseable {
             logger.info(builder.getQuery());
             StatementResult statementResult = tx.run(builder.getQuery(), parameters());
             result.addProperty("relations created", statementResult.summary().counters().relationshipsCreated());
+
+            logger.info(result.get("relations created").getAsString());
+            return result.get("relations created").getAsString();
         }
 
-        logger.info(result.getAsString());
-        return result.getAsString();
+        logger.info("No relations or properties specified");
+        return "No relations or properties specified";
     }
 
 

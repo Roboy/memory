@@ -19,7 +19,7 @@ public class QueryBuilder {
     public void addParameters(HashMap<String, String> params) {
         String[] array = new String[params.size()];
         for (int i = 0; i < params.size(); i++) {
-            array[i] = params.keySet().toArray()[i] + ":" + params.values().toArray()[i];
+            array[i] = params.keySet().toArray()[i] + ":'" + params.values().toArray()[i] + "'";
         }
         add(" {" + StringUtils.join(array, ",") + "} ");
     }
@@ -34,7 +34,7 @@ public class QueryBuilder {
 
     public void set(HashMap<String, String> properties, String letter) {
         for (Map.Entry<String, String>  entry : properties.entrySet()) {
-            add(" SET " + letter + "." + entry.getKey() + "=" + entry.getValue() + " ");
+            add(" SET " + letter + "." + entry.getKey() + "='" + entry.getValue() + "' ");
         }
     }
 

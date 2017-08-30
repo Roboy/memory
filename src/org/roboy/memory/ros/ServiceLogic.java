@@ -25,6 +25,7 @@ class ServiceLogic {
 
         if(create.validate()) {
             response.setAnswer(Neo4j.createNode(create));
+            return;
         }
 
         response.setAnswer(create.getError());
@@ -37,6 +38,7 @@ class ServiceLogic {
 
         if(update.validate()) {
             response.setAnswer(ok(Neo4j.updateNode(update)));
+            return;
         }
 
         response.setAnswer(error(update.getError()));
