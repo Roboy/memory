@@ -3,6 +3,7 @@
 Getting started
 ===============
 
+
 Local Neo4j Instance
 --------------------------------------------------
 
@@ -26,11 +27,11 @@ To start using your local Neo4j instance:
 
 - run (username and password should be the same as in the previous step)::
 	
-	./populate.sh -u your_username -p your_password
+	./fetch_db.sh -u your_username -p your_password
 
 - wait the script to execute.
 
-This would populate the database with the intial Knowledge Representation data.
+This would populate the database with the initial Knowledge Representation data.
 
 
 Remote Neo4j Instance
@@ -49,31 +50,28 @@ For this, please use a password related to your specific user:
 Package Running
 --------------------------------------------------
 
-If you are using roboy_memory package in local mode, please use the username and password defined in the user configuration step together with '-m local' command line parameter to run from **$ROBOY_MEMORY** folder::
+For using roboy_memory package properly, please update the configuration file with the username and password specified for you::
 
-	java roboy_memory -m local -u your_username -p your_password
+	public final static String ROS_MASTER_URI = "***";
+    public final static String ROS_HOSTNAME = "***";
+    public final static String NEO4J_ADDRESS = "***";
+    public final static String NEO4J_USERNAME = "***";
+    public final static String NEO4J_PASSWORD = "***";
+    public final static String REDIS_URI = "***";
+    public final static String REDIS_PASSWORD = "***";
 
-If you are using roboy_memory package in remote mode, please use the username and password for the remote access together with '-m remote' command line parameter to run from **$ROBOY_MEMORY** folder::
+You may use either remote or local addresses and credentials. If using local configuration, then:
 
-	java roboy_memory -m remote -u user -p user_password
-
-	OR
-
-	java roboy_memory -m remote -u dialog -p dialog_password
-	
-	OR
-	
-	java roboy_memory -m remote -u vision -p vision_password
-	
-	OR
-	
-	java roboy_memory -m remote -u memory -p memory_password
+    public final static String ROS_MASTER_URI = "http://127.0.0.1:11311/";
+    public final static String ROS_HOSTNAME = "127.0.0.1";
+    public final static String NEO4J_ADDRESS = "bolt://127.0.0.1:7687";
+    public final static String REDIS_URI = "redis://127.0.0.1:6379/0";
 
 
-ROS Configuration (optional)
+ROS Configuration (remote)
 ---------------------------------------------------
 
-If you are using memory module on another PC, ROS interfaces require network setup. (more info: http://wiki.ros.org/ROS/NetworkSetup )
+If you are using memory module on the PC other then roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
 
 For this two variables in Config class (util package) should be changed.
 
@@ -81,5 +79,28 @@ For this two variables in Config class (util package) should be changed.
     ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
 
 
-.. todo::
-  Starting roboy_memory package and add interfaces for local and remote usage 
+Running the package
+---------------------------------------------------
+
+After you have entered the proper configuration:
+
+- in the project directory do::
+
+	mvn clean install
+
+- navigate to::
+
+    cd target
+
+- run the package::
+
+    java -jar roboy_memory-0.9.0-jar-with-dependencies.jar
+
+
+Development
+--------------------------------------------------
+
+For further development we recommend using Intellij IDEA IDE.
+The community edition is availiable here: `Download IDEA <https://www.jetbrains.com/idea/download/>`_.
+
+If you are eligible, we suggest applying for this package containing the full versions of JetBrains software `Free for Students <https://www.jetbrains.com/student/>`_.

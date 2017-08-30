@@ -1,6 +1,17 @@
 Installation
 =============
 
+Maven
+--------------------------------------------------
+
+The project requires Maven.
+
+You may get it here: `Download Maven <https://maven.apache.org/download.cgi>`_
+
+Consider checking this entries: `Install <https://maven.apache.org/install.html>`_,
+`Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
+
+
 Local Neo4j Instance
 --------------------------------------------------
 
@@ -100,6 +111,11 @@ Remote Neo4j Instance
 
 If the local instance is not necessary, use a remote Neo4j instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
 
+Remote Redis Instance
+--------------------------------------------------
+
+If the local instance is not necessary, use a remote Redis instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
+
 
 Package Installation
 --------------------------------------------------
@@ -110,6 +126,3 @@ The project is implemented upon a build automation tool - Maven, so the dependen
 	
 	git clone git@github.com:Roboy/roboy_memory.git
 
-- in the project directory do:: 
-
-	mvn clean install
