@@ -81,7 +81,7 @@ Check if any value in JSON query is missing.
     Exception in thread "pool-1-thread-18" com.google.gson.JsonSyntaxException:
     com.google.gson.stream.MalformedJsonException: Unterminated string at line 1 column 9 path $.
 
-Check if JSON is formed properly: quotes, parenthesis. Refer to :ref:`roboy-protocol:`
+Check if JSON is formed properly: quotes, parenthesis. Refer to :ref:`roboy-protocol`
 
 **Primitives are initialized with complex types in JSON query**::
 
@@ -94,14 +94,14 @@ Check if JSON is formed properly: quotes, parenthesis. Refer to :ref:`roboy-prot
     Exception in thread "pool-1-thread-22" com.google.gson.JsonSyntaxException:
     java.lang.IllegalStateException: Expected a string but was BEGIN_OBJECT at line 1 column 11 path $.label
 
-Check if the JSON query is type valid: JSON array instead of object is recieved. Change the respective values. Refer to :ref:`roboy-protocol:`.
+Check if the JSON query is type valid: JSON array instead of object is recieved. Change the respective values. Refer to :ref:`roboy-protocol`.
 
 **Complex types are initialized with primitive types in JSON query**::
 
     Exception in thread "pool-1-thread-21" com.google.gson.JsonSyntaxException:
     java.lang.IllegalStateException: Expected BEGIN_ARRAY but was STRING at line 1 column 35 path $.properties[0]
 
-Check if the JSON query is type valid: primitive objects instead of JSON arrays are recieved. Change the respective values. Refer to :ref:`roboy-protocol:`.
+Check if the JSON query is type valid: primitive objects instead of JSON arrays are recieved. Change the respective values. Refer to :ref:`roboy-protocol`.
 
 **Wrong complex type is applied on initialization in JSON query**::
 
@@ -111,7 +111,7 @@ Check if the JSON query is type valid: primitive objects instead of JSON arrays 
     Exception in thread "pool-1-thread-22" com.google.gson.JsonSyntaxException:
     java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 11 path $.label
 
-Check if the JSON query is type valid: JSON object instead of JSON array and vice versa are recieved. Change the respective values. Refer to :ref:`roboy-protocol:`.
+Check if the JSON query is type valid: JSON object instead of JSON array and vice versa are received. Change the respective values. Refer to :ref:`roboy-protocol`.
 
 
 
