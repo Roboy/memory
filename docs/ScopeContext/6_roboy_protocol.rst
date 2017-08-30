@@ -33,35 +33,5 @@ There we have to get the node (id) of a friend which name corresponds to the nam
 After recieving the correspondent node (id) we can relate the node (person) with Roboy as friends, that is performed by the query initialized with the second example of the payload.
 
 
-Create queries
---------------------------------------------------
-
-- Create a 'Person' node with name Lucas ::
-
-	rosservice call /roboy/cognition/memory/create
-	    "\"{
-	    'user':'vision','datetime':'1234567'
-	}\"" "\"{
-	    'type':'node',
-	    'label':'Person',
-	    'properties':{'name':'Lucas', 'sex':'male'}
-	}\""
-
-
-
-
-
-Update queries
---------------------------------------------------
-
-
-
-Get queries
---------------------------------------------------
-
-
-
-Remove queries
---------------------------------------------------
 
 
