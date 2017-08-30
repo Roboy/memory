@@ -103,4 +103,4 @@ Development
 For further development we recommend using Intellij IDEA IDE.
 The community edition is availiable here: `Download IDEA <https://www.jetbrains.com/idea/download/>`_.
 
-If you are eligible, we suggest applying for this package containing the full versions of JetBrains software `Free for Students <https://www.jetbrains.com/student/>`_.
+If you are eligible, we suggest applying for `this package <https://www.jetbrains.com/student/>`_ containing the full versions of JetBrains software for free.
