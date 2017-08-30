@@ -19,35 +19,78 @@ Before proceeding further, please commence a user configuration step:
 
 - wait the script to execute.
 
-To start using your local Neo4j instance:
+To copy remote Neo4j DB into your local instance:
 
-- please navigate inside the package folder **$ROBOY_MEMORY** to::
-	
-	cd scripts
+- WRITE NEW PROCEDURE
 
-- run (username and password should be the same as in the previous step)::
-	
-	./fetch_db.sh -u your_username -p your_password
+Be cautious! This procedure will overwrite your credentials with the remote ones, see below.
 
-- wait the script to execute.
+Local Redis Instance
+--------------------------------------------------
 
-This would populate the database with the initial Knowledge Representation data.
+In order to have Redis properly configured, go through the next steps:
 
+- create a directory where to store your Redis config files and your data::
+
+    sudo mkdir /etc/redis
+    sudo mkdir /var/redis
+
+- copy the template configuration file you'll find in the root directory of the Redis distribution::
+
+    sudo cp redis.conf /etc/redis/6379.conf
+
+- create a directory that will work as data and working directory::
+
+    sudo mkdir /var/redis/6379
+
+- in the configuration file: set the **pidfile** to /var/run/redis_6379.pid, set the **logfile** to /var/log/redis_6379.log, set the **dir** to /var/redis/6379
+
+Before proceeding further, please commence a password configuration step:
+
+- please navigate to Redis configuration::
+
+	cd /etc/redis/
+
+- open configuration file with a text editor::
+
+	vi 6379.conf OR nano 6379.conf
+
+- find the line conatining 'requirepass', uncomment it and enter your password::
+
+    requirepass some_passphrase
+
+- save and start Redis with the updated configuration::
+
+    ./redis-server /etc/redis/6379.conf
 
 Remote Neo4j Instance
 --------------------------------------------------
 
 To use a remote intance of Neo4j containing the most recent Knowledge Representation, ensure your connectivity to the Roboy server.
-If the server is up, use the roboy_memory package in the remote mode (default).
-For this, please use a password related to your specific user:
+If the server is up, use the roboy_memory package in the remote mode (default):
+
+- bolt://bot.roboy.org:7687 - for the package configuration (enter this in config file)
+- http://bot.roboy.org:7474 - for the GUI access in web-browser
+
+For this, please use a remote Neo4j password related to your specific user:
 
 - user, a generic Roboy member
 - dialog, a dialog team member
 - vision, a vision team member
 - memory, a memory team member (developer)
 
+Remote Redis Instance
+--------------------------------------------------
 
-Package Running
+To use a remote instance of Redis containing the most recent faces features, ensure your connectivity to the Roboy server.
+If the server is up, use the roboy_memory package in the remote mode (default):
+
+- redis://bot.roboy.org:6379/0 - for the package configuration (enter this in config file)
+
+For this, please use the remote Redis password.
+
+
+Configuring the Package
 --------------------------------------------------
 
 For using roboy_memory package properly, please update the configuration file with the username and password specified for you::
@@ -87,7 +130,7 @@ If you running ros in a virtual machine, please configure bridged networking and
 - `Hyper-V <https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/connect-to-network>`_. We don't recommend using this one, but as you like.
 
 
-Running the package
+Running the Package
 ---------------------------------------------------
 
 After you have entered the proper configuration:
@@ -103,6 +146,12 @@ After you have entered the proper configuration:
 - run the package::
 
     java -jar roboy_memory-0.9.0-jar-with-dependencies.jar
+
+Using Remote
+---------------------------------------------------
+
+Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
+Please, do not crush everything. You would make little `kittens very sad <goo.gl/FZsTTm>`_.
 
 
 Development
