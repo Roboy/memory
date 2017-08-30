@@ -71,7 +71,7 @@ You may use either remote or local addresses and credentials. If using local con
 ROS Configuration (remote)
 ---------------------------------------------------
 
-If you are using memory module on the PC other then roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
+If you are using memory module on the PC other then one with roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
 
 For this two variables in Config class (util package) should be changed:
 
@@ -83,8 +83,8 @@ If you running ros in a virtual machine, please configure bridged networking and
 - `VMware Fusion <https://docs.vmware.com/en/VMware-Fusion/8.0/com.vmware.fusion.using.doc/GUID-E498672E-19DD-40DF-92D3-FC0078947958.html>`_
 - `VMware Workstation <https://docs.vmware.com/en/VMware-Workstation-Pro/12.0/com.vmware.ws.using.doc/GUID-0CE1AE01-7E79-41BB-9EA8-4F839BE40E1A.html>`_
 - `Parallels <http://kb.parallels.com/en/4948>`_
-- `VirtualBox <https://www.virtualbox.org/manual/ch06.html`_
-- `Hyper-V <https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/connect-to-network`_. We don't recommend using this one, but as you like.
+- `VirtualBox <https://www.virtualbox.org/manual/ch06.html>`_
+- `Hyper-V <https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/connect-to-network>`_. We don't recommend using this one, but as you like.
 
 
 Running the package
