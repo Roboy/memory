@@ -401,9 +401,7 @@ public class Neo4j implements AutoCloseable {
             }
             remove = " Remove ";
             for (String key : properties) {
-                System.out.println(key);
                 if (!Objects.equals(key, "name")) {
-                    System.out.println(key);
                     remove += "a." + key + ", ";
                 }
             }
