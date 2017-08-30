@@ -1,22 +1,19 @@
 .. _initial_experience:
 
-How to use the ROS services
+Using the ROS services
 ================================
 
-This Wiki gives examples on how to query the Neo4J-DB over ROS with JSON.
-
+There you can find examples on how to query the memory with JSON-formed queries using ROS.
 
 Available ROS services
 --------------------------------------------------
 
-create      //create a node
+The Roboy Memory package offers the next services in order to work with the memory contents:
 
-update      //add relationships or properties to a node
-
-get         //get infos about nodes or find a node
-
-remove      //remove properties or relationships of a node
-
+- create - creates a node in the Neo4j DB with provided properties and face features (Redis)
+- update - adds new relationships between specified nodes or properties to the specified node
+- get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
+- remove - removes properties or relationships from the specified node
 
 Comosition of Memory-ROS messages
 --------------------------------------------------
