@@ -4,9 +4,7 @@ Installation
 Maven
 --------------------------------------------------
 
-The project requires Maven.
-
-You may get it here: `Download Maven <https://maven.apache.org/download.cgi>`_
+The project requires Maven. You may get it here: `Download Maven <https://maven.apache.org/download.cgi>`_
 
 Consider checking this entries: `Install <https://maven.apache.org/install.html>`_,
 `Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
@@ -105,6 +103,10 @@ Follow these steps as **root**:
 
 - congratulations! You have started the Neo4j instance!
 
+Local Redis Instance
+--------------------------------------------------
+
+
 
 Remote Neo4j Instance
 --------------------------------------------------
@@ -115,6 +117,10 @@ Remote Redis Instance
 --------------------------------------------------
 
 If the local instance is not necessary, use a remote Redis instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
+
+Installing ROS
+--------------------------------------------------
+
 
 
 Package Installation

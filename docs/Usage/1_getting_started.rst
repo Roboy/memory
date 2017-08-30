@@ -76,8 +76,9 @@ If you are using memory module on the PC other then roscore, ROS interfaces requ
 For this two variables in Config class (util package) should be changed:
 
 - ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
-
 - ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
+
+If you running ros in a virtual machine, please configure brisging and use the respective IP adresses.
 
 
 Running the package
