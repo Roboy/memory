@@ -212,10 +212,10 @@ public class Neo4j implements AutoCloseable {
         String queryLabels = "MATCH (a) WHERE ID(a) = " + id +" Return labels(a)";
         HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>();
 
-        logger.warning(queryID);
-        logger.warning(queryLabels);
-        logger.warning(queryProperties);
-        logger.warning(queryRelations);
+        logger.info(queryID);
+        logger.info(queryLabels);
+        logger.info(queryProperties);
+        logger.info(queryRelations);
 
         StatementResult result = tx.run(queryID, parameters() ); //run query
         String ID = "";
@@ -257,7 +257,7 @@ public class Neo4j implements AutoCloseable {
             }
 
 
-            logger.warning(("{" + ID + labels + properties + relationResponse + "}").toLowerCase());
+            logger.info(("{" + ID + labels + properties + relationResponse + "}").toLowerCase());
             return ("{" + ID + labels + properties + relationResponse + "}").toLowerCase();
         } else {
             return "";
@@ -301,7 +301,7 @@ public class Neo4j implements AutoCloseable {
                     } else {
                         match += "-[r" + i + j + "]->(b" + i + j + ")";
                     }
-                    where += " AND type(r" + i + j + ")=~ '" + next.getKey().toUpperCase();
+                    where += "type(r" + i + j + ")=~ '" + next.getKey().toUpperCase();
                     where += "' AND ID(b" + i + j + ") = " + relID;
                 }
 
@@ -335,7 +335,7 @@ public class Neo4j implements AutoCloseable {
         }
 
         query += ")" + match + where + " RETURN ID(a)";
-        logger.warning(query);
+        logger.info(query);
         StatementResult result = tx.run(query, parameters() );
         String response = "";
         while (result.hasNext()) {
@@ -343,7 +343,7 @@ public class Neo4j implements AutoCloseable {
         }
         if (!Objects.equals(response, "")) response = response.substring(0, response.length() - 2);
         response = "{'id':[" + response + "]}";
-        logger.warning(response);
+        logger.info(response);
         return response.toLowerCase();
     }
 
