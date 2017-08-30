@@ -78,7 +78,13 @@ For this two variables in Config class (util package) should be changed:
 - ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
 - ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
 
-If you running ros in a virtual machine, please configure brisging and use the respective IP adresses.
+If you running ros in a virtual machine, please configure bridged networking and use the respective IP addresses:
+
+- `VMware Fusion <https://docs.vmware.com/en/VMware-Fusion/8.0/com.vmware.fusion.using.doc/GUID-E498672E-19DD-40DF-92D3-FC0078947958.html>`_
+- `VMware Workstation <https://docs.vmware.com/en/VMware-Workstation-Pro/12.0/com.vmware.ws.using.doc/GUID-0CE1AE01-7E79-41BB-9EA8-4F839BE40E1A.html>`_
+- `Parallels <http://kb.parallels.com/en/4948>`_
+- `VirtualBox <https://www.virtualbox.org/manual/ch06.html`_
+- `Hyper-V <https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/connect-to-network`_. We don't recommend using this one, but as you like.
 
 
 Running the package
@@ -103,6 +109,6 @@ Development
 --------------------------------------------------
 
 For further development we recommend using Intellij IDEA IDE.
-The community edition is availiable here: `Download IDEA <https://www.jetbrains.com/idea/download/>`_.
+The community edition is available here: `Download IDEA <https://www.jetbrains.com/idea/download/>`_.
 
 If you are eligible, we suggest applying for `this package <https://www.jetbrains.com/student/>`_ containing the full versions of JetBrains software for free.
