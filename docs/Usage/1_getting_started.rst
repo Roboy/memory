@@ -52,7 +52,7 @@ Package Running
 
 For using roboy_memory package properly, please update the configuration file with the username and password specified for you::
 
-	public final static String ROS_MASTER_URI = "***";
+    public final static String ROS_MASTER_URI = "***";
     public final static String ROS_HOSTNAME = "***";
     public final static String NEO4J_ADDRESS = "***";
     public final static String NEO4J_USERNAME = "***";
@@ -60,7 +60,7 @@ For using roboy_memory package properly, please update the configuration file wi
     public final static String REDIS_URI = "***";
     public final static String REDIS_PASSWORD = "***";
 
-You may use either remote or local addresses and credentials. If using local configuration, then:
+You may use either remote or local addresses and credentials. If using local configuration, then::
 
     public final static String ROS_MASTER_URI = "http://127.0.0.1:11311/";
     public final static String ROS_HOSTNAME = "127.0.0.1";
@@ -73,10 +73,11 @@ ROS Configuration (remote)
 
 If you are using memory module on the PC other then roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
 
-For this two variables in Config class (util package) should be changed.
+For this two variables in Config class (util package) should be changed:
 
-    ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
-    ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
+- ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
+
+- ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
 
 
 Running the package
