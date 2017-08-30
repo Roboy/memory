@@ -57,7 +57,8 @@ Check if Redis is up and the Redis address in configuration is stated properly.
 
 **Redis credentials are incorrect**::
 
-Exception in thread "pool-1-thread-16" redis.clients.jedis.exceptions.JedisDataException: ERR invalid password
+    Exception in thread "pool-1-thread-16" redis.clients.jedis.exceptions.JedisDataException:
+    ERR invalid password
 
 Check if Redis credentials in configuration are stated properly.
 
