@@ -127,7 +127,37 @@ You may use either remote or local addresses and credentials. If using local con
 ROS Configuration (remote)
 ---------------------------------------------------
 
+Before you can use ROS, you will need to initialize rosdep::
 
+    sudo rosdep init
+    rosdep update
+
+To install dependencies for building ROS packages, run::
+
+    sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+
+Afterwords, procceed with installing catkin::
+
+    sudo apt-get install ros-kinetic-catkin
+
+Source the environment like this::
+
+    echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+    source ~/.bashrc
+
+Build a catkin workspace::
+
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws/
+    catkin_make
+
+Source your new setup.*sh file::
+
+    source devel/setup.bash
+
+Then in separate Terminal, run::
+
+    roscore
 
 If you are using Memory Module on the PC other then one with roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
 
