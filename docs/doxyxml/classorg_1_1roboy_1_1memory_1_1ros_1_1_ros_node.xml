@@ -11,7 +11,7 @@
         <name>name</name>
         <initializer>= &quot;/roboy/cognition/memory&quot;</initializer>
         <briefdescription>
-        </briefdescription>
+<para>URI for the ROS node. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -34,12 +34,27 @@
           <declname>nodeMainExecutor</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Registers the ROS node. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nodeConfiguration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the ROS node configurator </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nodeMainExecutor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the ROS node executor </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="18" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="24" bodyend="27"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="24" bodyend="26"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="30" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a93a8b3b08d2521f782297ac8b3ec310f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -66,18 +81,26 @@
           <declname>connectedNode</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Initialising the ROS services and setting ROS services URIs. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>connectedNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the ROS node carrying the services. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="29" bodyend="35"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="40" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="40" bodyend="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>ROS Service for saving data object to DB. </para>    </briefdescription>
     <detaileddescription>
-<para>Data is received as JSON object. JSON object is parsed using Parser (not implemented) and saved to neo4j. </para>    </detaileddescription>
+<para>Data is received as JSON object. JSON object is parsed using Parser and saved to neo4j. </para>    </detaileddescription>
     <inheritancegraph>
       <node id="26">
         <label>org.roboy.memory.ros.RosNode</label>
@@ -100,7 +123,7 @@
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="15" bodyend="37"/>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java" bodystart="15" bodyend="48"/>
     <listofallmembers>
       <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a7357186cc43c99e7d4145443ffff91ad" prot="public" virt="non-virtual"><scope>org::roboy::memory::ros::RosNode</scope><name>getDefaultNodeName</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a60c4b457aa270b9658c4d152a4e1e842" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::RosNode</scope><name>name</name></member>

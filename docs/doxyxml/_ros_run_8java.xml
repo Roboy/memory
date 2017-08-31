@@ -22,26 +22,25 @@
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15" refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run" kindref="compound">RosRun</ref><sp/>{</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>NodeMainExecutor<sp/>nodeMainExecutor;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>NodeConfiguration<sp/>nodeConfiguration;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run" kindref="compound">RosRun</ref>()<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>URISyntaxException<sp/>{</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>URI<sp/>masterUri<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>URI(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config" kindref="compound">Config</ref>.ROS_MASTER_URI);</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeConfiguration<sp/>=<sp/>NodeConfiguration.newPublic(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config" kindref="compound">Config</ref>.ROS_HOSTNAME,<sp/>masterUri);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeMainExecutor<sp/>=<sp/>DefaultNodeMainExecutor.newDefault();</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>start()<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//register<sp/>ros<sp/>node<sp/>with<sp/>services</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" kindref="compound">RosNode</ref>.register(nodeConfiguration,<sp/>nodeMainExecutor);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>stop()<sp/>{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeMainExecutor.shutdown();</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>NodeMainExecutor<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1adc7685f02bdb008ec436b96481cc0be5" kindref="member">nodeMainExecutor</ref>;<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>NodeConfiguration<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1a417814be275da7edac748c592720b6fb" kindref="member">nodeConfiguration</ref>;<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1aa04abbf8dbc73a4b61bf799def562d50" kindref="member">RosRun</ref>()<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>URISyntaxException<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>URI<sp/>masterUri<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>URI(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config" kindref="compound">Config</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a1f786eb88a73cd65bdf96538b0ce6f7a" kindref="member">ROS_MASTER_URI</ref>);<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeConfiguration<sp/>=<sp/>NodeConfiguration.newPublic(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config" kindref="compound">Config</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1aa71c2f17cfceaf3ab5b1d8ae4d8e88d7" kindref="member">ROS_HOSTNAME</ref>,<sp/>masterUri);<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeMainExecutor<sp/>=<sp/>DefaultNodeMainExecutor.newDefault();<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1a48063c7803e833bf1a45b9aec269b1b7" kindref="member">start</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" kindref="compound">RosNode</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a2ab28e05c9dc571d62b77e99860bb02c" kindref="member">register</ref>(nodeConfiguration,<sp/>nodeMainExecutor);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1ae4fd025ece15ebc8863c86dbcaaa7fcd" kindref="member">stop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeMainExecutor.shutdown();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java"/>
   </compounddef>

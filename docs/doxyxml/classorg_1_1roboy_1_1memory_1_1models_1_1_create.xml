@@ -9,12 +9,12 @@
         <argsstring></argsstring>
         <name>type</name>
         <briefdescription>
-        </briefdescription>
+<para>Currently only used to specify the type &quot;node&quot;. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="6" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="6" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1ad3efb0c79820bdb7374198667663aa78" prot="private" static="no" mutable="no">
         <type>String</type>
@@ -22,12 +22,12 @@
         <argsstring></argsstring>
         <name>label</name>
         <briefdescription>
-        </briefdescription>
+<para>Specifies the type of node that shall be created, like &quot;Person&quot;. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="7" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="7" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a28b00a9606088b1944e75912949ead72" prot="private" static="no" mutable="no">
         <type>String []</type>
@@ -35,12 +35,12 @@
         <argsstring></argsstring>
         <name>faceVector</name>
         <briefdescription>
-        </briefdescription>
+<para>JSON array containing facial features from vision module. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="8" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1af58158a7a19163ec7760e4a900df10f6" prot="private" static="no" mutable="no">
         <type>Map&lt; String, String &gt;</type>
@@ -48,12 +48,12 @@
         <argsstring></argsstring>
         <name>properties</name>
         <briefdescription>
-        </briefdescription>
+<para>Contains the node properties. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="10" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="12" bodyend="14"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="15" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a03daa8ea2bdf93fd9fcbb038d3047b6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="16" bodyend="18"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1ac0870ed4535c2fa5154b061042af0662" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Map&lt; String, String &gt;</type>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="20" bodyend="22"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="23" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a6fa0c0ef828a91e4c306f88e208713bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String []</type>
@@ -107,13 +107,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="24" bodyend="26"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="27" bodyend="29"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>Data model for JSON parser. </para>    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>Creates objects, that contain the elements of the <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create" kindref="compound">Create</ref> queries. </para>    </detaileddescription>
     <collaborationgraph>
       <node id="7">
         <label>Map&lt; String, String &gt;</label>
@@ -126,7 +126,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="5" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="5" bodyend="27"/>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Create.java" bodystart="8" bodyend="30"/>
     <listofallmembers>
       <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a28b00a9606088b1944e75912949ead72" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Create</scope><name>faceVector</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a6fa0c0ef828a91e4c306f88e208713bb" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Create</scope><name>getFace</name></member>

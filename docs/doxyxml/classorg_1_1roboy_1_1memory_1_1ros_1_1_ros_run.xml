@@ -9,12 +9,12 @@
         <argsstring></argsstring>
         <name>nodeMainExecutor</name>
         <briefdescription>
-        </briefdescription>
+<para>ROS executor. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="17" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1a417814be275da7edac748c592720b6fb" prot="private" static="no" mutable="no">
         <type>NodeConfiguration</type>
@@ -22,12 +22,12 @@
         <argsstring></argsstring>
         <name>nodeConfiguration</name>
         <briefdescription>
-        </briefdescription>
+<para>ROS node configurator. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="18" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,12 +38,12 @@
         <name>RosRun</name>
         <exceptions> throws URISyntaxException </exceptions>
         <briefdescription>
-        </briefdescription>
+<para>Constructor. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Initializes the ROS node. </para>        </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="20" bodyend="24"/>
+<para>&lt; URI of the PC running roscore</para><para>&lt; Configuration of the ROS node with current PC address and master address</para><para>&lt; Executing the ROS node </para>        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="25" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1a48063c7803e833bf1a45b9aec269b1b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -51,12 +51,12 @@
         <argsstring>()</argsstring>
         <name>start</name>
         <briefdescription>
-        </briefdescription>
+<para>Registers the ROS node with services in the network. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="27" bodyend="30"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="34" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1ae4fd025ece15ebc8863c86dbcaaa7fcd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -64,12 +64,12 @@
         <argsstring>()</argsstring>
         <name>stop</name>
         <briefdescription>
-        </briefdescription>
+<para>Shutdowns the ROS node and terminates the services. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="32" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="32" bodyend="34"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="41" bodyend="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -94,7 +94,7 @@
         <label>NodeConfiguration</label>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="15" bodyend="36"/>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosRun.java" bodystart="15" bodyend="45"/>
     <listofallmembers>
       <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1a417814be275da7edac748c592720b6fb" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::RosRun</scope><name>nodeConfiguration</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1adc7685f02bdb008ec436b96481cc0be5" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::RosRun</scope><name>nodeMainExecutor</name></member>
