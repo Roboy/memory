@@ -200,6 +200,10 @@ You can find detailed information in :ref:`technical-interfaces`
 Remove queries
 --------------------------------------------------
 
+.. warning::
+
+    Please, do not try running **remove** queries without considering significant risks. Be responsible!
+
 **Remove properties of node 15**::
 
     rosservice call /roboy/cognition/memory/remove "\"{

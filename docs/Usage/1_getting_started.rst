@@ -196,7 +196,10 @@ After you have entered the proper configuration:
 Using Remote
 ---------------------------------------------------
 
-Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
+.. warning::
+
+    Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
+
 Please, do not crush everything. You would make little `kittens very sad <http://goo.gl/FZsTTm>`_.
 
 
