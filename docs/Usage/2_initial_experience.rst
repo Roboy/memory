@@ -1,24 +1,19 @@
 .. _initial_experience:
 
-Usage of the ROS services
+Using the ROS services
 ================================
 
-This Wiki gives examples on how to query the Neo4J-DB over ROS with JSON.
-
+There you can find examples on how to query the memory with JSON-formed queries using ROS.
 
 Available ROS services
 --------------------------------------------------
 
+The Roboy Memory package offers the next services in order to work with the memory contents:
 
-- create - create a node
-
-- update - add relationships or properties to a node
-
-- get - get infos about nodes or find a node
-
-- remove - remove properties or relationships of a node
-
-
+- create - creates a node in the Neo4j DB with provided properties and face features (Redis)
+- update - adds new relationships between specified nodes or properties to the specified node
+- get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
+- remove - removes properties or relationships from the specified node
 
 Comosition of Memory-ROS messages
 --------------------------------------------------
@@ -44,9 +39,6 @@ The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and th
 'properties' = A map of property keys with values
 
 'relations' = A map of relationship types with an array of node ids
-
-
-
 
 Create queries
 --------------------------------------------------
@@ -74,9 +66,6 @@ Create queries
 {status:"FAIL", message:"no name specified in properties : name required"}
 
 {status:"FAIL", message:"Label 'Xyz' doesn't exist in the DB"}
-
-
-
 
 Update queries
 --------------------------------------------------
@@ -132,8 +121,6 @@ Update queries
 
 {status:"FAIL", message:"The relationship type 'XYZ' doesn't exist in the DB"}
 
-
-
 Get queries
 --------------------------------------------------
 
@@ -183,8 +170,6 @@ Get queries
     }\""
 
 **Answer:** {'id':[96]}     - //a vector with all fitting IDs
-
-
 
 Remove queries
 --------------------------------------------------

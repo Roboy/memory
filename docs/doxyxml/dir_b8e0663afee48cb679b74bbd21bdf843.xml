@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_b8e0663afee48cb679b74bbd21bdf843" kind="dir">
+    <compoundname>/Users/wagram/Roboy/roboy_memory/src/org</compoundname>
+    <innerdir refid="dir_62f0cc12762d77aa04ca3da9461d8f1a">/Users/wagram/Roboy/roboy_memory/src/org/roboy</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/"/>
+  </compounddef>
+</doxygen>

@@ -8,3 +8,4 @@ We follow the coding guidelines:
 
    "Java", "https://google.github.io/styleguide/javaguide.html", ""
    "Cypher", "https://neo4j.com/developer/cypher-query-language/", ""
+   "Redis", "https://redis.io/commands", ""
