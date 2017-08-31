@@ -35,7 +35,7 @@ Calling the ROS
 
 **General syntax for a ROS message**::
 
-    rosservice call /roboy/cognition/memory/--service_name-- "\"---Header---\"" "\"---Payload---\""
+    rosservice call /roboy/cognition/memory/--service_name-- "\"---header---\"" "\"---payload---\""
 
 **Sample Header:**
 
@@ -49,13 +49,14 @@ You may try using the next header for your initial experience.
         'datetime':'0'
     }
 
-**Sample Payload:**
+**Payload Elements:**
 
 The payload (JSON object) may comprise several elements such as:
 - 'label' specifies the class of node in the knowledge graph
 - 'id' of a node is a unique number specified for each node that may be accessed be searched or modified in the knowledge graph
 - 'relations' comprise a map of relationship types with an array of node ids for each of them, providing multiple relationships tracing
 - 'properties' = A map of property keys with values
+Consider :ref:`roboy_protocol` for the correct use use of properties, relationships and labels.
 Examples payloads as well as the whole structure of the calls are mentioned below.
 
 Create queries

@@ -3,206 +3,120 @@
 Public Interfaces (ROS)
 =======================
 
-Interfaces to other modules will be realized using ROS (rosjava). Currently 2 interfaces have been designed for communication with Memory Module:
+Interfaces to other modules are realized through ROS (rosjava).
+Currently 5 interfaces (ROS services) have been designed for communication with Memory Module.
 
-- **write service**: Service called to perform a query writing data into Neo4j database.::
+ROS Services
+--------------------------------------------------
+
+All calls are complaint to this general form::
+
+    rosservice call /roboy/cognition/memory/---service_name--- "\"---header---\"" "\"---payload---\""
+
+- **create service**: Service called to perform a query writing data into Neo4j database.::
 
 	# argument: String header String payload
 	# returns: String answer
 
 	rosservice call /roboy/cognition/memory/create
 
-- **read service:** Service called to perform a query reading data from Neo4j database.::
+- **get service:** Service called to perform a query reading data from Neo4j database.::
+
+	## argument: String header String payload
+	# returns: String answer
+
+	rosservice call /roboy/cognition/memory/get
+
+- **update service:** Service called to perform a query altering data in Neo4j database.::
 
 	## argument: String header String payload
 	# returns: String answer
 
 	rosservice call /roboy/cognition/memory/update
 
-The payload has to be defined according to :ref:`roboy-protocol`.
-Currently these interfaces are under development. 
+- **remove service:** Service called to perform a query deleting data from Neo4j database.::
 
-.. todo::
-describe more precisely
+	## argument: String header String payload
+	# returns: String answer
 
-    Header header
-	String payload
-	—-
-	String answer
+	rosservice call /roboy/cognition/memory/remove
 
+- **cypher service:** Service called to perform any Cypher query in Neo4j database.::
 
-.. _initial_experience:
+	## argument: String header String payload
+	# returns: String answer
 
+	rosservice call /roboy/cognition/memory/cypher
 
-.. _initial_experience:
+For the first 4 services the payload has to be defined according to :ref:`roboy-protocol`.
 
-ROS messages for memory
-================================
-
-This Wiki gives examples on how to query the Neo4J-DB over ROS with JSON.
-
-
-**Syntax of every query:**
-
-rosservice call /roboy/cognition/memory/---Service--- "\"{---Header---}\"" "\"{---Payload---}\""
-
-
-**Available ROS services:**
-
-create           //create a node
-update           //add relationships or properties to a node
-get              //get infos about nodes or find a node
-remove           //remove properties or relationships of a node
-
-
-**Header:**
-
-The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and the module which is sending the query ('user').
-
-**Payload:**
-
-Consider :ref:`roboy_protocol` for the correct use use of properties, relationships and labels.
+**Payload Elements:**
 
 - 'label' specifies the class of node in the knowledge graph
 - 'id' of a node is a unique number specified for each node that may be accessed be searched or modified in the knowledge graph
 - 'relations' comprise a map of relationship types with an array of node ids for each of them, providing multiple relationships tracing
 - 'properties' = A map of property keys with values
 
+Each of this element is peculiar to respective service payload.
 
+The Cypher service uses a well-formed query in Cypher as the payload, see :ref:`cypher`.
 
-Using the ROS services
-================================
-
-There you can find basic examples on how to access the memory with JSON-formed queries using ROS.
-
-Available ROS services
+Responses
 --------------------------------------------------
 
-The Roboy Memory Module offers the next services in order to work with the memory contents:
+**Create query** provides the following responses.
 
-- create - creates a node in the Neo4j DB with provided properties and face features (Redis)
-- update - adds new relationships between specified nodes or properties to the specified node
-- get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
-- remove - removes properties or relationships from the specified node
+Success:::
 
-Calling the ROS
---------------------------------------------------
+    {
+        'id': x
+    }
 
-**General syntax of ROS messages**::
+Failure:
 
-    rosservice call /roboy/cognition/memory/--service_name-- "\"---Header---\"" "\"---Payload---\""
+- some properties are not specified properly::
 
-**Example Header:**
+    {
+        status:"FAIL",
+        message:"no properties"
+    }
 
-The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and the module which is sending the query ('user').
+- when creating a node, the name property is obligatory, name is missing::
 
+    {
+        status:"FAIL",
+        message:"no name specified in properties : name required"
+    }
 
-**Payload:**
+- trying to create a node with a non-existing label, see :ref:`know_rep`::
 
-(Consider the Memory Neo4j Architecture Wiki for right use of properties, relationships and labels)
+    {
+        status:"FAIL",
+        message:"Label 'Xyz' doesn't exist in the DB"
+    }
 
-'label' = Specifies the type of node that shall be created
+**Update query** provides the following responses.
 
-'id' = The id of a node that shall be searched or modified
+Success:::
 
-'properties' = A map of property keys with values
+    {
+        status:"OK"
+    }
 
-'relations' = A map of relationship types with an array of node ids
+Failure:
 
-Create queries
---------------------------------------------------
+- trying to create a relationship with a non-existing type, see :ref:`know_rep`::
 
-**Create a node of the type 'Person' with properties**::
+    {
+        status:"FAIL",
+        message:"The relationship type 'XYZ' doesn't exist in the DB"
+    }
 
-    rosservice call /roboy/cognition/memory/create "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'label':'Person',
-        'properties':{
-            'name':'Lucas',
-            'sex':'male'
-        }
-    }\""
+**Get query** provides the following responses.
 
-**Answer:**  {'id': 160}        - //ID of the created node
+Success:
 
-**Errors messages:**
-
-{status:"FAIL", message:"no properties"}
-
-{status:"FAIL", message:"no name specified in properties : name required"}
-
-{status:"FAIL", message:"Label 'Xyz' doesn't exist in the DB"}
-
-Update queries
---------------------------------------------------
-
-**Add properties to the node with id 15**::
-
-    rosservice call /roboy/cognition/memory/update "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'id':15,
-        'properties':{
-            'surname':'Ki',
-            'xyz':'abc'
-        }
-    }\""
-
-**Add relations to the node with id 15**::
-
-    rosservice call /roboy/cognition/memory/update "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'id':15,
-        'relations':{
-            'LIVE_IN':[28,23],
-            'STUDY_AT':[16]
-        }
-    }\""
-
-**Add properties + relations to the node with id 15**::
-
-    rosservice call /roboy/cognition/memory/update "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'id':15,
-        'properties':{
-            'surname':'Ki', 'xyz':123
-        },
-        'relations':{
-            'LIVE_IN':[28,23],
-            'STUDY_AT':[16]
-        }
-    }\""
-
-**Answer:** {status:"OK"}
-
-**Errors message:**
-
-{status:"FAIL", message:"The relationship type 'XYZ' doesn't exist in the DB"}
-
-Get queries
---------------------------------------------------
-
-**Get properties and relationships of a node by id**::
-
-    rosservice call /roboy/cognition/memory/get "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'id':15
-    }\""
-
-**Answer:**::
+- getting by ID::
 
     {
         'id': 15,
@@ -222,64 +136,17 @@ Get queries
         }
     }
 
+- getting IDs::
 
-**Get ids of nodes which have all specified labels, relations and/or properties**::
+    {
+        'id':[x, y]
+    }
 
-    rosservice call /roboy/cognition/memory/get "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'label':'Person',
-        'relations':{
-            'FRIEND_OF':[15]
-        },
-        'properties':{
-            'name':'Laura'
-        }
-    }\""
+**Remove query** provides the following responses.
 
-**Answer:** {'id':[96]}     - //a vector with all fitting IDs
+Success:::
 
-Remove queries
---------------------------------------------------
-
-**Remove properties of node 15**::
-
-    rosservice call /roboy/cognition/memory/remove "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'id':15,
-        'properties':['birthdate','surname']
-    }\""
-
-**Remove relations of node 15**::
-
-    rosservice call /roboy/cognition/memory/remove "\"{
-        'user':'vision','datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'id':15,
-        'relations':{
-            'LIVE_IN':[28,23],
-            'STUDY_AT':[16]
-        }
-    }\""
-
-**Remove properties and relations of node 15**::
-
-    rosservice call /roboy/cognition/memory/remove "\"{
-        'user':'vision',
-        'datetime':'1234567'
-    }\"" "\"{
-        'type':'node',
-        'id':15,
-        'properties':['birthdate','surname'],
-        'relations':{
-            'LIVE_IN':[23]
-        }
-    }\""
-
-**Answer:** {status:"OK"}
+    {
+        status:"OK"
+    }
 
