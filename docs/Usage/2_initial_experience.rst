@@ -152,7 +152,6 @@ Get queries
         'id':15
     }\""
 
-On success you will get:
 **Answer:**::
 
 .. code-block:: javascript
