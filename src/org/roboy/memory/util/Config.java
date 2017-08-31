@@ -1,7 +1,7 @@
 package org.roboy.memory.util;
 
 /**
- * Configuration for ROS, Neo4J and Redis Server connectivitty
+ * Configuration for ROS, Neo4J and Redis Server connectivity
  */
 public class Config {
     ///ROS Configuration
