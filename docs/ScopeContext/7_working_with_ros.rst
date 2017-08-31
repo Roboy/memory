@@ -24,9 +24,10 @@ remove           //remove properties or relationships of a node
 The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and the module which is sending the query ('user').
 
 **Payload:**
-(Consider the Memory Neo4j Architecture Wiki for right use of properties, relationships and labels)
 
-'label' = Specifies the type of node that shall be created
-'id' = The id of a node that shall be searched or modified
-'properties' = A map of property keys with values
-'relations' = A map of relationship types with an array of node ids
+Consider :ref:`roboy_protocol` for the correct use use of properties, relationships and labels.
+
+- 'label' specifies the class of node in the knowledge graph
+- 'id' of a node is a unique number specified for each node that may be accessed be searched or modified in the knowledge graph
+- 'relations' comprise a map of relationship types with an array of node ids for each of them, providing multiple relationships tracing
+- 'properties' = A map of property keys with values

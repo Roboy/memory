@@ -24,3 +24,8 @@ Currently these interfaces are under development.
 
 .. todo::
 describe more precisely
+
+    Header header
+	String payload
+	—-
+	String answer

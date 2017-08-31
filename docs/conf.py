@@ -40,7 +40,7 @@ if on_rtd:
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
+    # 'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
@@ -281,7 +281,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 # latex_documents = [
 #     (master_doc, 'SoftwareDocumentationTemplate.tex', u'Software Documentation Template',
-#      u'Raphael Dürscheid, based on Template by Dr. Peter', 'manual'),
+#      u'Raphael D?rscheid, based on Template by Dr. Peter', 'manual'),
 # ]
 
 # The name of an image file (relative to this directory) to place at the top of
