@@ -10,13 +10,12 @@ import roboy_communication_cognition.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Answer.*;
 
-/** Contains the service handler.
- *
+/**
+ * Contains the service handlers to talk with ROS.
  */
 class ServiceLogic {
 
@@ -26,9 +25,10 @@ class ServiceLogic {
     private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES)); ///< Contains available relationship types
 
 
-    /** Create Service Handler.
-     *
-     *  Parses the header and payload to a create object and check for invalid elements in the query.
+    /**
+     * Create Service Handler.
+     * Parses the header and payload into a create object with Gson and check for invalid elements in the query.
+     * Calls method to query Neo4j
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
@@ -55,9 +55,10 @@ class ServiceLogic {
         
     };
 
-    /** Update Service Handler.
-     *
-     * Parses the header and payload to an update object
+    /**
+     * Update Service Handler.
+     * Parses the header and payload into an update object with Gson.
+     * Calls method to query Neo4j
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
@@ -77,10 +78,10 @@ class ServiceLogic {
         response.setAnswer(ok());
     };
 
-
-    /**Get Service Handler.
-     *
-     * Parses the header and payload to a get object
+    /**
+     * Get Service Handler.
+     * Parses the header and payload into a get object with Gson.
+     * Calls method to query Neo4j.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
@@ -97,8 +98,10 @@ class ServiceLogic {
         }
     };
 
-    /** Cypher Service Handler.
-     *
+    /**
+     * Cypher Service Handler.
+     * Proceeds with a plain Cypher query.
+     * Calls method to query Neo4j
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
@@ -106,9 +109,10 @@ class ServiceLogic {
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
 
-    /** Remove Service Handler.
-     *
-     * Parses the header and payload to a remove object
+    /**
+     * Remove Service Handler.
+     * Parses the header and payload into a remove object.
+     * Calls method to query Neo4j.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> removeServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);

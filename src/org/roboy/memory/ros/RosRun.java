@@ -16,24 +16,28 @@ public class RosRun {
 
 
     private NodeMainExecutor nodeMainExecutor; ///< ROS executor
-    private NodeConfiguration nodeConfiguration; ///< ROS node configuration
+    private NodeConfiguration nodeConfiguration; ///< ROS node configurator
 
-    /** Constructor
-     *
+    /**
+     * Constructor.
+     * Initializes the ROS node.
      */
     public RosRun() throws URISyntaxException {
-        URI masterUri = new URI(Config.ROS_MASTER_URI);
-        nodeConfiguration = NodeConfiguration.newPublic(Config.ROS_HOSTNAME, masterUri);
-        nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
+        URI masterUri = new URI(Config.ROS_MASTER_URI); ///< URI of the PC running roscore
+        nodeConfiguration = NodeConfiguration.newPublic(Config.ROS_HOSTNAME, masterUri); ///< Configuration of the ROS node with current PC address and master address
+        nodeMainExecutor = DefaultNodeMainExecutor.newDefault(); ///< Executing the ROS node
     }
 
-    /** Register ros node with services.
-     *
+    /**
+     * Registers the ROS node with services in the network.
      */
     public void start() {
         RosNode.register(nodeConfiguration, nodeMainExecutor);
     }
 
+    /**
+     * Shutdowns the ROS node and terminates the services.
+     */
     public void stop() {
         nodeMainExecutor.shutdown();
     }
