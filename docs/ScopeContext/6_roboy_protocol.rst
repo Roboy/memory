@@ -10,7 +10,7 @@ Create Queries Payload Message
 
 Creating a node:
 
-.. highlight:: JSON
+.. code-block:: JSON
 
     {
         'label': 'some_label',
@@ -53,7 +53,7 @@ Update Queries Payload Message
 
 Updating a node
 
-.. highlight:: JSON
+.. code-block:: JSON
 
     {
         'id': 1, //REQUIRED, contains node id
@@ -85,7 +85,7 @@ Get Queries Payload Message
 
 **Get nodes IDs**
 
-.. highlight:: JSON
+.. code-block:: JSON
 
     {
         'label': 'some_label',
@@ -107,7 +107,7 @@ The allowed relation types for each pair of nodes and named properties of nodes 
 **Get node by ID**
 -----------------------------------------------
 
-.. highlight:: JSON
+.. code-block:: JSON
 
     {
         'id': 1
@@ -127,7 +127,7 @@ Remove Queries Payload Message
 
 Remove properties and relations of the nodes
 
-.. highlight:: JSON
+.. code-block:: JSON
 
     {
         'id': 1,
