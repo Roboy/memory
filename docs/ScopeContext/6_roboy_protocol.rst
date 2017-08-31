@@ -10,7 +10,7 @@ Create Queries Payload Message
 
 Creating a node:
 
-.. code-block:: JSON
+.. code-block:: javascript
 
     {
         'label': 'some_label',
@@ -53,7 +53,7 @@ Update Queries Payload Message
 
 Updating a node
 
-.. code-block:: JSON
+.. code-block:: javascript
 
     {
         'id': 1, //REQUIRED, contains node id
@@ -72,6 +72,7 @@ Updating a node
 This query requests updating node with **ID** - 1.
 This query requests creating relations between two nodes, where the relations are e.g. **rel_a**, the number denotes the **ID** of the node to where the relations is following from the current node.
 This query requests creating (changing) properties of the node, where the properties may be e.g. **prop_a** with value **value_a**.
+
 .. warning::
 
     You should be aware of the node label.
@@ -84,7 +85,7 @@ Get Queries Payload Message
 
 **Get nodes IDs**
 
-.. code-block:: JSON
+.. code-block:: javascript
 
     {
         'label': 'some_label',
@@ -104,9 +105,8 @@ The query returns an array of node **ID**s on success (may be an empty array if 
 The allowed relation types for each pair of nodes and named properties of nodes may be found in :ref:`know_rep`.
 
 **Get node by ID**
------------------------------------------------
 
-.. code-block:: JSON
+.. code-block:: javascript
 
     {
         'id': 1
@@ -114,6 +114,7 @@ The allowed relation types for each pair of nodes and named properties of nodes 
 
 This query requests getting all information about a node with respective **ID**.
 The query returns a JSON containing all information about the node on success (may be an empty string if no such node exist).
+
 .. warning::
 
     You should be aware of the node label.
@@ -125,7 +126,7 @@ Remove Queries Payload Message
 
 Remove properties and relations of the nodes
 
-.. code-block:: JSON
+.. code-block:: javascript
 
     {
         'id': 1,
@@ -142,6 +143,7 @@ Remove properties and relations of the nodes
 
 This query requests removing all respective properties and relations with regard to the node with **ID** = 1: relationships **rel_a**
 with the node having **ID** = 2 and **rel_b** with the node having **ID** = 3, as well as property **prop_a**.
+
 .. warning::
 
     You should be aware of the node label.
