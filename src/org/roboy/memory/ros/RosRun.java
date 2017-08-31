@@ -14,18 +14,23 @@ import java.net.URISyntaxException;
  */
 public class RosRun {
 
-    private NodeMainExecutor nodeMainExecutor;
-    private NodeConfiguration nodeConfiguration;
 
+    private NodeMainExecutor nodeMainExecutor; //*< ROS executor
+    private NodeConfiguration nodeConfiguration; //*< ROS node configuration
+
+    /** Constructor
+     *
+     */
     public RosRun() throws URISyntaxException {
         URI masterUri = new URI(Config.ROS_MASTER_URI);
         nodeConfiguration = NodeConfiguration.newPublic(Config.ROS_HOSTNAME, masterUri);
         nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
     }
 
-
+    /** Register ros node with services.
+     *
+     */
     public void start() {
-        //register ros node with services
         RosNode.register(nodeConfiguration, nodeMainExecutor);
     }
 
