@@ -2,7 +2,7 @@
 
 Documentation can be found here:
 
-[![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=latest)](http://roboy-memory.readthedocs.io/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=latest)](http://roboy-memory.readthedocs.io/en/latest/?badge=latest)
 
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=docs)](http://roboy-memory.readthedocs.io/en/docs/?badge=docs)
 
