@@ -1,4 +1,4 @@
-package memory;
+package org.roboy.memory;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

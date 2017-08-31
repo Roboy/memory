@@ -2,6 +2,7 @@ package org.roboy.memory;
 
 
 import org.roboy.memory.ros.RosRun;
+import org.roboy.memory.util.Config;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -13,9 +14,10 @@ public class Main
 {
     public static void main( String[] args ) throws URISyntaxException, IOException {
         //logger configuration
-        Handler fh = new FileHandler("memory.log");
-        Logger.getLogger("").addHandler(fh);
-        RosRun server = new RosRun();
-        server.start();
+//        Handler fh = new FileHandler("memory.log");
+//        Logger.getLogger("").addHandler(fh);
+//        RosRun server = new RosRun();
+//        server.start();
+        new Config();
     }
 }
