@@ -9,8 +9,8 @@ public class Config {
     //public final static String ROS_MASTER_URI = "http://10.183.122.142:11311/";
     //public final static String ROS_HOSTNAME = "10.183.63.119";  //IP ADDRESS OF CURRENT PC IN THE NETWORK
 
-    public final static String ROS_MASTER_URI = "http://10.211.55.7:11311/";
-    public final static String ROS_HOSTNAME = "10.211.55.2";
+    public final static String ROS_MASTER_URI = "http://10.180.44.4:11311/";
+    public final static String ROS_HOSTNAME = "10.180.34.63";
 
     //Neo4J
     //public final static String NEO4J_ADDRESS = "bolt://10.183.122.142:7687";

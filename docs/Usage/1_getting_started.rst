@@ -25,14 +25,15 @@ To copy remote Neo4j DB into your local instance:
 
 - open the script intext editor::
 
-    vi OR nano
+    vi backup.sh OR nano backup.sh
 
 - enter the password to connect to bot.roboy.org into respective line
 - run the script specifying the path where to copy the DB files::
 
-    ./
+    ./backup.sh
 
-- wait the script to execute.
+- wait the script to execute. You will find the DB in ~/Neo4J/Backups/"date"
+- copy the contents of "date" directory to your local `DB directory <https://neo4j.com/docs/operations-manual/current/configuration/file-locations/>`_.
 
 .. warning::
 
