@@ -2,9 +2,9 @@
 
 Documentation can be found here:
 
-[![Documentation Status](http://roboy-memory.readthedocs.io/badge/?version=latest)](http://roboy-memory.readthedocs.io/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=latest)](http://roboy-memory.readthedocs.io/latest/?badge=latest)
 
-[![Documentation Status](http://roboy-memory.readthedocs.io/badge/?version=docs)](http://roboy-memory.readthedocs.io/en/docs/?badge=docs)
+[![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=docs)](http://roboy-memory.readthedocs.io/en/docs/?badge=docs)
 
 ## What is it?
 
