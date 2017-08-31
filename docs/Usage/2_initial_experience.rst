@@ -59,7 +59,7 @@ Create queries
 
 **Answer:**  {'id': 160}        - //ID of the created node
 
-**Errors messages:**
+**Error messages:**
 
 {status:"FAIL", message:"no properties"}
 
@@ -117,7 +117,7 @@ Update queries
 
 **Answer:** {status:"OK"}
 
-**Errors message:**
+**Error message:**
 
 {status:"FAIL", message:"The relationship type 'XYZ' doesn't exist in the DB"}
 
@@ -133,7 +133,7 @@ Get queries
         'id':15
     }\""
 
-**Answer:**::
+**Answer**::
 
     {
         'id': 15,
