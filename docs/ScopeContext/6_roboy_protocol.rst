@@ -101,7 +101,7 @@ Get Queries Payload Message
     }
 
 This query requests getting all nodes which have node label - **some_label**, have relationship **rel_a** with the node having **ID** 2 and **rel_b** with the node of **ID** 3, as well as having **prop_a** equal to **value**.
-The query returns an array of node **ID**s on success (may be an empty array if no such nodes exist).
+The query returns an array of node IDs on success (may be an empty array if no such nodes exist).
 The allowed relation types for each pair of nodes and named properties of nodes may be found in :ref:`know_rep`.
 
 **Get node by ID**

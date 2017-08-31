@@ -10,9 +10,9 @@
         <name>ROS_MASTER_URI</name>
         <initializer>= &quot;http://127.0.0.1:11311/&quot;</initializer>
         <briefdescription>
-<para>ROS Configuration. </para>        </briefdescription>
+<para>IP adress of the PC with roscore. </para>        </briefdescription>
         <detaileddescription>
-<para>IP adress of the PC with roscore </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="8" bodyend="-1"/>
@@ -38,9 +38,9 @@
         <name>NEO4J_ADDRESS</name>
         <initializer>= &quot;bolt://127.0.0.1:7687&quot;</initializer>
         <briefdescription>
-<para>Neo4J Configuration. </para>        </briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB location. </para>        </briefdescription>
         <detaileddescription>
-<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB location </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="12" bodyend="-1"/>
@@ -80,9 +80,9 @@
         <name>REDIS_URI</name>
         <initializer>= &quot;redis://127.0.0.1:6379/0&quot;</initializer>
         <briefdescription>
-<para>Redis Configuration. </para>        </briefdescription>
+<para>Redis storage location. </para>        </briefdescription>
         <detaileddescription>
-<para>Redis storage location </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="17" bodyend="-1"/>
@@ -108,9 +108,9 @@
         <name>LABEL_VALUES</name>
         <initializer>= new String[] { &quot;Person&quot;,&quot;Robot&quot;,&quot;Company&quot;,&quot;University&quot;,&quot;City&quot;,&quot;Country&quot;,&quot;Hobby&quot;,&quot;Occupation&quot;,&quot;Object&quot; }</initializer>
         <briefdescription>
-<para>KR Entries Configuration. </para>        </briefdescription>
+<para>Available label types. </para>        </briefdescription>
         <detaileddescription>
-<para>Available label types </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="21" bodyend="-1"/>
