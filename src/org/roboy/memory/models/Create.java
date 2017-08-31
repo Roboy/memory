@@ -6,11 +6,11 @@ import java.util.Map;
  *  Creates objects, that contain the elements of the Create queries.
  */
 public class Create {
-    private String type; //*< Currently only used to specify the type "node"
-    private String label; //*<  Specifies the type of node that shall be created, like "Person"
-    private String[] faceVector; 
+    private String type; ///< Currently only used to specify the type "node"
+    private String label; ///<  Specifies the type of node that shall be created, like "Person"
+    private String[] faceVector; ///< JSON array containing facial features from vision module
 
-    private Map<String, String> properties; //*< Contains the node properties
+    private Map<String, String> properties; ///< Contains the node properties
 
     public String getLabel() {
         return label;

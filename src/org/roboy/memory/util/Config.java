@@ -1,6 +1,5 @@
 package org.roboy.memory.util;
 
-
 /**
  * Configuration for ROS, Neo4J and Redis Server connectivitty
  */
@@ -21,6 +20,4 @@ public class Config {
     ///KR Entries Configuration
     public static final String[] LABEL_VALUES = new String[] { "Person","Robot","Company","University","City","Country","Hobby","Occupation","Object" }; ///< Available label types
     public static final String[] RELATION_VALUES = new String[] { "FRIEND_OF","LIVE_IN","FROM","WORK_FOR","STUDY_AT","MEMBER_OF","HAS_HOBBY","KNOW","IS","PART_OF","IS_IN" }; ///< Available reltionship types
-
-
 }

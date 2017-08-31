@@ -13,7 +13,7 @@ import roboy_communication_cognition.DataQuery;
  * JSON object is parsed using Parser and saved to neo4j.
  */
 public class RosNode extends AbstractNodeMain {
-    private static String name = "/roboy/cognition/memory"; //*< URI for ROS node
+    private static String name = "/roboy/cognition/memory"; ///< URI for ROS node
 
     static void register(NodeConfiguration nodeConfiguration, NodeMainExecutor nodeMainExecutor) {
         nodeConfiguration.setNodeName(name);

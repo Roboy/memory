@@ -15,8 +15,8 @@ import java.net.URISyntaxException;
 public class RosRun {
 
 
-    private NodeMainExecutor nodeMainExecutor; //*< ROS executor
-    private NodeConfiguration nodeConfiguration; //*< ROS node configuration
+    private NodeMainExecutor nodeMainExecutor; ///< ROS executor
+    private NodeConfiguration nodeConfiguration; ///< ROS node configuration
 
     /** Constructor
      *
