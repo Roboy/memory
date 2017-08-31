@@ -9,6 +9,8 @@ Visualization of a DB scheme.
 
 Versioning of KR is performed by implementing architecture proposals and evaluating them, upon evaluation the version is fixed and then new proposals are collected. Adding nodes means major ver. X, adding relations is minor ver. Y, adding properties is patch ver. Z: ver. X.Y.Z.
 
+.. _node_and_edge_classes:
+
 Node Classes
 --------------------------------
 - Person

@@ -1,6 +1,6 @@
 .. _initial_experience:
 
-How to use the ROS services
+Usage of the ROS services
 ================================
 
 This Wiki gives examples on how to query the Neo4J-DB over ROS with JSON.
@@ -9,17 +9,14 @@ This Wiki gives examples on how to query the Neo4J-DB over ROS with JSON.
 Available ROS services
 --------------------------------------------------
 
-//create a node
--create
 
-//add relationships or properties to a node
--update
+- create - create a node
 
-//get infos about nodes or find a node
--get
+- update - add relationships or properties to a node
 
-//remove properties or relationships of a node
--remove
+- get - get infos about nodes or find a node
+
+- remove - remove properties or relationships of a node
 
 
 
@@ -41,8 +38,11 @@ The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and th
 (Consider the Memory Neo4j Architecture Wiki for right use of properties, relationships and labels)
 
 'label' = Specifies the type of node that shall be created
+
 'id' = The id of a node that shall be searched or modified
+
 'properties' = A map of property keys with values
+
 'relations' = A map of relationship types with an array of node ids
 
 
@@ -65,12 +65,14 @@ Create queries
         }
     }\""
 
-**Answer:**  {'id': 160}        -//ID of the created node
+**Answer:**  {'id': 160}        - //ID of the created node
 
 **Errors messages:**
 
 {status:"FAIL", message:"no properties"}
+
 {status:"FAIL", message:"no name specified in properties : name required"}
+
 {status:"FAIL", message:"Label 'Xyz' doesn't exist in the DB"}
 
 
@@ -126,7 +128,7 @@ Update queries
 
 **Answer:** {status:"OK"}
 
-**Errors messages:**
+**Errors message:**
 
 {status:"FAIL", message:"The relationship type 'XYZ' doesn't exist in the DB"}
 
@@ -172,11 +174,15 @@ Get queries
         'datetime':'1234567'
     }\"" "\"{
         'label':'Person',
-        relations:{'FRIEND_OF':[15]},
-        'properties':{'name':'Laura'}
+        'relations':{
+            'FRIEND_OF':[15]
+        },
+        'properties':{
+            'name':'Laura'
+        }
     }\""
 
-**Answer:** {'id':[96]}     //a vector with all fitting IDs
+**Answer:** {'id':[96]}     - //a vector with all fitting IDs
 
 
 
