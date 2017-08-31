@@ -59,7 +59,8 @@ The payload (JSON object) may comprise several elements such as:
 - 'properties' = A map of property keys with values
 
 For the correct use use of properties, relationships and labels, consider :ref:`roboy_protocol`.
-Examples payloads as well as the whole structure of the calls are mentioned below.
+
+Sample payloads as well as the whole structure of the calls are mentioned below.
 
 Create queries
 --------------------------------------------------
