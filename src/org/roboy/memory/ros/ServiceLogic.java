@@ -25,6 +25,7 @@ class ServiceLogic {
 
         if(create.validate()) {
             response.setAnswer(Neo4j.createNode(create));
+            //todo: check do we need return here
             return;
         }
 

@@ -90,6 +90,7 @@ public class Neo4j implements AutoCloseable {
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", result.single().get(0).asInt());
+        //todo: check why do we need get?
         String id = jsonObject.get("id").getAsString();
 
         if (create.getFace() != null) {
@@ -120,6 +121,7 @@ public class Neo4j implements AutoCloseable {
     }
 
     private static String update(Transaction tx, Update update) {
+        //todo: wrong place for return statements
         //update properties
         JsonObject result = new JsonObject();
         if (update.getProperties() != null) {
