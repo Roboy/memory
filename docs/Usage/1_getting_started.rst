@@ -19,11 +19,24 @@ Before proceeding further, please commence a user configuration step:
 
 - wait the script to execute.
 
+You may proceed with your current DB now (you need to put the data there) or fetch the remote DB contents.
+
 To copy remote Neo4j DB into your local instance:
 
-- WRITE NEW PROCEDURE
+- open the script intext editor::
 
-Be cautious! This procedure will overwrite your credentials with the remote ones, see below.
+    vi OR nano
+
+- enter the password to connect to bot.roboy.org into respective line
+- run the script specifying the path where to copy the DB files::
+
+    ./
+
+- wait the script to execute.
+
+.. warning::
+
+    Be cautious! This procedure will overwrite your credentials with the remote ones, see below.
 
 Local Redis Instance
 --------------------------------------------------
@@ -114,9 +127,11 @@ You may use either remote or local addresses and credentials. If using local con
 ROS Configuration (remote)
 ---------------------------------------------------
 
-If you are using memory module on the PC other then one with roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
 
-For this two variables in Config class (util package) should be changed:
+
+If you are using Memory Module on the PC other then one with roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
+
+For this two variables in Config class (util folder of the Memory Module) should be changed:
 
 - ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
 - ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
