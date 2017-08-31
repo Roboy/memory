@@ -30,7 +30,7 @@ The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and th
 
 **Payload:**
 
-(Consider the Memory Neo4j Architecture Wiki for right use of properties, relationships and labels)
+(Consider the :ref:`know_rep` Wiki for right use of properties, relationships and labels)
 
 'label' = Specifies the type of node that shall be created
 
