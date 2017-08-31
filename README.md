@@ -4,7 +4,7 @@ Documentation can be found here:
 
 [![Documentation Status](https://readthedocs.org/projects/roboyvision/badge/?version=latest)](http://roboyvision.readthedocs.io/en/latest/?badge=latest)
 
-[![Documentation Status](https://readthedocs.org/projects/roboyvision/badge/?version=develop)](http://roboyvision.readthedocs.io/en/develop/?badge=develop)
+[![Documentation Status](https://readthedocs.org/projects/roboyvision/badge/?version=docs)](http://roboyvision.readthedocs.io/en/docs/?badge=docs)
 
 ## What is it?
 
