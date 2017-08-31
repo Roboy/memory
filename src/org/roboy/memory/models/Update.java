@@ -6,7 +6,6 @@ import java.util.Map;
  *  Creates objects, that contain the elements of the Update queries.
  */
 public class Update {
-
     private int id; ///< The id of a node that shall be modified
     private String type;  ///< Currently only used to specify the type "node"
     private String label; ///<  Specifies the type of node that shall be updated, like "Person"
