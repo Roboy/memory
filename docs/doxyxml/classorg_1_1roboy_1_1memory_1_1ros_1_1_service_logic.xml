@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kind="class" language="Java" prot="package">
+    <compoundname>org::roboy::memory::ros::ServiceLogic</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aa6affd692afac4898829dbfe71622e56" prot="private" static="yes" mutable="no">
+        <type>Logger</type>
+        <definition>Logger org.roboy.memory.ros.ServiceLogic.logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <initializer>= Logger.getLogger(ServiceLogic.class.toString())</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aa740b580c4728b46aea8ba0001d5832c" prot="private" static="yes" mutable="no">
+        <type>Gson</type>
+        <definition>Gson org.roboy.memory.ros.ServiceLogic.parser</definition>
+        <argsstring></argsstring>
+        <name>parser</name>
+        <initializer>= new Gson()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a1394a457cc24a0b83e28ca8d36f82309" prot="private" static="yes" mutable="no">
+        <type>HashSet&lt; String &gt;</type>
+        <definition>HashSet&lt;String&gt; org.roboy.memory.ros.ServiceLogic.labels</definition>
+        <argsstring></argsstring>
+        <name>labels</name>
+        <initializer>= new HashSet&lt;String&gt;(Arrays.asList(LABEL_VALUES))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a62c8dab4756b30fc82d02040ae55927c" prot="private" static="yes" mutable="no">
+        <type>HashSet&lt; String &gt;</type>
+        <definition>HashSet&lt;String&gt; org.roboy.memory.ros.ServiceLogic.relations</definition>
+        <argsstring></argsstring>
+        <name>relations</name>
+        <initializer>= new HashSet&lt;String&gt;(Arrays.asList(RELATION_VALUES))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-static-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aef55514ea4c05fd6bc7bcffe3f6e1874" prot="package" static="yes" mutable="no">
+        <type>ServiceResponseBuilder&lt; DataQueryRequest, DataQueryResponse &gt;</type>
+        <definition>ServiceResponseBuilder&lt;DataQueryRequest, DataQueryResponse&gt; org.roboy.memory.ros.ServiceLogic.createServiceHandler</definition>
+        <argsstring></argsstring>
+        <name>createServiceHandler</name>
+        <initializer>= (request, response) -&gt; {
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" kindref="compound">Header</ref> header = parser.fromJson(request.getHeader(), Header.class);
+        System.out.println(&quot;payload: &quot; + request.getPayload());
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create" kindref="compound">Create</ref> create = parser.fromJson(request.getPayload(), Create.class);
+
+        System.out.println(&quot;create: &quot; + create.getLabel());
+
+        if (create.getFace() != null) {
+            System.out.println(&quot;FaceVector: &quot; + create.getFace().toString());
+        }
+
+        
+
+        if (create.getProperties() == null) { 
+            response.setAnswer(error(&quot;no properties&quot;));
+            return;
+        } else if (!create.getProperties().containsKey(&quot;name&quot;)){ 
+            response.setAnswer(error(&quot;no name specified in properties : name required&quot;));
+            return;
+        } else if (create.getLabel() != null &amp;&amp; !labels.contains(create.getLabel().substring(0,1).toUpperCase() + create.getLabel().substring(1).toLowerCase())) {
+            response.setAnswer(error(&quot;Label &apos;&quot; + create.getLabel() + &quot;&apos; doesn&apos;t exist in the DB&quot;));
+            return;
+        } else {
+            response.setAnswer(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a8e2566dcf6fc19a7b0d35a3077c6ba59" kindref="member">Neo4j.createNode</ref>(create.getLabel(), create.getFace(), create.getProperties()));
+        }
+        
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1adc0b3d19d82f44c620672db71b15ac70" prot="package" static="yes" mutable="no">
+        <type>ServiceResponseBuilder&lt; DataQueryRequest, DataQueryResponse &gt;</type>
+        <definition>ServiceResponseBuilder&lt;DataQueryRequest, DataQueryResponse&gt; org.roboy.memory.ros.ServiceLogic.updateServiceHandler</definition>
+        <argsstring></argsstring>
+        <name>updateServiceHandler</name>
+        <initializer>= (request, response) -&gt; {
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" kindref="compound">Header</ref> header = parser.fromJson(request.getHeader(), Header.class);
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update" kindref="compound">Update</ref> update = parser.fromJson(request.getPayload(), Update.class);
+        if(update.getRelations() != null) {
+            for (String rel : update.getRelations().keySet()) {
+                if (!relations.contains(rel.toUpperCase())) {
+                    response.setAnswer(error(&quot;The relationship type &apos;&quot; + rel + &quot;&apos; doesn&apos;t exist in the DB&quot;));
+                    return;
+                }
+            }
+        }
+
+        <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adab31b8bdf92992fe91b7c831e4b820c" kindref="member">Neo4j.updateNode</ref>(update.getId(), update.getRelations(), update.getProperties());
+
+        response.setAnswer(ok());
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="56" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a3c4630babe95bb950e70826af7857675" prot="package" static="yes" mutable="no">
+        <type>ServiceResponseBuilder&lt; DataQueryRequest, DataQueryResponse &gt;</type>
+        <definition>ServiceResponseBuilder&lt;DataQueryRequest, DataQueryResponse&gt; org.roboy.memory.ros.ServiceLogic.getServiceHandler</definition>
+        <argsstring></argsstring>
+        <name>getServiceHandler</name>
+        <initializer>= (request, response) -&gt; {
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" kindref="compound">Header</ref> header = parser.fromJson(request.getHeader(), Header.class); 
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get" kindref="compound">Get</ref> get = parser.fromJson(request.getPayload(), Get.class);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        logger.info(gson.toJson(get));
+        
+        
+        if (get.getId() != 0) {
+            
+            response.setAnswer(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aeefb00e53ce9ea3e36fa9fda25a98844" kindref="member">Neo4j.getNodeById</ref>(get.getId()));
+        } else {
+            response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
+        }
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="74" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a7cdf3eccc57c570df4d51a35ac6ace76" prot="package" static="yes" mutable="no">
+        <type>ServiceResponseBuilder&lt; DataQueryRequest, DataQueryResponse &gt;</type>
+        <definition>ServiceResponseBuilder&lt;DataQueryRequest, DataQueryResponse&gt; org.roboy.memory.ros.ServiceLogic.cypherServiceHandler</definition>
+        <argsstring></argsstring>
+        <name>cypherServiceHandler</name>
+        <initializer>= (request, response) -&gt; {
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" kindref="compound">Header</ref> header = parser.fromJson(request.getHeader(), Header.class);
+        logger.info(request.getPayload());
+        response.setAnswer(Neo4j.run(request.getPayload()));
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="90" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a559e6e72848711056723579defbaa3ea" prot="package" static="yes" mutable="no">
+        <type>ServiceResponseBuilder&lt; DataQueryRequest, DataQueryResponse &gt;</type>
+        <definition>ServiceResponseBuilder&lt;DataQueryRequest, DataQueryResponse&gt; org.roboy.memory.ros.ServiceLogic.removeServiceHandler</definition>
+        <argsstring></argsstring>
+        <name>removeServiceHandler</name>
+        <initializer>= (request, response) -&gt; {
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" kindref="compound">Header</ref> header = parser.fromJson(request.getHeader(), Header.class);
+        <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove" kindref="compound">Remove</ref> remove = parser.fromJson(request.getPayload(), Remove.class);
+
+        <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aabf515fa28f245f9283963ce22378165" kindref="member">Neo4j.remove</ref>(remove.getId(), remove.getRelations(), remove.getProperties());
+
+        response.setAnswer(ok());
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="97" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="36">
+        <label>ServiceResponseBuilder&lt; DataQueryRequest, DataQueryResponse &gt;</label>
+      </node>
+      <node id="37">
+        <label>HashSet&lt; String &gt;</label>
+      </node>
+      <node id="38">
+        <label>Gson</label>
+      </node>
+      <node id="39">
+        <label>Logger</label>
+      </node>
+      <node id="35">
+        <label>org.roboy.memory.ros.ServiceLogic</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic"/>
+        <childnode refid="36" relation="usage">
+          <edgelabel>updateServiceHandler</edgelabel>
+          <edgelabel>createServiceHandler</edgelabel>
+          <edgelabel>removeServiceHandler</edgelabel>
+          <edgelabel>cypherServiceHandler</edgelabel>
+          <edgelabel>getServiceHandler</edgelabel>
+        </childnode>
+        <childnode refid="37" relation="usage">
+          <edgelabel>relations</edgelabel>
+          <edgelabel>labels</edgelabel>
+        </childnode>
+        <childnode refid="38" relation="usage">
+          <edgelabel>parser</edgelabel>
+        </childnode>
+        <childnode refid="39" relation="usage">
+          <edgelabel>logger</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/ServiceLogic.java" bodystart="18" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aef55514ea4c05fd6bc7bcffe3f6e1874" prot="package" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>createServiceHandler</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a7cdf3eccc57c570df4d51a35ac6ace76" prot="package" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>cypherServiceHandler</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a3c4630babe95bb950e70826af7857675" prot="package" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>getServiceHandler</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a1394a457cc24a0b83e28ca8d36f82309" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>labels</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aa6affd692afac4898829dbfe71622e56" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>logger</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aa740b580c4728b46aea8ba0001d5832c" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>parser</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a62c8dab4756b30fc82d02040ae55927c" prot="private" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>relations</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a559e6e72848711056723579defbaa3ea" prot="package" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>removeServiceHandler</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1adc0b3d19d82f44c620672db71b15ac70" prot="package" virt="non-virtual"><scope>org::roboy::memory::ros::ServiceLogic</scope><name>updateServiceHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

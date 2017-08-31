@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_57a1f4221dadc3fee58f5ad3b0593c5b" kind="dir">
+    <compoundname>/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models</compoundname>
+    <innerfile refid="_create_8java">Create.java</innerfile>
+    <innerfile refid="_get_8java">Get.java</innerfile>
+    <innerfile refid="_header_8java">Header.java</innerfile>
+    <innerfile refid="_remove_8java">Remove.java</innerfile>
+    <innerfile refid="_update_8java">Update.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/"/>
+  </compounddef>
+</doxygen>

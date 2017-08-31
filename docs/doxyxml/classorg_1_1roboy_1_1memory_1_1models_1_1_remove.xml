@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove" kind="class" language="Java" prot="public">
+    <compoundname>org::roboy::memory::models::Remove</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a57fdda41d1172a34ed91aa58658ced49" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int org.roboy.memory.models.Remove.id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="7" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae676a067595eaccb12d509e863f91afc" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String org.roboy.memory.models.Remove.type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a3a73cead1450c262a6eae910bd773382" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String org.roboy.memory.models.Remove.label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae406d2795f34343e21b045536f1f967a" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, String[]&gt;</type>
+        <definition>Map&lt;String, String[]&gt; org.roboy.memory.models.Remove.relations</definition>
+        <argsstring></argsstring>
+        <name>relations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1af8734d4814db7c0379799a688b64db29" prot="private" static="no" mutable="no">
+        <type>String []</type>
+        <definition>String [] org.roboy.memory.models.Remove.properties</definition>
+        <argsstring></argsstring>
+        <name>properties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae5bd474b9c3acd6c7d750ffcd8e33cba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int org.roboy.memory.models.Remove.getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1aef98e4eb4d718e908667485db3ef0ea5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String []</type>
+        <definition>String [] org.roboy.memory.models.Remove.getProperties</definition>
+        <argsstring>()</argsstring>
+        <name>getProperties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1abc7420d61847a8aebdff1d831eca70c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, String[]&gt;</type>
+        <definition>Map&lt;String, String[]&gt; org.roboy.memory.models.Remove.getRelations</definition>
+        <argsstring>()</argsstring>
+        <name>getRelations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="22" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="24">
+        <label>org.roboy.memory.models.Remove</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove"/>
+        <childnode refid="25" relation="usage">
+          <edgelabel>relations</edgelabel>
+        </childnode>
+      </node>
+      <node id="25">
+        <label>Map&lt; String, String[]&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" line="5" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Remove.java" bodystart="5" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae5bd474b9c3acd6c7d750ffcd8e33cba" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>getId</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1aef98e4eb4d718e908667485db3ef0ea5" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>getProperties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1abc7420d61847a8aebdff1d831eca70c0" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>getRelations</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a57fdda41d1172a34ed91aa58658ced49" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>id</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a3a73cead1450c262a6eae910bd773382" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>label</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1af8734d4814db7c0379799a688b64db29" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>properties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae406d2795f34343e21b045536f1f967a" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>relations</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae676a067595eaccb12d509e863f91afc" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Remove</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
