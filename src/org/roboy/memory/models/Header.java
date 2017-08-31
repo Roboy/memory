@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
  */
 public class Header {
 
-    private String user; //*< Contains the module which is sending the query, for example "vision"
-    private String datetime; //*< Contains a timestamp in seconds since 1.1.1970
+    private String user; ///< Contains the module which is sending the query, for example "vision"
+    private String datetime; ///< Contains a timestamp in seconds since 1.1.1970
 
     public LocalDateTime getDateTime() {return LocalDateTime.now();}
 

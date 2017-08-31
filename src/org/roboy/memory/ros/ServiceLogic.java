@@ -15,28 +15,31 @@ import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Answer.*;
 
+/** Contains the service handler.
+ *
+ */
 class ServiceLogic {
 
-    private static Logger logger = Logger.getLogger(ServiceLogic.class.toString());
-    private static Gson parser = new Gson();
-    private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES));
-    private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES));
+    private static Logger logger = Logger.getLogger(ServiceLogic.class.toString()); ///< Logger
+    private static Gson parser = new Gson(); ///< Parses the JSON elements of the header and payload
+    private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES)); ///< Contains available label types
+    private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES)); ///< Contains available relationship types
 
 
-    //Create
+    /** Create Service Handler.
+     *
+     *  Parses the header and payload to a create object and check for invalid elements in the query.
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
-        System.out.println("payload: " + request.getPayload());
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
-        System.out.println("create: " + create.getLabel());
-
+        //Print facial features
         if (create.getFace() != null) {
             System.out.println("FaceVector: " + create.getFace().toString());
         }
 
-        // {'type':'node','label':'Person','properties':{'name':'test3','surname':'test3'}}
-
+        ///Check for invalid elements in the query
         if (create.getProperties() == null) { //error msg if there are no properties
             response.setAnswer(error("no properties"));
             return;
@@ -52,10 +55,14 @@ class ServiceLogic {
         
     };
 
-    //Update
+    /** Update Service Handler.
+     *
+     * Parses the header and payload to an update object
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
+
         if(update.getRelations() != null) {
             for (String rel : update.getRelations().keySet()) {
                 if (!relations.contains(rel.toUpperCase())) {
@@ -70,7 +77,11 @@ class ServiceLogic {
         response.setAnswer(ok());
     };
 
-    //Get
+
+    /**Get Service Handler.
+     *
+     * Parses the header and payload to a get object
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
@@ -86,14 +97,19 @@ class ServiceLogic {
         }
     };
 
-    //Cypher
+    /** Cypher Service Handler.
+     *
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         logger.info(request.getPayload());
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
 
-    //Remove
+    /** Remove Service Handler.
+     *
+     * Parses the header and payload to a remove object
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> removeServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Remove remove = parser.fromJson(request.getPayload(), Remove.class);

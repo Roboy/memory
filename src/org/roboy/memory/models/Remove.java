@@ -7,12 +7,12 @@ import java.util.Map;
  */
 public class Remove {
 
-    private int id; //*< The id of a node that shall be modified
-    private String type; //*< Currently only used to specify the type "node"
-    private String label; //*<  Specifies the type of node that shall be removes, like "Person"
+    private int id; ///< The id of a node that shall be modified
+    private String type; ///< Currently only used to specify the type "node"
+    private String label; ///<  Specifies the type of node that shall be removes, like "Person"
 
-    private Map<String, String[]> relations; //*< Contains the relationship type as key and an array of node IDs as value
-    private String[] properties; //*< Contains the node properties
+    private Map<String, String[]> relations; ///< Contains the relationship type as key and an array of node IDs as value
+    private String[] properties; ///< Contains the node properties
 
     public int getId() {
         return id;
