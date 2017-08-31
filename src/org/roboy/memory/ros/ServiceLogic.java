@@ -15,8 +15,9 @@ import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Answer.*;
 
-/** Contains the service handler.
- *
+/** Contains service handler.
+ *  They parse the header and payload and check for invalid elements in the query.
+ *  Then the functions to construct the cypher queries are excecuted and the answer returned.
  */
 class ServiceLogic {
 
@@ -29,6 +30,7 @@ class ServiceLogic {
     /** Create Service Handler.
      *
      *  Parses the header and payload to a create object and check for invalid elements in the query.
+     *  Then createNode() is excecuted and the answer returned.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
@@ -57,12 +59,14 @@ class ServiceLogic {
 
     /** Update Service Handler.
      *
-     * Parses the header and payload to an update object
+     * Parses the header and payload to an update object and checks for invalid relationship types in the query.
+     * Then updateNode() is excecuted and the answer returned.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
+        ///Check for invalid relationship types in the query
         if(update.getRelations() != null) {
             for (String rel : update.getRelations().keySet()) {
                 if (!relations.contains(rel.toUpperCase())) {
@@ -78,19 +82,19 @@ class ServiceLogic {
     };
 
 
-    /**Get Service Handler.
+    /** Get Service Handler.
      *
-     * Parses the header and payload to a get object
+     * Parses the header and payload to a get object and checks whether node IDs or information about a node is queried.
+     * Then getNodeById() or getNode() is excecuted and the answer returned.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
         Get get = parser.fromJson(request.getPayload(), Get.class);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         logger.info(gson.toJson(get));
-        // {"label":"someLabel","id":someID, "relations":{"type": "friend_of", "id": 000000},
-        // "properties":{"name":"someName","surname":"someSurname"}}
+
+        ///checks whether node IDs or information about a node is queried
         if (get.getId() != 0) {
-            // {'id':someID}
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
             response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
@@ -99,6 +103,7 @@ class ServiceLogic {
 
     /** Cypher Service Handler.
      *
+     *  Directly runs the cypher query which is contained in the payload and returns the response.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
@@ -109,6 +114,7 @@ class ServiceLogic {
     /** Remove Service Handler.
      *
      * Parses the header and payload to a remove object
+     * Then remove() is excecuted and the answer returned.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> removeServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
