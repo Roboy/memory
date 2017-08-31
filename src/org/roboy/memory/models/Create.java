@@ -2,12 +2,15 @@ package org.roboy.memory.models;
 
 import java.util.Map;
 
+/** Data model for JSON parser.
+ *  Creates objects, that contain the elements of the Create queries.
+ */
 public class Create {
-    private String type;
-    private String label;
-    private String[] faceVector;
+    private String type; //*< Currently only used to specify the type "node"
+    private String label; //*<  Specifies the type of node that shall be created, like "Person"
+    private String[] faceVector; 
 
-    private Map<String, String> properties;
+    private Map<String, String> properties; //*< Contains the node properties
 
     public String getLabel() {
         return label;

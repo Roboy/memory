@@ -12,7 +12,9 @@ import java.util.logging.Logger;
 public class Main
 {
     public static void main( String[] args ) throws URISyntaxException, IOException {
-        //logger configuration
+        /** Logger configuration. Logs are stored in the file memory.log
+         *
+         */
         Handler fh = new FileHandler("memory.log");
         Logger.getLogger("").addHandler(fh);
         RosRun server = new RosRun();
