@@ -105,7 +105,6 @@ The query returns an array of node **ID**s on success (may be an empty array if 
 The allowed relation types for each pair of nodes and named properties of nodes may be found in :ref:`know_rep`.
 
 **Get node by ID**
------------------------------------------------
 
 .. code-block:: javascript
 
