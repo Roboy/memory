@@ -175,8 +175,8 @@ public class Neo4j implements AutoCloseable {
      */
     private static String update( Transaction tx, int id, Map<String, String[]> relations, Map<String, String> properties) {
 
-        String query = "MATCH (a)";
-        String where = " WHERE ID(a)=" + id;
+        String query = "MATCH (a)"; ///< String containing the resulting Cypher query
+        String where = " WHERE ID(a)=" + id; ///< String containing the Cypher WHERE arguments
 
         if(relations != null) { //add relations
             String create = "";
@@ -247,29 +247,29 @@ public class Neo4j implements AutoCloseable {
      */
     private static String matchNodeById( Transaction tx, int id ) {
 
-        String queryProperties = "MATCH (a) where ID(a)=" + id + " RETURN a";
-        String queryID = "MATCH (a) where ID(a)=" + id + " RETURN ID(a)";
-        String queryRelations = "MATCH (a)-[r]-(b) WHERE ID(a) = " + id +" Return type(r),ID(b)";
-        String queryLabels = "MATCH (a) WHERE ID(a) = " + id +" Return labels(a)";
-        HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>();
+        String queryProperties = "MATCH (a) where ID(a)=" + id + " RETURN a"; ///< String containing query to retrieve properties of the node
+        String queryID = "MATCH (a) where ID(a)=" + id + " RETURN ID(a)"; ///< String containing query to retrieve ID of the node
+        String queryRelations = "MATCH (a)-[r]-(b) WHERE ID(a) = " + id +" Return type(r),ID(b)"; ///< String containing query to retrieve relationships of the node
+        String queryLabels = "MATCH (a) WHERE ID(a) = " + id +" Return labels(a)"; ///< String containing query to retrieve labels of the node
+        HashMap<String, HashSet<String>> relAndIDs = new HashMap<String, HashSet<String>>(); ///< HashMap containing unique relationships and properties
 
         logger.info(queryID);
         logger.info(queryLabels);
         logger.info(queryProperties);
         logger.info(queryRelations);
 
-        StatementResult result = tx.run(queryID, parameters() ); //run query
+        StatementResult result = tx.run(queryID, parameters() ); ///< Response upon the transaction completing
         String ID = "";
         if (result.hasNext()) {
             ID = "'id': " + result.next().get(0).toString();
 
-            result = tx.run(queryProperties, parameters() ); //run query
+            result = tx.run(queryProperties, parameters() );
             String properties = "";
             if (result.hasNext()) {
                 properties = ", 'properties': " + parser.toJson(result.next().get(0).asMap());
             }
 
-            result = tx.run(queryRelations, parameters() ); //run queryRelations
+            result = tx.run(queryRelations, parameters() );
             String relationResponse = "";
             if (result.hasNext()) {
                 relationResponse = ", 'relations': ";
@@ -286,7 +286,7 @@ public class Neo4j implements AutoCloseable {
                 relationResponse += relAndIDs.toString().replace('=', ':');
             }
 
-            result = tx.run(queryLabels, parameters() ); //run query
+            result = tx.run(queryLabels, parameters() );
             String labels = "";
             if (result.hasNext()) {
                 labels = ", 'labels': [";
@@ -340,8 +340,8 @@ public class Neo4j implements AutoCloseable {
         //MATCH (a)-[r1]-(b1)-[r2]->(b2)
         //    WHERE ID(b1) = 158 AND type(r1)=~'STUDY_AT' AND ID(b0) = 5 AND type(r0)=~ 'FRIEND_OF' AND a.name = 'Roboy' AND labels(a) = 'Robot'
         //RETURN a
-        String match = "";
-        String where = "";
+        String match = ""; ///< String containing the resulting Cypher query
+        String where = ""; ///< String containing the Cypher WHERE arguments
 
 
         if (relations != null) {
@@ -394,7 +394,7 @@ public class Neo4j implements AutoCloseable {
 
         query += ")" + match + where + " RETURN ID(a)";
         logger.info(query);
-        StatementResult result = tx.run(query, parameters() );
+        StatementResult result = tx.run(query, parameters() ); ///< Response upon the transaction completing
         String response = "";
         while (result.hasNext()) {
             response += result.next().get(0).toString() + ", ";
@@ -437,10 +437,10 @@ public class Neo4j implements AutoCloseable {
      */
     private static String removeRelsProps( Transaction tx, int id, Map<String, String[]> relations, String[] properties) {
 
-        String query = "";
-        String where = " WHERE ID(a)=" + id;
-        String delete = "";
-        String remove = "";
+        String query = ""; ///< String containing resulting Cypher query
+        String where = " WHERE ID(a)=" + id; ///< String containing the Cypher WHERE arguments
+        String delete = ""; ///< String containing the Cypher DELETE arguments
+        String remove = ""; ///< String containing the Cypher REMOVE arguments
 
 
         //Match (n)-[r1:LIVE_IN]->(b1),(n)-[r2:LIVE_IN]->(b2) where ID(n)=131 AND ID(b1)=78 AND ID(b2)=57 Delete r1,r2 Remove n.abc,n.xyz
@@ -479,7 +479,7 @@ public class Neo4j implements AutoCloseable {
 
         logger.info(query);
 
-        StatementResult result = tx.run( query, parameters() );
+        StatementResult result = tx.run( query, parameters() ); ///< Response upon the transaction completing
         logger.info(result.toString());
         return result.toString().toLowerCase();
     }
