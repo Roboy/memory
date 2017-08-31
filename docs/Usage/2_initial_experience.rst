@@ -67,8 +67,8 @@ Create queries
 **Create a node of the type 'Person' with properties**::
 
     rosservice call /roboy/cognition/memory/create "\"{
-        'user':'test',
-        'datetime':'0'
+        'user':'vision',
+        'datetime':'1234567'
     }\"" "\"{
         'type':'node',
         'label':'Person',
@@ -79,10 +79,12 @@ Create queries
     }\""
 
 On success you will get:
+
 **Answer:**  {'id': x } - //ID of the created node
 
 On error you will get:
-**Errors:** {status:"FAIL", message:"error message"}
+
+**Error:** {status:"FAIL", message:"error message"}
 
 You can find detailed information in :ref:`technical-interfaces`
 
@@ -135,10 +137,12 @@ Update queries
     }\""
 
 On success you will get:
+
 **Answer:** {status:"OK"}
 
 On error you will get:
-**Errors:** {status:"FAIL", message:"error message"}
+
+**Error:** {status:"FAIL", message:"error message"}
 
 You can find detailed information in :ref:`technical-interfaces`
 
@@ -155,8 +159,6 @@ Get queries
     }\""
 
 **Answer:**::
-
-.. code-block:: javascript
 
     {
         'id': 15,
@@ -192,10 +194,12 @@ Get queries
     }\""
 
 On success you will get:
-**Answer:** {'id':[x]}     - //a vector with all fitting IDs
+
+**Answer:** {'id':[x]}     - an array with all fitting IDs
 
 On error you will get:
-**Errors:** {status:"FAIL", message:"error message"}
+
+**Error:** {status:"FAIL", message:"error message"}
 
 You can find detailed information in :ref:`technical-interfaces`
 
@@ -245,10 +249,12 @@ Remove queries
     }\""
 
 On success you will get:
+
 **Answer:** {status:"OK"}
 
 On error you will get:
-**Errors:** {status:"FAIL", message:"error message"}
+
+**Error:** {status:"FAIL", message:"error message"}
 
 You can find detailed information in :ref:`technical-interfaces`
 
