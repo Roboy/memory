@@ -1,6 +1,6 @@
 .. _initial_experience:
 
-ROS Messages For Memory
+ROS messages for memory
 ================================
 
 This Wiki gives examples on how to query the Neo4J-DB over ROS with JSON.

@@ -40,8 +40,6 @@ The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and th
 
 'relations' = A map of relationship types with an array of node ids
 
-
-
 Create queries
 --------------------------------------------------
 
@@ -53,10 +51,13 @@ Create queries
     }\"" "\"{
         'type':'node',
         'label':'Person',
-        'properties':{'name':'Lucas', 'sex':'male'}
+        'properties':{
+            'name':'Lucas',
+            'sex':'male'
+        }
     }\""
 
-**Answer:**  {'id': 160}        //ID of the created node
+**Answer:**  {'id': 160}        - //ID of the created node
 
 **Errors messages:**
 
@@ -65,8 +66,6 @@ Create queries
 {status:"FAIL", message:"no name specified in properties : name required"}
 
 {status:"FAIL", message:"Label 'Xyz' doesn't exist in the DB"}
-
-
 
 Update queries
 --------------------------------------------------
@@ -79,7 +78,10 @@ Update queries
     }\"" "\"{
         'type':'node',
         'id':15,
-        'properties':{'surname':'Ki', 'xyz':'abc'}
+        'properties':{
+            'surname':'Ki',
+            'xyz':'abc'
+        }
     }\""
 
 **Add relations to the node with id 15**::
@@ -90,7 +92,10 @@ Update queries
     }\"" "\"{
         'type':'node',
         'id':15,
-        'relations':{'LIVE_IN':[28,23],'STUDY_AT':[16]}
+        'relations':{
+            'LIVE_IN':[28,23],
+            'STUDY_AT':[16]
+        }
     }\""
 
 **Add properties + relations to the node with id 15**::
@@ -101,17 +106,20 @@ Update queries
     }\"" "\"{
         'type':'node',
         'id':15,
-        'properties':{'surname':'Ki', 'xyz':123},
-        'relations':{'LIVE_IN':[28,23],'STUDY_AT':[16]}
+        'properties':{
+            'surname':'Ki', 'xyz':123
+        },
+        'relations':{
+            'LIVE_IN':[28,23],
+            'STUDY_AT':[16]
+        }
     }\""
 
 **Answer:** {status:"OK"}
 
-**Errors messages:**
+**Errors message:**
 
 {status:"FAIL", message:"The relationship type 'XYZ' doesn't exist in the DB"}
-
-
 
 Get queries
 --------------------------------------------------
@@ -125,7 +133,8 @@ Get queries
         'id':15
     }\""
 
-**Answer:**
+**Answer:**::
+
     {
         'id': 15,
         'labels': ["person"],
@@ -152,13 +161,15 @@ Get queries
         'datetime':'1234567'
     }\"" "\"{
         'label':'Person',
-        relations:{'FRIEND_OF':[15]},
-        'properties':{'name':'Laura'}
+        'relations':{
+            'FRIEND_OF':[15]
+        },
+        'properties':{
+            'name':'Laura'
+        }
     }\""
 
-**Answer:** {'id':[96]}     //a vector with all fitting IDs
-
-
+**Answer:** {'id':[96]}     - //a vector with all fitting IDs
 
 Remove queries
 --------------------------------------------------
