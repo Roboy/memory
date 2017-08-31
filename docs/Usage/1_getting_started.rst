@@ -19,11 +19,25 @@ Before proceeding further, please commence a user configuration step:
 
 - wait the script to execute.
 
+You may proceed with your current DB now (you need to put the data there) or fetch the remote DB contents.
+
 To copy remote Neo4j DB into your local instance:
 
-- WRITE NEW PROCEDURE
+- open the script intext editor::
 
-Be cautious! This procedure will overwrite your credentials with the remote ones, see below.
+    vi backup.sh OR nano backup.sh
+
+- enter the password to connect to bot.roboy.org into respective line
+- run the script specifying the path where to copy the DB files::
+
+    ./backup.sh
+
+- wait the script to execute. You will find the DB in ~/Neo4J/Backups/"date"
+- copy the contents of "date" directory to your local `DB directory <https://neo4j.com/docs/operations-manual/current/configuration/file-locations/>`_.
+
+.. warning::
+
+    Be cautious! This procedure will overwrite your credentials with the remote ones, see below.
 
 Local Redis Instance
 --------------------------------------------------
@@ -114,9 +128,41 @@ You may use either remote or local addresses and credentials. If using local con
 ROS Configuration (remote)
 ---------------------------------------------------
 
-If you are using memory module on the PC other then one with roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
+Before you can use ROS, you will need to initialize rosdep::
 
-For this two variables in Config class (util package) should be changed:
+    sudo rosdep init
+    rosdep update
+
+To install dependencies for building ROS packages, run::
+
+    sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+
+Afterwords, procceed with installing catkin::
+
+    sudo apt-get install ros-kinetic-catkin
+
+Source the environment like this::
+
+    echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+    source ~/.bashrc
+
+Build a catkin workspace::
+
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws/
+    catkin_make
+
+Source your new setup.*sh file::
+
+    source devel/setup.bash
+
+Then in separate Terminal, run::
+
+    roscore
+
+If you are using Memory Module on the PC other then one with roscore, ROS interfaces require `network setup <http://wiki.ros.org/ROS/NetworkSetup>`_.
+
+For this two variables in Config class (util folder of the Memory Module) should be changed:
 
 - ROS_MASTER_URI - defines an URI of roscore module in the network, e.g. "http://bot.roboy.org:11311/"
 - ROS_HOSTNAME - defines the IP address of the machine with rosjava mudule in the network, e.g. "192.168.1.1"
@@ -150,7 +196,10 @@ After you have entered the proper configuration:
 Using Remote
 ---------------------------------------------------
 
-Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
+.. warning::
+
+    Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
+
 Please, do not crush everything. You would make little `kittens very sad <http://goo.gl/FZsTTm>`_.
 
 

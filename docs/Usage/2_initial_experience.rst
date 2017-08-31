@@ -3,42 +3,61 @@
 Using the ROS services
 ================================
 
-There you can find examples on how to query the memory with JSON-formed queries using ROS.
+There you can find basic examples on how to access the memory with JSON-formed queries using ROS.
+For more information, please, refer to :ref:`technical-interfaces`, :ref:`know_rep` and :ref:`roboy-protocol`.
 
 Available ROS services
 --------------------------------------------------
 
-The Roboy Memory package offers the next services in order to work with the memory contents:
+The Roboy Memory Module offers the next services in order to work with the memory contents:
 
 - create - creates a node in the Neo4j DB with provided properties and face features (Redis)
 - update - adds new relationships between specified nodes or properties to the specified node
 - get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
 - remove - removes properties or relationships from the specified node
 
-Comosition of Memory-ROS messages
+In order to check available services, in your catkin environment, run::
+
+    rosservice list
+
+You should get the next output::
+
+    /roboy/cognition/memory/create
+    /roboy/cognition/memory/cypher
+    /roboy/cognition/memory/get
+    /roboy/cognition/memory/remove
+    /roboy/cognition/memory/update
+    /rosout/get_loggers
+    /rosout/set_logger_level
+
+Calling the ROS
 --------------------------------------------------
 
-**Syntax of every query:**
+**General syntax for a ROS message**::
 
-rosservice call /roboy/cognition/memory/---Service--- "\"{---Header---}\"" "\"{---Payload---}\""
+    rosservice call /roboy/cognition/memory/--service_name-- "\"---header---\"" "\"---payload---\""
 
+**Sample Header:**
 
-**Header:**
+The header (JSON object) consists of a timestamp and the module which is sending the query ('user'):
+You may try using the next header for your initial experience.
 
-The header consists of a timestamp ('datetime') in seconds since 1.1.1970 and the module which is sending the query ('user').
+.. code-block:: javascript
 
+    {
+        'user':'test',
+        'datetime':'0'
+    }
 
-**Payload:**
+**Payload Elements:**
 
-(Consider the :ref:`know_rep` Wiki for right use of properties, relationships and labels)
-
-'label' = Specifies the type of node that shall be created
-
-'id' = The id of a node that shall be searched or modified
-
-'properties' = A map of property keys with values
-
-'relations' = A map of relationship types with an array of node ids
+The payload (JSON object) may comprise several elements such as:
+- 'label' specifies the class of node in the knowledge graph
+- 'id' of a node is a unique number specified for each node that may be accessed be searched or modified in the knowledge graph
+- 'relations' comprise a map of relationship types with an array of node ids for each of them, providing multiple relationships tracing
+- 'properties' = A map of property keys with values
+Consider :ref:`roboy_protocol` for the correct use use of properties, relationships and labels.
+Examples payloads as well as the whole structure of the calls are mentioned below.
 
 Create queries
 --------------------------------------------------
@@ -46,8 +65,8 @@ Create queries
 **Create a node of the type 'Person' with properties**::
 
     rosservice call /roboy/cognition/memory/create "\"{
-        'user':'vision',
-        'datetime':'1234567'
+        'user':'test',
+        'datetime':'0'
     }\"" "\"{
         'type':'node',
         'label':'Person',
@@ -57,15 +76,13 @@ Create queries
         }
     }\""
 
-**Answer:**  {'id': 160}        - //ID of the created node
+On success you will get:
+**Answer:**  {'id': x } - //ID of the created node
 
-**Error messages:**
+On error you will get:
+**Errors:** {status:"FAIL", message:"error message"}
 
-{status:"FAIL", message:"no properties"}
-
-{status:"FAIL", message:"no name specified in properties : name required"}
-
-{status:"FAIL", message:"Label 'Xyz' doesn't exist in the DB"}
+You can find detailed information in :ref:`technical-interfaces`
 
 Update queries
 --------------------------------------------------
@@ -115,11 +132,13 @@ Update queries
         }
     }\""
 
+On success you will get:
 **Answer:** {status:"OK"}
 
-**Error message:**
+On error you will get:
+**Errors:** {status:"FAIL", message:"error message"}
 
-{status:"FAIL", message:"The relationship type 'XYZ' doesn't exist in the DB"}
+You can find detailed information in :ref:`technical-interfaces`
 
 Get queries
 --------------------------------------------------
@@ -133,7 +152,9 @@ Get queries
         'id':15
     }\""
 
-**Answer**::
+**Answer:**::
+
+.. code-block:: javascript
 
     {
         'id': 15,
@@ -153,7 +174,6 @@ Get queries
         }
     }
 
-
 **Get ids of nodes which have all specified labels, relations and/or properties**::
 
     rosservice call /roboy/cognition/memory/get "\"{
@@ -169,10 +189,20 @@ Get queries
         }
     }\""
 
-**Answer:** {'id':[96]}     - //a vector with all fitting IDs
+On success you will get:
+**Answer:** {'id':[x]}     - //a vector with all fitting IDs
+
+On error you will get:
+**Errors:** {status:"FAIL", message:"error message"}
+
+You can find detailed information in :ref:`technical-interfaces`
 
 Remove queries
 --------------------------------------------------
+
+.. warning::
+
+    Please, do not try running **remove** queries without considering significant risks. Be responsible!
 
 **Remove properties of node 15**::
 
@@ -212,5 +242,11 @@ Remove queries
         }
     }\""
 
+On success you will get:
 **Answer:** {status:"OK"}
+
+On error you will get:
+**Errors:** {status:"FAIL", message:"error message"}
+
+You can find detailed information in :ref:`technical-interfaces`
 

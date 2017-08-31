@@ -1,11 +1,12 @@
 Context
 --------
 
-The Memory Module receives input from other Cognition modules in form of ROS messages containing RCS payload which is then parsed internally. RCS payload contains valid request, otherwise exeption would be raised and Memory Module would answer with "FALSE" or NULL value.
+The Memory Module receives input from other Cognition modules in form of ROS messages containing RCS payload which is then parsed internally.
+RCS payload contains valid request, otherwise exeption would be raised and Memory Module would answer with "FAIL" and error message.
 
-The main output of the Memory Module is either a single piece of data or id of facial feature representation or voice signature. 
+The main output of the Memory Module is either a single piece of data (JSON object) or set of **ID**s.
 
-This is illustrated in the following context overview:
+The context of Roboy Memory Module illustrated in the following diagram:
 
 .. _context_within_environment:
 .. figure:: images/uml_system_context.*
