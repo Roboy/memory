@@ -1,6 +1,5 @@
 package org.roboy.memory;
 
-
 import org.roboy.memory.ros.RosRun;
 
 import java.io.IOException;
@@ -12,12 +11,10 @@ import java.util.logging.Logger;
 public class Main
 {
     public static void main( String[] args ) throws URISyntaxException, IOException {
-        /** Logger configuration. Logs are stored in the file memory.log
-         *
-         */
-        Handler fh = new FileHandler("memory.log");
+
+        Handler fh = new FileHandler("memory.log"); ///< File handler for a logger
         Logger.getLogger("").addHandler(fh);
-        RosRun server = new RosRun();
+        RosRun server = new RosRun(); ///< Initializing ROS server (ROS node)
         server.start();
     }
 }
