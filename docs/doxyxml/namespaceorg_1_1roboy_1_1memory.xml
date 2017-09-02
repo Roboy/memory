@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="namespaceorg_1_1roboy_1_1memory" kind="namespace" language="Java">
+    <compoundname>org::roboy::memory</compoundname>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1_main" prot="public">org::roboy::memory::Main</innerclass>
+    <innernamespace refid="namespaceorg_1_1roboy_1_1memory_1_1models">org::roboy::memory::models</innernamespace>
+    <innernamespace refid="namespaceorg_1_1roboy_1_1memory_1_1ros">org::roboy::memory::ros</innernamespace>
+    <innernamespace refid="namespaceorg_1_1roboy_1_1memory_1_1util">org::roboy::memory::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" line="1" column="1"/>
+  </compounddef>
+</doxygen>

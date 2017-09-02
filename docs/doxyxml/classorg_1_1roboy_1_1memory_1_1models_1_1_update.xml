@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1models_1_1_update" kind="class" language="Java" prot="public">
+    <compoundname>org::roboy::memory::models::Update</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a110787fa58036eae504a649985894e2c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int org.roboy.memory.models.Update.id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+<para>The id of a node that shall be modified. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a153ce6ec77d4fa67a4c97f17fba04839" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String org.roboy.memory.models.Update.type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+<para>Currently only used to specify the type &quot;node&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a22934b872eaac1663658563a460c42c6" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String org.roboy.memory.models.Update.label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+<para>Specifies the type of node that shall be updated, like &quot;Person&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a297e6b7564dfc232a3e49596d7b75422" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, String[]&gt;</type>
+        <definition>Map&lt;String, String[]&gt; org.roboy.memory.models.Update.relations</definition>
+        <argsstring></argsstring>
+        <name>relations</name>
+        <briefdescription>
+<para>Contains the relationship type as key and an array of node IDs as value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a206b72ec15d5f447f3de02ee55b9ef64" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, String &gt;</type>
+        <definition>Map&lt;String, String&gt; org.roboy.memory.models.Update.properties</definition>
+        <argsstring></argsstring>
+        <name>properties</name>
+        <briefdescription>
+<para>Contains the node properties. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a913d811ede01d9ef9d3583dd4de6891e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int org.roboy.memory.models.Update.getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a949dee56428100f02a323a5823362648" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, String &gt;</type>
+        <definition>Map&lt;String, String&gt; org.roboy.memory.models.Update.getProperties</definition>
+        <argsstring>()</argsstring>
+        <name>getProperties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a346bc41fc464e9959bd2bfad92e99182" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, String[]&gt;</type>
+        <definition>Map&lt;String, String[]&gt; org.roboy.memory.models.Update.getRelations</definition>
+        <argsstring>()</argsstring>
+        <name>getRelations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="24" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Data model for JSON parser. </para>    </briefdescription>
+    <detaileddescription>
+<para>Creates objects, that contain the elements of the <ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update" kindref="compound">Update</ref> queries. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="43">
+        <label>Map&lt; String, String &gt;</label>
+      </node>
+      <node id="41">
+        <label>org.roboy.memory.models.Update</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update"/>
+        <childnode refid="42" relation="usage">
+          <edgelabel>relations</edgelabel>
+        </childnode>
+        <childnode refid="43" relation="usage">
+          <edgelabel>properties</edgelabel>
+        </childnode>
+      </node>
+      <node id="42">
+        <label>Map&lt; String, String[]&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Update.java" bodystart="8" bodyend="27"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a913d811ede01d9ef9d3583dd4de6891e" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>getId</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a949dee56428100f02a323a5823362648" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>getProperties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a346bc41fc464e9959bd2bfad92e99182" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>getRelations</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a110787fa58036eae504a649985894e2c" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>id</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a22934b872eaac1663658563a460c42c6" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>label</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a206b72ec15d5f447f3de02ee55b9ef64" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>properties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a297e6b7564dfc232a3e49596d7b75422" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>relations</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a153ce6ec77d4fa67a4c97f17fba04839" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Update</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

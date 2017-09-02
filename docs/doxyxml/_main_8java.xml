@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_main_8java" kind="file" language="Java">
+    <compoundname>Main.java</compoundname>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1_main" prot="public">org::roboy::memory::Main</innerclass>
+    <innernamespace refid="namespaceorg_1_1roboy_1_1memory">org::roboy::memory</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">org.roboy.memory;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceorg" kindref="compound">org</ref>.<ref refid="namespaceorg_1_1roboy" kindref="compound">roboy</ref>.<ref refid="namespaceorg_1_1roboy_1_1memory" kindref="compound">memory</ref>.<ref refid="namespaceorg_1_1roboy_1_1memory_1_1ros" kindref="compound">ros</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run" kindref="compound">RosRun</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.io.IOException;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.net.URISyntaxException;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.logging.FileHandler;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.logging.Handler;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.logging.Logger;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classorg_1_1roboy_1_1memory_1_1_main" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classorg_1_1roboy_1_1memory_1_1_main" kindref="compound">Main</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1_main_1a0f28f4ab81018cd6a21b847a84ae1a24" kindref="member">main</ref>(<sp/>String[]<sp/>args<sp/>)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>URISyntaxException,<sp/>IOException<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Handler<sp/>fh<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>FileHandler(</highlight><highlight class="stringliteral">&quot;memory.log&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Logger.getLogger(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">).addHandler(fh);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run" kindref="compound">RosRun</ref><sp/>server<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run" kindref="compound">RosRun</ref>();<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>server.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1a48063c7803e833bf1a45b9aec269b1b7" kindref="member">start</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java"/>
+  </compounddef>
+</doxygen>
