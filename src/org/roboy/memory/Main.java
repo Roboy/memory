@@ -14,10 +14,9 @@ public class Main
 {
     public static void main( String[] args ) throws URISyntaxException, IOException {
         //logger configuration
-//        Handler fh = new FileHandler("memory.log");
-//        Logger.getLogger("").addHandler(fh);
-//        RosRun server = new RosRun();
-//        server.start();
-        new Config();
+        Handler fh = new FileHandler("memory.log");
+        Logger.getLogger("").addHandler(fh);
+        RosRun server = new RosRun();
+        server.start();
     }
 }

@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Config.*;
 
+//todo: add exceptions handler in ServiceLogic
+
 /**
  * Contains the cypher queries for GET, CREATE and UPDATE functions
  */
@@ -46,6 +48,7 @@ public class Neo4j implements AutoCloseable {
     @Override
     public void close() throws Exception {
         _driver.close();
+        _instance = null;
     }
 
     //parameters wrapper
@@ -90,8 +93,7 @@ public class Neo4j implements AutoCloseable {
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", result.single().get(0).asInt());
-        //todo: check why do we need get?
-        String id = jsonObject.get("id").getAsString();
+        String id = jsonObject.toString();
 
         if (create.getFace() != null) {
             saveToJedis(create.getFace(), id);
@@ -136,9 +138,6 @@ public class Neo4j implements AutoCloseable {
                 throw new NullPointerException();
             }
             result.addProperty("properties updated", statementResult.summary().counters().containsUpdates());
-
-            logger.info(result.get("properties updated").getAsString());
-            return result.get("properties updated").getAsString();
         }
 
 
@@ -150,20 +149,19 @@ public class Neo4j implements AutoCloseable {
             int counter = 0;
             for (Map.Entry<String, int[]> entry : update.getRelationships().entrySet()) {
                 builder.add("MATCH (m%d) WHERE ID(m%d) IN %s ", counter, counter, gson.toJson(entry.getValue()));
-                builder.add("MERGE (n)-[r%d:%s]-(m%d)", counter, entry.getKey(), counter);
                 counter++;
+            }
+            for (Map.Entry<String, int[]> entry : update.getRelationships().entrySet()) {
+                builder.add("MERGE (n)-[r%d:%s]-(m%d)", counter, entry.getKey(), counter);
+                counter--;
             }
             builder.add("RETURN n");
             logger.info(builder.getQuery());
             StatementResult statementResult = tx.run(builder.getQuery(), parameters());
             result.addProperty("relations created", statementResult.summary().counters().relationshipsCreated());
-
-            logger.info(result.get("relations created").getAsString());
-            return result.get("relations created").getAsString();
         }
 
-        logger.info("No relations or properties specified");
-        return "No relations or properties specified";
+        return result.toString();
     }
 
 
@@ -178,34 +176,47 @@ public class Neo4j implements AutoCloseable {
     }
 
     private static String matchNodeById(Transaction tx, int id) {
+
         QueryBuilder builder = new QueryBuilder();
-        builder.add("match (n)-[r]-(m) WHERE id(n)=%d return n,type(r) as name,id(m) as id", id);
+        builder.matchById(id, "n").add("RETURN PROPERTIES(n)");
         String query = builder.getQuery();
         logger.info(query);
         StatementResult result = tx.run(builder.getQuery(), parameters());
         List<Record> records = result.list();
 
+        if(records.size() == 0) {
+            throw new NullPointerException("Not found");
+        }
+
         HashMap<String, String> properties = new HashMap<>();
-        for (Map.Entry<String, Object> entry : records.get(0).get(0).asMap().entrySet()) {
-            properties.put(entry.getKey(), (String) entry.getValue());
+        for(Map.Entry<String, String> entry : records.get(0).get(0).asMap(Value::asString).entrySet()) {
+            properties.put(entry.getKey(), entry.getValue());
         }
 
-        HashMap<String, ArrayList<Integer>> relationships = new HashMap<>();
-        for (Record record : records) {
-            String name = record.get("name").asString();
-            if (!relationships.containsKey(name)) {
-                relationships.put(name, new ArrayList<>());
+        //get relationships
+        builder = new QueryBuilder();
+        query = builder.add("MATCH (n)-[r]-(m) WHERE ID(n)=%d RETURN TYPE(r) as name, COLLECT(ID(m)) as ids", id).getQuery();
+        logger.info(query);
+        result = tx.run(builder.getQuery(), parameters());
+        records = result.list();
+
+        HashMap<String, int[]> relationships = new HashMap<>();
+        if(records.size() > 0) {
+            for (Record record : records) {
+                relationships.put(record.get("name").asString(), toIntArray(record.get("ids").asList(Value::asInt)));
             }
-            relationships.get(name).add(record.get("id").asInt());
         }
 
-        HashMap<String, int[]> relations = new HashMap<>();
-//        for (Map.Entry<String, ArrayList<Integer>> entry : relationships.entrySet()) {
-//            relations.put(entry.getKey(), (int[]) entry.getValue().toArray());
-//        }
-        Node node = createNode(id, properties, relations);
+        Node node = createNode(id, properties, relationships);
         logger.info(gson.toJson(node));
         return gson.toJson(node);
+    }
+
+    private static int[] toIntArray(List<Integer> list){
+        int[] ret = new int[list.size()];
+        for(int i = 0;i < ret.length;i++)
+            ret[i] = list.get(i);
+        return ret;
     }
 
     private  static Node createNode(int id, HashMap<String, String> properties, HashMap<String, int[]> relations) {
