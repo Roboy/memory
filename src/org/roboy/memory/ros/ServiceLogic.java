@@ -1,6 +1,7 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.roboy.memory.models.*;
 import static org.roboy.memory.util.Config.*;
 import org.roboy.memory.util.Neo4j;
@@ -25,8 +26,6 @@ class ServiceLogic {
 
         if(create.validate()) {
             response.setAnswer(Neo4j.createNode(create));
-            //todo: check do we need return here
-            return;
         }
 
         response.setAnswer(create.getError());
@@ -39,7 +38,6 @@ class ServiceLogic {
 
         if(update.validate()) {
             response.setAnswer(ok(Neo4j.updateNode(update)));
-            return;
         }
 
         response.setAnswer(error(update.getError()));
@@ -50,7 +48,7 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Get get = parser.fromJson(request.getPayload(), Get.class);
         if (get.getId() != 0) {
-            response.setAnswer(Neo4j.getNodeById(get.getId()));
+                response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
             response.setAnswer(Neo4j.getNode(get));
         }

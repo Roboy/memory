@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.neo4j.driver.v1.*;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.roboy.memory.models.*;
 import redis.clients.jedis.Jedis;
 
@@ -13,8 +14,6 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Config.*;
-
-//todo: add exceptions handler in ServiceLogic
 
 /**
  * Contains the cypher queries for GET, CREATE and UPDATE functions
@@ -133,10 +132,6 @@ public class Neo4j implements AutoCloseable {
             paramUpdate.add("RETURN n");
             logger.info(paramUpdate.getQuery());
             StatementResult statementResult = tx.run(paramUpdate.getQuery(), parameters());
-            int propNum = statementResult.summary().counters().propertiesSet();
-            if (propNum < 1) {
-                throw new NullPointerException();
-            }
             result.addProperty("properties updated", statementResult.summary().counters().containsUpdates());
         }
 
@@ -185,7 +180,7 @@ public class Neo4j implements AutoCloseable {
         List<Record> records = result.list();
 
         if(records.size() == 0) {
-            throw new NullPointerException("Not found");
+            //todo: exception
         }
 
         HashMap<String, String> properties = new HashMap<>();
