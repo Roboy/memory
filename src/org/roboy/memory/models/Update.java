@@ -2,9 +2,9 @@ package org.roboy.memory.models;
 
 import org.roboy.memory.util.Dictionary;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/** Data model for JSON parser.
+ *  Creates objects, that contain the elements of the Update queries.
+ */
 public class Update extends RosNode {
 
 

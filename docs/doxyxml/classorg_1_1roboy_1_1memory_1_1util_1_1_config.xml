@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1util_1_1_config" kind="class" language="Java" prot="public">
+    <compoundname>org::roboy::memory::util::Config</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a1f786eb88a73cd65bdf96538b0ce6f7a" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.ROS_MASTER_URI</definition>
+        <argsstring></argsstring>
+        <name>ROS_MASTER_URI</name>
+        <initializer>= &quot;http://127.0.0.1:11311/&quot;</initializer>
+        <briefdescription>
+<para>IP adress of the PC with roscore. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1aa71c2f17cfceaf3ab5b1d8ae4d8e88d7" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.ROS_HOSTNAME</definition>
+        <argsstring></argsstring>
+        <name>ROS_HOSTNAME</name>
+        <initializer>= &quot;127.0.0.1&quot;</initializer>
+        <briefdescription>
+<para>IP address of the current PC in the network. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a4a990b7d3d02f0b9e82e5624f7349f20" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.NEO4J_ADDRESS</definition>
+        <argsstring></argsstring>
+        <name>NEO4J_ADDRESS</name>
+        <initializer>= &quot;bolt://127.0.0.1:7687&quot;</initializer>
+        <briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB location. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a60730ece475f9513c9834c613a0d694f" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.NEO4J_USERNAME</definition>
+        <argsstring></argsstring>
+        <name>NEO4J_USERNAME</name>
+        <initializer>= &quot;***&quot;</initializer>
+        <briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> instance username. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ad4293db7b6041017da3d19dd2426e30b" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.NEO4J_PASSWORD</definition>
+        <argsstring></argsstring>
+        <name>NEO4J_PASSWORD</name>
+        <initializer>= &quot;***&quot;</initializer>
+        <briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> instance password. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ae3688ba532e787f56f7f24dd966942e2" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.REDIS_URI</definition>
+        <argsstring></argsstring>
+        <name>REDIS_URI</name>
+        <initializer>= &quot;redis://127.0.0.1:6379/0&quot;</initializer>
+        <briefdescription>
+<para>Redis storage location. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a8241c6d734450dc902a8f50c2ae6b481" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String org.roboy.memory.util.Config.REDIS_PASSWORD</definition>
+        <argsstring></argsstring>
+        <name>REDIS_PASSWORD</name>
+        <initializer>= &quot;***&quot;</initializer>
+        <briefdescription>
+<para>Redis storage instance password. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ac1cdb5d8aba914ceafd374fe4598004f" prot="public" static="yes" mutable="no">
+        <type>final String []</type>
+        <definition>final String [] org.roboy.memory.util.Config.LABEL_VALUES</definition>
+        <argsstring></argsstring>
+        <name>LABEL_VALUES</name>
+        <initializer>= new String[] { &quot;Person&quot;,&quot;Robot&quot;,&quot;Company&quot;,&quot;University&quot;,&quot;City&quot;,&quot;Country&quot;,&quot;Hobby&quot;,&quot;Occupation&quot;,&quot;Object&quot; }</initializer>
+        <briefdescription>
+<para>Available label types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ac8375a11c227d849bccd3e9963233414" prot="public" static="yes" mutable="no">
+        <type>final String []</type>
+        <definition>final String [] org.roboy.memory.util.Config.RELATION_VALUES</definition>
+        <argsstring></argsstring>
+        <name>RELATION_VALUES</name>
+        <initializer>= new String[] { &quot;FRIEND_OF&quot;,&quot;LIVE_IN&quot;,&quot;FROM&quot;,&quot;WORK_FOR&quot;,&quot;STUDY_AT&quot;,&quot;MEMBER_OF&quot;,&quot;HAS_HOBBY&quot;,&quot;KNOW&quot;,&quot;IS&quot;,&quot;PART_OF&quot;,&quot;IS_IN&quot; }</initializer>
+        <briefdescription>
+<para>Available reltionship types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Configuration for ROS, Neo4J and Redis Server connectivity. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" line="6" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Config.java" bodystart="6" bodyend="23"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ac1cdb5d8aba914ceafd374fe4598004f" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>LABEL_VALUES</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a4a990b7d3d02f0b9e82e5624f7349f20" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>NEO4J_ADDRESS</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ad4293db7b6041017da3d19dd2426e30b" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>NEO4J_PASSWORD</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a60730ece475f9513c9834c613a0d694f" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>NEO4J_USERNAME</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a8241c6d734450dc902a8f50c2ae6b481" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>REDIS_PASSWORD</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ae3688ba532e787f56f7f24dd966942e2" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>REDIS_URI</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ac8375a11c227d849bccd3e9963233414" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>RELATION_VALUES</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1aa71c2f17cfceaf3ab5b1d8ae4d8e88d7" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>ROS_HOSTNAME</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a1f786eb88a73cd65bdf96538b0ce6f7a" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Config</scope><name>ROS_MASTER_URI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

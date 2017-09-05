@@ -1,7 +1,9 @@
-Knowledge Representation
+.. _know_rep:
+
+Neo4j Memory Architecture
 ================================
 
-Architecture of the Neo4j database in remote. Current version 1.1.1
+Architecture of the Neo4j database in remote. Current version: 1.1.1.
 
 .. figure:: images/dbvisual.*
 
@@ -9,7 +11,7 @@ Visualization of a DB scheme.
 
 Versioning of KR is performed by implementing architecture proposals and evaluating them, upon evaluation the version is fixed and then new proposals are collected. Adding nodes means major ver. X, adding relations is minor ver. Y, adding properties is patch ver. Z: ver. X.Y.Z.
 
-Node Classes
+Node Classes (Labels)
 --------------------------------
 - Person
 - Robot

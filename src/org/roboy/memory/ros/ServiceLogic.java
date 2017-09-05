@@ -1,25 +1,27 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.roboy.memory.models.*;
-import static org.roboy.memory.util.Config.*;
 import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
-import roboy_communication_cognition.*;
+import roboy_communication_cognition.DataQueryRequest;
+import roboy_communication_cognition.DataQueryResponse;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import static org.roboy.memory.util.Answer.error;
+import static org.roboy.memory.util.Answer.ok;
 
-import static org.roboy.memory.util.Answer.*;
-
+/** Contains service handlers to talk with ROS.
+ *  They parse the header and payload and check for invalid elements in the query.
+ *  Then the functions to construct the cypher queries are excecuted and the answer returned.
+ */
 class ServiceLogic {
 
     private static Gson parser = new Gson();
 
-
-    //Create
+    /** Create Service Handler.
+     * Parses the header and payload into a create object with Gson and checks for invalid elements in the query.
+     * Calls  createNode() method to query Neo4j and the answer is returned.
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> createServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
@@ -31,7 +33,10 @@ class ServiceLogic {
         response.setAnswer(create.getError());
     };
 
-    //Update
+    /** Update Service Handler.
+     * Parses the header and payload into an update object with Gson and checks for invalid relationship types in the query.
+     * Calls updateNode() method to query Neo4j and the answer is returned.
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> updateServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
@@ -43,7 +48,10 @@ class ServiceLogic {
         response.setAnswer(error(update.getError()));
     };
 
-    //Get
+    /** Get Service Handler.
+     * Parses the header and payload into a get object with Gson and checks whether node IDs or information about a node is queried.
+     * Calls getNodeById() or getNode() methods to query Neo4j and the answer is returned.
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Get get = parser.fromJson(request.getPayload(), Get.class);
@@ -54,14 +62,19 @@ class ServiceLogic {
         }
     };
 
-    //Cypher
+    /** Cypher Service Handler.
+     *  Directly runs a plain Cypher query which is contained in the payload and returns the response.
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
 
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
 
-    //Remove
+    /** Remove Service Handler.
+     * Parses the header and payload into a remove object.
+     * Calls remove() method to query Neo4j and the answer is returned.
+     */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> removeServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Remove remove = parser.fromJson(request.getPayload(), Remove.class);

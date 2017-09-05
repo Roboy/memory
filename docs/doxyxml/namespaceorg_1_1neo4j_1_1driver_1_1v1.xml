@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="namespaceorg_1_1neo4j_1_1driver_1_1v1" kind="namespace" language="Java">
+    <compoundname>org::neo4j::driver::v1</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="1" column="1"/>
+  </compounddef>
+</doxygen>

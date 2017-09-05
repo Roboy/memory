@@ -1,11 +1,11 @@
 package org.roboy.memory.models;
 
-import org.apache.maven.shared.utils.StringUtils;
 import org.roboy.memory.util.Dictionary;
 
-import java.util.HashMap;
-import java.util.Map;
 
+/** Data model for JSON parser.
+ *  Creates objects, that contain the elements of the Create queries.
+ */
 public class Create extends RosNode {
 
     private String[] faceVector;

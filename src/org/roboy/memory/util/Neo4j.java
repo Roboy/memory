@@ -1,22 +1,24 @@
 package org.roboy.memory.util;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.neo4j.driver.v1.*;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.roboy.memory.models.*;
 import redis.clients.jedis.Jedis;
 
-
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.roboy.memory.util.Config.*;
 
 /**
- * Contains the cypher queries for GET, CREATE and UPDATE functions
+ * Contains the methods for running GET, CREATE, UPDATE, REMOVE and Cypher queries.
+ * Talks to the Neo4j and Redis databases.
+ * Handles the result retrieved from Neo4j.
  */
 public class Neo4j implements AutoCloseable {
 
@@ -31,7 +33,9 @@ public class Neo4j implements AutoCloseable {
     }
 
     /**
-     * @return returns Neo4J Driver
+     * Singleton for the Neo4j class
+     *
+     * @return Neo4J Driver instance if the object of Neo4j class is initialized
      */
     public static Driver getInstance() {
         if (_instance == null) {
@@ -41,6 +45,11 @@ public class Neo4j implements AutoCloseable {
         return _instance.getDriver();
     }
 
+    /**
+     * Getter for the Neo4j driver instance
+     *
+     * @return Neo4J Driver instance
+     */
     private Driver getDriver() {
         return _driver;
     }
@@ -51,12 +60,21 @@ public class Neo4j implements AutoCloseable {
         _instance = null;
     }
 
-    //parameters wrapper
+    /**
+     * Wrapper for the Neo4j query parameters
+     *
+     * @return Set of keys and values for parameters
+     */
     public static Value parameters(Object... keysAndValues) {
         return Values.parameters(keysAndValues);
     }
 
-    //run only cypher service
+    /**
+     * Method to channel a plain Cypher query to Neo4j
+     *
+     * @param query formed in Cypher
+     * @return plain response from Neo4j
+     */
     public static String run(String query) {
         try (Session session = getInstance().session()) {
             logger.info(query);
@@ -69,7 +87,9 @@ public class Neo4j implements AutoCloseable {
 
 
     /**
-     * Create
+     * Method accepting JSON Create queries
+     *
+     * @return result obtained by createNode method
      */
     public static String createNode(Create create) {
         try (Session session = getInstance().session()) {
@@ -77,6 +97,12 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    /**
+     * Method processing JSON Create queries
+     *
+     * @param session is a session handler for transaction handling to query Neo4j DB
+     * @return ID of the node that was created in Neo4j DB
+     */
     private static String createNode(Session session, Create create) {
         StatementResult result = session.writeTransaction(tx -> {
             //TODO: prepared statement
@@ -114,7 +140,9 @@ public class Neo4j implements AutoCloseable {
 
 
     /**
-     * Update
+     * Method accepting JSON Update queries
+     *
+     * @return result obtained by update method
      */
     public static String updateNode(Update update) {
         try (Session session = getInstance().session()) {
@@ -122,6 +150,12 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    /**
+     * Method processing JSON Update queries
+     *
+     * @param tx is a transaction handler to query Neo4j DB
+     * @return response from Neo4j upon updating the node
+     */
     private static String update(Transaction tx, Update update) {
         //update properties
         JsonObject result = new JsonObject();
@@ -161,7 +195,10 @@ public class Neo4j implements AutoCloseable {
 
 
     /**
-     * Get
+     * Method accepting JSON Get by ID queries
+     *
+     * @param id is a unique pointer to the node in Neo4j DB
+     * @return result obtained by matchNodeById method
      */
     public static String getNodeById(int id) {
 
@@ -170,6 +207,13 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    /**
+     * Method processing JSON Get by ID queries
+     *
+     * @param tx is a transaction handler to query Neo4j DB
+     * @param id is a unique pointer to the node in Neo4j DB
+     * @return a JSON object containing node labels, properties and relationships
+     */
     private static String matchNodeById(Transaction tx, int id) {
 
         QueryBuilder builder = new QueryBuilder();
@@ -251,7 +295,9 @@ public class Neo4j implements AutoCloseable {
     }
 
     /**
-     * Remove
+     * Method accepting JSON Remove queries
+     *
+     * @return result obtained by removeRelsProps method
      */
     public static String remove(Remove remove) {
         try (Session session = getInstance().session()) {
@@ -259,6 +305,12 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
+    /**
+     * Method processing JSON Remove queries
+     *
+     * @param tx is a transaction handler to query Neo4j DB
+     * @return response from Neo4j upon removing the specified relations and properties
+     */
     private static String remove(Transaction tx, Remove remove) {
         //remove properties
         JsonObject response = new JsonObject();

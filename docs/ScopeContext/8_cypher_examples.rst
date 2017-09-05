@@ -1,9 +1,13 @@
+.. _cypher:
+
 Cypher Examples
 ================================
 
-Cypher is a declarative graph query language that allows for expressive and efficient querying and updating of the graph store. Cypher is a relatively simple but still very powerful language. Very complicated database queries can easily be expressed through Cypher. This allows you to focus on your domain instead of getting lost in database access.
+Cypher is a declarative graph query language that allows for expressive and efficient querying and updating of the graph store.
+Cypher is a relatively simple but still very powerful language. Very complicated database queries can easily be expressed through Cypher.
+This allows you to focus on your domain instead of getting lost in database access.
 
-Useful Cypher queries related to actual Knowledge Representation
+Useful Cypher queries related to actual Knowledge Representation (developer)
 
 **Create a „location“-node**::
 

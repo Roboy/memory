@@ -40,7 +40,7 @@ if on_rtd:
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
+    #'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
@@ -67,15 +67,15 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Roboy Memory Module Documentation'
-copyright = u'2016, Raphael Dürscheid, based on Template by Dr. Peter'
-author = u'Raphael Dürscheid, based on Template by Dr. Peter'
+copyright = u'2017, Roboy Memory, based on Template by Dr. Peter'
+author = u'Roboy Memory, based on Template by Dr. Peter'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = u'1.1.'
+version = u'0.0.'
 # The full version, including alpha/beta/rc tags.
 release = u'0.0.'
 
@@ -281,7 +281,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 # latex_documents = [
 #     (master_doc, 'SoftwareDocumentationTemplate.tex', u'Software Documentation Template',
-#      u'Raphael Dürscheid, based on Template by Dr. Peter', 'manual'),
+#      u'Raphael D?rscheid, based on Template by Dr. Peter', 'manual'),
 # ]
 
 # The name of an image file (relative to this directory) to place at the top of

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_09478cce745c20b7dae4dafe08cca500" kind="dir">
+    <compoundname>/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util</compoundname>
+    <innerfile refid="_answer_8java">Answer.java</innerfile>
+    <innerfile refid="_config_8java">Config.java</innerfile>
+    <innerfile refid="_neo4j_8java">Neo4j.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/"/>
+  </compounddef>
+</doxygen>

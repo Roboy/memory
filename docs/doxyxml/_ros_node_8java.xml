@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_ros_node_8java" kind="file" language="Java">
+    <compoundname>RosNode.java</compoundname>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" prot="public">org::roboy::memory::ros::RosNode</innerclass>
+    <innernamespace refid="namespaceorg_1_1roboy_1_1memory_1_1ros">org::roboy::memory::ros</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">org.roboy.memory.ros;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceorg" kindref="compound">org</ref>.ros.namespace.GraphName;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceorg" kindref="compound">org</ref>.ros.node.AbstractNodeMain;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceorg" kindref="compound">org</ref>.ros.node.ConnectedNode;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceorg" kindref="compound">org</ref>.ros.node.NodeConfiguration;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceorg" kindref="compound">org</ref>.ros.node.NodeMainExecutor;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy__communication__cognition" kindref="compound">roboy_communication_cognition</ref>.DataQuery;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" kindref="compound">RosNode</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>AbstractNodeMain<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a60c4b457aa270b9658c4d152a4e1e842" kindref="member">name</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/roboy/cognition/memory&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">register</highlight><highlight class="normal">(NodeConfiguration<sp/>nodeConfiguration,<sp/>NodeMainExecutor<sp/>nodeMainExecutor)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeConfiguration.setNodeName(name);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeMainExecutor.execute(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" kindref="compound">RosNode</ref>(),<sp/>nodeConfiguration);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>GraphName<sp/>getDefaultNodeName()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>GraphName.of(name);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a93a8b3b08d2521f782297ac8b3ec310f" kindref="member">onStart</ref>(ConnectedNode<sp/>connectedNode)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connectedNode.newServiceServer(this.getDefaultNodeName()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/create&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE,<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kindref="compound">ServiceLogic</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aef55514ea4c05fd6bc7bcffe3f6e1874" kindref="member">createServiceHandler</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connectedNode.newServiceServer(this.getDefaultNodeName()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/update&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE,<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kindref="compound">ServiceLogic</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1adc0b3d19d82f44c620672db71b15ac70" kindref="member">updateServiceHandler</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connectedNode.newServiceServer(this.getDefaultNodeName()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/get&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE,<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kindref="compound">ServiceLogic</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a3c4630babe95bb950e70826af7857675" kindref="member">getServiceHandler</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connectedNode.newServiceServer(this.getDefaultNodeName()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/remove&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE,<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kindref="compound">ServiceLogic</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a559e6e72848711056723579defbaa3ea" kindref="member">removeServiceHandler</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connectedNode.newServiceServer(this.getDefaultNodeName()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/cypher&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE,<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kindref="compound">ServiceLogic</ref>.<ref refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a7cdf3eccc57c570df4d51a35ac6ace76" kindref="member">cypherServiceHandler</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros/RosNode.java"/>
+  </compounddef>
+</doxygen>

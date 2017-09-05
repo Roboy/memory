@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kind="class" language="Java" prot="public">
+    <compoundname>org::roboy::memory::util::Answer</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a5722ce17a2c1e20a57c49934d29e5c1b" prot="private" static="yes" mutable="no">
+        <type>Logger</type>
+        <definition>Logger org.roboy.memory.util.Answer.logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <initializer>= Logger.getLogger(Answer.class.toString())</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a535b121bfb1d6d69a8b9b7f8a94cf749" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>static String org.roboy.memory.util.Answer.ok</definition>
+        <argsstring>()</argsstring>
+        <name>ok</name>
+        <briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kindref="compound">Answer</ref> for ROS if no errors were detected. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>JSON object {status:&quot;OK&quot;} to ROS </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; String with positive response </para>        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>static String org.roboy.memory.util.Answer.error</definition>
+        <argsstring>(String message)</argsstring>
+        <name>error</name>
+        <param>
+          <type>String</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kindref="compound">Answer</ref> for ROS if an error occurred. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>contains the error message according to the obstacle approached </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>JSON object containing status and message </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; String with negative response </para>        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="29" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kindref="compound">Answer</ref> wrapper. </para>    </briefdescription>
+    <detaileddescription>
+<para>Outputs OK or error messages to ROS. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Logger</label>
+      </node>
+      <node id="1">
+        <label>org.roboy.memory.util.Answer</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>logger</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="8" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>error</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a5722ce17a2c1e20a57c49934d29e5c1b" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>logger</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a535b121bfb1d6d69a8b9b7f8a94cf749" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>ok</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

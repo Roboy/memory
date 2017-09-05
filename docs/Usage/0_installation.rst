@@ -1,6 +1,15 @@
 Installation
 =============
 
+Maven
+--------------------------------------------------
+
+The project requires Maven. You may get it here: `Download Maven <https://maven.apache.org/download.cgi>`_
+
+Consider checking this entries: `Install <https://maven.apache.org/install.html>`_,
+`Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
+
+
 Local Neo4j Instance
 --------------------------------------------------
 
@@ -28,8 +37,6 @@ There are several options (for a Unix-based OS)
 
 	neo4j start
 
-- congratulations! You have started the Neo4j instance!
-
 **RPM repository**
 
 Follow these steps as **root**:
@@ -53,8 +60,6 @@ Follow these steps as **root**:
 
 	neo4j start
 
-- congratulations! You have started the Neo4j instance!
-
 **Tarball installation**
 
 - download the latest release from::
@@ -71,8 +76,6 @@ Follow these steps as **root**:
 - run::
 	
 	 ./bin/neo4j console
-
-- congratulations! You have started the Neo4j instance!
 
 **Build it yourself** 
 
@@ -92,16 +95,67 @@ Follow these steps as **root**:
 
 	bin/neo4j start
 
-- congratulations! You have started the Neo4j instance!
+Congratulations! You have started the Neo4j instance!
 
+Local Redis Instance
+--------------------------------------------------
+
+In order to compile Redis follow this simple steps:
+
+- get the source code::
+
+    wget http://download.redis.io/redis-stable.tar.gz
+
+- unzip the tarball::
+
+    tar xvzf redis-stable.tar.gz
+
+- navigate to::
+
+    cd redis-stable
+
+- compile::
+
+    make
 
 Remote Neo4j Instance
 --------------------------------------------------
 
 If the local instance is not necessary, use a remote Neo4j instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
 
+Remote Redis Instance
+--------------------------------------------------
 
-Package Installation
+If the local instance is not necessary, use a remote Redis instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
+
+Installing ROS
+--------------------------------------------------
+
+The project is using `rosjava <http://wiki.ros.org/rosjava?distro=kinetic>`_ which requires ROS `kinetic <http://wiki.ros.org/kinetic>`_.
+
+Simple installation (assuming Ubuntu 16.04 LTS):
+
+- setup your sources.list::
+
+    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" >
+    /etc/apt/sources.list.d/ros-latest.list'
+
+- set up your keys::
+
+    sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80
+    --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+
+- update Debian package index::
+
+    sudo apt-get update
+
+- commence desktop full installation of kinetic::
+
+    sudo apt-get install ros-kinetic-desktop-full
+
+If the simple installation was not successful, please, refer to `this guide <http://wiki.ros.org/ShadowRepository>`_.
+
+Roboy Memory Package Installation
 --------------------------------------------------
 
 The project is implemented upon a build automation tool - Maven, so the dependencies are tracked automatically, if there is a dependency missing or dependency related exception, please leave a feedback at the GitHub repository.
@@ -110,6 +164,3 @@ The project is implemented upon a build automation tool - Maven, so the dependen
 	
 	git clone git@github.com:Roboy/roboy_memory.git
 
-- in the project directory do:: 
-
-	mvn clean install
