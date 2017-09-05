@@ -18,6 +18,7 @@ public class QueryBuilder {
     }
 
     public QueryBuilder addParameters(HashMap<String, String> params) {
+        if(params == null) return this;
         String[] array = new String[params.size()];
         for (int i = 0; i < params.size(); i++) {
             array[i] = params.keySet().toArray()[i] + ":'" + params.values().toArray()[i] + "'";

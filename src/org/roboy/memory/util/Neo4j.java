@@ -1,6 +1,7 @@
 package org.roboy.memory.util;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.neo4j.driver.v1.*;
 import org.roboy.memory.models.*;
@@ -123,7 +124,6 @@ public class Neo4j implements AutoCloseable {
     }
 
     private static String update(Transaction tx, Update update) {
-        //todo: wrong place for return statements
         //update properties
         JsonObject result = new JsonObject();
         if (update.getProperties() != null) {
@@ -152,8 +152,8 @@ public class Neo4j implements AutoCloseable {
                 counter++;
             }
             for (Map.Entry<String, int[]> entry : update.getRelationships().entrySet()) {
-                builder.add("MERGE (n)-[r%d:%s]-(m%d)", counter, entry.getKey(), counter);
                 counter--;
+                builder.add("MERGE (n)-[r%d:%s]-(m%d)", counter, entry.getKey(), counter);
             }
             builder.add("RETURN n");
             logger.info(builder.getQuery());
@@ -207,7 +207,7 @@ public class Neo4j implements AutoCloseable {
             }
         }
 
-        Node node = createNode(id, properties, relationships);
+        Node node = createNode(id, properties.isEmpty() ? null : properties, relationships.isEmpty() ? null : relationships);
         logger.info(gson.toJson(node));
         return gson.toJson(node);
     }
@@ -238,16 +238,19 @@ public class Neo4j implements AutoCloseable {
         builder.add("MATCH (n:%s", get.getLabel());
         builder.addParameters(get.getProperties());
         builder.add(")");
-        int counter = 0;
-        for (Map.Entry<String, int[]> entry : get.getRelationships().entrySet()) {
-            builder.add("MATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, counter, counter, gson.toJson(entry.getValue()));
-            counter++;
+        if(get.getRelationships() != null) {
+            int counter = 0;
+            for (Map.Entry<String, int[]> entry : get.getRelationships().entrySet()) {
+                builder.add("MATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, counter, counter, gson.toJson(entry.getValue()));
+                counter++;
+            }
         }
-        builder.add("RETURN ID(n)");
+        builder.add("RETURN COLLECT(ID(n)) AS ids");
         logger.info(builder.getQuery());
         StatementResult result = tx.run(builder.getQuery(), parameters());
+        List<Record> records = result.list();
 
-        String json = gson.toJson(result.list(record -> record.get(0).asString()).toArray());
+        String json = "{\"id\":" + Arrays.toString(toIntArray(records.get(0).get(0).asList(Value::asInt))) + "}";
         logger.info(json);
         return json;
     }
@@ -264,7 +267,7 @@ public class Neo4j implements AutoCloseable {
     private static String remove(Transaction tx, Remove remove) {
         //remove properties
         JsonObject response = new JsonObject();
-        if (remove.getPropertiesList().size() > 0) {
+        if (remove.getPropertiesList() != null) {
             QueryBuilder builder = new QueryBuilder();
             builder.matchById(remove.getId(), "n");
             for (String propery : remove.getPropertiesList()) {
@@ -274,29 +277,29 @@ public class Neo4j implements AutoCloseable {
             String query = builder.getQuery();
             logger.info(query);
             StatementResult result = tx.run(query, parameters());
-            response.addProperty("properties", result.summary().counters().propertiesSet());
+            response.addProperty("properties deleted", result.summary().counters().containsUpdates());
         }
 
-        if(remove.getRelationships().size() > 0) {
+        if(remove.getRelationships() != null) {
             QueryBuilder builder = new QueryBuilder();
             builder.matchById(remove.getId(), "n");
             int counter = 0;
             for (Map.Entry<String, int[]> entry : remove.getRelationships().entrySet()) {
-                builder.add("NATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, entry.getKey(), counter, counter, gson.toJson(entry.getValue()));
+                builder.add("MATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, entry.getKey(), counter, counter, gson.toJson(entry.getValue()));
                 counter++;
             }
-            builder.add("REMOVE r%d", --counter);
-            while(counter != 0) {
+            builder.add("DELETE r%d", --counter);
+            while(counter > 0) {
                 builder.add(",r%d", --counter);
             }
             String query = builder.getQuery();
             logger.info(query);
             StatementResult result = tx.run(query, parameters());
-            response.addProperty("properties", result.summary().counters().propertiesSet());
+            response.addProperty("relationships deleted", result.summary().counters().relationshipsDeleted());
         }
 
-        logger.info(response.getAsString());
-        return response.getAsString();
+        logger.info(response.toString());
+        return response.toString();
     }
 
 }
