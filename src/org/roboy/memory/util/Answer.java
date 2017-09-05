@@ -12,10 +12,11 @@ public class Answer {
     /**
      * Answer for ROS if no errors were detected.
      *
+     * @param message contains the success message with json data
      * @return JSON object {status:"OK"} to ROS
      */
-    public static String ok() {
-        String result = "{status:\"OK\"}"; ///< String with positive response
+    public static String ok(String message) {
+        String result = "{\"status\":\"OK\", \"message\":\""+message+"\"}";
         logger.info(result);
         return result;
     }
@@ -27,7 +28,7 @@ public class Answer {
      * @return JSON object containing status and message
      */
     public static String error(String message) {
-        String result = "{status:\"FAIL\", message:\""+message+"\"}"; ///< String with negative response
+        String result = "{\"status\":\"FAIL\", \"message\":\""+message+"\"}";
         logger.warning(result);
         return result;
     }

@@ -1,18 +1,14 @@
 package org.roboy.memory.ros;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.roboy.memory.models.*;
-import static org.roboy.memory.util.Config.*;
 import org.roboy.memory.util.Neo4j;
 import org.ros.node.service.ServiceResponseBuilder;
-import roboy_communication_cognition.*;
+import roboy_communication_cognition.DataQueryRequest;
+import roboy_communication_cognition.DataQueryResponse;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.logging.Logger;
-
-import static org.roboy.memory.util.Answer.*;
+import static org.roboy.memory.util.Answer.error;
+import static org.roboy.memory.util.Answer.ok;
 
 /** Contains service handlers to talk with ROS.
  *  They parse the header and payload and check for invalid elements in the query.
@@ -20,10 +16,7 @@ import static org.roboy.memory.util.Answer.*;
  */
 class ServiceLogic {
 
-    private static Logger logger = Logger.getLogger(ServiceLogic.class.toString()); ///< Logger
-    private static Gson parser = new Gson(); ///< Parses the JSON elements of the header and payload
-    private static HashSet<String> labels = new HashSet<String>(Arrays.asList(LABEL_VALUES)); ///< Contains available label types
-    private static HashSet<String> relations = new HashSet<String>(Arrays.asList(RELATION_VALUES)); ///< Contains available relationship types
+    private static Gson parser = new Gson();
 
     /** Create Service Handler.
      * Parses the header and payload into a create object with Gson and checks for invalid elements in the query.
@@ -33,25 +26,11 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
 
-        //Print facial features
-        if (create.getFace() != null) {
-            System.out.println("FaceVector: " + create.getFace().toString());
+        if(create.validate()) {
+            response.setAnswer(Neo4j.createNode(create));
         }
 
-        ///Check for invalid elements in the query
-        if (create.getProperties() == null) { //error msg if there are no properties
-            response.setAnswer(error("no properties"));
-            return;
-        } else if (!create.getProperties().containsKey("name")){ //error msg if there is no node name
-            response.setAnswer(error("no name specified in properties : name required"));
-            return;
-        } else if (create.getLabel() != null && !labels.contains(create.getLabel().substring(0,1).toUpperCase() + create.getLabel().substring(1).toLowerCase())) {
-            response.setAnswer(error("Label '" + create.getLabel() + "' doesn't exist in the DB"));
-            return;
-        } else {
-            response.setAnswer(Neo4j.createNode(create.getLabel(), create.getFace(), create.getProperties()));
-        }
-        
+        response.setAnswer(create.getError());
     };
 
     /** Update Service Handler.
@@ -62,19 +41,11 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
-        ///Check for invalid relationship types in the query
-        if(update.getRelations() != null) {
-            for (String rel : update.getRelations().keySet()) {
-                if (!relations.contains(rel.toUpperCase())) {
-                    response.setAnswer(error("The relationship type '" + rel + "' doesn't exist in the DB"));
-                    return;
-                }
-            }
+        if(update.validate()) {
+            response.setAnswer(ok(Neo4j.updateNode(update)));
         }
 
-        Neo4j.updateNode(update.getId(), update.getRelations(), update.getProperties());
-
-        response.setAnswer(ok());
+        response.setAnswer(error(update.getError()));
     };
 
     /** Get Service Handler.
@@ -82,16 +53,12 @@ class ServiceLogic {
      * Calls getNodeById() or getNode() methods to query Neo4j and the answer is returned.
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
-        Header header = parser.fromJson(request.getHeader(), Header.class); // {"user":"userName","datetime":"timestamp"}
+        Header header = parser.fromJson(request.getHeader(), Header.class);
         Get get = parser.fromJson(request.getPayload(), Get.class);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        logger.info(gson.toJson(get));
-
-        ///checks whether node IDs or information about a node is queried
         if (get.getId() != 0) {
-            response.setAnswer(Neo4j.getNodeById(get.getId()));
+                response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
-            response.setAnswer(Neo4j.getNode(get.getLabel(), get.getRelations(), get.getProperties()));
+            response.setAnswer(Neo4j.getNode(get));
         }
     };
 
@@ -100,7 +67,7 @@ class ServiceLogic {
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> cypherServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
-        logger.info(request.getPayload());
+
         response.setAnswer(Neo4j.run(request.getPayload()));
     };
 
@@ -112,9 +79,12 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Remove remove = parser.fromJson(request.getPayload(), Remove.class);
 
-        Neo4j.remove(remove.getId(), remove.getRelations(), remove.getProperties());
+        if(remove.validate()) {
+            response.setAnswer(ok(Neo4j.remove(remove)));
+        } else {
+            response.setAnswer(error(remove.getError()));
+        }
 
-        response.setAnswer(ok());
     };
 
 }
