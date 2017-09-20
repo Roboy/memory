@@ -228,7 +228,7 @@ public class Neo4j implements AutoCloseable {
         }
 
         HashMap<String, String> properties = new HashMap<>();
-        for(Map.Entry<String, String> entry : records.get(0).get(0).asMap(Value::asString).entrySet()) {
+        for(Map.Entry<String, String> entry : records.get(0).get(0).asMap(Value::toString).entrySet()) {
             properties.put(entry.getKey(), entry.getValue());
         }
 
