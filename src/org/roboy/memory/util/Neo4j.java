@@ -228,8 +228,8 @@ public class Neo4j implements AutoCloseable {
         }
 
         HashMap<String, String> properties = new HashMap<>();
-        for(Map.Entry<String, String> entry : records.get(0).get(0).asMap(Value::toString).entrySet()) {
-            properties.put(entry.getKey(), entry.getValue());
+        for(Map.Entry<String, Object> entry : records.get(0).get(0).asMap(Value::asObject).entrySet()) {
+            properties.put(entry.getKey(), entry.getValue().toString());
         }
 
         //get relationships
@@ -280,7 +280,7 @@ public class Neo4j implements AutoCloseable {
         if(get.getRelationships() != null) {
             int counter = 0;
             for (Map.Entry<String, int[]> entry : get.getRelationships().entrySet()) {
-                builder.add("MATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, counter, counter, gson.toJson(entry.getValue()));
+                builder.add("MATCH (n)-[r%d:%s]-(m%d) WHERE ID(m%d) IN %s", counter, entry.getKey(), counter, counter, gson.toJson(entry.getValue()));
                 counter++;
             }
         }
@@ -348,5 +348,4 @@ public class Neo4j implements AutoCloseable {
         logger.info(response.toString());
         return response.toString();
     }
-
 }
