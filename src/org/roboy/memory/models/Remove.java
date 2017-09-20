@@ -7,10 +7,10 @@ import java.util.HashSet;
  */
 public class Remove extends RosNode {
 
-    private HashSet<String> properties_list;
+    private HashSet<String> properties;
 
     public HashSet<String> getPropertiesList() {
-        return properties_list;
+        return properties;
     }
 
     @Override

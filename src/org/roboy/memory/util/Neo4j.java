@@ -224,7 +224,7 @@ public class Neo4j implements AutoCloseable {
         List<Record> records = result.list();
 
         if(records.size() == 0) {
-            //todo: exception
+            return gson.toJson("[]");
         }
 
         HashMap<String, String> properties = new HashMap<>();
