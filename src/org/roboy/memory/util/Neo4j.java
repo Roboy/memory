@@ -171,7 +171,7 @@ public class Neo4j implements AutoCloseable {
 
 
 
-        //create new relations
+        //Create new relationships
         if (update.getRelationships() != null) {
             QueryBuilder builder = new QueryBuilder();
             builder.matchById(update.getId(), "n");
@@ -187,7 +187,7 @@ public class Neo4j implements AutoCloseable {
             builder.add("RETURN n");
             logger.info(builder.getQuery());
             StatementResult statementResult = tx.run(builder.getQuery(), parameters());
-            result.addProperty("relations created", statementResult.summary().counters().relationshipsCreated());
+            result.addProperty("relationships created", statementResult.summary().counters().relationshipsCreated());
         }
 
         return result.toString();
@@ -258,11 +258,11 @@ public class Neo4j implements AutoCloseable {
         return ret;
     }
 
-    private  static Node createNode(int id, HashMap<String, String> properties, HashMap<String, int[]> relations) {
+    private  static Node createNode(int id, HashMap<String, String> properties, HashMap<String, int[]> relationships) {
         Node node = new Node();
         node.setId(id);
         node.setProperties(properties);
-        node.setRelationships(relations);
+        node.setRelationships(relationships);
         return node;
     }
 
@@ -309,7 +309,7 @@ public class Neo4j implements AutoCloseable {
      * Method processing JSON Remove queries
      *
      * @param tx is a transaction handler to query Neo4j DB
-     * @return response from Neo4j upon removing the specified relations and properties
+     * @return response from Neo4j upon removing the specified relationships and properties
      */
     private static String remove(Transaction tx, Remove remove) {
         //remove properties

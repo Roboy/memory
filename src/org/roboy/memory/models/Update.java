@@ -18,7 +18,7 @@ public class Update extends RosNode {
 
         if(getRelationships() != null) {
             for (String rel : getRelationships().keySet()) {
-                if (!Dictionary.RELATION_VALUES.contains(rel.toUpperCase())) {
+                if (!Dictionary.RELATIONSHIP_VALUES.contains(rel.toUpperCase())) {
                     error("The relationship type '" + rel + "' doesn't exist in the DB");
                     return false;
                 }
