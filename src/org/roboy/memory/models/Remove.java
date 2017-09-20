@@ -1,27 +1,24 @@
 package org.roboy.memory.models;
 
-import java.util.Map;
+import java.util.HashSet;
 
 /** Data model for JSON parser.
  *  Creates objects, that contain the elements of the Remove queries.
  */
-public class Remove {
-    private int id; ///< The id of a node that shall be modified
-    private String type; ///< Currently only used to specify the type "node"
-    private String label; ///<  Specifies the type of node that shall be removes, like "Person"
+public class Remove extends RosNode {
 
-    private Map<String, String[]> relations; ///< Contains the relationship type as key and an array of node IDs as value
-    private String[] properties; ///< Contains the node properties
+    private HashSet<String> properties_list;
 
-    public int getId() {
-        return id;
+    public HashSet<String> getPropertiesList() {
+        return properties_list;
     }
 
-    public String[] getProperties() {
-        return properties;
-    }
-
-    public Map<String, String[]> getRelations() {
-        return relations;
+    @Override
+    public boolean validate() {
+        if(getId() == null) {
+            error("No ID specified");
+            return false;
+        }
+         return true;
     }
 }
