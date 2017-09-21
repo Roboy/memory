@@ -3,6 +3,7 @@ package org.roboy.memory.util;
 /**
  * Configuration for ROS, Neo4J and Redis Server connectivity
  */
+
 public class Config { //DO NOT CHANGE
     //ROS
     public final static String ROS_MASTER_URI = System.getenv("ROS_MASTER_URI") == null ? "http://localhost:11311/" : System.getenv("ROS_MASTER_URI");

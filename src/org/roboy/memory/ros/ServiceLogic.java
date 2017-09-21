@@ -58,7 +58,7 @@ class ServiceLogic {
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Get get = parser.fromJson(request.getPayload(), Get.class);
-        if (get.getId() != 0) {
+        if (get.getId() != null ) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
             response.setAnswer(Neo4j.getNode(get));
