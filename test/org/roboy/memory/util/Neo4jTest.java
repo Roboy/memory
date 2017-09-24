@@ -42,7 +42,7 @@ public class Neo4jTest extends TestCase {
         Update update = gson.fromJson("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}", Update.class);
         JsonObject answer = gson.fromJson(Neo4j.updateNode(update), JsonObject.class);
         assertTrue(answer.get("properties updated").getAsBoolean());
-        assertTrue(answer.get("relations created").getAsInt() > 0);
+        assertTrue(answer.get("relationships created").getAsInt() > 0);
     }
 
     public void testGetNodeById() throws Exception {
