@@ -3,21 +3,28 @@ package org.roboy.memory.util;
 /**
  * Configuration for ROS, Neo4J and Redis Server connectivity
  */
-public class Config {
-    ///ROS Configuration
-    public final static String ROS_MASTER_URI = "http://127.0.0.1:11311/"; ///< IP adress of the PC with roscore
-    public final static String ROS_HOSTNAME = "127.0.0.1"; ///< IP address of the current PC in the network
 
-    ///Neo4J Configuration
-    public final static String NEO4J_ADDRESS = "bolt://127.0.0.1:7687"; ///< Neo4j DB location
-    public final static String NEO4J_USERNAME = "***"; ///< Neo4j instance username
-    public final static String NEO4J_PASSWORD = "***";  ///< Neo4j instance password
+public class Config { //DO NOT CHANGE
+    //ROS
+    public final static String ROS_MASTER_URI = System.getenv("ROS_MASTER_URI") == null ? "http://localhost:11311/" : System.getenv("ROS_MASTER_URI");
+    public final static String ROS_HOSTNAME = System.getenv("ROS_HOSTNAME") == null ? "127.0.0.1" : System.getenv("ROS_HOSTNAME");  //IP ADDRESS OF CURRENT PC IN THE NETWORK
 
-    ///Redis Configuration
-    public final static String REDIS_URI = "redis://127.0.0.1:6379/0"; ///< Redis storage location
-    public final static String REDIS_PASSWORD = "***"; ///< Redis storage instance password
+    //Neo4J
+    public final static String NEO4J_ADDRESS = System.getenv("NEO4J_ADDRESS") == null ? "bolt://localhost:7687" : System.getenv("NEO4J_ADDRESS");
+    public final static String NEO4J_USERNAME = System.getenv("NEO4J_USERNAME") == null ? "neo4j" : System.getenv("NEO4J_USERNAME");
+    public final static String NEO4J_PASSWORD = System.getenv("NEO4J_PASSWORD") == null ? "memory" : System.getenv("NEO4J_PASSWORD");
 
-    ///KR Entries Configuration
-    public static final String[] LABEL_VALUES = new String[] { "Person","Robot","Company","University","City","Country","Hobby","Occupation","Object" }; ///< Available label types
-    public static final String[] RELATION_VALUES = new String[] { "FRIEND_OF","LIVE_IN","FROM","WORK_FOR","STUDY_AT","MEMBER_OF","HAS_HOBBY","KNOW","IS","PART_OF","IS_IN" }; ///< Available reltionship types
+    //Redis
+    public final static String REDIS_URI = System.getenv("REDIS_URI") == null ? "redis://localhost:6379/0" : System.getenv("REDIS_URI");
+    public final static String REDIS_PASSWORD = System.getenv("REDIS_PASSWORD") == null ? "root" : System.getenv("REDIS_PASSWORD");
 }
+
+/* put your values here and copy to env
+ROS_MASTER_URI=http://localhost:11311/
+ROS_HOSTNAME=127.0.0.1
+NEO4J_ADDRESS=bolt://localhost:7687
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=memory
+REDIS_URI=redis://localhost:6379/0
+REDIS_PASSWORD=root
+ */

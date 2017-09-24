@@ -58,7 +58,7 @@ Updating a node
     {
         'id': 1, //REQUIRED, contains node id
 
-        'relations':  {
+        'relationships':  {
             'rel_a': [2, 3],
             'rel_b': [3]
         }
@@ -70,7 +70,8 @@ Updating a node
     }
 
 This query requests updating node with **ID** - 1.
-This query requests creating relations between two nodes, where the relations are e.g. **rel_a**, the number denotes the **ID** of the node to where the relations is following from the current node.
+This query requests creating relationships between two nodes, where the relationships
+ are e.g. **rel_a**, the number denotes the **ID** of the node to where the relationships is following from the current node.
 This query requests creating (changing) properties of the node, where the properties may be e.g. **prop_a** with value **value_a**.
 
 .. warning::
@@ -90,7 +91,7 @@ Get Queries Payload Message
     {
         'label': 'some_label',
 
-        'relations': {
+        'relationships': {
             'rel_a': [2],
             'rel_b': [3]
         },
@@ -100,9 +101,9 @@ Get Queries Payload Message
         }
     }
 
-This query requests getting all nodes which have node label - **some_label**, have relationship **rel_a** with the node having **ID** 2 and **rel_b** with the node of **ID** 3, as well as having **prop_a** equal to **value**.
+This query requests getting all nodes which have node label - **some_label**, have relationships **rel_a** with the node having **ID** 2 and **rel_b** with the node of **ID** 3, as well as having **prop_a** equal to **value**.
 The query returns an array of node IDs on success (may be an empty array if no such nodes exist).
-The allowed relation types for each pair of nodes and named properties of nodes may be found in :ref:`know_rep`.
+The allowed relationships types for each pair of nodes and named properties of nodes may be found in :ref:`know_rep`.
 
 **Get node by ID**
 
@@ -124,14 +125,14 @@ The respective information about what could be returned may be found in :ref:`kn
 Remove Queries Payload Message
 -----------------------------------------------
 
-Remove properties and relations of the nodes
+Remove properties and relationships of the nodes
 
 .. code-block:: javascript
 
     {
         'id': 1,
 
-        'relations': {
+        'relationships': {
             'rel_a': [2],
             'rel_b': [3]
         },
@@ -141,7 +142,7 @@ Remove properties and relations of the nodes
         }
     }
 
-This query requests removing all respective properties and relations with regard to the node with **ID** = 1: relationships **rel_a**
+This query requests removing all respective properties and relationships with regard to the node with **ID** = 1: relationships **rel_a**
 with the node having **ID** = 2 and **rel_b** with the node having **ID** = 3, as well as property **prop_a**.
 
 .. warning::

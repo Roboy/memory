@@ -1,30 +1,36 @@
 package org.roboy.memory.models;
 
-import java.util.Map;
+import org.roboy.memory.util.Dictionary;
+
 
 /** Data model for JSON parser.
  *  Creates objects, that contain the elements of the Create queries.
  */
-public class Create {
-    private String type; ///< Currently only used to specify the type "node"
-    private String label; ///<  Specifies the type of node that shall be created, like "Person"
-    private String[] faceVector; ///< JSON array containing facial features from vision module
+public class Create extends RosNode {
 
-    private Map<String, String> properties; ///< Contains the node properties
-
-    public String getLabel() {
-        return label;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public Map<String, String> getProperties() {
-        return properties;
-    }
+    private String[] faceVector;
 
     public String[] getFace() {
         return faceVector;
+    }
+
+    @Override
+    public boolean validate() {
+        if (this.getProperties() == null) { //error msg if there are no properties
+            error("no properties");
+            return false;
+        }
+
+        if (!this.getProperties().containsKey("name")){ //error msg if there is no node name
+            error("no name specified in properties : name required");
+            return false;
+        }
+
+        if (this.getLabel() != null && !Dictionary.LABEL_VALUES.contains(this.getLabel())) {
+            error("Label '" + this.getLabel() + "' doesn't exist in the DB");
+            return false;
+        }
+
+        return true;
     }
 }

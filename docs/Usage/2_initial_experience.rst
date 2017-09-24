@@ -55,7 +55,7 @@ The payload (JSON object) may comprise several elements such as:
 
 - 'label' specifies the class of node in the knowledge graph
 - 'id' of a node is a unique number specified for each node that may be accessed be searched or modified in the knowledge graph
-- 'relations' comprise a map of relationship types with an array of node IDs for each of them, providing multiple relationships tracing
+- 'relationships' comprise a map of relationship types with an array of node IDs for each of them, providing multiple relationships tracing
 - 'properties' = A map of property keys with values
 
 Consider :ref:`roboy-protocol` for the correct use use of properties, relationships and labels.
@@ -105,7 +105,7 @@ Update queries
         }
     }\""
 
-**Add relations to the node with id 15**::
+**Add relationships to the node with id 15**::
 
     rosservice call /roboy/cognition/memory/update "\"{
         'user':'vision',
@@ -113,13 +113,13 @@ Update queries
     }\"" "\"{
         'type':'node',
         'id':15,
-        'relations':{
+        'relationships':{
             'LIVE_IN':[28,23],
             'STUDY_AT':[16]
         }
     }\""
 
-**Add properties + relations to the node with id 15**::
+**Add properties + relationships to the node with id 15**::
 
     rosservice call /roboy/cognition/memory/update "\"{
         'user':'vision',
@@ -130,7 +130,7 @@ Update queries
         'properties':{
             'surname':'Ki', 'xyz':123
         },
-        'relations':{
+        'relationships':{
             'LIVE_IN':[28,23],
             'STUDY_AT':[16]
         }
@@ -169,7 +169,7 @@ Get queries
             "sex":"male",
             "name":"lucas"
         },
-        'relations': {
+        'relationships': {
             "from":[28],
             "friend_of":[124, 4, 26, 104, 106, 71, 96, 63],
             "member_of":[20], "study_at":[16], "is":[17],
@@ -178,14 +178,14 @@ Get queries
         }
     }
 
-**Get ids of nodes which have all specified labels, relations and/or properties**::
+**Get ids of nodes which have all specified labels, relationships and/or properties**::
 
     rosservice call /roboy/cognition/memory/get "\"{
         'user':'vision',
         'datetime':'1234567'
     }\"" "\"{
         'label':'Person',
-        'relations':{
+        'relationships':{
             'FRIEND_OF':[15]
         },
         'properties':{
@@ -221,20 +221,20 @@ Remove queries
         'properties':['birthdate','surname']
     }\""
 
-**Remove relations of node 15**::
+**Remove relationships of node 15**::
 
     rosservice call /roboy/cognition/memory/remove "\"{
         'user':'vision','datetime':'1234567'
     }\"" "\"{
         'type':'node',
         'id':15,
-        'relations':{
+        'relationships':{
             'LIVE_IN':[28,23],
             'STUDY_AT':[16]
         }
     }\""
 
-**Remove properties and relations of node 15**::
+**Remove properties and relationships of node 15**::
 
     rosservice call /roboy/cognition/memory/remove "\"{
         'user':'vision',
@@ -243,7 +243,7 @@ Remove queries
         'type':'node',
         'id':15,
         'properties':['birthdate','surname'],
-        'relations':{
+        'relationships':{
             'LIVE_IN':[23]
         }
     }\""

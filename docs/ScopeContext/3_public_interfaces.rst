@@ -54,7 +54,7 @@ For the first 4 services the payload has to be defined according to :ref:`roboy-
 
 - 'label' specifies the class of node in the knowledge graph
 - 'id' of a node is a unique number specified for each node that may be accessed be searched or modified in the knowledge graph
-- 'relations' comprise a map of relationship types with an array of node ids for each of them, providing multiple relationships tracing
+- 'relationships' comprise a map of relationship types with an array of node ids for each of them, providing multiple relationships tracing
 - 'properties' = A map of property keys with values
 
 Each of this element is peculiar to respective service payload.
@@ -127,7 +127,7 @@ Success:
             "sex":"male",
             "name":"lucas"
         },
-        'relations': {
+        'relationships': {
             "from":[28],
             "friend_of":[124, 4, 26, 104, 106, 71, 96, 63],
             "member_of":[20], "study_at":[16], "is":[17],

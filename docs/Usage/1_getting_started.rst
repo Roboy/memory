@@ -99,7 +99,7 @@ Remote Redis Instance
 To use a remote instance of Redis containing the most recent faces features, ensure your connectivity to the Roboy server.
 If the server is up, use the roboy_memory package in the remote mode (default):
 
-- redis://bot.roboy.org:6379/0 - for the package configuration (enter this in config file)
+- redis://bot.roboy.org:6379/0 - for the package configuration
 
 For this, please use the remote Redis password.
 
@@ -107,22 +107,32 @@ For this, please use the remote Redis password.
 Configuring the Package
 --------------------------------------------------
 
-For using roboy_memory package properly, please update the configuration file with the username and password specified for you::
+In the configuration file you will encounter the next important fields:
 
-    public final static String ROS_MASTER_URI = "***";
-    public final static String ROS_HOSTNAME = "***";
-    public final static String NEO4J_ADDRESS = "***";
-    public final static String NEO4J_USERNAME = "***";
-    public final static String NEO4J_PASSWORD = "***";
-    public final static String REDIS_URI = "***";
-    public final static String REDIS_PASSWORD = "***";
+- public final static String ROS_MASTER_URI
+- public final static String ROS_HOSTNAME
+- public final static String NEO4J_ADDRESS
+- public final static String NEO4J_USERNAME
+- public final static String NEO4J_PASSWORD
+- public final static String REDIS_URI
+- public final static String REDIS_PASSWORD
 
-You may use either remote or local addresses and credentials. If using local configuration, then::
+For using roboy_memory package in remote mode properly, please initialize specific environment variables.
+To do so, open your bash profile file with text editor (depending on your preferences)::
 
-    public final static String ROS_MASTER_URI = "http://127.0.0.1:11311/";
-    public final static String ROS_HOSTNAME = "127.0.0.1";
-    public final static String NEO4J_ADDRESS = "bolt://127.0.0.1:7687";
-    public final static String REDIS_URI = "redis://127.0.0.1:6379/0";
+    vi ~/.bashrc OR vi ~/.bash_profile OR nano ~/.bashrc OR nano ~/.bash_profile
+
+and append the next lines with the information specified for you::
+
+    export ROS_MASTER_URI="***"
+    export ROS_HOSTNAME="***"
+    export NEO4J_ADDRESS="***"
+    export NEO4J_USERNAME="***"
+    export NEO4J_PASSWORD="***"
+    export REDIS_URI="***"
+    export REDIS_PASSWORD="***"
+
+You may use either remote or local addresses and credentials.
 
 
 ROS Configuration (remote)
@@ -191,7 +201,7 @@ After you have entered the proper configuration:
 
 - run the package::
 
-    java -jar roboy_memory-0.9.0-jar-with-dependencies.jar
+    java -jar roboy_memory-1.0.0-jar-with-dependencies.jar
 
 Using Remote
 ---------------------------------------------------
