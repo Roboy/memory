@@ -5,7 +5,9 @@
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create" prot="public">org::roboy::memory::models::Create</innerclass>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get" prot="public">org::roboy::memory::models::Get</innerclass>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" prot="public">org::roboy::memory::models::Header</innerclass>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node" prot="public">org::roboy::memory::models::Node</innerclass>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove" prot="public">org::roboy::memory::models::Remove</innerclass>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node" prot="public">org::roboy::memory::models::RosNode</innerclass>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update" prot="public">org::roboy::memory::models::Update</innerclass>
     <briefdescription>
     </briefdescription>

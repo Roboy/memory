@@ -17,18 +17,18 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Logger<sp/>logger<sp/>=<sp/>Logger.getLogger(<ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kindref="compound">Answer</ref>.class.toString());</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a535b121bfb1d6d69a8b9b7f8a94cf749" kindref="member">ok</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;{status:\&quot;OK\&quot;}&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.info(result);</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" kindref="member">error</ref>(String<sp/>message)<sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;{status:\&quot;FAIL\&quot;,<sp/>message:\&quot;&quot;</highlight><highlight class="normal">+message+</highlight><highlight class="stringliteral">&quot;\&quot;}&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.warning(result);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac9862f981eeeec86aefde80f8fb0f8ff" kindref="member">ok</ref>(String<sp/>message)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;{\&quot;status\&quot;:\&quot;OK\&quot;,<sp/>\&quot;message\&quot;:\&quot;&quot;</highlight><highlight class="normal">+message+</highlight><highlight class="stringliteral">&quot;\&quot;}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.info(result);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" kindref="member">error</ref>(String<sp/>message)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;{\&quot;status\&quot;:\&quot;FAIL\&quot;,<sp/>\&quot;message\&quot;:\&quot;&quot;</highlight><highlight class="normal">+message+</highlight><highlight class="stringliteral">&quot;\&quot;}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.warning(result);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java"/>
   </compounddef>

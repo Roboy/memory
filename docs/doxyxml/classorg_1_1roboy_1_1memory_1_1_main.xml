@@ -2,6 +2,22 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classorg_1_1roboy_1_1memory_1_1_main" kind="class" language="Java" prot="public">
     <compoundname>org::roboy::memory::Main</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1_main_1ae9877e356e3080c975a9664330667e96" prot="private" static="yes" mutable="no">
+        <type>Logger</type>
+        <definition>Logger org.roboy.memory.Main.logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <initializer>= Logger.getLogger(Main.class.toString())</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1_main_1a0f28f4ab81018cd6a21b847a84ae1a24" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -19,15 +35,28 @@
         </detaileddescription>
         <inbodydescription>
 <para>&lt; File handler for a logger</para><para>&lt; Initializing ROS server (ROS node) </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" bodystart="13" bodyend="19"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" bodystart="17" bodyend="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" bodystart="11" bodyend="20"/>
+    <collaborationgraph>
+      <node id="27">
+        <label>org.roboy.memory.Main</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1_main"/>
+        <childnode refid="28" relation="usage">
+          <edgelabel>logger</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>Logger</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/Main.java" bodystart="14" bodyend="44"/>
     <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1_main_1ae9877e356e3080c975a9664330667e96" prot="private" virt="non-virtual"><scope>org::roboy::memory::Main</scope><name>logger</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1_main_1a0f28f4ab81018cd6a21b847a84ae1a24" prot="public" virt="non-virtual"><scope>org::roboy::memory::Main</scope><name>main</name></member>
     </listofallmembers>
   </compounddef>

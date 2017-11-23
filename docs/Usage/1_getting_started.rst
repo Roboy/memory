@@ -32,12 +32,12 @@ To copy remote Neo4j DB into your local instance:
 
     ./backup.sh
 
-- wait the script to execute. You will find the DB in ~/Neo4J/Backups/"date"
-- copy the contents of "date" directory to your local `DB directory <https://neo4j.com/docs/operations-manual/current/configuration/file-locations/>`_.
+- wait the script to execute. You will find the DB in ~/Neo4J/Backups/"date" (if it didn't work automatically, then create the ~/Neo4J/Backups/ directory and try again)
+- copy the contents of "databases" directory to your local `DB directory <https://neo4j.com/docs/operations-manual/current/configuration/file-locations/>`_.
 
 .. warning::
 
-    Be cautious! This procedure will overwrite your credentials with the remote ones, see below.
+    Be cautious! This procedure (unlikely) might overwrite your credentials with the remote ones, see below.
 
 Local Redis Instance
 --------------------------------------------------

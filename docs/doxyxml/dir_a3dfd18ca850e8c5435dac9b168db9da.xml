@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_a3dfd18ca850e8c5435dac9b168db9da" kind="dir">
     <compoundname>/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/ros</compoundname>
-    <innerfile refid="_ros_node_8java">RosNode.java</innerfile>
+    <innerfile refid="ros_2_ros_node_8java">RosNode.java</innerfile>
     <innerfile refid="_ros_run_8java">RosRun.java</innerfile>
     <innerfile refid="_service_logic_8java">ServiceLogic.java</innerfile>
     <briefdescription>

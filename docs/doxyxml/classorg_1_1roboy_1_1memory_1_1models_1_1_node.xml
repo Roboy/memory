@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1models_1_1_node" kind="class" language="Java" prot="public">
+    <compoundname>org::roboy::memory::models::Node</compoundname>
+    <derivedcompoundref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node" prot="public" virt="non-virtual">org.roboy.memory.models.RosNode</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a986d0b301aad86a20aefa5279abd8334" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String org.roboy.memory.models.Node.label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a9efad23c635d99cdc36c73b50fdb84a7" prot="private" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer org.roboy.memory.models.Node.id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a9db02145c4c3be217ff7bec79b1560d6" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; String, String &gt;</type>
+        <definition>HashMap&lt;String, String&gt; org.roboy.memory.models.Node.properties</definition>
+        <argsstring></argsstring>
+        <name>properties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1af2880a17eea217784a8d5ac652269b8d" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; String, int[]&gt;</type>
+        <definition>HashMap&lt;String, int[]&gt; org.roboy.memory.models.Node.relationships</definition>
+        <argsstring></argsstring>
+        <name>relationships</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a302cedbde68a49589bd1cd39c4b42815" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>org.roboy.memory.models.Node.Node</definition>
+        <argsstring>()</argsstring>
+        <name>Node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="14" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a0cff9d428e168a98128cadafb4515648" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String org.roboy.memory.models.Node.getLabel</definition>
+        <argsstring>()</argsstring>
+        <name>getLabel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a5fafbedd92cdaf10c5e07a520a17c0d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void org.roboy.memory.models.Node.setLabel</definition>
+        <argsstring>(String label)</argsstring>
+        <name>setLabel</name>
+        <param>
+          <type>String</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="21" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a5b23b6e89a12c029cfa8733a645769aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Integer</type>
+        <definition>Integer org.roboy.memory.models.Node.getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ab7fea23884d81927df543e95792d5745" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void org.roboy.memory.models.Node.setId</definition>
+        <argsstring>(Integer id)</argsstring>
+        <name>setId</name>
+        <param>
+          <type>Integer</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a964f3ff029cd50c258fc61fa85fb96b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>HashMap&lt; String, String &gt;</type>
+        <definition>HashMap&lt;String, String&gt; org.roboy.memory.models.Node.getProperties</definition>
+        <argsstring>()</argsstring>
+        <name>getProperties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="33" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ae20497891709514d36dabdedfca52bd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void org.roboy.memory.models.Node.setProperties</definition>
+        <argsstring>(HashMap&lt; String, String &gt; properties)</argsstring>
+        <name>setProperties</name>
+        <param>
+          <type>HashMap&lt; String, String &gt;</type>
+          <declname>properties</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="37" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ac7d4c34233d8ec96664d46f9107cd439" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>HashMap&lt; String, int[]&gt;</type>
+        <definition>HashMap&lt;String, int[]&gt; org.roboy.memory.models.Node.getRelationships</definition>
+        <argsstring>()</argsstring>
+        <name>getRelationships</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a3ef6898acefb706e6794be2cd3fc6371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void org.roboy.memory.models.Node.setRelationships</definition>
+        <argsstring>(HashMap&lt; String, int[]&gt; relationships)</argsstring>
+        <name>setRelationships</name>
+        <param>
+          <type>HashMap&lt; String, int[]&gt;</type>
+          <declname>relationships</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="45" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="39">
+        <label>org.roboy.memory.models.Get</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>org.roboy.memory.models.Create</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>org.roboy.memory.models.RosNode</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>org.roboy.memory.models.Remove</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>org.roboy.memory.models.Update</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>org.roboy.memory.models.Node</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="43">
+        <label>HashMap&lt; String, String &gt;</label>
+      </node>
+      <node id="44">
+        <label>HashMap&lt; String, int[]&gt;</label>
+      </node>
+      <node id="42">
+        <label>org.roboy.memory.models.Node</label>
+        <link refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node"/>
+        <childnode refid="43" relation="usage">
+          <edgelabel>properties</edgelabel>
+        </childnode>
+        <childnode refid="44" relation="usage">
+          <edgelabel>relationships</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" line="7" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/models/Node.java" bodystart="7" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a5b23b6e89a12c029cfa8733a645769aa" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>getId</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a0cff9d428e168a98128cadafb4515648" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>getLabel</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a964f3ff029cd50c258fc61fa85fb96b1" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>getProperties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ac7d4c34233d8ec96664d46f9107cd439" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>getRelationships</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a9efad23c635d99cdc36c73b50fdb84a7" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>id</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a986d0b301aad86a20aefa5279abd8334" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>label</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a302cedbde68a49589bd1cd39c4b42815" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>Node</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a9db02145c4c3be217ff7bec79b1560d6" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>properties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1af2880a17eea217784a8d5ac652269b8d" prot="private" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>relationships</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ab7fea23884d81927df543e95792d5745" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>setId</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a5fafbedd92cdaf10c5e07a520a17c0d8" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>setLabel</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ae20497891709514d36dabdedfca52bd5" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>setProperties</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a3ef6898acefb706e6794be2cd3fc6371" prot="public" virt="non-virtual"><scope>org::roboy::memory::models::Node</scope><name>setRelationships</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
