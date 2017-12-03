@@ -4,7 +4,9 @@
     <compoundname>org::roboy::memory::util</compoundname>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" prot="public">org::roboy::memory::util::Answer</innerclass>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config" prot="public">org::roboy::memory::util::Config</innerclass>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1util_1_1_dictionary" prot="public">org::roboy::memory::util::Dictionary</innerclass>
     <innerclass refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" prot="public">org::roboy::memory::util::Neo4j</innerclass>
+    <innerclass refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" prot="public">org::roboy::memory::util::QueryBuilder</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

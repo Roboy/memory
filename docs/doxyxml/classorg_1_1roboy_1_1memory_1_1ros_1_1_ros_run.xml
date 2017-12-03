@@ -77,20 +77,20 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="31">
+      <node id="71">
         <label>org.roboy.memory.ros.RosRun</label>
         <link refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run"/>
-        <childnode refid="32" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>nodeConfiguration</edgelabel>
         </childnode>
-        <childnode refid="33" relation="usage">
+        <childnode refid="73" relation="usage">
           <edgelabel>nodeMainExecutor</edgelabel>
         </childnode>
       </node>
-      <node id="33">
+      <node id="73">
         <label>NodeMainExecutor</label>
       </node>
-      <node id="32">
+      <node id="72">
         <label>NodeConfiguration</label>
       </node>
     </collaborationgraph>
