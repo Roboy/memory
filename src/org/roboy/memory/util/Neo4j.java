@@ -276,6 +276,9 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNode(Transaction tx, Get get) {
         QueryBuilder builder = new QueryBuilder();
+        if(get.getLabel() != null) System.out.println(get.getLabel().toString());
+        if(get.getProperties() != null) System.out.println(get.getProperties().toString());
+        if(get.getRelationships() != null) System.out.println(get.getRelationships().toString());
         builder.add("MATCH (n:%s", get.getLabel());
         builder.addParameters(get.getProperties());
         builder.add(")");
