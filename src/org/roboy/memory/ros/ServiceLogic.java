@@ -28,7 +28,11 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
         if (create.validate()) {
-            response.setAnswer(Neo4j.createNode(create));
+            if (create.getLabel() != "OTHER") {
+                response.setAnswer(Neo4j.createNode(create));
+            } else {
+                response.setAnswer(create.getError());
+            }
         } else {
             response.setAnswer(create.getError());
         }
@@ -44,7 +48,11 @@ class ServiceLogic {
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
         if (update.validate()) {
-            response.setAnswer(ok(Neo4j.updateNode(update)));
+            if (update.getLabel() != "OTHER") {
+                response.setAnswer(ok(Neo4j.updateNode(update)));
+            } else {
+                response.setAnswer(error(update.getError()));
+            }
         } else {
             response.setAnswer(error(update.getError()));
         }
@@ -62,7 +70,7 @@ class ServiceLogic {
         if (get.getId() != null ) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
-            if (get.getLabel() != "Other") {
+            if (get.getLabel() != "OTHER") {
                 response.setAnswer(Neo4j.getNode(get));
             } else {
                 response.setAnswer(error(get.getError()));
