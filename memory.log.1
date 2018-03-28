@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-03-17T18:39:58</date>
+  <millis>1521308398421</millis>
+  <sequence>0</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>&lt;init&gt;</method>
+  <thread>12</thread>
+  <message>MasterXmlRpcEndpoint URI: http://10.183.49.162:11311/</message>
+</record>
+<record>
+  <date>2018-03-17T18:39:58</date>
+  <millis>1521308398557</millis>
+  <sequence>1</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>onPublisherAdded</method>
+  <thread>19</thread>
+  <message>Registering publisher: Publisher&lt;PublisherDefinition&lt;PublisherIdentifier&lt;NodeIdentifier&lt;/roboy/cognition/memory, http://10.183.60.151:56033/&gt;, TopicIdentifier&lt;/rosout&gt;&gt;, Topic&lt;TopicIdentifier&lt;/rosout&gt;, TopicDescription&lt;rosgraph_msgs/Log, acffd30cd6b6de30f120938c17c593fb&gt;&gt;&gt;&gt;</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:08</date>
+  <millis>1521308408567</millis>
+  <sequence>2</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>SEVERE</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>callMaster</method>
+  <thread>22</thread>
+  <message>Exception caught while communicating with master.</message>
+  <exception>
+    <message>org.ros.internal.node.xmlrpc.XmlRpcTimeoutException: org.apache.xmlrpc.client.TimingOutCallback$TimeoutException: No response after waiting for 10000 milliseconds.</message>
+    <frame>
+      <class>org.ros.internal.node.xmlrpc.XmlRpcClientFactory$1</class>
+      <method>invoke</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>com.sun.proxy.$Proxy0</class>
+      <method>registerPublisher</method>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.MasterClient</class>
+      <method>registerPublisher</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>138</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>callMaster</method>
+      <line>111</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>access$100</method>
+      <line>51</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>132</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.Executors$RunnableAdapter</class>
+      <method>call</method>
+      <line>511</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>748</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-03-17T18:40:08</date>
+  <millis>1521308408569</millis>
+  <sequence>3</sequence>
+  <logger>org.ros.node.DefaultNodeMainExecutor</logger>
+  <level>SEVERE</level>
+  <class>org.ros.node.DefaultNodeMainExecutor$RegistrationListener</class>
+  <method>onError</method>
+  <thread>14</thread>
+  <message>Node error.</message>
+  <exception>
+    <message>org.ros.internal.node.xmlrpc.XmlRpcTimeoutException: org.apache.xmlrpc.client.TimingOutCallback$TimeoutException: No response after waiting for 10000 milliseconds.</message>
+    <frame>
+      <class>org.ros.internal.node.xmlrpc.XmlRpcClientFactory$1</class>
+      <method>invoke</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>com.sun.proxy.$Proxy1</class>
+      <method>hasParam</method>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.ParameterClient</class>
+      <method>hasParam</method>
+      <line>116</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.parameter.DefaultParameterTree</class>
+      <method>has</method>
+      <line>66</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.DefaultNode</class>
+      <method>start</method>
+      <line>199</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.DefaultNode</class>
+      <method>access$000</method>
+      <line>87</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.DefaultNode$1</class>
+      <method>run</method>
+      <line>175</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>748</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-03-17T18:40:08</date>
+  <millis>1521308408571</millis>
+  <sequence>4</sequence>
+  <logger>org.ros.internal.node.topic.DefaultPublisher</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.topic.DefaultPublisher$1</class>
+  <method>onMasterRegistrationFailure</method>
+  <thread>20</thread>
+  <message>Publisher registration failed: Publisher&lt;PublisherDefinition&lt;PublisherIdentifier&lt;NodeIdentifier&lt;/roboy/cognition/memory, http://10.183.60.151:56033/&gt;, TopicIdentifier&lt;/rosout&gt;&gt;, Topic&lt;TopicIdentifier&lt;/rosout&gt;, TopicDescription&lt;rosgraph_msgs/Log, acffd30cd6b6de30f120938c17c593fb&gt;&gt;&gt;&gt;</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:23</date>
+  <millis>1521308423577</millis>
+  <sequence>5</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>SEVERE</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>callMaster</method>
+  <thread>14</thread>
+  <message>Exception caught while communicating with master.</message>
+  <exception>
+    <message>org.ros.internal.node.xmlrpc.XmlRpcTimeoutException: org.apache.xmlrpc.client.TimingOutCallback$TimeoutException: No response after waiting for 10000 milliseconds.</message>
+    <frame>
+      <class>org.ros.internal.node.xmlrpc.XmlRpcClientFactory$1</class>
+      <method>invoke</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>com.sun.proxy.$Proxy0</class>
+      <method>registerPublisher</method>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.MasterClient</class>
+      <method>registerPublisher</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>138</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>callMaster</method>
+      <line>111</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>access$100</method>
+      <line>51</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>132</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.Executors$RunnableAdapter</class>
+      <method>call</method>
+      <line>511</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>748</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-03-17T18:40:23</date>
+  <millis>1521308423578</millis>
+  <sequence>6</sequence>
+  <logger>org.ros.internal.node.topic.DefaultPublisher</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.topic.DefaultPublisher$1</class>
+  <method>onMasterRegistrationFailure</method>
+  <thread>20</thread>
+  <message>Publisher registration failed: Publisher&lt;PublisherDefinition&lt;PublisherIdentifier&lt;NodeIdentifier&lt;/roboy/cognition/memory, http://10.183.60.151:56033/&gt;, TopicIdentifier&lt;/rosout&gt;&gt;, Topic&lt;TopicIdentifier&lt;/rosout&gt;, TopicDescription&lt;rosgraph_msgs/Log, acffd30cd6b6de30f120938c17c593fb&gt;&gt;&gt;&gt;</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:38</date>
+  <millis>1521308438585</millis>
+  <sequence>7</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>SEVERE</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>callMaster</method>
+  <thread>14</thread>
+  <message>Exception caught while communicating with master.</message>
+  <exception>
+    <message>org.ros.internal.node.xmlrpc.XmlRpcTimeoutException: org.apache.xmlrpc.client.TimingOutCallback$TimeoutException: No response after waiting for 10000 milliseconds.</message>
+    <frame>
+      <class>org.ros.internal.node.xmlrpc.XmlRpcClientFactory$1</class>
+      <method>invoke</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>com.sun.proxy.$Proxy0</class>
+      <method>registerPublisher</method>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.MasterClient</class>
+      <method>registerPublisher</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>138</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>callMaster</method>
+      <line>111</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>access$100</method>
+      <line>51</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>132</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.Executors$RunnableAdapter</class>
+      <method>call</method>
+      <line>511</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>748</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-03-17T18:40:38</date>
+  <millis>1521308438588</millis>
+  <sequence>8</sequence>
+  <logger>org.ros.internal.node.topic.DefaultPublisher</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.topic.DefaultPublisher$1</class>
+  <method>onMasterRegistrationFailure</method>
+  <thread>20</thread>
+  <message>Publisher registration failed: Publisher&lt;PublisherDefinition&lt;PublisherIdentifier&lt;NodeIdentifier&lt;/roboy/cognition/memory, http://10.183.60.151:56033/&gt;, TopicIdentifier&lt;/rosout&gt;&gt;, Topic&lt;TopicIdentifier&lt;/rosout&gt;, TopicDescription&lt;rosgraph_msgs/Log, acffd30cd6b6de30f120938c17c593fb&gt;&gt;&gt;&gt;</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443595</millis>
+  <sequence>9</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>31</thread>
+  <message>I/O exception (java.net.ConnectException) caught when processing request: Host is down (connect failed)</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443597</millis>
+  <sequence>10</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>31</thread>
+  <message>Retrying request</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443601</millis>
+  <sequence>11</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>31</thread>
+  <message>I/O exception (java.net.ConnectException) caught when processing request: Host is down (connect failed)</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443603</millis>
+  <sequence>12</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>31</thread>
+  <message>Retrying request</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443604</millis>
+  <sequence>13</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>31</thread>
+  <message>I/O exception (java.net.ConnectException) caught when processing request: Host is down (connect failed)</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443605</millis>
+  <sequence>14</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>31</thread>
+  <message>Retrying request</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443607</millis>
+  <sequence>15</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>SEVERE</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>callMaster</method>
+  <thread>14</thread>
+  <message>Exception caught while communicating with master.</message>
+  <exception>
+    <message>java.lang.RuntimeException: java.net.ConnectException: Host is down (connect failed)</message>
+    <frame>
+      <class>org.ros.internal.node.xmlrpc.XmlRpcClientFactory$1</class>
+      <method>invoke</method>
+      <line>157</line>
+    </frame>
+    <frame>
+      <class>com.sun.proxy.$Proxy0</class>
+      <method>registerPublisher</method>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.MasterClient</class>
+      <method>registerPublisher</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>138</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>callMaster</method>
+      <line>111</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>access$100</method>
+      <line>51</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>132</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.Executors$RunnableAdapter</class>
+      <method>call</method>
+      <line>511</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>748</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-03-17T18:40:43</date>
+  <millis>1521308443611</millis>
+  <sequence>16</sequence>
+  <logger>org.ros.internal.node.topic.DefaultPublisher</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.topic.DefaultPublisher$1</class>
+  <method>onMasterRegistrationFailure</method>
+  <thread>20</thread>
+  <message>Publisher registration failed: Publisher&lt;PublisherDefinition&lt;PublisherIdentifier&lt;NodeIdentifier&lt;/roboy/cognition/memory, http://10.183.60.151:56033/&gt;, TopicIdentifier&lt;/rosout&gt;&gt;, Topic&lt;TopicIdentifier&lt;/rosout&gt;, TopicDescription&lt;rosgraph_msgs/Log, acffd30cd6b6de30f120938c17c593fb&gt;&gt;&gt;&gt;</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448614</millis>
+  <sequence>17</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>33</thread>
+  <message>I/O exception (java.net.ConnectException) caught when processing request: Host is down (connect failed)</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448614</millis>
+  <sequence>18</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>33</thread>
+  <message>Retrying request</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448615</millis>
+  <sequence>19</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>33</thread>
+  <message>I/O exception (java.net.ConnectException) caught when processing request: Host is down (connect failed)</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448616</millis>
+  <sequence>20</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>33</thread>
+  <message>Retrying request</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448617</millis>
+  <sequence>21</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>33</thread>
+  <message>I/O exception (java.net.ConnectException) caught when processing request: Host is down (connect failed)</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448617</millis>
+  <sequence>22</sequence>
+  <logger>org.apache.commons.httpclient.HttpMethodDirector</logger>
+  <level>INFO</level>
+  <class>org.apache.commons.httpclient.HttpMethodDirector</class>
+  <method>executeWithRetry</method>
+  <thread>33</thread>
+  <message>Retrying request</message>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448618</millis>
+  <sequence>23</sequence>
+  <logger>org.ros.internal.node.client.Registrar</logger>
+  <level>SEVERE</level>
+  <class>org.ros.internal.node.client.Registrar</class>
+  <method>callMaster</method>
+  <thread>14</thread>
+  <message>Exception caught while communicating with master.</message>
+  <exception>
+    <message>java.lang.RuntimeException: java.net.ConnectException: Host is down (connect failed)</message>
+    <frame>
+      <class>org.ros.internal.node.xmlrpc.XmlRpcClientFactory$1</class>
+      <method>invoke</method>
+      <line>157</line>
+    </frame>
+    <frame>
+      <class>com.sun.proxy.$Proxy0</class>
+      <method>registerPublisher</method>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.MasterClient</class>
+      <method>registerPublisher</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>138</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>callMaster</method>
+      <line>111</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar</class>
+      <method>access$100</method>
+      <line>51</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.ros.internal.node.client.Registrar$1</class>
+      <method>call</method>
+      <line>132</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.Executors$RunnableAdapter</class>
+      <method>call</method>
+      <line>511</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <method>run</method>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>748</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-03-17T18:40:48</date>
+  <millis>1521308448620</millis>
+  <sequence>24</sequence>
+  <logger>org.ros.internal.node.topic.DefaultPublisher</logger>
+  <level>INFO</level>
+  <class>org.ros.internal.node.topic.DefaultPublisher$1</class>
+  <method>onMasterRegistrationFailure</method>
+  <thread>20</thread>
+  <message>Publisher registration failed: Publisher&lt;PublisherDefinition&lt;PublisherIdentifier&lt;NodeIdentifier&lt;/roboy/cognition/memory, http://10.183.60.151:56033/&gt;, TopicIdentifier&lt;/rosout&gt;&gt;, Topic&lt;TopicIdentifier&lt;/rosout&gt;, TopicDescription&lt;rosgraph_msgs/Log, acffd30cd6b6de30f120938c17c593fb&gt;&gt;&gt;&gt;</message>
+</record>
+</log>

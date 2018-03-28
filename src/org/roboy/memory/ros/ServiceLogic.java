@@ -7,6 +7,8 @@ import org.ros.node.service.ServiceResponseBuilder;
 import roboy_communication_cognition.DataQueryRequest;
 import roboy_communication_cognition.DataQueryResponse;
 
+import java.util.logging.Logger;
+
 import static org.roboy.memory.util.Answer.error;
 import static org.roboy.memory.util.Answer.ok;
 
@@ -18,6 +20,7 @@ import static org.roboy.memory.util.Answer.ok;
 class ServiceLogic {
 
     private static Gson parser = new Gson();
+    private static Logger logger = Logger.getLogger(ServiceLogic.class.toString());
 
     /**
      * Create Service Handler.
@@ -57,7 +60,7 @@ class ServiceLogic {
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
-        System.out.println(request.getPayload());
+        logger.info("Request payload: " + request.getPayload());
         Get get = parser.fromJson(request.getPayload(), Get.class);
         if (get.getId() != null ) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
