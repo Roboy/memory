@@ -9,7 +9,7 @@ Currently 5 interfaces (ROS services) have been designed for communication with 
 ROS Services
 --------------------------------------------------
 
-All calls are complaint to this general form::
+All calls are compliant to this general form::
 
     rosservice call /roboy/cognition/memory/---service_name--- "\"---header---\"" "\"---payload---\""
 
