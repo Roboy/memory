@@ -10,12 +10,12 @@
         <argsstring></argsstring>
         <name>_instance</name>
         <briefdescription>
-<para>An instance of the class. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="21" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1af4ee5671462dca6c16aa1d6023fb72e8" prot="private" static="yes" mutable="no">
         <type>Driver</type>
@@ -23,12 +23,12 @@
         <argsstring></argsstring>
         <name>_driver</name>
         <briefdescription>
-<para>An instance of <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> driver. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="22" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a58d01e4fb246803a5070130ea48ee48c" prot="private" static="yes" mutable="no">
         <type>Jedis</type>
@@ -36,26 +36,26 @@
         <argsstring></argsstring>
         <name>jedis</name>
         <briefdescription>
-<para>An instance of Jedis for Redis handling. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="23" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="27" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a2e0eb22e79f803c11681230829c63a12" prot="private" static="yes" mutable="no">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ad705a8a4c35881d5c99e0c0fd951681c" prot="private" static="yes" mutable="no">
         <type>Gson</type>
-        <definition>Gson org.roboy.memory.util.Neo4j.parser</definition>
+        <definition>Gson org.roboy.memory.util.Neo4j.gson</definition>
         <argsstring></argsstring>
-        <name>parser</name>
+        <name>gson</name>
         <initializer>= new Gson()</initializer>
         <briefdescription>
-<para>An instance of Gson parser for creating JSON response. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="24" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="28" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adb5836d660e5ff75e0c64b9a15266a21" prot="private" static="yes" mutable="no">
         <type>Logger</type>
@@ -64,12 +64,12 @@
         <name>logger</name>
         <initializer>= Logger.getLogger(Neo4j.class.toString())</initializer>
         <briefdescription>
-<para>An instance of the logger. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="25" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="27" bodyend="29"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aa892152c5dde9c9f698f429eaa8890f4" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Driver</type>
@@ -98,7 +98,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="49" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="49" bodyend="51"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="53" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="53" bodyend="55"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -114,7 +114,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="36" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="36" bodyend="42"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="40" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="40" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a5e435aeb0b30c28bd192a8f47c62c38f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Value</type>
@@ -132,7 +132,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="63" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="63" bodyend="65"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a71e7ebbb084525eb661c178b2d3e2320" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -158,103 +158,43 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="73" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="73" bodyend="90"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="78" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="78" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a8e2566dcf6fc19a7b0d35a3077c6ba59" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ac21a5896f1e0438ae7e769858c05db4d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.createNode</definition>
-        <argsstring>(String label, String[] faceVector, Map&lt; String, String &gt; properties)</argsstring>
+        <argsstring>(Create create)</argsstring>
         <name>createNode</name>
         <param>
-          <type>String</type>
-          <declname>label</declname>
-        </param>
-        <param>
-          <type>String []</type>
-          <declname>faceVector</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String &gt;</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create" kindref="compound">Create</ref></type>
+          <declname>create</declname>
         </param>
         <briefdescription>
 <para>Method accepting JSON Create queries. </para>        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>label</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is denoting a type of the node to be created </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>faceVector</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>contains face features for a node of label &quot;Person&quot;. OPTIONAL </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the node </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>result obtained by createNode method </para></simplesect>
+<para><simplesect kind="return"><para>result obtained by createNode method </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="101" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="101" bodyend="105"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="94" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="94" bodyend="98"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adab31b8bdf92992fe91b7c831e4b820c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a559d37963d9326d44f21124f6f58f821" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.updateNode</definition>
-        <argsstring>(int id, Map&lt; String, String[]&gt; relations, Map&lt; String, String &gt; properties)</argsstring>
+        <argsstring>(Update update)</argsstring>
         <name>updateNode</name>
         <param>
-          <type>int</type>
-          <declname>id</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String[]&gt;</type>
-          <declname>relations</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String &gt;</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update" kindref="compound">Update</ref></type>
+          <declname>update</declname>
         </param>
         <briefdescription>
 <para>Method accepting JSON Update queries. </para>        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>id</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a unique pointer to the node in <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>relations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing relationships of the node with other nodes </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the node </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>result obtained by update method </para></simplesect>
+<para><simplesect kind="return"><para>result obtained by update method </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="154" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="154" bodyend="165"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="147" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="147" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aeefb00e53ce9ea3e36fa9fda25a98844" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -280,103 +220,42 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="227" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="227" bodyend="239"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="205" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="205" bodyend="210"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a437071fcf182c64451c653c26b3f7da8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1abb0af2be68efb74528651cd5e70285f1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.getNode</definition>
-        <argsstring>(String label, Map&lt; String, String[]&gt; relations, Map&lt; String, String &gt; properties)</argsstring>
+        <argsstring>(Get get)</argsstring>
         <name>getNode</name>
         <param>
-          <type>String</type>
-          <declname>label</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String[]&gt;</type>
-          <declname>relations</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String &gt;</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get" kindref="compound">Get</ref></type>
+          <declname>get</declname>
         </param>
         <briefdescription>
-<para>Method accepting JSON Get IDs of nodes queries. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>label</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is denoting a type of the nodes to be included </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>relations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing relationships of the nodes with other nodes </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the nodes </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>result obtained by matchNode method </para></simplesect>
-</para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="316" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="316" bodyend="327"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="271" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="271" bodyend="275"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aabf515fa28f245f9283963ce22378165" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ac4cc5eb8a2aa28691cad3cbec317ad6b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.remove</definition>
-        <argsstring>(int id, Map&lt; String, String[]&gt; relations, String[] properties)</argsstring>
+        <argsstring>(Remove remove)</argsstring>
         <name>remove</name>
         <param>
-          <type>int</type>
-          <declname>id</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String[]&gt;</type>
-          <declname>relations</declname>
-        </param>
-        <param>
-          <type>String []</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove" kindref="compound">Remove</ref></type>
+          <declname>remove</declname>
         </param>
         <briefdescription>
 <para>Method accepting JSON Remove queries. </para>        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>id</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>of the node which relations and properties need to be removed </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>relations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing relationships of the node with other nodes </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the node </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>result obtained by removeRelsProps method </para></simplesect>
+<para><simplesect kind="return"><para>result obtained by removeRelsProps method </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="416" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="416" bodyend="427"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="304" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="304" bodyend="308"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -392,30 +271,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="54" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="54" bodyend="56"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="58" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="58" bodyend="61"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a22d824505031e76002acca42bbded694" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a5ce0c52727993342738a5497e9e996b0" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.createNode</definition>
-        <argsstring>(Session session, Map&lt; String, String &gt; properties, String[] faceVector, String label)</argsstring>
+        <argsstring>(Session session, Create create)</argsstring>
         <name>createNode</name>
         <param>
           <type>Session</type>
           <declname>session</declname>
         </param>
         <param>
-          <type>Map&lt; String, String &gt;</type>
-          <declname>properties</declname>
-        </param>
-        <param>
-          <type>String []</type>
-          <declname>faceVector</declname>
-        </param>
-        <param>
-          <type>String</type>
-          <declname>label</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create" kindref="compound">Create</ref></type>
+          <declname>create</declname>
         </param>
         <briefdescription>
 <para>Method processing JSON Create queries. </para>        </briefdescription>
@@ -427,54 +298,46 @@
 <parameterdescription>
 <para>is a session handler for transaction handling to query <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>label</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is denoting a type of the node to be created </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>faceVector</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>contains face features for a node of label &quot;Person&quot;. OPTIONAL </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the node </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>ID of the node that was created in <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="116" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="116" bodyend="143"/>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="106" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="106" bodyend="130"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aed2220a780f05da6433d81fb3214f1ae" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adf7ea772b9f3b7ccaab7ed009a0ca436" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void org.roboy.memory.util.Neo4j.saveToJedis</definition>
+        <argsstring>(String[] face, String id)</argsstring>
+        <name>saveToJedis</name>
+        <param>
+          <type>String []</type>
+          <declname>face</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="132" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="132" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9177d2860f10f0e31efe5508e8dd03a6" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.update</definition>
-        <argsstring>(Transaction tx, int id, Map&lt; String, String[]&gt; relations, Map&lt; String, String &gt; properties)</argsstring>
+        <argsstring>(Transaction tx, Update update)</argsstring>
         <name>update</name>
         <param>
           <type>Transaction</type>
           <declname>tx</declname>
         </param>
         <param>
-          <type>int</type>
-          <declname>id</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String[]&gt;</type>
-          <declname>relations</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String &gt;</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update" kindref="compound">Update</ref></type>
+          <declname>update</declname>
         </param>
         <briefdescription>
 <para>Method processing JSON Update queries. </para>        </briefdescription>
@@ -486,33 +349,12 @@
 <parameterdescription>
 <para>is a transaction handler to query <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>id</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a unique pointer to the node in <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>relations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing relationships of the node with other nodes </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the node </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>response from <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> upon updating the node </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>&lt; String containing the resulting Cypher query</para><para>&lt; String containing the Cypher WHERE arguments </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="176" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="176" bodyend="218"/>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="159" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="159" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a34a93a67cd7c10189dbf4ab0ef85cc0d" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -548,88 +390,84 @@
 <simplesect kind="return"><para>a JSON object containing node labels, properties and relationships </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>&lt; String containing query to retrieve properties of the node</para><para>&lt; String containing query to retrieve ID of the node</para><para>&lt; String containing query to retrieve relationships of the node</para><para>&lt; String containing query to retrieve labels of the node</para><para>&lt; HashMap containing unique relationships and properties</para><para>&lt; Response upon the transaction completing </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="248" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="248" bodyend="306"/>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="219" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="219" bodyend="254"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a3d0b7a27c98cd4f6ce515e0cdd282fc9" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ae3b6132673d69ce83e74d746d65097ff" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int []</type>
+        <definition>static int [] org.roboy.memory.util.Neo4j.toIntArray</definition>
+        <argsstring>(List&lt; Integer &gt; list)</argsstring>
+        <name>toIntArray</name>
+        <param>
+          <type>List&lt; Integer &gt;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="256" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="256" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9c50f88cb35980aba13d0bbd8418f883" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node" kindref="compound">Node</ref></type>
+        <definition>static Node org.roboy.memory.util.Neo4j.createNode</definition>
+        <argsstring>(int id, HashMap&lt; String, String &gt; properties, HashMap&lt; String, int[]&gt; relationships)</argsstring>
+        <name>createNode</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>HashMap&lt; String, String &gt;</type>
+          <declname>properties</declname>
+        </param>
+        <param>
+          <type>HashMap&lt; String, int[]&gt;</type>
+          <declname>relationships</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="263" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="263" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a907469d9af3e3a55c47ae6d4349c5589" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Neo4j.matchNode</definition>
-        <argsstring>(Transaction tx, String label, Map&lt; String, String[]&gt; relations, Map&lt; String, String &gt; properties)</argsstring>
+        <argsstring>(Transaction tx, Get get)</argsstring>
         <name>matchNode</name>
         <param>
           <type>Transaction</type>
           <declname>tx</declname>
         </param>
         <param>
-          <type>String</type>
-          <declname>label</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String[]&gt;</type>
-          <declname>relations</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String &gt;</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get" kindref="compound">Get</ref></type>
+          <declname>get</declname>
         </param>
         <briefdescription>
-<para>Method processing JSON Get IDs of nodes queries. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>tx</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a transaction handler to query <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>label</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is denoting a type of the nodes to be included </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>relations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing relationships of the nodes with other nodes </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the nodes </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>JSON array of nodes&apos; IDs </para></simplesect>
-</para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
-<para>&lt; String containing the resulting Cypher query</para><para>&lt; String containing the Cypher WHERE arguments</para><para>&lt; Response upon the transaction completing </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="338" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="338" bodyend="406"/>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="277" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="277" bodyend="297"/>
       </memberdef>
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ad4e6abab8d88f84ff76987aaa36b4baa" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aab08639468707098110a41f7baea7664" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
-        <definition>static String org.roboy.memory.util.Neo4j.removeRelsProps</definition>
-        <argsstring>(Transaction tx, int id, Map&lt; String, String[]&gt; relations, String[] properties)</argsstring>
-        <name>removeRelsProps</name>
+        <definition>static String org.roboy.memory.util.Neo4j.remove</definition>
+        <argsstring>(Transaction tx, Remove remove)</argsstring>
+        <name>remove</name>
         <param>
           <type>Transaction</type>
           <declname>tx</declname>
         </param>
         <param>
-          <type>int</type>
-          <declname>id</declname>
-        </param>
-        <param>
-          <type>Map&lt; String, String[]&gt;</type>
-          <declname>relations</declname>
-        </param>
-        <param>
-          <type>String []</type>
-          <declname>properties</declname>
+          <type><ref refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove" kindref="compound">Remove</ref></type>
+          <declname>remove</declname>
         </param>
         <briefdescription>
 <para>Method processing JSON Remove queries. </para>        </briefdescription>
@@ -641,33 +479,12 @@
 <parameterdescription>
 <para>is a transaction handler to query <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> DB </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>id</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>of the node which relations and properties need to be removed </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>relations</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing relationships of the node with other nodes </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>properties</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is a dictionary containing properties of the node </para></parameterdescription>
-</parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>response from <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> upon removing the specified relations and properties </para></simplesect>
+<simplesect kind="return"><para>response from <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> upon removing the specified relationships and properties </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>&lt; String containing resulting Cypher query</para><para>&lt; String containing the Cypher WHERE arguments</para><para>&lt; String containing the Cypher DELETE arguments</para><para>&lt; String containing the Cypher REMOVE arguments</para><para>&lt; Response upon the transaction completing </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="438" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="438" bodyend="485"/>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="316" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="316" bodyend="352"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -675,71 +492,74 @@
     <detaileddescription>
 <para>Talks to the <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref> and Redis databases. Handles the result retrieved from <ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kindref="compound">Neo4j</ref>. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="17">
+      <node id="30">
         <label>AutoCloseable</label>
       </node>
-      <node id="16">
+      <node id="29">
         <label>org.roboy.memory.util.Neo4j</label>
         <link refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j"/>
-        <childnode refid="17" relation="public-inheritance">
+        <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="19">
+      <node id="32">
         <label>AutoCloseable</label>
       </node>
-      <node id="18">
+      <node id="31">
         <label>org.roboy.memory.util.Neo4j</label>
         <link refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j"/>
-        <childnode refid="19" relation="public-inheritance">
+        <childnode refid="32" relation="public-inheritance">
         </childnode>
-        <childnode refid="20" relation="usage">
+        <childnode refid="33" relation="usage">
           <edgelabel>jedis</edgelabel>
         </childnode>
-        <childnode refid="18" relation="usage">
+        <childnode refid="31" relation="usage">
           <edgelabel>_instance</edgelabel>
         </childnode>
-        <childnode refid="21" relation="usage">
-          <edgelabel>parser</edgelabel>
+        <childnode refid="34" relation="usage">
+          <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="22" relation="usage">
+        <childnode refid="35" relation="usage">
           <edgelabel>logger</edgelabel>
         </childnode>
       </node>
-      <node id="21">
+      <node id="34">
         <label>Gson</label>
       </node>
-      <node id="22">
+      <node id="35">
         <label>Logger</label>
       </node>
-      <node id="20">
+      <node id="33">
         <label>Jedis</label>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="19" bodyend="487"/>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Neo4j.java" bodystart="23" bodyend="353"/>
     <listofallmembers>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1af4ee5671462dca6c16aa1d6023fb72e8" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>_driver</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a947227365cdb32268f77be4a2ec8a998" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>_instance</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a97a4811e6c87d73eea12de618935d819" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>close</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a8e2566dcf6fc19a7b0d35a3077c6ba59" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>createNode</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a22d824505031e76002acca42bbded694" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>createNode</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ac21a5896f1e0438ae7e769858c05db4d" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>createNode</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a5ce0c52727993342738a5497e9e996b0" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>createNode</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9c50f88cb35980aba13d0bbd8418f883" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>createNode</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aa892152c5dde9c9f698f429eaa8890f4" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>getDriver</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9b3289aa2d55b18a9e24b779a3a1424f" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>getInstance</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a437071fcf182c64451c653c26b3f7da8" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>getNode</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1abb0af2be68efb74528651cd5e70285f1" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>getNode</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aeefb00e53ce9ea3e36fa9fda25a98844" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>getNodeById</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ad705a8a4c35881d5c99e0c0fd951681c" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>gson</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a58d01e4fb246803a5070130ea48ee48c" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>jedis</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adb5836d660e5ff75e0c64b9a15266a21" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>logger</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a3d0b7a27c98cd4f6ce515e0cdd282fc9" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>matchNode</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a907469d9af3e3a55c47ae6d4349c5589" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>matchNode</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a34a93a67cd7c10189dbf4ab0ef85cc0d" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>matchNodeById</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aff6ff20fde7c5e64b2ad34cdfc747ac5" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>Neo4j</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a5e435aeb0b30c28bd192a8f47c62c38f" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>parameters</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a2e0eb22e79f803c11681230829c63a12" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>parser</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aabf515fa28f245f9283963ce22378165" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>remove</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ad4e6abab8d88f84ff76987aaa36b4baa" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>removeRelsProps</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ac4cc5eb8a2aa28691cad3cbec317ad6b" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>remove</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aab08639468707098110a41f7baea7664" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>remove</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a71e7ebbb084525eb661c178b2d3e2320" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>run</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aed2220a780f05da6433d81fb3214f1ae" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>update</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adab31b8bdf92992fe91b7c831e4b820c" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>updateNode</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adf7ea772b9f3b7ccaab7ed009a0ca436" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>saveToJedis</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ae3b6132673d69ce83e74d746d65097ff" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>toIntArray</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9177d2860f10f0e31efe5508e8dd03a6" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>update</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a559d37963d9326d44f21124f6f58f821" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Neo4j</scope><name>updateNode</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -4,7 +4,9 @@
     <compoundname>/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util</compoundname>
     <innerfile refid="_answer_8java">Answer.java</innerfile>
     <innerfile refid="_config_8java">Config.java</innerfile>
+    <innerfile refid="_dictionary_8java">Dictionary.java</innerfile>
     <innerfile refid="_neo4j_8java">Neo4j.java</innerfile>
+    <innerfile refid="_query_builder_8java">QueryBuilder.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

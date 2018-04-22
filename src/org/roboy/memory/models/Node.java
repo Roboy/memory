@@ -15,7 +15,15 @@ public class Node {
     }
 
     public String getLabel() {
-        return StringUtils.capitalise(label.toLowerCase());
+        String r = "";
+        try{
+            r = StringUtils.capitalise(label.toLowerCase());
+        }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
+        return r;
     }
 
     public void setLabel(String label) {

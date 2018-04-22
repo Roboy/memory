@@ -2,7 +2,7 @@
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.14">
   <compound refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kind="class"><name>org::roboy::memory::util::Answer</name>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a5722ce17a2c1e20a57c49934d29e5c1b" kind="variable"><name>logger</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a535b121bfb1d6d69a8b9b7f8a94cf749" kind="function"><name>ok</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac9862f981eeeec86aefde80f8fb0f8ff" kind="function"><name>ok</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" kind="function"><name>error</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config" kind="class"><name>org::roboy::memory::util::Config</name>
@@ -13,70 +13,88 @@
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ad4293db7b6041017da3d19dd2426e30b" kind="variable"><name>NEO4J_PASSWORD</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ae3688ba532e787f56f7f24dd966942e2" kind="variable"><name>REDIS_URI</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1a8241c6d734450dc902a8f50c2ae6b481" kind="variable"><name>REDIS_PASSWORD</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ac1cdb5d8aba914ceafd374fe4598004f" kind="variable"><name>LABEL_VALUES</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_config_1ac8375a11c227d849bccd3e9963233414" kind="variable"><name>RELATION_VALUES</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create" kind="class"><name>org::roboy::memory::models::Create</name>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1ad7adbfb860984fd8babc047e26e021b8" kind="variable"><name>type</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1ad3efb0c79820bdb7374198667663aa78" kind="variable"><name>label</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a28b00a9606088b1944e75912949ead72" kind="variable"><name>faceVector</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1af58158a7a19163ec7760e4a900df10f6" kind="variable"><name>properties</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a706b9f9d17b1753ff103e1f74d3beb86" kind="function"><name>getLabel</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a03daa8ea2bdf93fd9fcbb038d3047b6e" kind="function"><name>getType</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1ac0870ed4535c2fa5154b061042af0662" kind="function"><name>getProperties</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a6fa0c0ef828a91e4c306f88e208713bb" kind="function"><name>getFace</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_create_1a5d1d1c036971941b82a75737797516e6" kind="function"><name>validate</name></member>
+  </compound>
+  <compound refid="classorg_1_1roboy_1_1memory_1_1util_1_1_dictionary" kind="class"><name>org::roboy::memory::util::Dictionary</name>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_dictionary_1afb5c830fd2ba7ce5715d87fad65d79a1" kind="variable"><name>LABEL_VALUES</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_dictionary_1a6e976f3fbcdcc11a0777cf4b7972c7f5" kind="variable"><name>RELATIONSHIP_VALUES</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get" kind="class"><name>org::roboy::memory::models::Get</name>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a333487e09af230712e17fbda53467781" kind="variable"><name>label</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a2152465fb7ecb3c5685aa0ecf0267984" kind="variable"><name>id</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a2fc088100c532a81e3f92bd323039c3c" kind="variable"><name>relations</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a07da88d65b4aedad94533e44c6e13179" kind="variable"><name>properties</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a178905584e76725e922bcf13ee9acd12" kind="function"><name>getId</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a074cd3d721436acd94a71518cd715829" kind="function"><name>getLabel</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1adc45a91958461c6158d658bdfc08320c" kind="function"><name>getRelations</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1aea4f6486d899d9cbcccd515ea3359097" kind="function"><name>getProperties</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_get_1a41f06868329d50a30627518dfaf72be4" kind="function"><name>validate</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header" kind="class"><name>org::roboy::memory::models::Header</name>
     <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header_1a66de3107a5cd4547b080958c93ead54a" kind="variable"><name>user</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header_1a0c55175c08b45ee387a5046b34c08a6b" kind="variable"><name>datetime</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header_1aad28f484398ccfb36f0551a6fe6789e9" kind="function"><name>getDateTime</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_header_1a29aab30a0ce3df90440b2160d6aca9ec" kind="function"><name>getUser</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1_main" kind="class"><name>org::roboy::memory::Main</name>
+    <member refid="classorg_1_1roboy_1_1memory_1_1_main_1ae9877e356e3080c975a9664330667e96" kind="variable"><name>logger</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1_main_1a0f28f4ab81018cd6a21b847a84ae1a24" kind="function"><name>main</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j" kind="class"><name>org::roboy::memory::util::Neo4j</name>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a947227365cdb32268f77be4a2ec8a998" kind="variable"><name>_instance</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1af4ee5671462dca6c16aa1d6023fb72e8" kind="variable"><name>_driver</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a58d01e4fb246803a5070130ea48ee48c" kind="variable"><name>jedis</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a2e0eb22e79f803c11681230829c63a12" kind="variable"><name>parser</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ad705a8a4c35881d5c99e0c0fd951681c" kind="variable"><name>gson</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adb5836d660e5ff75e0c64b9a15266a21" kind="variable"><name>logger</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aff6ff20fde7c5e64b2ad34cdfc747ac5" kind="function"><name>Neo4j</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aa892152c5dde9c9f698f429eaa8890f4" kind="function"><name>getDriver</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9b3289aa2d55b18a9e24b779a3a1424f" kind="function"><name>getInstance</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a5e435aeb0b30c28bd192a8f47c62c38f" kind="function"><name>parameters</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a71e7ebbb084525eb661c178b2d3e2320" kind="function"><name>run</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a8e2566dcf6fc19a7b0d35a3077c6ba59" kind="function"><name>createNode</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adab31b8bdf92992fe91b7c831e4b820c" kind="function"><name>updateNode</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ac21a5896f1e0438ae7e769858c05db4d" kind="function"><name>createNode</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a559d37963d9326d44f21124f6f58f821" kind="function"><name>updateNode</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aeefb00e53ce9ea3e36fa9fda25a98844" kind="function"><name>getNodeById</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a437071fcf182c64451c653c26b3f7da8" kind="function"><name>getNode</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aabf515fa28f245f9283963ce22378165" kind="function"><name>remove</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1abb0af2be68efb74528651cd5e70285f1" kind="function"><name>getNode</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ac4cc5eb8a2aa28691cad3cbec317ad6b" kind="function"><name>remove</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a97a4811e6c87d73eea12de618935d819" kind="function"><name>close</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a22d824505031e76002acca42bbded694" kind="function"><name>createNode</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aed2220a780f05da6433d81fb3214f1ae" kind="function"><name>update</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a5ce0c52727993342738a5497e9e996b0" kind="function"><name>createNode</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1adf7ea772b9f3b7ccaab7ed009a0ca436" kind="function"><name>saveToJedis</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9177d2860f10f0e31efe5508e8dd03a6" kind="function"><name>update</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a34a93a67cd7c10189dbf4ab0ef85cc0d" kind="function"><name>matchNodeById</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a3d0b7a27c98cd4f6ce515e0cdd282fc9" kind="function"><name>matchNode</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ad4e6abab8d88f84ff76987aaa36b4baa" kind="function"><name>removeRelsProps</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1ae3b6132673d69ce83e74d746d65097ff" kind="function"><name>toIntArray</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a9c50f88cb35980aba13d0bbd8418f883" kind="function"><name>createNode</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1a907469d9af3e3a55c47ae6d4349c5589" kind="function"><name>matchNode</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_neo4j_1aab08639468707098110a41f7baea7664" kind="function"><name>remove</name></member>
+  </compound>
+  <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node" kind="class"><name>org::roboy::memory::models::Node</name>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a986d0b301aad86a20aefa5279abd8334" kind="variable"><name>label</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a9efad23c635d99cdc36c73b50fdb84a7" kind="variable"><name>id</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a9db02145c4c3be217ff7bec79b1560d6" kind="variable"><name>properties</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1af2880a17eea217784a8d5ac652269b8d" kind="variable"><name>relationships</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a302cedbde68a49589bd1cd39c4b42815" kind="function"><name>Node</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a0cff9d428e168a98128cadafb4515648" kind="function"><name>getLabel</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a5fafbedd92cdaf10c5e07a520a17c0d8" kind="function"><name>setLabel</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a5b23b6e89a12c029cfa8733a645769aa" kind="function"><name>getId</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ab7fea23884d81927df543e95792d5745" kind="function"><name>setId</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a964f3ff029cd50c258fc61fa85fb96b1" kind="function"><name>getProperties</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ae20497891709514d36dabdedfca52bd5" kind="function"><name>setProperties</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1ac7d4c34233d8ec96664d46f9107cd439" kind="function"><name>getRelationships</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_node_1a3ef6898acefb706e6794be2cd3fc6371" kind="function"><name>setRelationships</name></member>
+  </compound>
+  <compound refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kind="class"><name>org::roboy::memory::util::QueryBuilder</name>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1affda8cde98b0b639b6d4ba51e4179b7c" kind="variable"><name>builder</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a5b164c475ad87a0ec6acd9831b989aa1" kind="function"><name>QueryBuilder</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a0e19106ed9293c1a7571adfe2c626b0e" kind="function"><name>add</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a5ad376ae93a7dd80586707b21d871705" kind="function"><name>addParameters</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a11425a5aa55b96da20d5696162da6c19" kind="function"><name>getQuery</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a2a00e33a8108d5215423995c588ce683" kind="function"><name>matchById</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a31b52c71d46de38d45d8ff1ad5788dba" kind="function"><name>set</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1ad5b5381dc906637a269a95906bbbeb65" kind="function"><name>add</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove" kind="class"><name>org::roboy::memory::models::Remove</name>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a57fdda41d1172a34ed91aa58658ced49" kind="variable"><name>id</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae676a067595eaccb12d509e863f91afc" kind="variable"><name>type</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a3a73cead1450c262a6eae910bd773382" kind="variable"><name>label</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae406d2795f34343e21b045536f1f967a" kind="variable"><name>relations</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1af8734d4814db7c0379799a688b64db29" kind="variable"><name>properties</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1ae5bd474b9c3acd6c7d750ffcd8e33cba" kind="function"><name>getId</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1aef98e4eb4d718e908667485db3ef0ea5" kind="function"><name>getProperties</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1abc7420d61847a8aebdff1d831eca70c0" kind="function"><name>getRelations</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a882be0c858848a1a701c18863609b278" kind="variable"><name>properties_list</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1a95fc97067230076ae21018fe0c854e0a" kind="function"><name>getPropertiesList</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_remove_1aa63ce07ad8275809afaddacbc7d30593" kind="function"><name>validate</name></member>
+  </compound>
+  <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node" kind="class"><name>org::roboy::memory::models::RosNode</name>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node_1afb77a56926c6bfb57d065fa420a9c80f" kind="variable"><name>error</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node_1a781018e2dbea87604aed751db5b93727" kind="function"><name>error</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node_1a8b4e4e2803a552734af1f65b5b3c69f4" kind="function"><name>getError</name></member>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_ros_node_1ae34c5336455e4c41a1ea3c2a8d94f3d8" kind="function"><name>validate</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node" kind="class"><name>org::roboy::memory::ros::RosNode</name>
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node_1a60c4b457aa270b9658c4d152a4e1e842" kind="variable"><name>name</name></member>
@@ -92,10 +110,7 @@
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_run_1ae4fd025ece15ebc8863c86dbcaaa7fcd" kind="function"><name>stop</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic" kind="class"><name>org::roboy::memory::ros::ServiceLogic</name>
-    <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aa6affd692afac4898829dbfe71622e56" kind="variable"><name>logger</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aa740b580c4728b46aea8ba0001d5832c" kind="variable"><name>parser</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a1394a457cc24a0b83e28ca8d36f82309" kind="variable"><name>labels</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a62c8dab4756b30fc82d02040ae55927c" kind="variable"><name>relations</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1aef55514ea4c05fd6bc7bcffe3f6e1874" kind="variable"><name>createServiceHandler</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1adc0b3d19d82f44c620672db71b15ac70" kind="variable"><name>updateServiceHandler</name></member>
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a3c4630babe95bb950e70826af7857675" kind="variable"><name>getServiceHandler</name></member>
@@ -103,16 +118,7 @@
     <member refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_service_logic_1a559e6e72848711056723579defbaa3ea" kind="variable"><name>removeServiceHandler</name></member>
   </compound>
   <compound refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update" kind="class"><name>org::roboy::memory::models::Update</name>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a110787fa58036eae504a649985894e2c" kind="variable"><name>id</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a153ce6ec77d4fa67a4c97f17fba04839" kind="variable"><name>type</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a22934b872eaac1663658563a460c42c6" kind="variable"><name>label</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a297e6b7564dfc232a3e49596d7b75422" kind="variable"><name>relations</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a206b72ec15d5f447f3de02ee55b9ef64" kind="variable"><name>properties</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a913d811ede01d9ef9d3583dd4de6891e" kind="function"><name>getId</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a949dee56428100f02a323a5823362648" kind="function"><name>getProperties</name></member>
-    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a346bc41fc464e9959bd2bfad92e99182" kind="function"><name>getRelations</name></member>
-  </compound>
-  <compound refid="namespacejava_1_1util" kind="namespace"><name>java::util</name>
+    <member refid="classorg_1_1roboy_1_1memory_1_1models_1_1_update_1a3c0c78b05afd177f0acda79803f21b82" kind="function"><name>validate</name></member>
   </compound>
   <compound refid="namespaceorg" kind="namespace"><name>org</name>
   </compound>
@@ -128,11 +134,7 @@
   </compound>
   <compound refid="namespaceorg_1_1roboy_1_1memory_1_1util" kind="namespace"><name>org::roboy::memory::util</name>
   </compound>
-  <compound refid="namespaceorg_1_1roboy_1_1memory_1_1util_1_1_answer" kind="namespace"><name>org::roboy::memory::util::Answer</name>
-  </compound>
   <compound refid="namespaceorg_1_1roboy_1_1memory_1_1util_1_1_config" kind="namespace"><name>org::roboy::memory::util::Config</name>
-  </compound>
-  <compound refid="namespaceroboy__communication__cognition" kind="namespace"><name>roboy_communication_cognition</name>
   </compound>
   <compound refid="_main_8java" kind="file"><name>Main.java</name>
   </compound>
@@ -142,11 +144,15 @@
   </compound>
   <compound refid="_header_8java" kind="file"><name>Header.java</name>
   </compound>
+  <compound refid="_node_8java" kind="file"><name>Node.java</name>
+  </compound>
   <compound refid="_remove_8java" kind="file"><name>Remove.java</name>
   </compound>
-  <compound refid="_update_8java" kind="file"><name>Update.java</name>
+  <compound refid="models_2_ros_node_8java" kind="file"><name>RosNode.java</name>
   </compound>
-  <compound refid="_ros_node_8java" kind="file"><name>RosNode.java</name>
+  <compound refid="ros_2_ros_node_8java" kind="file"><name>RosNode.java</name>
+  </compound>
+  <compound refid="_update_8java" kind="file"><name>Update.java</name>
   </compound>
   <compound refid="_ros_run_8java" kind="file"><name>RosRun.java</name>
   </compound>
@@ -156,7 +162,11 @@
   </compound>
   <compound refid="_config_8java" kind="file"><name>Config.java</name>
   </compound>
+  <compound refid="_dictionary_8java" kind="file"><name>Dictionary.java</name>
+  </compound>
   <compound refid="_neo4j_8java" kind="file"><name>Neo4j.java</name>
+  </compound>
+  <compound refid="_query_builder_8java" kind="file"><name>QueryBuilder.java</name>
   </compound>
   <compound refid="dir_294e7deb6e9b0569c2189be60a9bac4b" kind="dir"><name>/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory</name>
   </compound>

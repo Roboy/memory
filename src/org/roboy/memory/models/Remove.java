@@ -16,7 +16,7 @@ public class Remove extends RosNode {
     @Override
     public boolean validate() {
         if(getId() == null) {
-            error("No ID specified");
+            error("FAIL: No ID specified");
             return false;
         }
          return true;

@@ -7,6 +7,8 @@ import org.ros.node.service.ServiceResponseBuilder;
 import roboy_communication_cognition.DataQueryRequest;
 import roboy_communication_cognition.DataQueryResponse;
 
+import java.util.logging.Logger;
+
 import static org.roboy.memory.util.Answer.error;
 import static org.roboy.memory.util.Answer.ok;
 
@@ -18,6 +20,7 @@ import static org.roboy.memory.util.Answer.ok;
 class ServiceLogic {
 
     private static Gson parser = new Gson();
+    private static Logger logger = Logger.getLogger(ServiceLogic.class.toString());
 
     /**
      * Create Service Handler.
@@ -28,7 +31,11 @@ class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
         if (create.validate()) {
-            response.setAnswer(Neo4j.createNode(create));
+            if (create.getLabel() != "OTHER") {
+                response.setAnswer(Neo4j.createNode(create));
+            } else {
+                response.setAnswer(create.getError());
+            }
         } else {
             response.setAnswer(create.getError());
         }
@@ -44,7 +51,11 @@ class ServiceLogic {
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
         if (update.validate()) {
-            response.setAnswer(ok(Neo4j.updateNode(update)));
+            if (update.getLabel() != "OTHER") {
+                response.setAnswer(ok(Neo4j.updateNode(update)));
+            } else {
+                response.setAnswer(error(update.getError()));
+            }
         } else {
             response.setAnswer(error(update.getError()));
         }
@@ -57,11 +68,16 @@ class ServiceLogic {
      */
     static ServiceResponseBuilder<DataQueryRequest, DataQueryResponse> getServiceHandler = (request, response) -> {
         Header header = parser.fromJson(request.getHeader(), Header.class);
+        logger.info("Request payload: " + request.getPayload());
         Get get = parser.fromJson(request.getPayload(), Get.class);
         if (get.getId() != null ) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
-            response.setAnswer(Neo4j.getNode(get));
+            if (get.getLabel() != "OTHER") {
+                response.setAnswer(Neo4j.getNode(get));
+            } else {
+                response.setAnswer(error(get.getError()));
+            }
         }
     };
 

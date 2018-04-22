@@ -19,19 +19,31 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a535b121bfb1d6d69a8b9b7f8a94cf749" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac9862f981eeeec86aefde80f8fb0f8ff" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>static String org.roboy.memory.util.Answer.ok</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(String message)</argsstring>
         <name>ok</name>
+        <param>
+          <type>String</type>
+          <declname>message</declname>
+        </param>
         <briefdescription>
 <para><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer" kindref="compound">Answer</ref> for ROS if no errors were detected. </para>        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>JSON object {status:&quot;OK&quot;} to ROS </para></simplesect>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>contains the success message with json data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>JSON object {status:&quot;OK&quot;} to ROS </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>&lt; String with positive response </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="17" bodyend="21"/>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="18" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -56,8 +68,8 @@
 <simplesect kind="return"><para>JSON object containing status and message </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>&lt; String with negative response </para>        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="29" bodyend="33"/>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="30" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -76,11 +88,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="8" bodyend="34"/>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/Answer.java" bodystart="8" bodyend="35"/>
     <listofallmembers>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac6dc7a54939bd3798b1beb9cfbfde379" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>error</name></member>
       <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a5722ce17a2c1e20a57c49934d29e5c1b" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>logger</name></member>
-      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1a535b121bfb1d6d69a8b9b7f8a94cf749" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>ok</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_answer_1ac9862f981eeeec86aefde80f8fb0f8ff" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::Answer</scope><name>ok</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kind="class" language="Java" prot="public">
+    <compoundname>org::roboy::memory::util::QueryBuilder</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1affda8cde98b0b639b6d4ba51e4179b7c" prot="private" static="no" mutable="no">
+        <type>StringBuilder</type>
+        <definition>StringBuilder org.roboy.memory.util.QueryBuilder.builder</definition>
+        <argsstring></argsstring>
+        <name>builder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a5b164c475ad87a0ec6acd9831b989aa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>org.roboy.memory.util.QueryBuilder.QueryBuilder</definition>
+        <argsstring>()</argsstring>
+        <name>QueryBuilder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a0e19106ed9293c1a7571adfe2c626b0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kindref="compound">QueryBuilder</ref></type>
+        <definition>QueryBuilder org.roboy.memory.util.QueryBuilder.add</definition>
+        <argsstring>(String text)</argsstring>
+        <name>add</name>
+        <param>
+          <type>String</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a5ad376ae93a7dd80586707b21d871705" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kindref="compound">QueryBuilder</ref></type>
+        <definition>QueryBuilder org.roboy.memory.util.QueryBuilder.addParameters</definition>
+        <argsstring>(HashMap&lt; String, String &gt; params)</argsstring>
+        <name>addParameters</name>
+        <param>
+          <type>HashMap&lt; String, String &gt;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="20" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a11425a5aa55b96da20d5696162da6c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String org.roboy.memory.util.QueryBuilder.getQuery</definition>
+        <argsstring>()</argsstring>
+        <name>getQuery</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a2a00e33a8108d5215423995c588ce683" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kindref="compound">QueryBuilder</ref></type>
+        <definition>QueryBuilder org.roboy.memory.util.QueryBuilder.matchById</definition>
+        <argsstring>(int id, String letter)</argsstring>
+        <name>matchById</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>letter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a31b52c71d46de38d45d8ff1ad5788dba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kindref="compound">QueryBuilder</ref></type>
+        <definition>QueryBuilder org.roboy.memory.util.QueryBuilder.set</definition>
+        <argsstring>(HashMap&lt; String, String &gt; properties, String letter)</argsstring>
+        <name>set</name>
+        <param>
+          <type>HashMap&lt; String, String &gt;</type>
+          <declname>properties</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>letter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="40" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1ad5b5381dc906637a269a95906bbbeb65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder" kindref="compound">QueryBuilder</ref></type>
+        <definition>QueryBuilder org.roboy.memory.util.QueryBuilder.add</definition>
+        <argsstring>(String text, Object... args)</argsstring>
+        <name>add</name>
+        <param>
+          <type>String</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>Object...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="47" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="47" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_memory/src/org/roboy/memory/util/QueryBuilder.java" bodystart="8" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a0e19106ed9293c1a7571adfe2c626b0e" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>add</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1ad5b5381dc906637a269a95906bbbeb65" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>add</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a5ad376ae93a7dd80586707b21d871705" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>addParameters</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1affda8cde98b0b639b6d4ba51e4179b7c" prot="private" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>builder</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a11425a5aa55b96da20d5696162da6c19" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>getQuery</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a2a00e33a8108d5215423995c588ce683" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>matchById</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a5b164c475ad87a0ec6acd9831b989aa1" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>QueryBuilder</name></member>
+      <member refid="classorg_1_1roboy_1_1memory_1_1util_1_1_query_builder_1a31b52c71d46de38d45d8ff1ad5788dba" prot="public" virt="non-virtual"><scope>org::roboy::memory::util::QueryBuilder</scope><name>set</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

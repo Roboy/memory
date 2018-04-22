@@ -12,14 +12,14 @@ public class Update extends RosNode {
     public boolean validate() {
 
         if(getId() == null) {
-            error("No ID specified");
+            error("FAIL: No ID specified");
             return false;
         }
 
         if(getRelationships() != null) {
             for (String rel : getRelationships().keySet()) {
                 if (!Dictionary.RELATIONSHIP_VALUES.contains(rel.toUpperCase())) {
-                    error("The relationship type '" + rel + "' doesn't exist in the DB");
+                    error("FAIL: The relationship type '" + rel + "' doesn't exist in the DB");
                     return false;
                 }
             }

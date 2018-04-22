@@ -180,9 +180,11 @@ public class Neo4j implements AutoCloseable {
                 builder.add("MATCH (m%d) WHERE ID(m%d) IN %s ", counter, counter, gson.toJson(entry.getValue()));
                 counter++;
             }
+            counter = 0;
             for (Map.Entry<String, int[]> entry : update.getRelationships().entrySet()) {
-                counter--;
+                //counter--;
                 builder.add("MERGE (n)-[r%d:%s]-(m%d)", counter, entry.getKey(), counter);
+                counter++;
             }
             builder.add("RETURN n");
             logger.info(builder.getQuery());
@@ -274,6 +276,9 @@ public class Neo4j implements AutoCloseable {
 
     private static String matchNode(Transaction tx, Get get) {
         QueryBuilder builder = new QueryBuilder();
+        if(get.getLabel() != null) logger.info("Class label: " + get.getLabel());
+        if(get.getProperties() != null) logger.info("Properties: " + get.getProperties().toString());
+        if(get.getRelationships() != null) logger.info("Relationships: " + get.getRelationships().toString());
         builder.add("MATCH (n:%s", get.getLabel());
         builder.addParameters(get.getProperties());
         builder.add(")");

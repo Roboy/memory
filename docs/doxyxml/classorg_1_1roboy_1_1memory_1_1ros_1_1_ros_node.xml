@@ -102,24 +102,24 @@
     <detaileddescription>
 <para>Data is received as JSON object. JSON object is parsed using Parser and saved to neo4j. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="26">
+      <node id="66">
         <label>org.roboy.memory.ros.RosNode</label>
         <link refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node"/>
-        <childnode refid="27" relation="public-inheritance">
+        <childnode refid="67" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="27">
+      <node id="67">
         <label>AbstractNodeMain</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="28">
+      <node id="68">
         <label>org.roboy.memory.ros.RosNode</label>
         <link refid="classorg_1_1roboy_1_1memory_1_1ros_1_1_ros_node"/>
-        <childnode refid="29" relation="public-inheritance">
+        <childnode refid="69" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="29">
+      <node id="69">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>

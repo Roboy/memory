@@ -14,13 +14,13 @@ public class Neo4jTest extends TestCase {
     Gson gson = new Gson();
     long timestamp = new Date().getTime();
 
-    public void testRun() throws Exception {
-        String json = Neo4j.run("MATCH (n:Robot) RETURN n");
-        JsonArray array = gson.fromJson(json, JsonArray.class);
-        assertEquals(1, array.size());
-        String roboy = array.get(0).toString();
-        assertEquals(true, roboy.contains("Roboy"));
-    }
+    // public void testRun() throws Exception {
+    //     String json = Neo4j.run("MATCH (n:Robot) RETURN n");
+    //     JsonArray array = gson.fromJson(json, JsonArray.class);
+    //     assertEquals(1, array.size());
+    //     String roboy = array.get(0).toString();
+    //     assertEquals(true, roboy.contains("Roboy"));
+    // }
 
     public void testCreateNode() throws Exception {
         Create create = gson.fromJson("{'label':'Person','properties':{'name':'Lucas', 'sex':'male', 'timestamp_test':'" + timestamp + "'}}", Create.class);
