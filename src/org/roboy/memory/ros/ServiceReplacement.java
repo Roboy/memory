@@ -20,7 +20,7 @@ public class ServiceReplacement {
         Header header = parser.fromJson(request.getHeader(),  Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
         if (create.validate()) {
-            if (create.getLabel().equals( "OTHER")) {
+            if (!create.getLabel().equals( "OTHER")) {
                 return (Neo4j.createNode(create));
             } else {
                 return(create.getError());
@@ -32,7 +32,7 @@ public class ServiceReplacement {
     public static String createServiceHandler (String request){
         Create create = parser.fromJson(request, Create.class);
         if (create.validate()) {
-            if (create.getLabel().equals( "OTHER")) {
+            if (!create.getLabel().equals( "OTHER")) {
                 return (Neo4j.createNode(create));
             } else {
                 return(create.getError());
