@@ -3,10 +3,6 @@ package org.roboy.memory.util;
 
 import com.google.gson.Gson;
 import org.roboy.memory.models.*;
-import org.roboy.memory.util.Neo4j;
-import org.ros.node.service.ServiceResponseBuilder;
-import roboy_communication_cognition.DataQueryRequest;
-import roboy_communication_cognition.DataQueryResponse;
 
 import static org.roboy.memory.util.Answer.error;
 import static org.roboy.memory.util.Answer.ok;
@@ -64,7 +60,7 @@ public class MemoryOperations {
 
     /**
      * @deprecated It appears that this method has been removed from ServiceLogic. This method should contain the code of remove, to make things consistent.
-     * SDE-60
+     * See SDE-60
      */
     @Deprecated
     public static String delete(String request){
