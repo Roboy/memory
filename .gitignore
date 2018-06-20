@@ -16,3 +16,5 @@ hs_err_pid*
 .idea
 docs/doxyxml
 target
+
+test/org/roboy/memory/util/intTest\.java

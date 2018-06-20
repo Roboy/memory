@@ -7,7 +7,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>memory</name>
+    <name>Roboy Memory</name>
     <url>https://github.com/Roboy/roboy_memory</url>
 
     <properties>
