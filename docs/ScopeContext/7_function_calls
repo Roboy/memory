@@ -9,35 +9,35 @@ Function List
 
 - **create function**: Service called to perform a query writing data into Neo4j database.::
 
-	# argument: String header String payload
+	# argument: String payload
 	# returns: String answer
 
     org.roboy.memory.util.MemoryOperations.create(String payload)
 
 - **get function:** Function called to perform a query reading data from Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
     org.roboy.memory.util.MemoryOperations.get(String payload)
 
 - **update function:** Function called to perform a query altering data in Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
 	org.roboy.memory.util.MemoryOperations.update(String payload)
 
 - **remove function:** Function called to perform a query deleting data from Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
 	org.roboy.memory.util.MemoryOperations.remove(String payload)
 
 - **cypher function:** Function called to perform any Cypher query in Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
 	org.roboy.memory.util.MemoryOperations.cypher(String payload)
