@@ -31,7 +31,7 @@ public class ServiceLogic {
         Header header = parser.fromJson(request.getHeader(), Header.class);
         Create create = parser.fromJson(request.getPayload(), Create.class);
         if (create.validate()) {
-            if (create.getLabel() != "OTHER") {
+            if (!create.getLabel().toUpperCase().equals("OTHER")) {
                 response.setAnswer(Neo4j.createNode(create));
             } else {
                 response.setAnswer(create.getError());
@@ -51,7 +51,7 @@ public class ServiceLogic {
         Update update = parser.fromJson(request.getPayload(), Update.class);
 
         if (update.validate()) {
-            if (update.getLabel() != "OTHER") {
+            if (!update.getLabel().toUpperCase().equals("OTHER")) {
                 response.setAnswer(ok(Neo4j.updateNode(update)));
             } else {
                 response.setAnswer(error(update.getError()));
@@ -74,8 +74,7 @@ public class ServiceLogic {
         if (get.getId() != null ) {
             response.setAnswer(Neo4j.getNodeById(get.getId()));
         } else {
-            //TODO: ask about this, isn't this always true, regardless of what you input [  !(get.getLabel().equals("OTHER"))]
-            if (get.getLabel() != "OTHER") {
+            if (!get.getLabel().toUpperCase().equals("OTHER")) {
                 response.setAnswer(Neo4j.getNode(get));
             } else {
                 response.setAnswer(error(get.getError()));
