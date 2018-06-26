@@ -75,7 +75,9 @@ Reading list for a Developer:
 - `Java Documentation <http://www.oracle.com/technetwork/topics/newtojava/new2java-141543.html>`_
 - `Maven Documentation <https://maven.apache.org/index.html>`_
 - :ref:`roboy-protocol`
-- `rosjava Documentation <http://wiki.ros.org/rosjava>`_
+
+
+    `rosjava Documentation <http://wiki.ros.org/rosjava>`_
 
 
 .. _requirements_overview:
