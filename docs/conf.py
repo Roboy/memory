@@ -75,9 +75,9 @@ author = u'Roboy, based on Template by Dr. Peter'
 # built documents.
 #
 # The short X.Y version.
-version = u'1.0'
+version = u'1.1'
 # The full version, including alpha/beta/rc tags.
-release = u'1.0.0'
+release = u'1.1.0'
 
 breathe_projects = { project: "doxyxml/" }
 breathe_default_project = project

@@ -59,7 +59,7 @@ A Developer should be familiar with:
 - Roboy Knowledge Representation Architecture
 - Java programming language
 - Maven automation tool
-- rosjava
+- rosjava: deprecated
 
 Reading list for a User:
 
