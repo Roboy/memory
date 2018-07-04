@@ -1,7 +1,11 @@
 Context
 --------
 
-The Memory Module receives input from other Cognition modules in form of ROS messages containing RCS payload which is then parsed internally.
+.. deprecated:: 1.1
+    The Memory Module receives input from other Cognition module in form of ROS messages containing RCS payload which is
+    then parsed internally.
+
+The Memory Module receives input from other Cognition module in form of JSON string containing RCS payload which is then parsed internally.
 RCS payload contains valid request, otherwise exeption would be raised and Memory Module would answer with "FAIL" and error message.
 
 The main output of the Memory Module is either a single piece of data (JSON object) or set of **IDs**.

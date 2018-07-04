@@ -12,7 +12,9 @@ import roboy_communication_cognition.DataQuery;
  * ROS Service for saving data object to DB. Data is received as JSON object.
  * JSON object is parsed using Parser and saved to neo4j.
  */
+@Deprecated
 public class RosNode extends AbstractNodeMain {
+
     private static String name = "/roboy/cognition/memory"; ///< URI for the ROS node
 
                 /**

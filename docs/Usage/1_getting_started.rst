@@ -117,6 +117,9 @@ In the configuration file you will encounter the next important fields:
 - public final static String REDIS_URI
 - public final static String REDIS_PASSWORD
 
+.. deprecated:: 1.1
+    ROS_MASTER_URI and ROS_HOSTNAME
+
 For using roboy_memory package in remote mode properly, please initialize specific environment variables.
 To do so, open your bash profile file with text editor (depending on your preferences)::
 
@@ -132,11 +135,18 @@ and append the next lines with the information specified for you::
     export REDIS_URI="***"
     export REDIS_PASSWORD="***"
 
+.. deprecated:: 1.1
+    ROS_MASTER_URI and ROS_HOSTNAME
+
 You may use either remote or local addresses and credentials.
 
 
 ROS Configuration (remote)
 ---------------------------------------------------
+
+.. deprecated:: 1.1
+
+    Using of ROS is deprecated.
 
 Before you can use ROS, you will need to initialize rosdep::
 
@@ -201,7 +211,7 @@ After you have entered the proper configuration:
 
 - run the package::
 
-    java -jar roboy_memory-1.0.0-jar-with-dependencies.jar
+    java -jar roboy_memory-1.1.0-jar-with-dependencies.jar
 
 Using Remote
 ---------------------------------------------------

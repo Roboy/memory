@@ -21,7 +21,7 @@ public class MemoryOperations {
     public static String create (String request){
         Create create = parser.fromJson(request, Create.class);
         if (create.validate()) {
-            if (!create.getLabel().equals( "OTHER")) {
+            if (!create.getLabel().toUpperCase().equals("OTHER")) {
                 return (Neo4j.createNode(create));
             } else {
                 return(create.getError());
@@ -39,12 +39,11 @@ public class MemoryOperations {
     public static String get(String request){
         Get get = parser.fromJson(request, Get.class);
 
-        if(get.getId()!=null) {
+        if(get.getId() != null) {
             return Neo4j.getNodeById(get.getId());
         }
         else {
-//            if (! get.getLabel().equals("OTHER") )
-            if (get.getLabel() != "OTHER") {return Neo4j.getNode(get);}
+            if (!get.getLabel().toUpperCase().equals("OTHER")) {return Neo4j.getNode(get);}
         }
 
         return get.getError();
@@ -59,7 +58,7 @@ public class MemoryOperations {
         Update update = parser.fromJson(request, Update.class);
 
         if (update.validate()) {
-            if (update.getLabel() != "OTHER") {
+            if (!update.getLabel().toUpperCase().equals("OTHER")) {
                 return(ok(Neo4j.updateNode(update)));
             } else {
                 return(error(update.getError()));

@@ -1,6 +1,5 @@
 package org.roboy.memory.ros;
 
-
 import org.roboy.memory.util.Config;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
@@ -12,8 +11,8 @@ import java.net.URISyntaxException;
 /**
  * This server is responsible for starting ros services.
  */
+@Deprecated
 public class RosRun {
-
 
     private NodeMainExecutor nodeMainExecutor; ///< ROS executor
     private NodeConfiguration nodeConfiguration; ///< ROS node configurator

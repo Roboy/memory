@@ -4,6 +4,14 @@ Troubleshooting
 Possible Common Exceptions
 --------------------------------------------------
 
+.. deprecated:: 1.1
+
+    Using ROS is deprecated!
+
+.. warning::
+
+    This page describes deprecated interfaces!
+
 **No ROS master connection**::
 
     org.ros.internal.node.client.Registrar callMaster
