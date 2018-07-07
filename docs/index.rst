@@ -18,22 +18,30 @@ Roboy should feature ability to remember information about himself:
 
 etc.
 
-The same is applicable to Roboy speaking about people who are friends with him. Roboy should tell information about a person or an object and be able to provide basic automatic inference (supported by the graph nature of KR). 
-This way, Roboy Memory Module serves as a long-term memory repository of actionable information acquired by other Roboy modules. Persistency layer is presented by a Neo4j graph database.
+The same is applicable to Roboy speaking about people who are friends with him. Roboy should tell information about a person
+or an object and be able to provide basic automatic inference (supported by the graph nature of KR).
+This way, Roboy Memory Module serves as a long-term memory repository of actionable information acquired by other Roboy modules.
+Persistency layer is presented by a Neo4j graph database.
 
-Upon incoming request, a Java client will pre-process the request and initiate transaction with the database. Two ways of communication between Roboy Java client and Neo4J database are supported: communication using Neo4J driver operating Cypher query language and Neo4J native Java API. Cypher query language offers more flexible querying while communications via Neo4J Java API are implemented as usage-specific routines. 
-Interfaces are implemented on top of ros through the Java client.  The input is any type of information Roboy can retrieve from environment abiding by Knowledge Representation reference in format of Roboy Communication Standard protocol, the output are pieces of data related to the requested scope in the same form.
+Upon incoming request, a Java client will pre-process the request and initiate transaction with the database.
+Two ways of communication between Roboy Java client and Neo4J database are supported: communication using Neo4J driver
+operating Cypher query language and Neo4J native Java API. Cypher query language offers more flexible querying while communications
+via Neo4J Java API are implemented as usage-specific routines.
+Interfaces are implemented on top of ros through the Java client.
+The input is any type of information Roboy can retrieve from environment abiding by Knowledge Representation reference
+in format of Roboy Communication Standard protocol, the output are pieces of data related to the requested scope in the same form.
 
 The current main tasks of this project are:
 
 - Fill the memory in with all possible information about Roboy team
-- Ensure KR retention (through a population script)
-- Finish and evaluate the rosjava service
+- Ensure KR retention
 - Improve KR (more powerful inference)
+- Developing an explicit Neo4j ontology
+- Bringing the Memory Module and the Dialog System together
 
 .. _background_prerequisits:
 
-Relevant Background Information and Pre-Requisits
+Relevant Background Information and Pre-Requisites
 --------------------------------------------------
 
 A User should be familiar with:
@@ -51,7 +59,7 @@ A Developer should be familiar with:
 - Roboy Knowledge Representation Architecture
 - Java programming language
 - Maven automation tool
-- rosjava
+- rosjava: deprecated
 
 Reading list for a User:
 
@@ -67,7 +75,9 @@ Reading list for a Developer:
 - `Java Documentation <http://www.oracle.com/technetwork/topics/newtojava/new2java-141543.html>`_
 - `Maven Documentation <https://maven.apache.org/index.html>`_
 - :ref:`roboy-protocol`
-- `rosjava Documentation <http://wiki.ros.org/rosjava>`_
+
+
+    `rosjava Documentation <http://wiki.ros.org/rosjava>`_
 
 
 .. _requirements_overview:

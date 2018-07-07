@@ -8,12 +8,14 @@ As part of the restructuring of dialog, the ROS connection between Dialog and Me
 Availible Operations
 -----------------------------------------------
 
-The Roboy Memory Module offers the next services in order to work with the memory contents:
+.. deprecated:: 1.1
 
-- create - creates a node in the Neo4j DB with provided properties and face features (Redis)
-- update - adds new relationships between specified nodes or properties to the specified node
-- get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
-- remove - removes properties or relationships from the specified node
+    The Roboy Memory Module offers the next services in order to work with the memory contents:
+
+        - create - creates a node in the Neo4j DB with provided properties and face features (Redis)
+        - update - adds new relationships between specified nodes or properties to the specified node
+        - get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
+        - remove - removes properties or relationships from the specified node
 
 
 Using Direct Function calls
@@ -143,6 +145,10 @@ On error you will get:
 
 Using ROS
 ================================
+
+.. deprecated:: 1.1
+
+    Using ROS is deprecated
 
 There you can find basic examples on how to access the memory with JSON-formed queries using ROS.
 For more information, please, refer to :ref:`technical-interfaces`, :ref:`know_rep` and :ref:`roboy-protocol`.

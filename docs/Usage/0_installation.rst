@@ -131,7 +131,9 @@ If the local instance is not necessary, use a remote Redis instance by establish
 Installing ROS
 --------------------------------------------------
 
-The project is using `rosjava <http://wiki.ros.org/rosjava?distro=kinetic>`_ which requires ROS `kinetic <http://wiki.ros.org/kinetic>`_.
+.. deprecated:: 1.1
+
+    The project is using `rosjava <http://wiki.ros.org/rosjava?distro=kinetic>`_ which requires ROS `kinetic <http://wiki.ros.org/kinetic>`_.
 
 Simple installation (assuming Ubuntu 16.04 LTS):
 
