@@ -15,11 +15,21 @@ Local Neo4j Instance
 
 There are several options (for a Unix-based OS)
 
-**Docker Container Distribution** 
+**[Recommended] Docker Container Distribution** 
 
-- get the container with::
-	
-	docker pull neo4j
+- download Docker from apt::
+
+	sudo apt-get install docker.io
+
+- download and run Neo4J via Docker by::
+
+	sudo docker run \
+		--publish=7474:7474 --publish=7687:7687 \
+		--volume=$HOME/neo4j/data:/data \
+		--volume=$HOME/neo4j/logs:/logs \
+		neo4j:3.4
+
+- to quit Neo4J, simply CTRL+C or exit the terminal window
 
 **Using the Debian Repository** 
 
