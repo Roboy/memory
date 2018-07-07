@@ -141,6 +141,7 @@ and append the next lines with the information specified for you::
 You may use either remote or local addresses and credentials.
 
 .. raw:: html
+
     <details> 
     <h2>Local Address Example</h2>
     <p>
