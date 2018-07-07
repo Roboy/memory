@@ -68,6 +68,8 @@ Simply run `mvn clean install` in the `roboy_dialog` folder, it will build memor
 #### Installing Memory Only
 
 Set [Environmental Variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package)
+`sudo apt-get install docker.io git maven openjdk-8-jdk`
+`sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4`
 `git clone https://github.com/Roboy/roboy_memory -b master`
 `cd roboy_memory`
 `mvn clean install`
