@@ -154,6 +154,7 @@ You may use either remote or local addresses and credentials.
         export REDIS_PASSWORD="root"  <br>
     </p>  
     </details> 
+    <br>
 
 ROS Configuration (remote)
 ---------------------------------------------------

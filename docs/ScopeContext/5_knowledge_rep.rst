@@ -91,6 +91,7 @@ Describes prameters specific to a person
 - face_id (facial features) [int]: reference to a face representation.
 - voice_id (voice signature) [int]: reference to a voice signature.
 - conversation_id (Topic (scope) of the last conversation) [int]: reference to a topic marker for the last conversation. It would refer to a word or summary def by Dialog to recall the previous conversation with a person.
+- telegram_id [string]: ID for identifying users on Telegram. Set to ``local`` for non-telegram users.
 
 **Roboy**
 
