@@ -18,3 +18,7 @@ docs/doxyxml
 target
 
 test/org/roboy/memory/util/intTest\.java
+
+\.settings/
+.project
+.classpath
