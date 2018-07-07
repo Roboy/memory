@@ -11,7 +11,7 @@ Consider checking this entries: `Install <https://maven.apache.org/install.html>
 
 
 Local Neo4j Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are several options (for a Unix-based OS)
 
