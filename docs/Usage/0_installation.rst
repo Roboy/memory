@@ -9,9 +9,11 @@ The project requires Maven. You may get it here: `Download Maven <https://maven.
 Consider checking this entries: `Install <https://maven.apache.org/install.html>`_,
 `Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
 
+Local Setup
+--------------------------------------------------
 
 Local Neo4j Instance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are several options (for a Unix-based OS)
 
@@ -108,7 +110,7 @@ Follow these steps as **root**:
 Congratulations! You have started the Neo4j instance!
 
 Local Redis Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to compile Redis follow this simple steps:
 
@@ -128,13 +130,17 @@ In order to compile Redis follow this simple steps:
 
     make
 
-Remote Neo4j Instance
+
+Remote Setup
 --------------------------------------------------
+
+Remote Neo4j Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the local instance is not necessary, use a remote Neo4j instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
 
 Remote Redis Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the local instance is not necessary, use a remote Redis instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
 
@@ -175,4 +181,3 @@ The project is implemented upon a build automation tool - Maven, so the dependen
 - clone a git project with:: 
 	
 	git clone git@github.com:Roboy/roboy_memory.git
-
