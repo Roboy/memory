@@ -140,16 +140,20 @@ and append the next lines with the information specified for you::
 
 You may use either remote or local addresses and credentials.
 
-Local Address Example::
+.. raw:: html 
 
-	export ROS_MASTER_URI="http://127.0.0.1:11311"
-	export ROS_HOSTNAME="127.0.0.1"
-	export NEO4J_ADDRESS="bolt://127.0.0.1:7687"
-	export NEO4J_USERNAME="neo4j"
-	export NEO4J_PASSWORD="neo4jpassword"
-	export REDIS_URI="redis://localhost:6379/0"
-	export REDIS_PASSWORD="root" 
-
+    <details>  
+    <summary>Local Address Example</summary> 
+    <p> 
+        export ROS_MASTER_URI="http://127.0.0.1:11311" <br>
+        export ROS_HOSTNAME="127.0.0.1" <br>
+        export NEO4J_ADDRESS="bolt://127.0.0.1:7687" <br> 
+        export NEO4J_USERNAME="neo4j" <br>
+        export NEO4J_PASSWORD="neo4jpassword" <br>
+        export REDIS_URI="redis://localhost:6379/0" <br>
+        export REDIS_PASSWORD="root"  <br>
+    </p>  
+    </details> 
 
 ROS Configuration (remote)
 ---------------------------------------------------
