@@ -143,6 +143,8 @@ On error you will get:
 
 **Error:** {status:"FAIL", message:"error message"}
 
+
+
 Using ROS
 ================================
 
@@ -156,7 +158,7 @@ For more information, please, refer to :ref:`technical-interfaces`, :ref:`know_r
 To start the ROS services, simply run the Main class' Main method.
 
 Verifying ROS services are active
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to check available services, in your catkin environment, run::
 
