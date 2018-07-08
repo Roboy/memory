@@ -19,7 +19,7 @@ One can access these features either by calling them directly in ``org.roboy.mem
 Additionally, there is also support for the Cypher Query Language, which one can read about `here<https://roboy-memory.readthedocs.io/en/latest/ScopeContext/8_cypher_examples.html>`_
 
 Using Direct Function calls
-================================
+-----------------------------------------------
 
 One can now simply call the functions::
 
@@ -33,7 +33,7 @@ These functions are located in ``org.roboy.memory.util.MemoryOperations`` and ca
 The functions take JSON-formed queries as parameters. There is no need for a header in this case, all one needs to do is to send the payload. 
 
 Create queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Create a node of the type 'Person' with properties**::
 
@@ -50,7 +50,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Update queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Add properties to the node with id 15**::
 
@@ -76,7 +76,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Get queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Get properties and relationships of a node by id**::
 
@@ -117,7 +117,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Remove queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
@@ -144,7 +144,7 @@ On error you will get:
 **Error:** {status:"FAIL", message:"error message"}
 
 Using ROS
-================================
+----------------------------------
 
 .. deprecated:: 1.1
 
@@ -173,7 +173,7 @@ You should get the next output::
     /rosout/set_logger_level
 
 Calling the ROS
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **General syntax for a ROS message**::
 
@@ -204,7 +204,7 @@ Consider :ref:`roboy-protocol` for the correct use use of properties, relationsh
 Sample payloads as well as the whole structure of the calls are mentioned below.
 
 Create queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Create a node of the type 'Person' with properties**::
 
@@ -231,7 +231,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Update queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Add properties to the node with id 15**::
 
@@ -289,7 +289,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Get queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Get properties and relationships of a node by id**::
 
@@ -346,7 +346,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Remove queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
