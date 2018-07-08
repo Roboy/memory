@@ -1,5 +1,5 @@
 .. _initial_experience:
-
+================================
 Using roboy_memory
 ================================
 
@@ -19,7 +19,7 @@ One can access these features either by calling them directly in ``org.roboy.mem
 Additionally, there is also support for the Cypher Query Language, which one can read about `here <https://roboy-memory.readthedocs.io/en/latest/ScopeContext/8_cypher_examples.html>`_
 
 Using Direct Function calls
------------------------------------------------
+================================
 
 One can now simply call the functions::
 
@@ -144,7 +144,7 @@ On error you will get:
 **Error:** {status:"FAIL", message:"error message"}
 
 Using ROS
-----------------------------------
+================================
 
 .. deprecated:: 1.1
 
