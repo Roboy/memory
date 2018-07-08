@@ -82,6 +82,13 @@ Before proceeding further, please commence a password configuration step:
 Remote Instance
 --------------------------------------------------
 
+.. warning::
+
+    Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
+
+Please, do not crush everything. You would make little `kittens very sad <http://goo.gl/FZsTTm>`_.
+
+
 Remote Neo4j Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -181,19 +188,7 @@ After you have entered the proper configuration:
 
     java -jar roboy_memory-1.1.0-jar-with-dependencies.jar
 
-Using Remote
----------------------------------------------------
-
-.. warning::
-
-    Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
-
-Please, do not crush everything. You would make little `kittens very sad <http://goo.gl/FZsTTm>`_.
-
-
-
-
-Configuring the Package
+Configuring the Package's Environment Variables
 --------------------------------------------------
 
 In the configuration file you will encounter the next important fields:
