@@ -194,6 +194,7 @@ Configuring the Package's Environment Variables
 In the configuration file you will encounter the next important fields:
 
 .. code-block:: java
+
 	public final static String ROS_MASTER_URI
 	public final static String ROS_HOSTNAME
 	public final static String NEO4J_ADDRESS
