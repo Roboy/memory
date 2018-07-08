@@ -3,9 +3,11 @@
 Getting started
 ===============
 
+Local Instances 
+-------------------------------------
 
 Local Neo4j Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before proceeding further, please commence a user configuration step:
 
@@ -40,7 +42,7 @@ To copy remote Neo4j DB into your local instance:
     Be cautious! This procedure (unlikely) might overwrite your credentials with the remote ones, see below.
 
 Local Redis Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to have Redis properly configured, go through the next steps:
 
@@ -77,8 +79,11 @@ Before proceeding further, please commence a password configuration step:
 
     ./redis-server /etc/redis/6379.conf
 
-Remote Neo4j Instance
+Remote Instance
 --------------------------------------------------
+
+Remote Neo4j Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use a remote intance of Neo4j containing the most recent Knowledge Representation, ensure your connectivity to the Roboy server.
 If the server is up, use the roboy_memory package in the remote mode (default):
@@ -94,7 +99,7 @@ For this, please use a remote Neo4j password related to your specific user:
 - memory, a memory team member (developer)
 
 Remote Redis Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use a remote instance of Redis containing the most recent faces features, ensure your connectivity to the Roboy server.
 If the server is up, use the roboy_memory package in the remote mode (default):
@@ -104,60 +109,8 @@ If the server is up, use the roboy_memory package in the remote mode (default):
 For this, please use the remote Redis password.
 
 
-Configuring the Package
---------------------------------------------------
-
-In the configuration file you will encounter the next important fields:
-
-- public final static String ROS_MASTER_URI
-- public final static String ROS_HOSTNAME
-- public final static String NEO4J_ADDRESS
-- public final static String NEO4J_USERNAME
-- public final static String NEO4J_PASSWORD
-- public final static String REDIS_URI
-- public final static String REDIS_PASSWORD
-
-.. deprecated:: 1.1
-    ROS_MASTER_URI and ROS_HOSTNAME
-
-For using roboy_memory package in remote mode properly, please initialize specific environment variables.
-To do so, open your bash profile file with text editor (depending on your preferences)::
-
-    vi ~/.bashrc OR vi ~/.bash_profile OR nano ~/.bashrc OR nano ~/.bash_profile
-
-and append the next lines with the information specified for you::
-
-    export ROS_MASTER_URI="***"
-    export ROS_HOSTNAME="***"
-    export NEO4J_ADDRESS="***"
-    export NEO4J_USERNAME="***"
-    export NEO4J_PASSWORD="***"
-    export REDIS_URI="***"
-    export REDIS_PASSWORD="***"
-
-.. deprecated:: 1.1
-    ROS_MASTER_URI and ROS_HOSTNAME
-
-You may use either remote or local addresses and credentials.
-
-.. raw:: html 
-
-    <details>  
-    <summary>Local Address Example</summary> 
-    <p> 
-        export ROS_MASTER_URI="http://127.0.0.1:11311" <br>
-        export ROS_HOSTNAME="127.0.0.1" <br>
-        export NEO4J_ADDRESS="bolt://127.0.0.1:7687" <br> 
-        export NEO4J_USERNAME="neo4j" <br>
-        export NEO4J_PASSWORD="neo4jpassword" <br>
-        export REDIS_URI="redis://localhost:6379/0" <br>
-        export REDIS_PASSWORD="root"  <br>
-    </p>  
-    </details> 
-    <br>
-
 ROS Configuration (remote)
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. deprecated:: 1.1
 
@@ -236,6 +189,61 @@ Using Remote
     Be careful while using remote and/or interacting with bot.roboy.org server! You are responsible to keep it functioning properly!
 
 Please, do not crush everything. You would make little `kittens very sad <http://goo.gl/FZsTTm>`_.
+
+
+
+
+Configuring the Package
+--------------------------------------------------
+
+In the configuration file you will encounter the next important fields:
+
+- public final static String ROS_MASTER_URI
+- public final static String ROS_HOSTNAME
+- public final static String NEO4J_ADDRESS
+- public final static String NEO4J_USERNAME
+- public final static String NEO4J_PASSWORD
+- public final static String REDIS_URI
+- public final static String REDIS_PASSWORD
+
+.. deprecated:: 1.1
+    ROS_MASTER_URI and ROS_HOSTNAME
+
+For using roboy_memory package in remote mode properly, please initialize specific environment variables.
+To do so, open your bash profile file with text editor (depending on your preferences)::
+
+    vi ~/.bashrc OR vi ~/.bash_profile OR nano ~/.bashrc OR nano ~/.bash_profile
+
+and append the next lines with the information specified for you::
+
+    export ROS_MASTER_URI="***"
+    export ROS_HOSTNAME="***"
+    export NEO4J_ADDRESS="***"
+    export NEO4J_USERNAME="***"
+    export NEO4J_PASSWORD="***"
+    export REDIS_URI="***"
+    export REDIS_PASSWORD="***"
+
+.. deprecated:: 1.1
+    ROS_MASTER_URI and ROS_HOSTNAME
+
+You may use either remote or local addresses and credentials.
+
+.. raw:: html 
+
+    <details>  
+    <summary>Local Address Example</summary> 
+    <p> 
+        export ROS_MASTER_URI="http://127.0.0.1:11311" <br>
+        export ROS_HOSTNAME="127.0.0.1" <br>
+        export NEO4J_ADDRESS="bolt://127.0.0.1:7687" <br> 
+        export NEO4J_USERNAME="neo4j" <br>
+        export NEO4J_PASSWORD="neo4jpassword" <br>
+        export REDIS_URI="redis://localhost:6379/0" <br>
+        export REDIS_PASSWORD="root"  <br>
+    </p>  
+    </details> 
+    <br>
 
 
 Development
