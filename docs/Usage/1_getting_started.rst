@@ -116,7 +116,7 @@ If the server is up, use the roboy_memory package in the remote mode (default):
 For this, please use the remote Redis password.
 
 
-ROS Configuration (remote)
+ROS Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. deprecated:: 1.1
@@ -193,13 +193,14 @@ Configuring the Package's Environment Variables
 
 In the configuration file you will encounter the next important fields:
 
-- public final static String ROS_MASTER_URI
-- public final static String ROS_HOSTNAME
-- public final static String NEO4J_ADDRESS
-- public final static String NEO4J_USERNAME
-- public final static String NEO4J_PASSWORD
-- public final static String REDIS_URI
-- public final static String REDIS_PASSWORD
+.. code-block:: java
+	public final static String ROS_MASTER_URI
+	public final static String ROS_HOSTNAME
+	public final static String NEO4J_ADDRESS
+	public final static String NEO4J_USERNAME
+	public final static String NEO4J_PASSWORD
+	public final static String REDIS_URI
+	public final static String REDIS_PASSWORD
 
 .. deprecated:: 1.1
     ROS_MASTER_URI and ROS_HOSTNAME
