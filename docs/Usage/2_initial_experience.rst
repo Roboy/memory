@@ -16,7 +16,7 @@ The Roboy Memory Module offers the following functions, that will interact with 
 
 One can access these features either by calling them directly in ``org.roboy.memory.util.MemoryOperations`` or by calling them via ROS, the later being deprecated and highly discouraged to use.
 
-Additionally, there is also support for the Cypher Query Language, which one can read about `here<https://roboy-memory.readthedocs.io/en/latest/ScopeContext/8_cypher_examples.html>`_
+Additionally, there is also support for the Cypher Query Language, which one can read about `here <https://roboy-memory.readthedocs.io/en/latest/ScopeContext/8_cypher_examples.html>`_
 
 Using Direct Function calls
 -----------------------------------------------
