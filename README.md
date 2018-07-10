@@ -16,6 +16,7 @@ Documentation can be found here:
         - [Installing](#installing)
             - [Thorough Guide](#thorough-guide)
             - [Installing for Usage with roboy_dialog](#installing-for-usage-with-roboydialog)
+                - [Installation without Neo4J Tests](#installation-without-neo4j-tests)
             - [Installing Memory Only](#installing-memory-only)
 
 ## What does Roboy_Memory do
@@ -65,6 +66,14 @@ Simply run `mvn clean install` in the `roboy_dialog` folder, it will build memor
 
 > Note that `Neo4J` must be running while using roboy_dialog. Do not forget to set your environmental variables.
 
+##### Installation without Neo4J Tests
+
+In the event that you do not require Neo4J or do not wish that the Neo4J tests execute (ie. situations with no internet connection and only remote instance setup), you can have the Neo4J tests ignored.
+
+Simply append `-D neo4jtest=false` to your maven command.
+
+Example: `mvn clean install -D neo4jtest=false`, `mvn test -D neo4jtest=false`
+
 #### Installing Memory Only
 
 1. Set [Environmental Variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package)
@@ -74,3 +83,4 @@ Simply run `mvn clean install` in the `roboy_dialog` folder, it will build memor
 5. `cd roboy_memory`
 6. `mvn clean install`
 7. `java -jar target/roboy_memory-1.0.0-jar-with-dependencies.jar`
+
