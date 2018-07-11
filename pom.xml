@@ -33,7 +33,7 @@
                             <version>2.22.0</version>
                             <configuration>
                                 <excludes>
-                                <exclude>org.roboy.memory.util.Neo4jTest</exclude>
+                                    <exclude>org.roboy.memory.util.Neo4jTest</exclude>
                                 </excludes>
                             </configuration>
                         </plugin>

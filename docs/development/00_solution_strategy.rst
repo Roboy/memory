@@ -11,7 +11,7 @@ Solution Strategy
 
 **Current implementation:**
 
-- Graph-based Knowledge Representation ver. 1.1.1 on remote server.
+- Graph-based Knowledge Representation ver. 1.1.0 on remote server.
 - Redis for face features storage on remote server.
 - Roboy Communication Standard commands pool.
 - Java client software.

@@ -32,6 +32,8 @@ There are several options (for a Unix-based OS)
 
 - to quit Neo4J, simply CTRL+C or exit the terminal window
 
+.. warning:: You will be running Neo4J in sudo mode. If you do not wish to do so, see the other methods or `here <https://neo4j.com/docs/operations-manual/current/installation/docker/#docker-user>`_ 
+
 **Using the Debian Repository** 
 
 - to use the repository, add it to the list of sources::
