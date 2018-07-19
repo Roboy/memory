@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-public class LoggerInterface {
+public class MemoryLoggerInterface {
     private static Logger rootLogger = LogManager.getLogManager().getLogger("");
 
     public static void setLevel(Level level){
@@ -14,10 +14,14 @@ public class LoggerInterface {
             h.setLevel(level);
         }
     }
-    public static void setLogger(int i){
-        if(i==0) {setLevel(Level.OFF);}
-        else if(i==1) {setLevel(Level.WARNING);}
-        else if(i==2) {setLevel(Level.INFO);}
-        else rootLogger.warning("Invalid Integer Passed:\t"+i);
+    public static void setLogger(String i) {
+        try {
+            Level l =Level.parse(i.toUpperCase());
+            setLevel(l);
+        }catch (RuntimeException e){
+            rootLogger.warning("Invalid Memory Logger Level Passed:\t" + i);
+            rootLogger.warning("Please check Dialog's Config.Properties. Defaulting to ALL setting");
+            setLevel(Level.ALL);
+        }
     }
 }
