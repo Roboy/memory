@@ -1,10 +1,10 @@
 # Roboy Memory Module
 
-Documentation can be found here:
-
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=latest)](http://roboy-memory.readthedocs.io/en/latest/?badge=latest)
 
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=docs)](http://roboy-memory.readthedocs.io/en/develop/?badge=develop)
+
+Detailed Documentation can be found [here](https://readthedocs.org/projects/roboy-memory)
 
 - [Roboy Memory Module](#roboy-memory-module)
     - [What does Roboy Memory do](#what-does-roboy-memory-do)
