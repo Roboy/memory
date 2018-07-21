@@ -14,7 +14,7 @@ Creating a node:
 
     {
         'label': 'some_label',
-        'faceVector': [float, ..., float] // Under comsideration, OPTIONAL
+        'faceVector': [float, ..., float] // Under consideration, OPTIONAL
         'properties': {
             'prop_a': 'value_a',
             'prop_b': 'value_b'

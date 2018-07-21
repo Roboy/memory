@@ -1,7 +1,7 @@
 Static Function Calls
 =======================
 
-Just like with ROS Services, there are also 5 operations one can perform on Memory using MemoryOperations. These are almost exactly equivalent to their service counterparts, bar that they need not to transmit a header.
+One can use roboy_memory like a static library. One can perform the 5 operations, create, get, update, remove and cypher on Memory using the methods in the class MemoryOperations. These are almost exactly equivalent to their now deprecated ROS service counterparts, bar that one does not need to transmit the header.
 
 Function List
 --------------------------------------------------

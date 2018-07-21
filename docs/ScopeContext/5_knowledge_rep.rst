@@ -3,7 +3,7 @@
 Neo4j Memory Architecture
 ================================
 
-Architecture of the Neo4j database in remote. Current version: 1.1.1.
+Architecture of the Neo4j database in remote. Current version: 1.1.0.
 
 .. figure:: images/dbvisual.*
 
@@ -91,6 +91,9 @@ Describes prameters specific to a person
 - face_id (facial features) [int]: reference to a face representation.
 - voice_id (voice signature) [int]: reference to a voice signature.
 - conversation_id (Topic (scope) of the last conversation) [int]: reference to a topic marker for the last conversation. It would refer to a word or summary def by Dialog to recall the previous conversation with a person.
+- telegram_id [string]: ID for identifying users on Telegram. Set to ``local`` for non-telegram users.
+
+> Note: `Telegram_id` is currently under development by the BotBoy Team and will likely be renamed in the forseeable future.
 
 **Roboy**
 

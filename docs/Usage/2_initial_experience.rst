@@ -1,22 +1,22 @@
 .. _initial_experience:
-
+================================
 Using roboy_memory
 ================================
-
-As part of the restructuring of dialog, the ROS connection between Dialog and Memory has been removed. Instead, one can now use memory as a static library. We still retain the ability to start the ROS services if the need arises, however it is not recommendable due to efficiency reasons. 
 
 Availible Operations
 -----------------------------------------------
 
-.. deprecated:: 1.1
 
-    The Roboy Memory Module offers the next services in order to work with the memory contents:
+The Roboy Memory Module offers the following functions, that will interact with the Neo4J memory:
 
-        - create - creates a node in the Neo4j DB with provided properties and face features (Redis)
-        - update - adds new relationships between specified nodes or properties to the specified node
-        - get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
-        - remove - removes properties or relationships from the specified node
+    - create - creates a node in the Neo4j DB with provided properties and face features (Redis)
+    - update - adds new relationships between specified nodes or properties to the specified node
+    - get - retrieves information about the specified node or returns IDs of all nodes which fall into the provided conditions
+    - remove - removes properties or relationships from the specified node
 
+One can access these features either by calling them directly in ``org.roboy.memory.util.MemoryOperations`` or by calling them via ROS, the later being deprecated and highly discouraged to use.
+
+Additionally, there is also support for the Cypher Query Language, which one can read about `here <https://roboy-memory.readthedocs.io/en/latest/ScopeContext/8_cypher_examples.html>`_
 
 Using Direct Function calls
 ================================
@@ -33,7 +33,7 @@ These functions are located in ``org.roboy.memory.util.MemoryOperations`` and ca
 The functions take JSON-formed queries as parameters. There is no need for a header in this case, all one needs to do is to send the payload. 
 
 Create queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Create a node of the type 'Person' with properties**::
 
@@ -50,7 +50,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Update queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Add properties to the node with id 15**::
 
@@ -76,7 +76,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Get queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Get properties and relationships of a node by id**::
 
@@ -117,7 +117,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Remove queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
@@ -143,6 +143,8 @@ On error you will get:
 
 **Error:** {status:"FAIL", message:"error message"}
 
+
+
 Using ROS
 ================================
 
@@ -156,7 +158,7 @@ For more information, please, refer to :ref:`technical-interfaces`, :ref:`know_r
 To start the ROS services, simply run the Main class' Main method.
 
 Verifying ROS services are active
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to check available services, in your catkin environment, run::
 
@@ -173,7 +175,7 @@ You should get the next output::
     /rosout/set_logger_level
 
 Calling the ROS
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **General syntax for a ROS message**::
 
@@ -204,7 +206,7 @@ Consider :ref:`roboy-protocol` for the correct use use of properties, relationsh
 Sample payloads as well as the whole structure of the calls are mentioned below.
 
 Create queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Create a node of the type 'Person' with properties**::
 
@@ -231,7 +233,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Update queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Add properties to the node with id 15**::
 
@@ -289,7 +291,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Get queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Get properties and relationships of a node by id**::
 
@@ -346,7 +348,7 @@ On error you will get:
 You can find detailed information in :ref:`technical-interfaces`
 
 Remove queries
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
