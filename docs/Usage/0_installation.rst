@@ -6,7 +6,7 @@ Maven
 
 The project requires Maven. You may get it here: `Download Maven <https://maven.apache.org/download.cgi>`_
 
-.. seealso:: Consider checking out these entries: `Install <https://maven.apache.org/install.html>`_,`Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
+.. seealso:: Consider checking out these entries: `Install <https://maven.apache.org/install.html>`_, `Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
 
 Local Setup
 --------------------------------------------------
