@@ -36,7 +36,7 @@ public class MemoryLoggerInterface {
             Level l =Level.parse(str.toUpperCase());
             setLevel(l);
         }catch (RuntimeException e){
-            rootLogger.warning("Invalid Memory Logger Level Passed:\t" + str);
+            rootLogger.warning("Invalid Level Passed to Memory:\t"+str);
             rootLogger.warning("Please check Dialog's Config.Properties. Defaulting to INFO setting");
             setLevel(Level.INFO);
         }
