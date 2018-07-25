@@ -20,7 +20,7 @@ public class MemoryLoggerInterface {
             setLevel(l);
         }catch (RuntimeException e){
             rootLogger.warning("Invalid Memory Logger Level Passed:\t" + i);
-            rootLogger.warning("Please check Dialog's Config.Properties. Defaulting to ALL setting");
+            rootLogger.warning("Please check Dialog's Config.Properties. Defaulting to INFO setting");
             setLevel(Level.INFO);
         }
     }
