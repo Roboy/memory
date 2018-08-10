@@ -38,7 +38,7 @@ public class Generator {
 
     public static void main(String[] args){
 
-        if(Config.NEO4J_ADDRESS.contains("127.0.0.1") && Config.NEO4J_ADDRESS.contains("localhost")) {
+        if(Config.NEO4J_ADDRESS.contains("127.0.0.1") || Config.NEO4J_ADDRESS.contains("localhost")) {
             generateRoot();
             genAllNodes();
             createAllRelationships();
