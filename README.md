@@ -9,7 +9,9 @@ Detailed Documentation can be found [here](https://readthedocs.org/projects/robo
 - [Roboy Memory Module](#roboy-memory-module)
     - [What does Roboy Memory do](#what-does-roboy-memory-do)
     - [How does Roboy Memory work](#how-does-roboy-memory-work)
-    - [Remote Neo4J Database](#remote-neo4j-database)
+    - [Neo4J Database](#neo4j-database)
+        - [Remote Neo4J Database](#remote-neo4j-database)
+        - [Local Neo4J Database Generator](#local-neo4j-database-generator)
     - [Installation Instructions](#installation-instructions)
         - [Requirements](#requirements)
         - [Optional](#optional)
@@ -33,9 +35,17 @@ The same is applicable to Roboy, when speaking about people who are his friends.
 
 Upon incoming request, a Java client will pre-process the request and initiate transaction with the database. Two ways of communication between Roboy Java client and Neo4J database are supported: communication using Neo4J driver operating Cypher query language and Neo4J native Java API. Cypher query language offers more flexible querying while communications via Neo4J Java API are implemented as usage-specific routines. Interfaces are implemented on top of ros through the Java client. The input is any type of information Roboy can retrieve from environment abiding by Knowledge Representation reference in format of Roboy Communication Standard protocol, the output are pieces of data related to the requested scope in the same form.
 
-## Remote Neo4J Database
+## Neo4J Database
+
+### Remote Neo4J Database
 
 The roboy team runs a remote Neo4J instance. If you wish to have a copy of this for local testing purposes, you can find more info [here](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#local-neo4j-instance).
+
+### Local Neo4J Database Generator
+
+As one may wish to develop offline or perform risky tests, that may compromise Database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`.
+
+Note: You will still be required to set up the [environmental variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
 
 ## Installation Instructions
 

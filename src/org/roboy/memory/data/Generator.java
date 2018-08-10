@@ -1,5 +1,6 @@
 package org.roboy.memory.data;
 
+import org.roboy.memory.util.Config;
 import org.roboy.memory.util.MemoryOperations;
 import com.google.gson.Gson;
 
@@ -36,9 +37,20 @@ public class Generator {
     };
 
     public static void main(String[] args){
-        generateRoot();
-        genAllNodes();
-        createAllRelationships();
+
+        if(Config.NEO4J_ADDRESS.contains("127.0.0.1") && Config.NEO4J_ADDRESS.contains("localhost")) {
+            generateRoot();
+            genAllNodes();
+            createAllRelationships();
+        }
+        else{
+            System.out.println("Generator is programmed not to work with any addresses that are not 127.0.0.1 or localhost");
+            System.out.println("Please check your environmental variables and see if they are configured correctly");
+            System.out.println("Your current NEO4J_ADDRESS is "+Config.NEO4J_ADDRESS);
+            System.out.println("System Expected something amongst the lines of \"bolt://localhost:7687\" or \"bolt://127.0.0.1:7687\"");
+            System.out.println("See: https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package");
+            System.out.println("\nExiting Generator...");
+        }
     }
 
 
