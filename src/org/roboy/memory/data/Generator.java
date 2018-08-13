@@ -151,7 +151,6 @@ public class Generator {
         for(String name : nameList){
 
             int nameID = nameToNode("Person", name);
-
             createRelationship(nameID, nameToNode("Country", countryList[incrementalCounter++% countryList.length]), "FROM");
             createRelationship(nameID, nameToNode("Hobby", hobbyList[incrementalCounter++%hobbyList.length]), "HAS_HOBBY");
             createRelationship(nameID, nameToNode("Organization", workList[incrementalCounter++%workList.length]), "WORK_FOR");
