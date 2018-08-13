@@ -6,10 +6,16 @@ import com.google.gson.Gson;
 
 public class Generator {
 
-    private  static final String VERSION = "0.0.1";
+    private  static final String VERSION = "0.0.2";
 
     private static int incrementalCounter = 0;
 
+    private static final String[] roboyList = {
+            //ROBOY 2.0
+            "'skills':'telling jokes,telling fun facts,telling you about the famous people and places,doing the math','abilities':'talk to people,recognize objects,show emotions,move my body,shake a hand,party like there is no tomorrow,surf the internet,answer your questions','birthdate':'12.04.2018','full_name':'roboy 2.0','future':'become a robot rights advocate,help people and robots become friends,find the answer to the question of life the universe and everything,visit mars and other planets,become a music star,become a michelin star chef,get a robo pet,become as good as my father','sex':'male'",
+            //ROBOY 1.0
+            "\"abilities\":\"talking to people,reading wikipedia,reading reddit\",\"skills\":\"tell jokes,tell fun facts about famous people and places,recognize you next time we meet,remember your name and our conversation\",\"full_name\":\"roboy junior\",\"birthdate\":\"08.03.2013\",\"sex\":\"male\""
+    };
 
     private static final String[] nameList = {
 //            "Joseph", "Wagram", "Heather", "Alona", "Jason", "Lora",
@@ -29,7 +35,7 @@ public class Generator {
     private static final String[] universityList = {
             "TUM", "LMU", "RWTH", "Uni Heidelberg", "KIT", "UCL", "TU Berlin", "Uni Cologne", "ETH", "MIT", "Georgia Tech", "NYU", "Penn State"
     };
-    private static final String[] cityList = {
+    private static final String[] countryList = {
             "Suzhou", "Munich", "Berlin", "Cologne", "Columbus", "Saigon", "Shanghai"
     };
     private static final String[] hobbyList = {
@@ -40,6 +46,7 @@ public class Generator {
 
         if(Config.NEO4J_ADDRESS.contains("127.0.0.1") || Config.NEO4J_ADDRESS.contains("localhost")) {
             generateRoot();
+            generateRoboy();
             genAllNodes();
             createAllRelationships();
         }
@@ -67,6 +74,9 @@ public class Generator {
     private static String jsonCreation(String label, String name){
         return String.format("{'label':'%s','properties':{'name':'%s', 'generated':'%s'}}", label.toLowerCase(), name.toLowerCase(), VERSION);
     }
+    private static String jsonCreation(String label, String name, String properties){
+        return String.format("{'label':'%s','properties':{'name':'%s', 'generated':'%s' %s}}", label.toLowerCase(), name.toLowerCase(), VERSION, properties.isEmpty() ? "": ","+properties);
+    }
 
     /**
      * Generates all nodes from the data above
@@ -89,7 +99,7 @@ public class Generator {
                 MemoryOperations.create(jsonCreation("Organization", str));
             else System.out.println(str+" already exists");
         }
-        for(String str : cityList){
+        for(String str : countryList){
             if(MemoryOperations.get(jsonCreation("Country", str)).equals("{\"id\":[]}"))
                 MemoryOperations.create(jsonCreation("Country", str));
             else System.out.println(str+" already exists");
@@ -99,6 +109,28 @@ public class Generator {
                 MemoryOperations.create(jsonCreation("Hobby", str));
             else System.out.println(str+" already exists");
         }
+    }
+
+    /**
+     * Generate Roboy Nodes, if they do not exist
+     */
+    private static void generateRoboy(){
+            if(MemoryOperations.get(jsonCreation("Robot", "roboy two")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy two",roboyList[0]));
+            if(MemoryOperations.get(jsonCreation("Robot", "roboy")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy",roboyList[1]));
+
+            int roboy1 = nameToNode("Robot", "roboy");
+            int roboy2 = nameToNode("Robot", "roboy two");
+
+            if(MemoryOperations.get(jsonCreation("Country", "zurich")).equals("{\"id\":[]}"))
+                MemoryOperations.create(jsonCreation("Country", "zurich"));
+
+            createRelationship(roboy1, roboy2, "SIBLING_OF");
+
+            createRelationship(roboy1, nameToNode("Country", "munich"), "LIVE_IN");
+            createRelationship(roboy1, nameToNode("Country", "zurich"), "FROM");
+
+            createRelationship(roboy2, nameToNode("Country", "munich"), "LIVE_IN");
+            createRelationship(roboy2, nameToNode("Country", "munich"), "FROM");
     }
 
     //Method shall be removed as soon as Wagram confirms the issue is solved
@@ -120,10 +152,15 @@ public class Generator {
 
             int nameID = nameToNode("Person", name);
 
-            createRelationship(nameID, nameToNode("Country", cityList[incrementalCounter++%cityList.length]), "FROM");
+            createRelationship(nameID, nameToNode("Country", countryList[incrementalCounter++% countryList.length]), "FROM");
             createRelationship(nameID, nameToNode("Hobby", hobbyList[incrementalCounter++%hobbyList.length]), "HAS_HOBBY");
             createRelationship(nameID, nameToNode("Organization", workList[incrementalCounter++%workList.length]), "WORK_FOR");
             createRelationship(nameID, nameToNode("Organization", universityList[incrementalCounter++%universityList.length]), "STUDY_AT");
+            if(incrementalCounter%5==0) {
+                createRelationship(nameID, nameToNode("Robot", "roboy"), "FRIEND_OF");
+                createRelationship(nameID, nameToNode("Robot", "roboy two"), "FRIEND_OF");
+
+            }
         }
     }
 
