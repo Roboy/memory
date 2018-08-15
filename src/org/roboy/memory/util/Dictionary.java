@@ -6,9 +6,9 @@ import java.util.HashSet;
 public class Dictionary {
     public static final HashSet<String> LABEL_VALUES = new HashSet<String>(Arrays.asList(
             "Person",
-            "TelegramPerson",
-            "FacebookPerson",
-            "SlackPerson",
+            "Telegram_person",
+            "Facebook_person",
+            "Slack_person",
             "Robot",
             "Company",
             "University",
