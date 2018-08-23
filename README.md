@@ -43,7 +43,7 @@ The roboy team runs a remote Neo4J instance. If you wish to have a copy of this 
 
 ### Local Neo4J Database Generator
 
-As one may wish to develop offline or perform risky tests, that may compromise Database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`.
+As one may wish to develop offline or perform risky tests, that may compromise database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`.
 
 Note: You will still be required to set up the [environmental variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
 
