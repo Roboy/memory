@@ -56,6 +56,30 @@ public class MemoryNodeModel extends NodeModel {
         }
     }
 
+    protected HashSet<Neo4jLabel> getNeo4jLegalLabels() {
+        return Neo4jLegalLabels;
+    }
+
+    protected void setNeo4jLegalLabels(HashSet<Neo4jLabel> neo4jLegalLabels) {
+        Neo4jLegalLabels = neo4jLegalLabels;
+    }
+
+    protected HashSet<Neo4jRelationship> getNeo4jLegalRelationships() {
+        return Neo4jLegalRelationships;
+    }
+
+    protected void setNeo4jLegalRelationships(HashSet<Neo4jRelationship> neo4jLegalRelationships) {
+        Neo4jLegalRelationships = neo4jLegalRelationships;
+    }
+
+    protected HashSet<Neo4jProperty> getNeo4jLegalProperties() {
+        return Neo4jLegalProperties;
+    }
+
+    protected void setNeo4jLegalProperties(HashSet<Neo4jProperty> neo4jLegalProperties) {
+        Neo4jLegalProperties = neo4jLegalProperties;
+    }
+
     public boolean isFamiliar() {
         if (!initialized) {
             FAMILIAR = init(this);

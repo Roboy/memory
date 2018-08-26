@@ -4,6 +4,7 @@ import org.roboy.memory.interfaces.Neo4jMemoryInterface;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.ontology.Neo4jLabel;
 import org.roboy.ontology.Neo4jProperty;
+import org.roboy.ontology.constraints.InterlocutorConstraints;
 import org.roboy.ontology.util.Uuid;
 import org.roboy.ontology.util.UuidType;
 import org.roboy.ontology.util.UzupisIntents;
@@ -22,16 +23,25 @@ public class Interlocutor extends MemoryNodeModel {
 
     public Interlocutor(Neo4jMemoryInterface memory) {
         super(memory);
+        this.setOntologyConditions();
     }
 
     public Interlocutor(Neo4jMemoryInterface memory, String name) {
         super(memory);
         this.addName(name);
+        this.setOntologyConditions();
     }
 
     public Interlocutor(Neo4jMemoryInterface memory, Uuid uuid) {
         super(memory);
         this.addUuid(uuid);
+        this.setOntologyConditions();
+    }
+
+    private void setOntologyConditions() {
+        this.setNeo4jLegalLabels(InterlocutorConstraints.legalLabels);
+        this.setNeo4jLegalRelationships(InterlocutorConstraints.legalRelationships);
+        this.setNeo4jLegalProperties(InterlocutorConstraints.legalPropeties);
     }
 
     /**
@@ -64,6 +74,4 @@ public class Interlocutor extends MemoryNodeModel {
     public HashMap<UzupisIntents, String> getUzupisInfo() {
         return uzupisInfo;
     }
-
-
 }

@@ -5,10 +5,10 @@ import org.roboy.memory.interfaces.Neo4jMemoryInterface;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.ontology.Neo4jLabel;
 import org.roboy.ontology.Neo4jProperty;
+import org.roboy.ontology.constraints.RoboyConstraints;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 
@@ -34,6 +34,13 @@ public class Roboy extends MemoryNodeModel {
         super(true, memory);
         this.InitializeRoboy("roboy two");
     }
+
+    private void setOntologyConditions() {
+        this.setNeo4jLegalLabels(RoboyConstraints.legalLabels);
+        this.setNeo4jLegalRelationships(RoboyConstraints.legalRelationships);
+        this.setNeo4jLegalProperties(RoboyConstraints.legalPropeties);
+    }
+
 
     /**
      * This method initializes the roboy property as a node that
