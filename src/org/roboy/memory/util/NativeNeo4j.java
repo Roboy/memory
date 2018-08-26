@@ -129,10 +129,10 @@ public class NativeNeo4j implements AutoCloseable {
      * @param session is a session handler for transaction handling to query Neo4j DB
      * @return ID of the node that was created in Neo4j DB
      */
-    private static String createNode(Session session, Create create) {
+    private static String createNode(Session session, MemoryNodeModel create) {
         StatementResult result = session.writeTransaction(tx -> {
             //TODO: prepared statement
-            QueryBuilder builder = new QueryBuilder();
+            NativeQueryBuilder builder = new NativeQueryBuilder();
 
             builder.add("CREATE (a:" + create.getLabel() + " ");
             builder.addParameters(create.getProperties());
@@ -186,7 +186,7 @@ public class NativeNeo4j implements AutoCloseable {
         //update properties
         JsonObject result = new JsonObject();
         if (update.getProperties() != null) {
-            QueryBuilder paramUpdate = new QueryBuilder();
+            NativeQueryBuilder paramUpdate = new NativeQueryBuilder();
             paramUpdate.matchById(update.getId(), "n");
             paramUpdate.set(update.getProperties(), "n");
             paramUpdate.add("RETURN n");
@@ -199,7 +199,7 @@ public class NativeNeo4j implements AutoCloseable {
 
         //Create new relationships
         if (update.getRelationships() != null) {
-            QueryBuilder builder = new QueryBuilder();
+            NativeQueryBuilder builder = new NativeQueryBuilder();
             builder.matchById(update.getId(), "n");
             int counter = 0;
             for (Map.Entry<String, int[]> entry : update.getRelationships().entrySet()) {
@@ -244,7 +244,7 @@ public class NativeNeo4j implements AutoCloseable {
      */
     private static String matchNodeById(Transaction tx, int id) {
 
-        QueryBuilder builder = new QueryBuilder();
+        NativeQueryBuilder builder = new NativeQueryBuilder();
         builder.matchById(id, "n").add("RETURN PROPERTIES(n)");
         String query = builder.getQuery();
         logger.info(query);
@@ -261,7 +261,7 @@ public class NativeNeo4j implements AutoCloseable {
         }
 
         //get relationships
-        builder = new QueryBuilder();
+        builder = new NativeQueryBuilder();
         query = builder.add("MATCH (n)-[r]-(m) WHERE ID(n)=%d RETURN TYPE(r) as name, COLLECT(ID(m)) as ids", id).getQuery();
         logger.info(query);
         result = tx.run(builder.getQuery(), parameters());
@@ -301,7 +301,7 @@ public class NativeNeo4j implements AutoCloseable {
     }
 
     private static String matchNode(Transaction tx, Get get) {
-        QueryBuilder builder = new QueryBuilder();
+        NativeQueryBuilder builder = new NativeQueryBuilder();
         if(get.getLabel() != null) logger.info("Class label: " + get.getLabel());
         if(get.getProperties() != null) logger.info("Properties: " + get.getProperties().toString());
         if(get.getRelationships() != null) logger.info("Relationships: " + get.getRelationships().toString());
@@ -346,7 +346,7 @@ public class NativeNeo4j implements AutoCloseable {
         //remove properties
         JsonObject response = new JsonObject();
         if (remove.getPropertiesList() != null) {
-            QueryBuilder builder = new QueryBuilder();
+            NativeQueryBuilder builder = new NativeQueryBuilder();
             builder.matchById(remove.getId(), "n");
             for (String propery : remove.getPropertiesList()) {
                 builder.add("REMOVE n.%s", propery);
@@ -359,7 +359,7 @@ public class NativeNeo4j implements AutoCloseable {
         }
 
         if(remove.getRelationships() != null) {
-            QueryBuilder builder = new QueryBuilder();
+            NativeQueryBuilder builder = new NativeQueryBuilder();
             builder.matchById(remove.getId(), "n");
             int counter = 0;
             for (Map.Entry<String, int[]> entry : remove.getRelationships().entrySet()) {
