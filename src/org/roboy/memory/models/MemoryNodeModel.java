@@ -48,7 +48,7 @@ public class MemoryNodeModel extends NodeModel {
         }
     }
 
-    protected HashSet<Neo4jLabel> getNeo4jLegalLabels() {
+    public HashSet<Neo4jLabel> getNeo4jLegalLabels() {
         return Neo4jLegalLabels;
     }
 
@@ -56,7 +56,7 @@ public class MemoryNodeModel extends NodeModel {
         Neo4jLegalLabels = neo4jLegalLabels;
     }
 
-    protected HashSet<Neo4jRelationship> getNeo4jLegalRelationships() {
+    public HashSet<Neo4jRelationship> getNeo4jLegalRelationships() {
         return Neo4jLegalRelationships;
     }
 
@@ -64,7 +64,7 @@ public class MemoryNodeModel extends NodeModel {
         Neo4jLegalRelationships = neo4jLegalRelationships;
     }
 
-    protected HashSet<Neo4jProperty> getNeo4jLegalProperties() {
+    public HashSet<Neo4jProperty> getNeo4jLegalProperties() {
         return Neo4jLegalProperties;
     }
 
