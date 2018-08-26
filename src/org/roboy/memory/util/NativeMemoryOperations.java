@@ -1,8 +1,10 @@
 package org.roboy.memory.util;
 
+import org.roboy.memory.interfaces.Neo4jMemoryInterface;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.ontology.Neo4jLabel;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
@@ -17,7 +19,7 @@ public class NativeMemoryOperations {
      * @param request Query with data regarding the node. Ex: {"labels":["Organization"],"label":"Organization","properties":{"name":"korn"}}
      * @return JSON containing the ID of the new node
      */
-    public static MemoryNodeModel create(MemoryNodeModel request){
+    public static Integer create(MemoryNodeModel request){
         if (validator.validateCreate(request)) {
             if (!request.getLabel().equals(Neo4jLabel.Other) &&
                     !request.getLabel().equals(Neo4jLabel.None)) {
@@ -34,13 +36,11 @@ public class NativeMemoryOperations {
      * @param request Query to specify Node to get. Ex: {"labels":["Person"],"label":"Person","properties":{"name":"davis"}}
      * @return JSON containing ID of node
      */
-    public static MemoryNodeModel get(MemoryNodeModel request){
+    public static ArrayList<MemoryNodeModel> get(MemoryNodeModel request, Neo4jMemoryInterface memory){
         if (validator.validateGet(request)) {
-            if (request.getId() > 0) {
-                return NativeNeo4j.getNodeById(request.getId());
-            } else if (!request.getLabel().equals(Neo4jLabel.Other) &&
+            if (!request.getLabel().equals(Neo4jLabel.Other) &&
                     !request.getLabel().equals(Neo4jLabel.None)) {
-                return NativeNeo4j.getNode(request);
+                return NativeNeo4j.getNode(request, memory);
             }
         }
 
@@ -49,11 +49,25 @@ public class NativeMemoryOperations {
     }
 
     /**
+     * Get the Node ID
+     * @param id Query to specify Node to get. Ex: {"labels":["Person"],"label":"Person","properties":{"name":"davis"}}
+     * @return JSON containing ID of node
+     */
+    public static MemoryNodeModel getById(Integer id, Neo4jMemoryInterface memory){
+        if (id != null && id > 0) {
+            return NativeNeo4j.getNodeById(id, memory);
+        }
+
+        LOGGER.severe("Error on getting node by ID: " + id.toString());
+        return null;
+    }
+
+    /**
      * Update Nodes
      * @param request Query to link two nodes together. Ex: {"labels":["Person"],"label":"Person","properties":{"name":"davis"},"relationships":{"FROM":[369]},"id":368}
      * @return JSON establishing whether or not the connection was made or not
      */
-    public static MemoryNodeModel update(MemoryNodeModel request) {
+    public static boolean update(MemoryNodeModel request) {
         if (validator.validateUpdate(request)) {
             if (!request.getLabel().equals(Neo4jLabel.Other) &&
                     !request.getLabel().equals(Neo4jLabel.None)) {
@@ -62,7 +76,7 @@ public class NativeMemoryOperations {
         }
 
         LOGGER.severe("Error on updating: " + request.toString());
-        return null;
+        return false;
     }
 
     /**
