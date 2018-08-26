@@ -3,7 +3,7 @@ package org.roboy.memory.util;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.neo4j.driver.v1.*;
-import org.roboy.memory.models.*;
+import org.roboy.memory.models.MemoryNodeModel;
 import redis.clients.jedis.Jedis;
 
 import java.net.URI;
@@ -16,20 +16,20 @@ import java.util.logging.Logger;
 import static org.roboy.memory.util.Config.*;
 
 /**
- * Contains the methods for running GET, CREATE, UPDATE, REMOVE and Cypher queries.
+ * Contains the methods for running MemoryNodeModel queries.
  * Talks to the Neo4j and Redis databases.
  * Handles the result retrieved from Neo4j.
  */
-public class Neo4j implements AutoCloseable {
+public class NativeNeo4j implements AutoCloseable {
 
-    private static Neo4j _instance;
+    private static NativeNeo4j _instance;
     private static Driver _driver;
     private static Jedis jedis;
     private static Gson gson = new Gson();
-    private static Logger logger = Logger.getLogger(Neo4j.class.toString());
+    private static Logger logger = Logger.getLogger(NativeNeo4j.class.toString());
     private static boolean initialized = false;
 
-    private Neo4j() {
+    private NativeNeo4j() {
         this.initDriver();
     }
 
@@ -40,7 +40,7 @@ public class Neo4j implements AutoCloseable {
      */
     public static Driver getInstance() {
         if (_instance == null) {
-            _instance = new Neo4j();
+            _instance = new NativeNeo4j();
         }
 
         return _instance.getDriver();
@@ -117,7 +117,7 @@ public class Neo4j implements AutoCloseable {
      *
      * @return result obtained by createNode method
      */
-    public static String createNode(Create create) {
+    public static MemoryNodeModel createNode(MemoryNodeModel create) {
         try (Session session = getInstance().session()) {
             return createNode(session, create);
         }
@@ -170,7 +170,7 @@ public class Neo4j implements AutoCloseable {
      *
      * @return result obtained by update method
      */
-    public static String updateNode(Update update) {
+    public static MemoryNodeModel updateNode(MemoryNodeModel update) {
         try (Session session = getInstance().session()) {
             return session.readTransaction(tx -> update(tx, update));
         }
@@ -228,7 +228,7 @@ public class Neo4j implements AutoCloseable {
      * @param id is a unique pointer to the node in Neo4j DB
      * @return result obtained by matchNodeById method
      */
-    public static String getNodeById(int id) {
+    public static MemoryNodeModel getNodeById(int id) {
 
         try (Session session = getInstance().session()) {
             return session.readTransaction(tx -> matchNodeById(tx, id));
@@ -294,7 +294,7 @@ public class Neo4j implements AutoCloseable {
         return node;
     }
 
-    public static String getNode(Get get) {
+    public static MemoryNodeModel getNode(MemoryNodeModel get) {
         try (Session session = getInstance().session()) {
             return session.readTransaction(tx -> matchNode(tx, get));
         }
@@ -330,7 +330,7 @@ public class Neo4j implements AutoCloseable {
      *
      * @return result obtained by removeRelsProps method
      */
-    public static String remove(Remove remove) {
+    public static boolean remove(MemoryNodeModel remove) {
         try (Session session = getInstance().session()) {
             return session.readTransaction(tx -> remove(tx, remove));
         }
