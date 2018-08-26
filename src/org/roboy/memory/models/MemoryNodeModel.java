@@ -26,6 +26,11 @@ public class MemoryNodeModel extends NodeModel {
     @Expose
     private transient boolean stripQuery = false;
 
+    public MemoryNodeModel(){
+        super();
+        this.memory = null;
+    }
+
     public MemoryNodeModel(Neo4jMemoryInterface memory){
         super();
         this.memory = memory;
@@ -89,26 +94,40 @@ public class MemoryNodeModel extends NodeModel {
             result = this.create(node);
             if (result != null) {
                 this.set(result);
+            } else {
+                initialized = false;
             }
         }
         return false;
     }
 
     private MemoryNodeModel queryForMatchingNodes(MemoryNodeModel node) {
-        if (node.getLabel() != null || node.getLabels() != null) {
-            ArrayList<Integer> ids = new ArrayList<>();
-            // Query memory for matching nodes.
-            try {
-                ids = memory.getByQuery(node);
-            } catch (InterruptedException | IOException e) {
-                LOGGER.info("Exception while querying memory, assuming node unknown.");
-                e.printStackTrace();
-            }
-            // Pick first if matches found.
-            if (ids != null && !ids.isEmpty()) {
-                //TODO Change from using first id to specifying if multiple matches are found.
+        if (memory != null) {
+            if (node.getLabel() != null || node.getLabels() != null) {
+                ArrayList<MemoryNodeModel> nodes = new ArrayList<>();
+                // Query memory for matching nodes.
                 try {
-                    return memory.getById(ids.get(0));
+                    nodes = memory.getByQuery(node, memory);
+                } catch (InterruptedException | IOException e) {
+                    LOGGER.info("Exception while querying memory, assuming node unknown. " + e.getMessage());
+                }
+                // Pick first if matches found.
+                if (nodes != null && !nodes.isEmpty()) {
+                    //TODO Change from using first id to specifying if multiple matches are found.
+                    return nodes.get(0);
+                }
+            }
+        }
+        return null;
+    }
+
+    private MemoryNodeModel create(MemoryNodeModel node) {
+        if (memory != null) {
+            if(!(memory instanceof DummyMemory)) {
+                try {
+                    int id = memory.create(node);
+                    // Need to retrieve the created node by the id returned by memory
+                    return memory.getById(id, memory);
                 } catch (InterruptedException | IOException e) {
                     LOGGER.warning("Unexpected memory error: provided ID not found upon querying.");
                     e.printStackTrace();
@@ -118,60 +137,50 @@ public class MemoryNodeModel extends NodeModel {
         return null;
     }
 
-    private MemoryNodeModel create(MemoryNodeModel node) {
-        if(!(memory instanceof DummyMemory)) {
-            try {
-                int id = memory.create(node);
-                // Need to retrieve the created node by the id returned by memory
-                return memory.getById(id);
-            } catch (InterruptedException | IOException e) {
-                LOGGER.warning("Unexpected memory error: provided ID not found upon querying.");
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
     /**
      * Adds a new relationship to the node, updating memory.
      */
-    public void addInformation(Neo4jRelationship relationship, String name) {
-        ArrayList<Integer> ids = new ArrayList<>();
-        // First check if node with given name exists by a matching query.
-        MemoryNodeModel relatedNode = new MemoryNodeModel(true, memory);
-        relatedNode.setProperties(Neo4jProperty.name, name);
-        //This adds a label type to the memory query depending on the relation.
-        relatedNode.setLabel(Neo4jRelationship.determineNodeType(relationship));
-        try {
-            ids = memory.getByQuery(relatedNode);
-        } catch (InterruptedException | IOException e) {
-            LOGGER.severe("Exception while querying memory by template.");
-            e.printStackTrace();
-        }
-        // Pick first from list if multiple matches found.
-        if(ids != null && !ids.isEmpty()) {
-            //TODO Change from using first id to specifying if multiple matches are found.
-            setRelationships(relationship, ids.get(0));
-        }
-        // Create new node if match is not found.
-        else {
+    public boolean addInformation(Neo4jRelationship relationship, String name) {
+        if (memory != null) {
+            ArrayList<MemoryNodeModel> nodes = new ArrayList<>();
+            // First check if node with given name exists by a matching query.
+            MemoryNodeModel relatedNode = new MemoryNodeModel(true, memory);
+            relatedNode.setProperties(Neo4jProperty.name, name);
+            //This adds a label type to the memory query depending on the relation.
+            relatedNode.setLabel(Neo4jRelationship.determineNodeType(relationship));
             try {
-                int id = memory.create(relatedNode);
-                if(id != 0) { // 0 is default value, returned if Memory response was FAIL.
-                    setRelationships(relationship, id);
-                }
+                nodes = memory.getByQuery(relatedNode, memory);
             } catch (InterruptedException | IOException e) {
-                LOGGER.severe("Unexpected memory error: creating node for new relation failed.");
-                e.printStackTrace();
+                LOGGER.severe("Exception while querying memory by template. " + e.getMessage());
+                return false;
             }
+            // Pick first from list if multiple matches found.
+            if (nodes != null && !nodes.isEmpty()) {
+                //TODO Change from using first id to specifying if multiple matches are found.
+                setRelationships(relationship, nodes.get(0).getId());
+            }
+            // Create new node if match is not found.
+            else {
+                try {
+                    int id = memory.create(relatedNode);
+                    if (id != 0) { // 0 is default value, returned if Memory response was FAIL.
+                        setRelationships(relationship, id);
+                    }
+                } catch (InterruptedException | IOException e) {
+                    LOGGER.severe("Unexpected memory error: creating node for new relation failed. " + e.getMessage());
+                    return false;
+                }
+            }
+            //Update the person node in memory.
+            try {
+                memory.save(this);
+            } catch (InterruptedException | IOException e) {
+                LOGGER.severe("Unexpected memory error: updating person information failed. " + e.getMessage());
+                return false;
+            }
+            return true;
         }
-        //Update the person node in memory.
-        try{
-            memory.save(this);
-        } catch (InterruptedException | IOException e) {
-            LOGGER.severe("Unexpected memory error: updating person information failed.");
-            e.printStackTrace();
-        }
+        return false;
     }
 
     public void setStripQuery(boolean strip) {

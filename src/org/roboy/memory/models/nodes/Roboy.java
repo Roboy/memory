@@ -9,6 +9,7 @@ import org.roboy.ontology.constraints.RoboyConstraints;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Logger;
 
 
@@ -55,28 +56,23 @@ public class Roboy extends MemoryNodeModel {
         setLabel(Neo4jLabel.Robot);
 
         //
-        ArrayList<Integer> ids = new ArrayList<>();
+        ArrayList<MemoryNodeModel> nodes = new ArrayList<>();
         try {
-            ids = memory.getByQuery(this);
+            nodes = memory.getByQuery(this, memory);
         } catch (InterruptedException | IOException e) {
             LOGGER.severe("Cannot retrieve or find Roboy in the Memory. Go the amnesia mode: " + e.getMessage());
         }
         // Pick the first if matches found.
-        if (ids != null && !ids.isEmpty()) {
-            try {
-                for (Integer id : ids) {
-                    MemoryNodeModel node = memory.getById(id);
-                    if (node.getProperties() != null &&
-                            !node.getProperties().isEmpty() &&
-                            node.getProperties().containsKey(Neo4jProperty.name) &&
-                            node.getProperties().get(Neo4jProperty.name).equals(name)) {
-                        this.set(node);
-                        FAMILIAR = true;
-                        break;
-                    }
+        if (nodes != null && !nodes.isEmpty()) {
+            for (MemoryNodeModel node : nodes) {
+                if (node.getProperties() != null &&
+                        !node.getProperties().isEmpty() &&
+                        node.getProperties().containsKey(Neo4jProperty.name) &&
+                        node.getProperties().get(Neo4jProperty.name).equals(name)) {
+                    this.set(node);
+                    FAMILIAR = true;
+                    break;
                 }
-            } catch (InterruptedException | IOException e) {
-                LOGGER.severe("Unexpected error: provided ID not found. Go the amnesia mode: " + e.getMessage());
             }
         }
     }
