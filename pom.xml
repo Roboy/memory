@@ -140,7 +140,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
+            <version>[2.9.0,)</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -151,7 +151,7 @@
         <dependency>
             <groupId>org.neo4j.driver</groupId>
             <artifactId>neo4j-java-driver</artifactId>
-            <version>1.4.0</version>
+            <version>[1.4.0,)</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
