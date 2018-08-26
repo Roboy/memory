@@ -27,7 +27,7 @@ public interface Neo4jMemoryInterface extends Memory<MemoryNodeModel>
      * @param  id the ID of requested
      * @return String with node representation of the result.
      */
-    MemoryNodeModel getById(int id) throws InterruptedException, IOException;
+    MemoryNodeModel getById(int id, Neo4jMemoryInterface memory) throws InterruptedException, IOException;
 
     /**
      * This is a classical database query which finds all matching nodes.
@@ -35,7 +35,7 @@ public interface Neo4jMemoryInterface extends Memory<MemoryNodeModel>
      * @param  query the ID of requested
      * @return Array of  IDs (all nodes which correspond to the pattern).
      */
-    ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException;
+    ArrayList<MemoryNodeModel> getByQuery(MemoryNodeModel query, Neo4jMemoryInterface memory) throws InterruptedException, IOException;
 
     int create(MemoryNodeModel query) throws InterruptedException, IOException;
 

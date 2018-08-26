@@ -33,8 +33,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     @Override
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
-        String response = Neo4jMemoryOperations.update(node.toJSON());
-        return response != null && (response.contains("OK"));
+        return Neo4jMemoryOperations.update(node);
     }
 
     /**
@@ -43,12 +42,9 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      * @param  id the ID of requested
      * @return Node representation of the result.
      */
-    public String getById(int id) throws InterruptedException, IOException
+    public MemoryNodeModel getById(int id, Neo4jMemoryInterface memory) throws InterruptedException, IOException
     {
-        String result = Neo4jMemoryOperations.get("{'id':"+id+"}");
-        if(result == null || result.contains("FAIL")) return null;
-
-        return result;
+        return Neo4jMemoryOperations.getById(id, memory);
     }
 
     /**
@@ -57,22 +53,14 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      * @param  query the ID of requested
      * @return Array of  IDs (all nodes which correspond to the pattern).
      */
-    public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
+    public ArrayList<MemoryNodeModel> getByQuery(MemoryNodeModel query, Neo4jMemoryInterface memory) throws InterruptedException, IOException
     {
-        String result = Neo4jMemoryOperations.get(query.toJSON());
-        if(result == null || result.contains("FAIL")) return null;
-        Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
-        HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
-        return list.get("id");
+        return Neo4jMemoryOperations.get(query, memory);
     }
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        String result = Neo4jMemoryOperations.create(query.toJSON());
-        if(result == null || result.contains("FAIL")) return 0;
-        Type type = new TypeToken<Map<String,Integer>>() {}.getType();
-        Map<String,Integer> list = gson.fromJson(result, type);
-        return list.get("id");
+        return Neo4jMemoryOperations.create(query);
     }
 
     /**
@@ -84,7 +72,6 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
     {
         query.setStripQuery(true);
-        String response = Neo4jMemoryOperations.delete(query.toJSON());
-        return response != null && response.contains("OK");
+        return Neo4jMemoryOperations.remove(query);
     }
 }
