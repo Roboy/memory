@@ -37,11 +37,10 @@ public class DummyMemory implements Neo4jMemoryInterface {
      * @param  id the ID of requested
      * @return Node representation of the result.
      */
-    public String getById(int id) throws InterruptedException, IOException
-    {
-        JsonObject dummy = new JsonObject();
-        dummy.addProperty("id", "9");
-        return dummy.toString();
+    public MemoryNodeModel getById(int id, Neo4jMemoryInterface memory) {
+        MemoryNodeModel dummy = new MemoryNodeModel(null);
+        dummy.setId(id);
+        return dummy;
     }
 
     /**
@@ -50,12 +49,11 @@ public class DummyMemory implements Neo4jMemoryInterface {
      * @param  query the ID of requested
      * @return Array of  IDs (all nodes which correspond to the pattern).
      */
-    public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
-    {
+    public ArrayList<MemoryNodeModel> getByQuery(MemoryNodeModel query, Neo4jMemoryInterface memory) {
        return new ArrayList<>();
     }
 
-    public int create(MemoryNodeModel query) throws InterruptedException, IOException {
+    public int create(MemoryNodeModel query) {
         return 0;
     }
 
@@ -64,10 +62,7 @@ public class DummyMemory implements Neo4jMemoryInterface {
      *
      * @param query StrippedQuery avoids accidentally deleting other fields than intended.
      */
-    public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
-    {
+    public boolean remove(MemoryNodeModel query) {
         return true;
     }
-
-
 }
