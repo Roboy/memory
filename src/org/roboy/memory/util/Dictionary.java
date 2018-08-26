@@ -3,6 +3,7 @@ package org.roboy.memory.util;
 import java.util.Arrays;
 import java.util.HashSet;
 
+@Deprecated
 public class Dictionary {
     public static final HashSet<String> LABEL_VALUES = new HashSet<String>(Arrays.asList(
             "Person",

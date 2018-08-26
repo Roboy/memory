@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 /**
  * Answer wrapper. Outputs OK or error messages to ROS.
  */
+@Deprecated
 public class Answer {
 
     private static Logger logger = Logger.getLogger(Answer.class.toString());

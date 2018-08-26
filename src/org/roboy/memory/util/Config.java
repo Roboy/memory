@@ -6,7 +6,9 @@ package org.roboy.memory.util;
 
 public class Config { //DO NOT CHANGE
     //ROS
+    @Deprecated
     public final static String ROS_MASTER_URI = System.getenv("ROS_MASTER_URI") == null ? "http://localhost:11311/" : System.getenv("ROS_MASTER_URI");
+    @Deprecated
     public final static String ROS_HOSTNAME = System.getenv("ROS_HOSTNAME") == null ? "127.0.0.1" : System.getenv("ROS_HOSTNAME");  //IP ADDRESS OF CURRENT PC IN THE NETWORK
 
     //Neo4J

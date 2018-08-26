@@ -10,6 +10,7 @@ import static org.roboy.memory.util.Answer.ok;
 /**
  * This class replicates the behaviour of ros.ServiceLogic. We make use of the exact same functions, just refactored to not be Services.
  */
+@Deprecated
 public class MemoryOperations {
 
     private static Gson parser = new Gson();
