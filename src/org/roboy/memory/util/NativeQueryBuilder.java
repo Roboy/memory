@@ -1,6 +1,7 @@
 package org.roboy.memory.util;
 
 import org.apache.maven.shared.utils.StringUtils;
+import org.roboy.ontology.Neo4jProperty;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +14,11 @@ public class NativeQueryBuilder {
     }
 
     public NativeQueryBuilder add(String text) {
-        builder.append(" " + text + " ");
+        builder.append(" ").append(text).append(" ");
         return this;
     }
 
-    public NativeQueryBuilder addParameters(HashMap<String, String> params) {
+    public NativeQueryBuilder addParameters(HashMap<Neo4jProperty, Object> params) {
         if(params == null) return this;
         String[] array = new String[params.size()];
         for (int i = 0; i < params.size(); i++) {
@@ -37,9 +38,9 @@ public class NativeQueryBuilder {
         return this;
     }
 
-    public NativeQueryBuilder set(HashMap<String, String> properties, String letter) {
-        for (Map.Entry<String, String>  entry : properties.entrySet()) {
-            add("SET " + letter + "." + entry.getKey() + "='" + entry.getValue() + "'");
+    public NativeQueryBuilder set(HashMap<Neo4jProperty, Object> properties, String letter) {
+        for (Map.Entry<Neo4jProperty, Object>  entry : properties.entrySet()) {
+            add("SET " + letter + "." + entry.getKey().type + "='" + entry.getValue() + "'");
         }
         return this;
     }
