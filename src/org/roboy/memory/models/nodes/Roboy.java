@@ -65,7 +65,7 @@ public class Roboy extends MemoryNodeModel {
         if (ids != null && !ids.isEmpty()) {
             try {
                 for (Integer id : ids) {
-                    MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
+                    MemoryNodeModel node = memory.getById(id);
                     if (node.getProperties() != null &&
                             !node.getProperties().isEmpty() &&
                             node.getProperties().containsKey(Neo4jProperty.name) &&
