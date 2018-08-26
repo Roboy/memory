@@ -29,7 +29,7 @@ public class Generator {
     };
 
     private static final String[] workList = {
-            "Roboy", "AISEC", "TUM", "Apple", "Google", "Autodesk", "uTUM", "DB", "Siemens", "Bosch", "NSA"
+            "RoboyModel", "AISEC", "TUM", "Apple", "Google", "Autodesk", "uTUM", "DB", "Siemens", "Bosch", "NSA"
     };
 
     private static final String[] universityList = {
@@ -112,7 +112,7 @@ public class Generator {
     }
 
     /**
-     * Generate Roboy Nodes, if they do not exist
+     * Generate RoboyModel Nodes, if they do not exist
      */
     private static void generateRoboy(){
             if(MemoryOperations.get(jsonCreation("Robot", "roboy two")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy two",roboyList[0]));

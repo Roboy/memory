@@ -5,6 +5,7 @@ import org.roboy.memory.util.Dictionary;
 /** Data model for JSON parser.
  *  Creates objects, that contain the elements of the Update queries.
  */
+@Deprecated
 public class Update extends RosNode {
 
 

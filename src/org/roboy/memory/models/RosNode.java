@@ -1,5 +1,6 @@
 package org.roboy.memory.models;
 
+@Deprecated
 public abstract class RosNode extends Node {
 
     private transient String error;

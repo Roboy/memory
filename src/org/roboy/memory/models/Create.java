@@ -6,6 +6,7 @@ import org.roboy.memory.util.Dictionary;
 /** Data model for JSON parser.
  *  Creates objects, that contain the elements of the Create queries.
  */
+@Deprecated
 public class Create extends RosNode {
 
     private String[] faceVector;

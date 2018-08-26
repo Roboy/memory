@@ -27,9 +27,10 @@ public class Neo4j implements AutoCloseable {
     private static Jedis jedis;
     private static Gson gson = new Gson();
     private static Logger logger = Logger.getLogger(Neo4j.class.toString());
+    private static boolean initialized = false;
 
     private Neo4j() {
-        _driver = GraphDatabase.driver(NEO4J_ADDRESS, AuthTokens.basic(NEO4J_USERNAME, NEO4J_PASSWORD));
+        this.initDriver();
     }
 
     /**
@@ -51,7 +52,32 @@ public class Neo4j implements AutoCloseable {
      * @return Neo4J Driver instance
      */
     private Driver getDriver() {
+        if (_driver == null) {
+            this.initDriver();
+        }
+
         return _driver;
+    }
+
+    /**
+     * Init driver
+     */
+    private void initDriver() {
+        try {
+            _driver = GraphDatabase.driver(NEO4J_ADDRESS, AuthTokens.basic(NEO4J_USERNAME, NEO4J_PASSWORD));
+            initialized = true;
+        } catch (Exception e) {
+            logger.warning("Could not init Neo4j driver. " + e.getMessage());
+            System.out.print("MEMORY INIT: Could not initialize Neo4j driver. Check if Neo4j is running!");
+            initialized = false;
+        }
+    }
+
+    /**
+     * Check if the driver is initialized
+     */
+    public boolean isInitialized(){
+        return initialized;
     }
 
     @Override

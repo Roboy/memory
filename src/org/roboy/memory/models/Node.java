@@ -4,6 +4,7 @@ import org.apache.maven.shared.utils.StringUtils;
 
 import java.util.HashMap;
 
+@Deprecated
 public class Node {
 
     private String label;

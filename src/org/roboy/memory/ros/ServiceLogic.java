@@ -17,6 +17,7 @@ import static org.roboy.memory.util.Answer.ok;
  * They parse the header and payload and check for invalid elements in the query.
  * Then the functions to construct the cypher queries are excecuted and the answer returned.
  */
+@Deprecated
 public class ServiceLogic {
 
     private static Gson parser = new Gson();

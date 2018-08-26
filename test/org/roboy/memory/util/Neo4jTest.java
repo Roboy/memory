@@ -19,7 +19,7 @@ public class Neo4jTest extends TestCase {
     //     JsonArray array = gson.fromJson(json, JsonArray.class);
     //     assertEquals(1, array.size());
     //     String roboy = array.get(0).toString();
-    //     assertEquals(true, roboy.contains("Roboy"));
+    //     assertEquals(true, roboy.contains("RoboyModel"));
     // }
 
     public void testCreateNode() throws Exception {
@@ -37,7 +37,7 @@ public class Neo4jTest extends TestCase {
     public void testUpdateNode() throws Exception {
         Create create = gson.fromJson("{'label':'Person','properties':{'name':'Lucas', 'sex':'male', 'timestamp_test':'" + timestamp + "'}}", Create.class);
         int id = gson.fromJson(Neo4j.createNode(create), JsonObject.class).get("id").getAsInt();
-        Create createRob = gson.fromJson("{'label':'Robot','properties':{'name':'Roboy', 'timestamp_test':'" + timestamp + "'}}", Create.class);
+        Create createRob = gson.fromJson("{'label':'Robot','properties':{'name':'RoboyModel', 'timestamp_test':'" + timestamp + "'}}", Create.class);
         int idRob = gson.fromJson(Neo4j.createNode(createRob), JsonObject.class).get("id").getAsInt();
         Update update = gson.fromJson("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}", Update.class);
         JsonObject answer = gson.fromJson(Neo4j.updateNode(update), JsonObject.class);
