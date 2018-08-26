@@ -1,7 +1,8 @@
 package org.roboy.memory.interfaces;
 
 
-import org.roboy.memory.util.MemoryOperations;
+import org.roboy.memory.models.MemoryNodeModel;
+import org.roboy.memory.util.NativeMemoryOperations;
 
 /**
  * This Class creates an interface to connect to memory.
@@ -14,35 +15,26 @@ public interface Neo4jMemoryOperations {
      * @param query Query to specify Node to get. Ex: {"labels":["Person"],"label":"Person","properties":{"name":"davis"}}
      * @return JSON containing ID of node
      */
-     static String get   (String query) { return MemoryOperations.get(query);    }
-
-    /**
-     * Cypher Method that is never called
-     * TODO: Implement this feature or refactor it out, it's kind of here because there was a service
-     * @param query
-     * @return
-     */
-     static String cypher(String query) { return MemoryOperations.cypher(query); }
+     static MemoryNodeModel get(MemoryNodeModel query) { return NativeMemoryOperations.get(query); }
 
     /**
      * Create a node
      * @param query Query with data regarding the node. Ex: {"labels":["Organization"],"label":"Organization","properties":{"name":"korn"}}
      * @return JSON containing the ID of the new node
      */
-     static String create(String query) { return MemoryOperations.create(query); }
+     static MemoryNodeModel create(MemoryNodeModel query) { return NativeMemoryOperations.create(query); }
 
     /**
      * Update Nodes
      * @param query Query to link two nodes together. Ex: {"labels":["Person"],"label":"Person","properties":{"name":"davis"},"relationships":{"FROM":[369]},"id":368}
      * @return JSON establishing whether or not the connection was made or not
      */
-     static String update(String query) { return MemoryOperations.update(query); }
+     static MemoryNodeModel update(MemoryNodeModel query) { return NativeMemoryOperations.update(query); }
 
     /**
      * Delete a Node
      * @param query JSON query to delete a specified node. Ex: {'type':'node','id':361,'properties_list': ['sex'], 'relationships':{'FRIEND_OF':[426]}}
      * @return Whether or not deleting was successful or not
      */
-    //TODO: SDE-60 --> Consistency
-     static String delete(String query) { return MemoryOperations.remove(query); }
+     static boolean remove(MemoryNodeModel query) { return NativeMemoryOperations.remove(query); }
 }
