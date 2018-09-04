@@ -1,14 +1,12 @@
 # Roboy Memory Module
 
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=latest)](http://roboy-memory.readthedocs.io/en/latest/?badge=latest)
-
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=docs)](http://roboy-memory.readthedocs.io/en/develop/?badge=develop)
-
-Detailed Documentation can be found [here](https://readthedocs.org/projects/roboy-memory)
 
 - [Roboy Memory Module](#roboy-memory-module)
     - [What does Roboy Memory do](#what-does-roboy-memory-do)
     - [How does Roboy Memory work](#how-does-roboy-memory-work)
+        - [Documentation](#documentation)
     - [Neo4J Database](#neo4j-database)
         - [Remote Neo4J Database](#remote-neo4j-database)
         - [Local Neo4J Database Generator](#local-neo4j-database-generator)
@@ -35,6 +33,10 @@ The same is applicable to Roboy, when speaking about people who are his friends.
 ## How does Roboy Memory work
 
 Upon incoming request, a Java client will pre-process the request and initiate transaction with the database. Two ways of communication between Roboy Java client and Neo4J database are supported: communication using Neo4J driver operating Cypher query language and Neo4J native Java API. Cypher query language offers more flexible querying while communications via Neo4J Java API are implemented as usage-specific routines. Interfaces are implemented on top of ros through the Java client. The input is any type of information Roboy can retrieve from environment abiding by Knowledge Representation reference in format of Roboy Communication Standard protocol, the output are pieces of data related to the requested scope in the same form.
+
+### Documentation
+
+For a more indepth look into how Roboy Memory works, please see the [Documentation](https://readthedocs.org/projects/roboy-memory)
 
 ## Neo4J Database
 
