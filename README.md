@@ -12,6 +12,7 @@ Detailed Documentation can be found [here](https://readthedocs.org/projects/robo
     - [Neo4J Database](#neo4j-database)
         - [Remote Neo4J Database](#remote-neo4j-database)
         - [Local Neo4J Database Generator](#local-neo4j-database-generator)
+            - [Removing Generated Nodes](#removing-generated-nodes)
     - [Installation Instructions](#installation-instructions)
         - [Requirements](#requirements)
         - [Optional](#optional)
@@ -43,9 +44,17 @@ The roboy team runs a remote Neo4J instance. If you wish to have a copy of this 
 
 ### Local Neo4J Database Generator
 
-As one may wish to develop offline or perform risky tests, that may compromise database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`.
+As one may wish to develop offline or perform risky tests, that may compromise database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`. It will also generate a copy of the Roboy nodes, that Dialog uses. Each node that is created has a `Generated` property, with the version number of the generated data.
 
 Note: You will still be required to set up the [environmental variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
+
+#### Removing Generated Nodes
+
+You can remove generated data, by running the following command `MATCH (node2delete {generated: '0.0.2'}) DETACH DELETE node2delete`. If you only want to delete nodes of a specific kind, such as `Person`s, run `MATCH (node2delete:Person {generated: '0.0.2'}) DETACH DELETE node2delete`.
+
+If you don't care and wish to remove all generated data across versions, use `MATCH (node2delete) WHERE EXISTS(node2delete.generated) DETACH DELETE node2delete`.
+
+> Be aware, that these commands do not care about your existing data and may break things. It is advisable to read up the [Neo4J Cypher documentation](https://neo4j.com/docs/developer-manual/3.4/cypher/clauses/delete/#delete-delete-a-node-with-all-its-relationships) and making sure that **all** side effects are understood.
 
 ## Installation Instructions
 
