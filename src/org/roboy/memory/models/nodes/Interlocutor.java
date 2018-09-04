@@ -41,7 +41,7 @@ public class Interlocutor extends MemoryNodeModel {
     private void setOntologyConditions() {
         this.setNeo4jLegalLabels(InterlocutorConstraints.legalLabels);
         this.setNeo4jLegalRelationships(InterlocutorConstraints.legalRelationships);
-        this.setNeo4jLegalProperties(InterlocutorConstraints.legalPropeties);
+        this.setNeo4jLegalProperties(InterlocutorConstraints.legalProperties);
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.roboy.memory.models.nodes;
 
-import com.google.gson.Gson;
 import org.roboy.memory.interfaces.Neo4jMemoryInterface;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.ontology.Neo4jLabel;
@@ -9,7 +8,6 @@ import org.roboy.ontology.constraints.RoboyConstraints;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.logging.Logger;
 
 
@@ -39,7 +37,7 @@ public class Roboy extends MemoryNodeModel {
     private void setOntologyConditions() {
         this.setNeo4jLegalLabels(RoboyConstraints.legalLabels);
         this.setNeo4jLegalRelationships(RoboyConstraints.legalRelationships);
-        this.setNeo4jLegalProperties(RoboyConstraints.legalPropeties);
+        this.setNeo4jLegalProperties(RoboyConstraints.legalProperties);
     }
 
 
