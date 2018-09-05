@@ -68,7 +68,7 @@ public class Generator {
 
 
     /**
-     * Method to create Person Node Jsons. Note that this will become Deprecated as soon as Wagram's patch hits.
+     * Method to create Person Node Jsons. This should change as soon as the Telegram_ID changes are live.
      */
     private static String jsonCreationPerson(String label, String name){
         return String.format("{'label':'%s','properties':{'name':'%s', 'generated':'%s',telegram_id:'local'}}", label.toLowerCase(), name.toLowerCase(), VERSION);
@@ -143,7 +143,7 @@ public class Generator {
             System.out.println("No Root Detected, everything okay!");
         }
         else{
-            System.err.println("Some poor node has been delegated file 0. Please report this on Github ASAP. This should NOT happen, ever.");
+            System.err.println("Some poor node has been delegated ID 0. Please report this on Github ASAP. This should NOT happen, ever.");
         }
     }
 
@@ -189,7 +189,7 @@ public class Generator {
     private static int nameToNode(String type, String name){
         String str = MemoryOperations.get(jsonCreation(type, name));
         str = str.replaceAll("[^\\d,]", ""); //This REGEX filters out all ASCII except commas and numbers
-        System.out.println(str);
+//        System.out.println(str);
         if(str.equals("")) return 0;
         if(str.contains(",")) throw new RuntimeException(String.format("Double Entry Exists in NEO4J Database. %s is represented by nodes %s. Please delete these nodes manually through cypher. This error should not occur unless you have added your own duplicate nodes. If this occurs, without you having added something, report this on Github."));
         else return Integer.parseInt(str);
