@@ -19,7 +19,7 @@ public class MemoryLoggerInterface {
      * Sets level of Root and all Subhandlers to Level
      * @param level Level to Set to
      */
-    public static void setLevel(Level level){
+    private static void setLevel(Level level){
         rootLogger.setLevel(level);
         for (Handler h : rootLogger.getHandlers()) {
             h.setLevel(level);
