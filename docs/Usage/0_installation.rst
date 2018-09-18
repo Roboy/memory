@@ -28,7 +28,7 @@ There are several options (for a Unix-based OS)
 		--publish=7474:7474 --publish=7687:7687 \
 		--volume=$HOME/neo4j/data:/data \
 		--volume=$HOME/neo4j/logs:/logs \
-		neo4j:3.4
+		neo4j:3.0
 
 - to quit Neo4J, simply CTRL+C or exit the terminal window
 

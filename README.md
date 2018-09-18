@@ -88,7 +88,7 @@ Simply run `mvn clean install` in the `roboy_dialog` folder, it will build memor
 4. Clone the Git Repo `git clone https://github.com/Roboy/roboy_memory -b master`
 5. Change directory into roboy memory `cd roboy_memory`
 6. Use maven to install roboy memory `mvn clean install`
-7. Run memory `java -jar target/roboy_memory-1.0.0-jar-with-dependencies.jar`
+7. Run memory `java -jar target/roboy_memory-1.1.0-jar-with-dependencies.jar`
 
 ## Neo4J Database
 
