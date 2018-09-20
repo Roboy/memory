@@ -6,20 +6,33 @@ Maven
 
 The project requires Maven. You may get it here: `Download Maven <https://maven.apache.org/download.cgi>`_
 
-Consider checking this entries: `Install <https://maven.apache.org/install.html>`_,
-`Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
+.. seealso:: Consider checking out these entries: `Install <https://maven.apache.org/install.html>`_, `Configure <https://maven.apache.org/configure.html>`_ and `Run <https://maven.apache.org/run.html>`_
 
+Local Setup
+--------------------------------------------------
 
 Local Neo4j Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are several options (for a Unix-based OS)
 
-**Docker Container Distribution** 
+**[Recommended] Docker Container Distribution** 
 
-- get the container with::
-	
-	docker pull neo4j
+- download Docker from apt::
+
+	sudo apt-get install docker.io
+
+- download and run Neo4J via Docker by::
+
+	sudo docker run \
+		--publish=7474:7474 --publish=7687:7687 \
+		--volume=$HOME/neo4j/data:/data \
+		--volume=$HOME/neo4j/logs:/logs \
+		neo4j:3.0
+
+- to quit Neo4J, simply CTRL+C or exit the terminal window
+
+.. warning:: You will be running Neo4J in sudo mode. If you do not wish to do so, see the other methods or `here <https://neo4j.com/docs/operations-manual/current/installation/docker/#docker-user>`_ 
 
 **Using the Debian Repository** 
 
@@ -98,7 +111,7 @@ Follow these steps as **root**:
 Congratulations! You have started the Neo4j instance!
 
 Local Redis Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to compile Redis follow this simple steps:
 
@@ -118,20 +131,26 @@ In order to compile Redis follow this simple steps:
 
     make
 
-Remote Neo4j Instance
+
+Remote Setup
 --------------------------------------------------
+
+Remote Neo4j Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the local instance is not necessary, use a remote Neo4j instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
 
 Remote Redis Instance
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the local instance is not necessary, use a remote Redis instance by establishing a connection to the Roboy server. Please, refer to :ref:`getting-started`
 
 Installing ROS
 --------------------------------------------------
 
-The project is using `rosjava <http://wiki.ros.org/rosjava?distro=kinetic>`_ which requires ROS `kinetic <http://wiki.ros.org/kinetic>`_.
+.. deprecated:: 1.1
+
+    The project is using `rosjava <http://wiki.ros.org/rosjava?distro=kinetic>`_ which requires ROS `kinetic <http://wiki.ros.org/kinetic>`_.
 
 Simple installation (assuming Ubuntu 16.04 LTS):
 
@@ -163,4 +182,3 @@ The project is implemented upon a build automation tool - Maven, so the dependen
 - clone a git project with:: 
 	
 	git clone git@github.com:Roboy/roboy_memory.git
-

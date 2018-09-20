@@ -1,58 +1,46 @@
-.. _technical-interfaces:
-
-Public Interfaces (ROS)
+Static Function Calls
 =======================
 
-.. deprecated:: 1.1
+One can use roboy_memory like a static library. One can perform the 5 operations, create, get, update, remove and cypher on Memory using the methods in the class MemoryOperations. These are almost exactly equivalent to their now deprecated ROS service counterparts, bar that one does not need to transmit the header.
 
-    Interfaces to other modules are realized through ROS (rosjava).
-    Currently 5 interfaces (ROS services) have been designed for communication with Memory Module.
-
-.. warning::
-
-    This page describes deprecated interfaces!
-
-ROS Services
+Function List
 --------------------------------------------------
 
-All calls are compliant to this general form::
 
-    rosservice call /roboy/cognition/memory/---service_name--- "\"---header---\"" "\"---payload---\""
+- **create function**: Service called to perform a query writing data into Neo4j database.::
 
-- **create service**: Service called to perform a query writing data into Neo4j database.::
-
-	# argument: String header String payload
+	# argument: String payload
 	# returns: String answer
 
-	rosservice call /roboy/cognition/memory/create
+    org.roboy.memory.util.MemoryOperations.create(String payload)
 
-- **get service:** Service called to perform a query reading data from Neo4j database.::
+- **get function:** Function called to perform a query reading data from Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
-	rosservice call /roboy/cognition/memory/get
+    org.roboy.memory.util.MemoryOperations.get(String payload)
 
-- **update service:** Service called to perform a query altering data in Neo4j database.::
+- **update function:** Function called to perform a query altering data in Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
-	rosservice call /roboy/cognition/memory/update
+	org.roboy.memory.util.MemoryOperations.update(String payload)
 
-- **remove service:** Service called to perform a query deleting data from Neo4j database.::
+- **remove function:** Function called to perform a query deleting data from Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
-	rosservice call /roboy/cognition/memory/remove
+	org.roboy.memory.util.MemoryOperations.remove(String payload)
 
-- **cypher service:** Service called to perform any Cypher query in Neo4j database.::
+- **cypher function:** Function called to perform any Cypher query in Neo4j database.::
 
-	## argument: String header String payload
+	## argument: String payload
 	# returns: String answer
 
-	rosservice call /roboy/cognition/memory/cypher
+	org.roboy.memory.util.MemoryOperations.cypher(String payload)
 
 For the first 4 services the payload has to be defined according to :ref:`roboy-protocol`.
 
