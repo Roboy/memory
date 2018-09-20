@@ -10,12 +10,16 @@ public class Generator {
 
     private static int incrementalCounter = 0;
 
-    private static final String[] roboyList = {
+    private static final String[] roboySkillsAbilitiesList = {
             //ROBOY 2.0
             "'skills':'telling jokes,telling fun facts,telling you about the famous people and places,doing the math','abilities':'talk to people,recognize objects,show emotions,move my body,shake a hand,party like there is no tomorrow,surf the internet,answer your questions','birthdate':'12.04.2018','full_name':'roboy 2.0','future':'become a robot rights advocate,help people and robots become friends,find the answer to the question of life the universe and everything,visit mars and other planets,become a music star,become a michelin star chef,get a robo pet,become as good as my father','sex':'male'",
             //ROBOY 1.0
             "\"abilities\":\"talking to people,reading wikipedia,reading reddit\",\"skills\":\"tell jokes,tell fun facts about famous people and places,recognize you next time we meet,remember your name and our conversation\",\"full_name\":\"roboy junior\",\"birthdate\":\"08.03.2013\",\"sex\":\"male\""
     };
+
+    // LISTS OF DATA THAT SHALL BE USED
+    // It is highly advisable to use lists of prime numbers. It seems to make nicer distributions.
+    // The reason is probably found somewhere in the script of Discrete Structures and has something to do with groups.
 
     private static final String[] nameList = {
 //            "Joseph", "Wagram", "Heather", "Alona", "Jason", "Lora",
@@ -29,7 +33,7 @@ public class Generator {
     };
 
     private static final String[] workList = {
-            "RoboyModel", "AISEC", "TUM", "Apple", "Google", "Autodesk", "uTUM", "DB", "Siemens", "Bosch", "NSA"
+            "Roboy", "AISEC", "TUM", "Apple", "Google", "Autodesk", "uTUM", "DB", "Siemens", "Bosch", "NSA"
     };
 
     private static final String[] universityList = {
@@ -45,10 +49,11 @@ public class Generator {
     public static void main(String[] args){
 
         if(Config.NEO4J_ADDRESS.contains("127.0.0.1") || Config.NEO4J_ADDRESS.contains("localhost")) {
-            generateRoot();
             generateRoboy();
             genAllNodes();
             createAllRelationships();
+            warnRoot();
+
         }
         else{
             System.out.println("Generator is programmed not to work with any addresses that are not 127.0.0.1 or localhost");
@@ -63,7 +68,7 @@ public class Generator {
 
 
     /**
-     * Method to create Person Node Jsons. Note that this will become Deprecated as soon as Wagram's patch hits.
+     * Method to create Person Node Jsons. This should change as soon as the Telegram_ID changes are live.
      */
     private static String jsonCreationPerson(String label, String name){
         return String.format("{'label':'%s','properties':{'name':'%s', 'generated':'%s',telegram_id:'local'}}", label.toLowerCase(), name.toLowerCase(), VERSION);
@@ -112,11 +117,11 @@ public class Generator {
     }
 
     /**
-     * Generate RoboyModel Nodes, if they do not exist
+     * Generate Roboy Nodes, if they do not exist
      */
     private static void generateRoboy(){
-            if(MemoryOperations.get(jsonCreation("Robot", "roboy two")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy two",roboyList[0]));
-            if(MemoryOperations.get(jsonCreation("Robot", "roboy")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy",roboyList[1]));
+            if(MemoryOperations.get(jsonCreation("Robot", "roboy two")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy two", roboySkillsAbilitiesList[0]));
+            if(MemoryOperations.get(jsonCreation("Robot", "roboy")).equals("{\"id\":[]}")) MemoryOperations.create(jsonCreation("Robot", "roboy", roboySkillsAbilitiesList[1]));
 
             int roboy1 = nameToNode("Robot", "roboy");
             int roboy2 = nameToNode("Robot", "roboy two");
@@ -133,13 +138,12 @@ public class Generator {
             createRelationship(roboy2, nameToNode("Country", "munich"), "FROM");
     }
 
-    //Method shall be removed as soon as Wagram confirms the issue is solved
-    private static void generateRoot(){
+    private static void warnRoot(){
         if(MemoryOperations.cypher("MATCH (n) WHERE id(n) = 0 RETURN n").equals("[]")) {
-            System.out.println("No Root");
+            System.out.println("No Root Detected, everything okay!");
         }
         else{
-            System.out.println("Root already exists");
+            System.err.println("Some poor node has been delegated ID 0. Please report this on Github ASAP. This should NOT happen, ever.");
         }
     }
 
@@ -151,6 +155,7 @@ public class Generator {
         for(String name : nameList){
 
             int nameID = nameToNode("Person", name);
+
             createRelationship(nameID, nameToNode("Country", countryList[incrementalCounter++% countryList.length]), "FROM");
             createRelationship(nameID, nameToNode("Hobby", hobbyList[incrementalCounter++%hobbyList.length]), "HAS_HOBBY");
             createRelationship(nameID, nameToNode("Organization", workList[incrementalCounter++%workList.length]), "WORK_FOR");
@@ -184,7 +189,7 @@ public class Generator {
     private static int nameToNode(String type, String name){
         String str = MemoryOperations.get(jsonCreation(type, name));
         str = str.replaceAll("[^\\d,]", ""); //This REGEX filters out all ASCII except commas and numbers
-        System.out.println(str);
+//        System.out.println(str);
         if(str.equals("")) return 0;
         if(str.contains(",")) throw new RuntimeException(String.format("Double Entry Exists in NEO4J Database. %s is represented by nodes %s. Please delete these nodes manually through cypher. This error should not occur unless you have added your own duplicate nodes. If this occurs, without you having added something, report this on Github."));
         else return Integer.parseInt(str);

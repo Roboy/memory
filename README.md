@@ -1,17 +1,12 @@
 # Roboy Memory Module
 
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=latest)](http://roboy-memory.readthedocs.io/en/latest/?badge=latest)
-
 [![Documentation Status](https://readthedocs.org/projects/roboy-memory/badge/?version=docs)](http://roboy-memory.readthedocs.io/en/develop/?badge=develop)
-
-Detailed Documentation can be found [here](https://readthedocs.org/projects/roboy-memory)
 
 - [Roboy Memory Module](#roboy-memory-module)
     - [What does Roboy Memory do](#what-does-roboy-memory-do)
     - [How does Roboy Memory work](#how-does-roboy-memory-work)
-    - [Neo4J Database](#neo4j-database)
-        - [Remote Neo4J Database](#remote-neo4j-database)
-        - [Local Neo4J Database Generator](#local-neo4j-database-generator)
+        - [Documentation](#documentation)
     - [Installation Instructions](#installation-instructions)
         - [Requirements](#requirements)
         - [Optional](#optional)
@@ -20,6 +15,10 @@ Detailed Documentation can be found [here](https://readthedocs.org/projects/robo
             - [Thorough Guide](#thorough-guide)
             - [Installing for Usage with roboy_dialog](#installing-for-usage-with-roboydialog)
             - [Installing Memory Only](#installing-memory-only)
+    - [Neo4J Database](#neo4j-database)
+        - [Remote Neo4J Database](#remote-neo4j-database)
+        - [Local Neo4J Database Generator](#local-neo4j-database-generator)
+            - [Removing Generated Nodes](#removing-generated-nodes)
 
 ## What does Roboy Memory do
 
@@ -35,17 +34,9 @@ The same is applicable to Roboy, when speaking about people who are his friends.
 
 Upon incoming request, a Java client will pre-process the request and initiate transaction with the database. Two ways of communication between Roboy Java client and Neo4J database are supported: communication using Neo4J driver operating Cypher query language and Neo4J native Java API. Cypher query language offers more flexible querying while communications via Neo4J Java API are implemented as usage-specific routines. Interfaces are implemented on top of ros through the Java client. The input is any type of information Roboy can retrieve from environment abiding by Knowledge Representation reference in format of Roboy Communication Standard protocol, the output are pieces of data related to the requested scope in the same form.
 
-## Neo4J Database
+### Documentation
 
-### Remote Neo4J Database
-
-The roboy team runs a remote Neo4J instance. If you wish to have a copy of this for local testing purposes, you can find more info [here](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#local-neo4j-instance).
-
-### Local Neo4J Database Generator
-
-As one may wish to develop offline or perform risky tests, that may compromise Database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`.
-
-Note: You will still be required to set up the [environmental variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
+For a more indepth look into how Roboy Memory works, please see the [Documentation](https://readthedocs.org/projects/roboy-memory)
 
 ## Installation Instructions
 
@@ -97,4 +88,24 @@ Simply run `mvn clean install` in the `roboy_dialog` folder, it will build memor
 4. Clone the Git Repo `git clone https://github.com/Roboy/roboy_memory -b master`
 5. Change directory into roboy memory `cd roboy_memory`
 6. Use maven to install roboy memory `mvn clean install`
-7. Run memory `java -jar target/roboy_memory-1.0.0-jar-with-dependencies.jar`
+7. Run memory `java -jar target/roboy_memory-1.1.0-jar-with-dependencies.jar`
+
+## Neo4J Database
+
+### Remote Neo4J Database
+
+The roboy team runs a remote Neo4J instance. If you wish to have a copy of this for local testing purposes, you can find more info [here](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#local-neo4j-instance).
+
+### Local Neo4J Database Generator
+
+As one may wish to develop offline or perform risky tests, that may compromise database integrity, it is possible to generate a sample set of data. To do this, simply run the main method of `org.roboy.memory.data.Generator`. It will also generate a copy of the Roboy nodes, that Dialog uses. Each node that is created has a `Generated` property, with the version number of the generated data.
+
+Note: You will still be required to set up the [environmental variables](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
+
+#### Removing Generated Nodes
+
+You can remove generated data, by running the following command `MATCH (node2delete {generated: '0.0.2'}) DETACH DELETE node2delete`. If you only want to delete nodes of a specific kind, such as `Person`s, run `MATCH (node2delete:Person {generated: '0.0.2'}) DETACH DELETE node2delete`.
+
+If you don't care and wish to remove all generated data across versions, use `MATCH (node2delete) WHERE EXISTS(node2delete.generated) DETACH DELETE node2delete`.
+
+> Be aware, that these commands do not care about your existing data and may break things. It is advisable to read up the [Neo4J Cypher documentation](https://neo4j.com/docs/developer-manual/3.4/cypher/clauses/delete/#delete-delete-a-node-with-all-its-relationships) and making sure that **all** side effects are understood.
